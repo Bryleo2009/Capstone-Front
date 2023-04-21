@@ -7,12 +7,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './_page/header/header.component';
 import { StoreComponent } from './_page/store/store.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FooterComponent } from './_page/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    StoreComponent
+    StoreComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
