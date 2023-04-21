@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Categoria } from '@app/_model/categoria';
+import { Producto } from '@app/_model/producto';
 import { CategoriasService } from '@app/_service/modelos/categorias.service';
+import { ProductoService } from '@app/_service/modelos/producto.service';
+import { TipoProductoService } from '@app/_service/modelos/tipo-producto.service';
 
 @Component({
   selector: 'app-store',
@@ -10,13 +13,21 @@ import { CategoriasService } from '@app/_service/modelos/categorias.service';
 export class StoreComponent implements OnInit{
 
   constructor(
-    private service: CategoriasService
+    private categoriaService: CategoriasService,
+    private productoService: ProductoService
   ){}
 
   categorias!: Categoria[];
+  productos!: Producto[];
   ngOnInit(): void {
-      this.service.listar("token").subscribe((data) => {
-        this.categorias = data;
-      });
+    //listar categorias
+    this.categoriaService.listar("token").subscribe((data) => {
+      this.categorias = data;
+    });
+
+    //listar productos
+    this.productoService.listar("token").subscribe((data) => {
+      this.productos = data;
+    });
   }
 }

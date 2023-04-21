@@ -6,18 +6,18 @@
         <div class="store-catego flex align-items-center justify-content-between">
             <h1 *ngFor="let categoria of categorias">{{ categoria.nombreCateg }}</h1>
         </div>
-        <div class="grid store-imgcatego">
-            <div class="card flex justify-content-center">
-                <p-card header="Advanced Card" subheader="Card Subheader" [style]="{ width: '360px' }">
-                    <ng-template pTemplate="header" >
-                        <img alt="Card" style="height: 250px;" src="https://primefaces.org/cdn/primeng/images/usercard.png" />
+        <div class="flex store-imgcatego flex-wrap justify-content-between">
+            <div class="card" *ngFor="let producto of productos">
+                <p-card [header]="producto.nombreProduct" [style]="{ width: '360px' }">
+                    <ng-template pTemplate="header">
+                        <img alt="Card" style="height: 150px;"
+                            src="https://primefaces.org/cdn/primeng/images/usercard.png" />
                     </ng-template>
-                    <p>
-                        ghghjghj
-                    </p>
+                    <p>{{ producto.descripcionProduct }}</p>
+                    <p>{{ producto.precioUni }}</p>
+                    <p>{{ producto.stockProduct }}</p>
                     <ng-template pTemplate="footer">
                         <p-button label="Save" icon="pi pi-check"></p-button>
-                        <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }"></p-button>
                     </ng-template>
                 </p-card>
             </div>
