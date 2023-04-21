@@ -76,9 +76,11 @@
                             <img alt="Card" class="img-card" src="..\assets\Store\image 14.jpg">
                         </ng-template>
                     </ng-template>
-                    <p>{{ producto.descripcionProduct }}</p>
-                    <p>{{ producto.precioUni }}</p>
-                    <p>{{ producto.stockProduct }}</p>
+                    <div class="cont-card flex flex-column align-items-center">
+                        <h2>{{ producto.etiquetas }}</h2>
+                        <p>{{ producto.descripcionProduct }}</p>
+                        <p>{{ producto.stockProduct }}</p>
+                    </div>                    
                     <ng-template pTemplate="footer">
                         <p-button label="Save" icon="pi pi-check"></p-button>
                     </ng-template>
@@ -86,4 +88,7 @@
             </div>
         </div>
     </div>
+    <div class="card flex justify-content-center" style="width: 100%;">
+        <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="totalRecords" [rowsPerPageOptions]="[6,12, 24, 30]"></p-paginator>
+    </div>    
 </section>
