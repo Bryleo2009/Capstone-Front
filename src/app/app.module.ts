@@ -4,12 +4,14 @@ import { PrimeNGModule } from './prime-ng.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from './_page/header/header.component';
+import { StoreComponent } from './_page/store/store.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    StoreComponent
   ],
   imports: [
     BrowserModule,
