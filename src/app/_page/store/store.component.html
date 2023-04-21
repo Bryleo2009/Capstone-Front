@@ -6,12 +6,17 @@
         <div class="store-catego flex align-items-center justify-content-between">
             <h1 *ngFor="let categoria of categorias">{{ categoria.nombreCateg }}</h1>
         </div>
-        <div class="flex store-imgcatego flex-wrap justify-content-between">
-            <div class="card" *ngFor="let producto of productos">
-                <p-card [header]="producto.nombreProduct" [style]="{ width: '360px' }">
+        <div class="flex store-imgcatego flex-wrap justify-content-center">
+            <div class="card col" *ngFor="let producto of productos">
+                <p-card [header]="producto.nombreProduct" [style]="{ width: '289px' }">
                     <ng-template pTemplate="header">
-                        <img alt="Card" style="height: 150px;"
-                            src="https://primefaces.org/cdn/primeng/images/usercard.png" />
+                        <img alt="Card" class="img-card"
+                            src="..\assets\Store\image 14.jpg"
+                            *ngIf="producto.imagen !== null; else elseTemplate" >
+                            <ng-template #elseTemplate>
+                                <img alt="Card" class="img-card"
+                                    src="..\assets\Store\image 14.jpg">
+                            </ng-template>
                     </ng-template>
                     <p>{{ producto.descripcionProduct }}</p>
                     <p>{{ producto.precioUni }}</p>

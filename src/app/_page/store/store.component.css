@@ -15,7 +15,12 @@ div > img {
     height: 100%;
 }
 
-
 .card {
-    margin: 25px;
+    padding: 25px;
+}
+
+.img-card {
+    height: 250px; 
+    object-fit: cover; 
+    padding: 5px;
 }
