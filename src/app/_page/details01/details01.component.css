@@ -1,0 +1,15 @@
+section {
+    background-color: 626262;
+  }
+.center {
+    display: flex;
+    justify-content: center;
+  }
+
+.d {
+    max-width: 40%;
+    height: auto;
+    margin: 30px auto;
+    padding: 50px;
+    display: inline-block;
+  }

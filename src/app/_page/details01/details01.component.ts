@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class Details01Component {
 
+    TextoD: string = 'Descripción'
+    TextoR02: string = 'Prendas para pasar esta temporada con moda y estilo Retro. Renueva tu guardarropa con estos polos básicos. Combínalos para armar tu look perfecto.'
+    TextoS: string = 'Productos Relacionados'
 }
