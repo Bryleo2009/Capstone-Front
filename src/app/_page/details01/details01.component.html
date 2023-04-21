@@ -1,46 +1,84 @@
-<section class="col-12-ds">
-    <div class="dsasdad">
-        <table class="table">   
-            <ng-container>
-              
-                <img src=".\assets\details\prenda01.png" alt="Avatar hombre" width="150px" height="150px">
-              
-            </ng-container>
-        </table>
+<section>
+    <div class="eje">
+        <p-galleria [numVisible]="3" [value]="images">
+            <ng-template pTemplate="item" let-item>
+                <img [src]="item.previewImageSrc" [alt]="item.alt" [title]="item.title" style="width: 50%;" />
+            </ng-template>
+            <ng-template pTemplate="thumbnail" let-item width="50%">
+                <div class="grid  grid-nogutter justify-content-center">
+                    <img [src]="item.thumbnailImageSrc" [alt]="item.alt" [title]="item.title" width=80% />
+                </div>
+            </ng-template>
+        </p-galleria>
     </div>
-    <div class="center">
-        <h1>{{TextoD}}</h1>
-    </div>
-    <div class="center">
-        <p>{{TextoR02}}</p>
-    </div>
-    <div class="center">
-        <h2>{{TextoS}}</h2> 
-    </div>
-    <div class="d">
-            <img src=".\assets\details\prenda01.png" alt="Avatar hombre"  width="150px" height="150px">
-            <p>CHOMPA 1<br>
-                CHOMPA PRUEBA N°1<br>
-                S/.150
-            </p>
-            <p-button label="Agregar al Carrito" styleClass="p-button-rounded p-button-secondary"></p-button>
-</div>
+    <div class="eje">
+        <h3>Chompa</h3>
+        <h1>Chompa Prueba N1</h1><br>
+        <p>S/95.00<br>
+            Cod. SCR1001 - Chompa Acampanada Con Motivo Flora/Fauna, Tela: Poliester/Suplex. No Destiñe.<br>
+            <br>
+            Solicita El Catálogo Completo Al Whatsapp
+            <br><br><br>
+            Talla
+            <br><br><br></p>
 
-<div class="d">
-            <img src=".\assets\details\prenda01.png" alt="Avatar hombre"  width="150px" height="150px">
-            <p>CHOMPA 1<br>
-                CHOMPA PRUEBA N°1<br>
-                S/.150
-            </p>
-            <p-button label="Agregar al Carrito" styleClass="p-button-rounded p-button-secondary"></p-button>
-</div>
-<div class="d">
-    <img src=".\assets\details\prenda01.png" alt="Avatar hombre"  width="150px" height="150px">
-    <p>CHOMPA 1<br>
-        CHOMPA PRUEBA N°1<br>
-        S/.150
-    </p>
-    <p-button label="Agregar al Carrito" styleClass="p-button-rounded p-button-secondary"></p-button>
-</div>
+            <div class="f">
+            <p-button label="S"></p-button>
+            <p-button label="M"></p-button>
+            <p-button label="L"></p-button>
+            <p-button label="XL"></p-button>
+        </div>
+        <div class="card flex justify-content-center">
+            <p-splitButton label="1" icon="pi pi-plus"></p-splitButton>
+            <p-button label="Agregar Al Carrito"></p-button>
+            <p-splitButton label="Lista de Deseos" icon="pi pi-star"></p-splitButton>
+        </div>
+    </div>
+    <div class="center">
+        <h1>Descripción</h1>
+    </div>
+    <div class="center">
+        <p>Prendas para pasar esta temporada con moda y estilo Retro. Renueva tu guardarropa con estos polos básicos.
+            Combínalos para armar tu look perfecto.</p>
+    </div>
+    <div class="center">
+        <h2>Productos Relacionados</h2>
+    </div>
+    <div>
+        <p-carousel class="d" [value]="cars">
+            <ng-template let-car pTemplate="item">
+                <div class="product-item">
+                    <div class="product-item-content">
+                        <div class="p-mb-3"></div>
+                        <div>
+                            <h4 class="p-mb-1">
+                                <img src=".\assets\details\prenda01.png" style="width: 30%" />
+                            </h4>
+                            <h4 class="p-mb-1">
+                                {{ car.name }}
+                            </h4>
+                            <h4 class="p-mb-1">
+                                {{ car.description }}
+                            </h4>
+                            <h6 class="p-mt-0 p-mb-3">
+                                ${{ car.price }}
+                            </h6>
+                            <div class="car-buttons p-mt-3">
+                                <p-button type="button" styleClass="p-button 
+                                    p-button-rounded p-mr-2" icon="pi pi-search">
+                                </p-button>
+                                <p-button type="button" styleClass="p-button-success 
+                                    p-button-rounded p-mr-2" icon="pi pi-star">
+                                </p-button>
+                                <p-button type="button" styleClass="p-button-help 
+                                    p-button-rounded" icon="pi pi-cog">
+                                </p-button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </ng-template>
+        </p-carousel>
+    </div>
 </section>
-
