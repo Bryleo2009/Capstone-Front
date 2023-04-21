@@ -1,1 +1,26 @@
-<p>store works!</p>
+<section class="grid s-store">
+    <div class="col store-filtro">
+        <h1>ddd</h1>
+    </div>
+    <div class="col-9 store-catalogo">
+        <div class="store-catego flex align-items-center justify-content-between">
+            <h1 *ngFor="let categoria of categorias">{{ categoria.nombreCateg }}</h1>
+        </div>
+        <div class="flex store-imgcatego flex-wrap justify-content-between">
+            <div class="card" *ngFor="let producto of productos">
+                <p-card [header]="producto.nombreProduct" [style]="{ width: '360px' }">
+                    <ng-template pTemplate="header">
+                        <img alt="Card" style="height: 150px;"
+                            src="https://primefaces.org/cdn/primeng/images/usercard.png" />
+                    </ng-template>
+                    <p>{{ producto.descripcionProduct }}</p>
+                    <p>{{ producto.precioUni }}</p>
+                    <p>{{ producto.stockProduct }}</p>
+                    <ng-template pTemplate="footer">
+                        <p-button label="Save" icon="pi pi-check"></p-button>
+                    </ng-template>
+                </p-card>
+            </div>
+        </div>
+    </div>
+</section>

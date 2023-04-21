@@ -4,12 +4,17 @@ import { PrimeNGModule } from './prime-ng.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HeaderComponent } from './_page/header/header.component';
 import { StoreComponent } from './_page/store/store.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FooterComponent } from './_page/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StoreComponent
+    HeaderComponent,
+    StoreComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -17,6 +22,7 @@ import { StoreComponent } from './_page/store/store.component';
     PrimeNGModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],exports: [
     PrimeNGModule
   ],
