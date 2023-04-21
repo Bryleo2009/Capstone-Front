@@ -1,3 +1,6 @@
+# Instalacion
+    ng install
+
 # Compilado 
     ng serve -o
 
