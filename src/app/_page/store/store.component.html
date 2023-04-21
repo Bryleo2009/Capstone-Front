@@ -1,6 +1,66 @@
 <section class="grid s-store">
     <div class="col store-filtro">
-        <h1>ddd</h1>
+        <h1>NUEVAS TENDENCIAS</h1>
+        <!-- <div class="card flex justify-content-center">
+            <h3>NUEVAS TENDENCIAS</h3> -->
+        <!-- <p-slider [(ngModel)]="rangeValues" [range]="true"></p-slider>
+        </div>  -->
+        <!-- precio -->
+        <div class="card flex flex-wrap gap-3 p-fluid">
+            <div class="flex-auto">
+                <label class="mb-2 block font-bold" for="stacked">Precio Min</label>
+                <p-inputNumber [(ngModel)]="value1" [showButtons]="true" inputId="stacked" [min]="40" [max]="400"
+                    mode="currency" currency="PEN"> </p-inputNumber>
+            </div>
+            <div class="flex-auto">
+                <label class="mb-2 block font-bold" for="minmax-buttons">Precio Max</label>
+                <p-inputNumber [(ngModel)]="value2" mode="decimal" [showButtons]="true" inputId="minmax-buttons"
+                    [min]="40" [max]="400" mode="currency" currency="PEN"> </p-inputNumber>
+            </div>
+        </div>
+        <!-- marcas -->
+        <div class="card ">
+            <h3> Marca </h3>
+            <div class="flex flex-column gap-2 marca">
+                <div *ngFor="let category of categories" class="field-checkbox">
+                    <p-checkbox name="group" [value]="category" [(ngModel)]="selectedCategories"
+                        [inputId]="category.key"></p-checkbox>
+                    <label class="reducctam" [for]="category.key">{{ category.name }}</label>
+                </div>
+            </div>
+        </div>
+        <!-- color -->
+        <div class="card ">
+            <h3> Color </h3>
+            <div class="card">
+                <button style="background-color: red;">rojo</button>
+                <button style="background-color: green;">verde</button>
+                <button style="background-color: blue;">azul</button>
+                <button style="background-color: purple;">morado</button>
+                <button style="background-color: brown;">marrón</button>
+                <button style="background-color: white;">blanco</button>
+                <button style="background-color: black;">negro</button>
+                <!-- <p-button styleClass="p-button-secondary"></p-button>
+                <p-button styleClass="p-button-success"></p-button>
+                <p-button styleClass="p-button-info"></p-button>
+                <p-button styleClass="p-button-warning"></p-button>
+                <p-button styleClass="p-button-help"></p-button>
+                <p-button styleClass="p-button-danger"></p-button>
+                <p-button></p-button> -->
+            </div>
+        </div>
+        <!-- tallas -->
+        <div class="card">
+            <h3> Talla </h3>
+            <div class="flex flex-column gap-2 talla">
+                <div *ngFor="let category of categoriesTalla" class="field-checkbox">
+                    <p-checkbox name="group" [value]="category" [(ngModel)]="selectedCategoriesTalla"
+                        [inputId]="category.key"></p-checkbox>
+                    <label [for]="category.key">{{ category.name }}</label>
+                </div>
+            </div>
+        </div>
+
     </div>
     <div class="col-9 store-catalogo">
         <div class="store-catego flex align-items-center justify-content-between">
@@ -10,13 +70,11 @@
             <div class="card col" *ngFor="let producto of productos">
                 <p-card [header]="producto.nombreProduct" [style]="{ width: '289px' }">
                     <ng-template pTemplate="header">
-                        <img alt="Card" class="img-card"
-                            src="..\assets\Store\image 14.jpg"
-                            *ngIf="producto.imagen !== null; else elseTemplate" >
-                            <ng-template #elseTemplate>
-                                <img alt="Card" class="img-card"
-                                    src="..\assets\Store\image 14.jpg">
-                            </ng-template>
+                        <img alt="Card" class="img-card" src="..\assets\Store\image 14.jpg"
+                            *ngIf="producto.imagen !== null; else elseTemplate">
+                        <ng-template #elseTemplate>
+                            <img alt="Card" class="img-card" src="..\assets\Store\image 14.jpg">
+                        </ng-template>
                     </ng-template>
                     <p>{{ producto.descripcionProduct }}</p>
                     <p>{{ producto.precioUni }}</p>

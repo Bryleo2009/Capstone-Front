@@ -24,3 +24,48 @@ div > img {
     object-fit: cover; 
     padding: 5px;
 }
+
+.reducctam {
+    font-size: var(--Parrafo-size);
+}
+
+.marca {
+    margin-top: 15px;
+}
+
+.talla {
+    margin-top: 10px;
+}
+
+.color{
+    margin-top: 10px;
+}
+
+.rojo{
+    background-color: red;
+}
+
+.negro{
+    
+    background-color: black;
+}
+
+.blanco{
+    background-color: white;
+}
+
+.verde{
+    background-color: green;
+}
+
+.morado{
+    background-color: purple;
+}
+
+.azul{
+    background-color: blue;
+}
+
+.marron{
+    background-color: brown;
+}
