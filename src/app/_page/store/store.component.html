@@ -1,1 +1,41 @@
-<p>store works!</p>
+<section class="grid s-store">
+    <div class="col store-filtro">
+        <h1>ddd</h1>
+    </div>
+    <div class="col-9 store-catalogo">
+        <div class="store-catego flex align-items-center justify-content-between">
+            <h1 *ngFor="let categoria of categorias">{{ categoria.nombreCateg }}</h1>
+        </div>
+        <div class="grid store-imgcatego">
+            <div class="col-4">
+                <div class="image-container flex justify-content-center">
+                    <img src="..\assets\Store\image 14.jpg" alt="" style="object-fit: cover;">
+                    <div class="text-overlay">Texto sobre la imagen</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="grid">
+                    <div class="col">
+                        <div class="image-container flex justify-content-center">
+                            <img src="..\assets\Store\image 44.png" alt="" style="object-fit: cover;">
+                            <div class="text-overlay">Texto sobre la imagen</div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="image-container flex justify-content-center">
+                            <img src="..\assets\Store\image 47.png" alt="" style="object-fit: cover;">
+                            <div class="text-overlay">Texto sobre la imagen</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="height: 277px;">
+                    <div class="image-container flex justify-content-center">
+                        <img src="../assets/Store/Group 15.png" alt="" style="object-fit: cover;">
+                        <div class="text-overlay">Texto sobre la imagen</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreComponent } from './_page/store/store.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { StoreComponent } from './_page/store/store.component';
     PrimeNGModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],exports: [
     PrimeNGModule
   ],
