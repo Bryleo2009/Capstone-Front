@@ -30,3 +30,9 @@ section {
     color: black;
 
   }
+
+  .icon {
+  
+    display: absolute;
+
+  }
