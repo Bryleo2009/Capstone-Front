@@ -8,17 +8,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { Details01Component } from './_page/details01/details01.component';
 
+import { HeaderComponent } from './_page/header/header.component';
 import { StoreComponent } from './_page/store/store.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FooterComponent } from './_page/footer/footer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-
     Details01Component,
-
-    StoreComponent
-
+    HeaderComponent,
+    StoreComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -26,6 +28,7 @@ import { StoreComponent } from './_page/store/store.component';
     PrimeNGModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],exports: [
     PrimeNGModule
   ],

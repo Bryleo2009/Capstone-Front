@@ -4,6 +4,9 @@ import { ButtonModule } from 'primeng/button';
 import { GalleriaModule } from 'primeng/galleria';
 import { CarouselModule } from 'primeng/carousel';
 import { SplitButtonModule } from 'primeng/splitbutton';
+import { ImageModule } from 'primeng/image';
+import { CardModule } from 'primeng/card';
+
 
 @NgModule({
   declarations: [],
@@ -18,7 +21,10 @@ import { SplitButtonModule } from 'primeng/splitbutton';
     ButtonModule,
     GalleriaModule,
     CarouselModule,
-    SplitButtonModule
+    SplitButtonModule,
+    ImageModule,
+    CardModule
+
   ]
 })
 export class PrimeNGModule { }
