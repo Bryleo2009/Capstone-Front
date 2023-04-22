@@ -15,8 +15,12 @@ div > img {
     height: 100%;
 }
 
+.nt{
+    padding-bottom: 25px;
+}
+
 .card {
-    padding: 25px;
+    padding: 15px;
 }
 
 .img-card {
@@ -35,37 +39,47 @@ div > img {
 
 .talla {
     margin-top: 10px;
+    padding: 7px;
 }
 
 .color{
     margin-top: 10px;
 }
 
-.rojo{
-    background-color: red;
-}
-
-.negro{
-    
-    background-color: black;
-}
-
-.blanco{
+.btn-1{
     background-color: white;
 }
 
-.verde{
-    background-color: green;
+
+.btn-2{
+    background-color: black;
+}
+.btn-3{
+    background-color: red;
 }
 
-.morado{
+.btn-4{
     background-color: purple;
 }
 
-.azul{
+.btn-5{
+    background-color: green;
+}
+
+.btn-6{
     background-color: blue;
 }
 
-.marron{
+.btn-7{
+    background-color: gray;
+}
+
+.btn-8{
     background-color: brown;
+}
+
+.btn-sel{
+    padding: 15px 15px;
+    border-radius: 50%;
+    margin: 15px;
 }
