@@ -8,6 +8,8 @@ import { HeaderComponent } from './_page/header/header.component';
 import { StoreComponent } from './_page/store/store.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './_page/footer/footer.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { FooterComponent } from './_page/footer/footer.component';
     PrimeNGModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],exports: [
     PrimeNGModule
   ],
