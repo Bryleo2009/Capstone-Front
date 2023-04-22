@@ -12,6 +12,8 @@ import { HeaderComponent } from './_page/header/header.component';
 import { StoreComponent } from './_page/store/store.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './_page/footer/footer.component';
+import { HomeComponent } from './_page/home/home.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import { FooterComponent } from './_page/footer/footer.component';
     Details01Component,
     HeaderComponent,
     StoreComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,8 @@ import { FooterComponent } from './_page/footer/footer.component';
     PrimeNGModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],exports: [
     PrimeNGModule
   ],

@@ -6,6 +6,10 @@ import { CarouselModule } from 'primeng/carousel';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { ImageModule } from 'primeng/image';
 import { CardModule } from 'primeng/card';
+import { CheckboxModule } from 'primeng/checkbox';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { PaginatorModule } from 'primeng/paginator';
+import { DropdownModule } from 'primeng/dropdown';
 
 
 @NgModule({
@@ -15,7 +19,13 @@ import { CardModule } from 'primeng/card';
     ButtonModule,
     GalleriaModule,
     CarouselModule,
-    SplitButtonModule
+    SplitButtonModule,
+    ImageModule,
+    CardModule,
+    CheckboxModule,
+    InputNumberModule,
+    PaginatorModule,
+    DropdownModule
 
   ],exports: [
     ButtonModule,
@@ -23,8 +33,10 @@ import { CardModule } from 'primeng/card';
     CarouselModule,
     SplitButtonModule,
     ImageModule,
-    CardModule
-
+    CheckboxModule,
+    InputNumberModule,
+    PaginatorModule,
+    DropdownModule
   ]
 })
 export class PrimeNGModule { }

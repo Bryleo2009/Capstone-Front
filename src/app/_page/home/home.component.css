@@ -1,0 +1,48 @@
+/* Hero Section*/
+.hero{
+    background: url('src/assets/imgs_inicio/modelo.png');
+    height: 100vh;  
+    background-position: center;
+    background-size: cover;
+    padding: 280px 0;
+  }
+  .hero_container{
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    height: 90%;
+    text-align: center;
+    padding:30px;
+  }
+  .hero_heading {
+    font-size: 90px;
+    margin-bottom: 24px;
+    color: #ffffff;
+    text-align: left;
+    font-family: var(--Titulo);
+  }
+  .hero_description {
+    font-size: 50px;
+    margin-bottom: 10px;
+    background: #da22ff; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #ffffff,
+      #ffffff
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #ffffff,
+      #ffffff
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+  }
+  .highlight {
+    border-bottom: 4px solid rgb(132, 0, 255);
+  }
