@@ -1,3 +1,4 @@
+
  .s-store {
      margin: 30px;
  }
@@ -5,6 +6,12 @@
  .store-imgcatego {
      margin-top: 25px;
  }
+
+.store-filtro{
+    background-color: white;
+    border-radius: 3% ;
+    margin-right: 10px;
+}
 
 div > img {
     width: 100%;
