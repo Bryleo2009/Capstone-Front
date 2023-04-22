@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { ImageModule } from 'primeng/image';
 import { CardModule } from 'primeng/card';
+import { CheckboxModule } from 'primeng/checkbox';
+import { InputNumberModule } from 'primeng/inputnumber';
 import { PaginatorModule } from 'primeng/paginator';
 import { DropdownModule } from 'primeng/dropdown';
-import { SliderModule } from 'primeng/slider';
 
 
 @NgModule({
@@ -15,16 +16,19 @@ import { SliderModule } from 'primeng/slider';
     ButtonModule,
     ImageModule,
     CardModule,
+    CheckboxModule,
+    InputNumberModule,
     PaginatorModule,
-    DropdownModule,
-    SliderModule
+    DropdownModule
+
   ],exports: [
     ButtonModule,
     ImageModule,
     CardModule,
+    CheckboxModule,
+    InputNumberModule,
     PaginatorModule,
-    DropdownModule,
-    SliderModule
+    DropdownModule
   ]
 })
 export class PrimeNGModule { }

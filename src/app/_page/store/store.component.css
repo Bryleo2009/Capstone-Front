@@ -1,7 +1,3 @@
- /* * {
-    border: 1px solid rgb(54, 52, 52);
-} */
-
  .s-store {
      margin: 30px;
  }
@@ -39,3 +35,47 @@
 
 
  
+.reducctam {
+    font-size: var(--Parrafo-size);
+}
+
+.marca {
+    margin-top: 15px;
+}
+
+.talla {
+    margin-top: 10px;
+}
+
+.color{
+    margin-top: 10px;
+}
+
+.rojo{
+    background-color: red;
+}
+
+.negro{
+    
+    background-color: black;
+}
+
+.blanco{
+    background-color: white;
+}
+
+.verde{
+    background-color: green;
+}
+
+.morado{
+    background-color: purple;
+}
+
+.azul{
+    background-color: blue;
+}
+
+.marron{
+    background-color: brown;
+}
