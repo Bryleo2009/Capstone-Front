@@ -8,29 +8,30 @@
         </div>
         <div class="flex store-imgcatego flex-wrap justify-content-center">
             <div class="card col" *ngFor="let producto of productos">
-                <p-card [header]="producto.nombreProduct" [style]="{ width: '289px' }">
+                <p-card [header]="producto.nombreProduct" [subheader]="producto.etiquetas" [style]="{ width: '289px' }">
                     <ng-template pTemplate="header">
-                        <img alt="Card" class="img-card"
-                            src="..\assets\Store\image 14.jpg"
-                            *ngIf="producto.imagen !== null; else elseTemplate" >
-                            <ng-template #elseTemplate>
-                                <img alt="Card" class="img-card"
-                                    src="..\assets\Store\image 14.jpg">
-                            </ng-template>
+                        <img alt="Card" class="img-card" src="..\assets\Store\image 14.jpg"
+                            *ngIf="producto.imagen !== null; else elseTemplate">
+                        <ng-template #elseTemplate>
+                            <img alt="Card" class="img-card" src="..\assets\Store\image 14.jpg">
+                        </ng-template>
                     </ng-template>
-                    <div class="cont-card flex flex-column align-items-center">
-                        <h2>{{ producto.etiquetas }}</h2>
-                        <p>{{ producto.descripcionProduct }}</p>
-                        <p>{{ producto.stockProduct }}</p>
-                    </div>                    
+                    <div class="cont-card flex justify-content-center">
+                            <del *ngIf="producto.isPrecioDescProduct, else sinTachado"><p class="precio">S/ {{ producto.precioUni }}</p></del>
+                            <ng-template #sinTachado>
+                                <p class="precio">S/ {{ producto.precioUni }}</p>
+                            </ng-template>
+                            <p class="precio descuento" *ngIf="producto.isPrecioDescProduct"><b>S/ {{ producto.precioDescuProduct }}</b></p>
+                    </div>
                     <ng-template pTemplate="footer">
-                        <p-button label="Save" icon="pi pi-check"></p-button>
+                        <p-button [style]="{backgroundColor:'#E5E5E5', color: '#000000', 'border-radius': '25px 25px 0px 0px', padding : '8px 25px'}" class="btnCompra" label="Agregar a carrito"  ></p-button>
                     </ng-template>
                 </p-card>
             </div>
         </div>
     </div>
     <div class="card flex justify-content-center" style="width: 100%;">
-        <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="totalRecords" [rowsPerPageOptions]="[6,12, 24, 30]"></p-paginator>
-    </div>    
+        <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="totalRecords"
+            [rowsPerPageOptions]="[6,12, 24, 30]"></p-paginator>
+    </div>
 </section>

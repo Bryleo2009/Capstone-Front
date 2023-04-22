@@ -39,3 +39,8 @@ ofsystem>a:hover {
     --color-terci: #344966;
     --color-white: #ffffff;
 }
+
+
+section, body{
+    background-color: #F9F9F9;
+}
