@@ -1,0 +1,38 @@
+section {
+    background-color: 626262;
+  }
+.center {
+    display: flex;
+    justify-content: center;
+  }
+
+.d {
+  
+    height: auto;
+    display: flex;
+    margin: 30px auto;
+    justify-content: center;
+    padding: 50px;
+    display: inline-block;
+  }
+
+  .eje {
+    max-width: 30%;
+    height: auto;
+    margin: 30px auto;
+    padding: 90px;
+    display: inline-block;
+  }
+  .f {
+  
+    padding: 10px;
+    background: 626262;
+    color: black;
+
+  }
+
+  .icon {
+  
+    display: absolute;
+
+  }
