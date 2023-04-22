@@ -6,7 +6,7 @@ import { GalleriaModule } from 'primeng/galleria';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { Details01Component } from './_page/details01/details01.component';
+import { Details01Component } from './_page/details/details.component';
 
 import { HeaderComponent } from './_page/header/header.component';
 import { StoreComponent } from './_page/store/store.component';

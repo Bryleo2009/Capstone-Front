@@ -8,9 +8,9 @@ interface Car {
 }
 
 @Component({
-  selector: 'app-details01',
-  templateUrl: './details01.component.html',
-  styleUrls: ['./details01.component.css']
+  selector: 'app-details',
+  templateUrl: './details.component.html',
+  styleUrls: ['./details.component.css']
 })
 export class Details01Component {
 
