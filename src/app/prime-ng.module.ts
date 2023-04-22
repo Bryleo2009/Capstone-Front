@@ -33,6 +33,7 @@ import { DropdownModule } from 'primeng/dropdown';
     CarouselModule,
     SplitButtonModule,
     ImageModule,
+    CardModule,
     CheckboxModule,
     InputNumberModule,
     PaginatorModule,

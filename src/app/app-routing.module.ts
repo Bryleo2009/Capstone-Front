@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { Details01Component } from './_page/details01/details01.component';
+import { Details01Component } from './_page/details/details.component';
+import { HomeComponent } from './_page/home/home.component';
+import { StoreComponent } from './_page/store/store.component';
 
 const routes: Routes = [
-
-  { path : 'details01' , component : Details01Component}
+  { path : '' , component : HomeComponent},
+  { path : 'store' , component : StoreComponent},
+  { path : 'details' , component : Details01Component}
 
 ];
 
