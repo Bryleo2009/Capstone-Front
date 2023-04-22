@@ -9,14 +9,14 @@
     margin: 0 ;
     padding: 0;
     font-family: var(--Titulo);
-    font-size: var(--Titulo-size);
+    font-size: var(--Subtitulo-size);
     scroll-behavior:smooth;
 }
 
 :root {
     --Titulo: 'Sen', sans-serif;
     --Titulo-size: 18px;
-    --Subtitulo: 'Signika', sans-serif;    ;
+    --Subtitulo: 'Signika', sans-serif;
     --Subtitulo-size: 16px;
     --Parrafo: 'Kumbh Sans',sans-serif;
     --Parrafo-size: 14px;
@@ -39,4 +39,9 @@ ofsystem>a:hover {
     --color-secu: #0D1821;
     --color-terci: #344966;
     --color-white: #ffffff;
+}
+
+
+section, body{
+    background-color: #F9F9F9;
 }

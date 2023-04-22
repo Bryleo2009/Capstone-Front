@@ -1,13 +1,16 @@
- * {
-    border: 1px solid rgb(54, 52, 52);
-}
 
-.s-store {
-    margin: 30px;
-}
+ .s-store {
+     margin: 30px;
+ }
 
-.store-imgcatego {
-    margin-top: 25px;
+ .store-imgcatego {
+     margin-top: 25px;
+ }
+
+.store-filtro{
+    background-color: white;
+    border-radius: 3% ;
+    margin-right: 10px;
 }
 
 div > img {
@@ -15,3 +18,84 @@ div > img {
     height: 100%;
 }
 
+.card {
+    padding: 25px;
+}
+
+ .img-card {
+     height: 250px;
+     object-fit: cover;
+     padding: 5px;
+ }
+
+ .ng-star-inserted {
+     text-align: center;
+ }
+
+ .precio {
+     margin: 0 25px;
+ }
+
+ .descuento {
+     color: red;
+ }
+
+.categoriaTipo > * {
+    font-size: var(--Titulo-size);
+    margin-top: 45px;
+}
+ 
+.reducctam {
+    font-size: var(--Parrafo-size);
+}
+
+.marca {
+    margin-top: 15px;
+}
+
+.talla {
+    margin-top: 10px;
+    padding: 7px;
+}
+
+.color{
+    margin-top: 10px;
+}
+
+.btn-1{
+    background-color: white;
+}
+
+
+.btn-2{
+    background-color: black;
+}
+.btn-3{
+    background-color: red;
+}
+
+.btn-4{
+    background-color: purple;
+}
+
+.btn-5{
+    background-color: green;
+}
+
+.btn-6{
+    background-color: blue;
+}
+
+.btn-7{
+    background-color: gray;
+}
+
+.btn-8{
+    background-color: brown;
+}
+
+.btn-sel{
+    padding: 15px 15px;
+    border-radius: 50%;
+    margin: 15px;
+}

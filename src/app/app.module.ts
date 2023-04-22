@@ -9,6 +9,7 @@ import { StoreComponent } from './_page/store/store.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './_page/footer/footer.component';
 import { HomeComponent } from './_page/home/home.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HomeComponent } from './_page/home/home.component';
     PrimeNGModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],exports: [
     PrimeNGModule
   ],
