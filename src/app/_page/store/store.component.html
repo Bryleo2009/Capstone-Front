@@ -1,11 +1,6 @@
 <section class="grid s-store">
     <div class="col store-filtro">
         <h1>NUEVAS TENDENCIAS</h1>
-        <!-- <div class="card flex justify-content-center">
-            <h3>NUEVAS TENDENCIAS</h3> -->
-        <!-- <p-slider [(ngModel)]="rangeValues" [range]="true"></p-slider>
-        </div>  -->
-        <!-- precio -->
         <div class="card flex flex-wrap gap-3 p-fluid">
             <div class="flex-auto">
                 <label class="mb-2 block font-bold" for="stacked">Precio Min</label>
@@ -63,8 +58,13 @@
 
     </div>
     <div class="col-9 store-catalogo">
+        <!--Categorias-->
         <div class="store-catego flex align-items-center justify-content-between">
             <h1 *ngFor="let categoria of categorias">{{ categoria.nombreCateg }}</h1>
+        </div>
+        <!--Productos-->
+        <div >
+            <u class="categoriaTipo"><h1>{{categoriaActual}}</h1></u>
         </div>
         <div class="flex store-imgcatego flex-wrap justify-content-center">
             <div class="card col" *ngFor="let producto of productos">

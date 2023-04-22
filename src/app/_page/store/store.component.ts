@@ -17,7 +17,6 @@ export class StoreComponent implements OnInit {
   ){}
   rangeValues: number[] = [20, 80];
   selectedCategories: any[] = [];
-
   categories: any[] = [
       { name: 'Nike', key: 'N' },
       { name: 'Adidas', key: 'A' },
@@ -25,15 +24,14 @@ export class StoreComponent implements OnInit {
       { name: 'Denimlab', key: 'D' },
       { name: 'Newport', key: 'T' }
   ];
-
   selectedCategoriesTalla: any[] = [];
-
   categoriesTalla: any[] = [
       { name: 'S', key: 'S' },
       { name: 'M', key: 'M' },
       { name: 'L', key: 'L' },
       { name: 'XL', key: 'XL' },
   ];
+  categoriaActual: string = 'Caballeros';
   value1: number = 40;
   value2: number = 100;
   categorias!: Categoria[];

@@ -33,7 +33,10 @@
      color: red;
  }
 
-
+.categoriaTipo > * {
+    font-size: var(--Titulo-size);
+    margin-top: 45px;
+}
  
 .reducctam {
     font-size: var(--Parrafo-size);
