@@ -1,34 +1,43 @@
- /* * {
-    border: 1px solid rgb(54, 52, 52);
-} */
+ .s-store {
+     margin: 30px;
+ }
 
-.s-store {
-    margin: 30px;
-}
-
-.store-imgcatego {
-    margin-top: 25px;
-}
+ .store-imgcatego {
+     margin-top: 25px;
+ }
 
 div > img {
     width: 100%;
     height: 100%;
 }
 
-.nt{
-    padding-bottom: 25px;
-}
-
 .card {
-    padding: 15px;
+    padding: 25px;
 }
 
-.img-card {
-    height: 250px; 
-    object-fit: cover; 
-    padding: 5px;
-}
+ .img-card {
+     height: 250px;
+     object-fit: cover;
+     padding: 5px;
+ }
 
+ .ng-star-inserted {
+     text-align: center;
+ }
+
+ .precio {
+     margin: 0 25px;
+ }
+
+ .descuento {
+     color: red;
+ }
+
+.categoriaTipo > * {
+    font-size: var(--Titulo-size);
+    margin-top: 45px;
+}
+ 
 .reducctam {
     font-size: var(--Parrafo-size);
 }
