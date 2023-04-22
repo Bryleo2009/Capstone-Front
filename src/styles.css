@@ -2,6 +2,7 @@
 @import "primeng/resources/themes/mdc-light-indigo/theme.css";
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&family=Signika:wght@300;400;500;600;700&display=swap');
 
 * {
     box-sizing: border-box;
@@ -13,11 +14,11 @@
 }
 
 :root {
-    --Titulo: 'Kumbh Sans',sans-serif;
-    --Titulo-size: 40px;
-    --Subtitulo: Signika;
+    --Titulo: 'Sen', sans-serif;
+    --Titulo-size: 18px;
+    --Subtitulo: 'Signika', sans-serif;
     --Subtitulo-size: 16px;
-    --Parrafo: Signika;
+    --Parrafo: 'Kumbh Sans',sans-serif;
     --Parrafo-size: 14px;
 }
 
