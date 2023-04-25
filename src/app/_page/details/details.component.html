@@ -1,130 +1,135 @@
 <section>
+    <!-- Imagen descripcion producto -->
     <div class="eje">
         <p-galleria [numVisible]="3" [value]="images">
             <ng-template pTemplate="item" let-item>
-                <img [src]="item.previewImageSrc" [alt]="item.alt" [title]="item.title" style="width: 50%;" />
+                <img [src]="item.previewImageSrc" [alt]="item.alt" [title]="item.title" style="width: 68%" />
             </ng-template>
-            <ng-template pTemplate="thumbnail" let-item width="50%">
+            <ng-template pTemplate="thumbnail" let-item width="20%">
                 <div class="grid  grid-nogutter justify-content-center">
-                    <img [src]="item.thumbnailImageSrc" [alt]="item.alt" [title]="item.title" width=80% />
+                    <img [src]="item.thumbnailImageSrc" [alt]="item.alt" [title]="item.title" width=30% />
                 </div>
             </ng-template>
         </p-galleria>
     </div>
-    <div class="eje">
-        <h3>Chompa</h3>
-        <h1>Chompa Prueba N1</h1><br>
-        <p>S/95.00<br>
-            Cod. SCR1001 - Chompa Acampanada Con Motivo Flora/Fauna, Tela: Poliester/Suplex. No Destiñe.<br>
-            <br>
-            Solicita El Catálogo Completo Al Whatsapp
-            <br><br><br>
-            Talla
-            <br><br><br></p>
+    <!--------------------------------------------------------------->
+    <!-- Descripcion producto -->
 
-            <div class="f">
-            <p-button label="S"></p-button>
-            <p-button label="M"></p-button>
-            <p-button label="L"></p-button>
-            <p-button label="XL"></p-button>
+    <div class="eje">
+        <h3> Chompa <br></h3>
+        <div class="letra">
+            Chompa Prueba N1
         </div>
-        <div class="card flex justify-content-center">
-            <p-splitButton label="1" icon="pi pi-plus"></p-splitButton>
-            <p-button label="Agregar Al Carrito"></p-button>
-            <p-splitButton label="Lista de Deseos" icon="pi pi-star"></p-splitButton>
+        <div>
+            <br>
+            <p class="letra">S/95.00</p>
+        </div>
+
+        <div>
+            <br>
+            <p> Cod. SCR1001 - Chompa Acampanada Con Motivo Flora/Fauna, Tela: Poliester/Suplex. No Destiñe.</p>
+
+        </div>
+        <div>
+            <br>
+            <p>Solicita El Catálogo Completo Al Whatsapp</p>
+        </div>
+        <div>
+            <br>
+            <h3>Talla</h3>
+        </div>
+        <!-- tallas -->
+        <div class="separador01">
+            <p-button [style]="{backgroundColor:'#E5E5E5', color: '#000000', padding : '8px 25px', margin: '10px'}"
+                label="S"></p-button>
+            <p-button [style]="{backgroundColor:'#E5E5E5', color: '#000000', padding : '8px 25px', margin: '10px'}"
+                label="M"></p-button>
+            <p-button [style]="{backgroundColor:'#E5E5E5', color: '#000000', padding : '8px 25px', margin: '10px'}"
+                label="L"></p-button>
+            <p-button [style]="{backgroundColor:'#E5E5E5', color: '#000000', padding : '8px 25px', margin: '10px'}"
+                label="XL"></p-button>
+        </div>
+        <div class="separador01">
+            <!-- <p-inputNumber  [showButtons]="true" [min]="1" [max]="500"> </p-inputNumber>-->
+            <p-button [style]="{backgroundColor:'#F5F5F5', color: '#000000', padding : '8px 25px', margin: '10px'}"
+                label="1" icon="pi pi-plus"></p-button>
+            <p-button [style]="{backgroundColor:'#E5E5E5', color: '#000000', padding : '8px 25px', margin: '10px'}"
+                label="Agregar Al Carrito"></p-button>
+            <p-button [style]="{backgroundColor:'#FFFFFF', color: '#000000', padding : '8px 25px', margin: '10px'}"
+                label="Lista De Deseos" icon="pi pi-star"></p-button>
         </div>
     </div>
+
+    <p-divider align="center"></p-divider>
+    <!-- ------------------------------------------------------------------------------------ -->
+    <div class="separador03"></div>
     <div class="center">
-        <h1>Descripción</h1>
+        <h1>
+            <u>Descripción</u>
+        </h1>
+    </div>
+    <div class="separador03"></div>
+    <div class="center">
+        <b>Prendas para pasar esta temporada con moda y estilo Retro.<br></b>
     </div>
     <div class="center">
-        <p>Prendas para pasar esta temporada con moda y estilo Retro. Renueva tu guardarropa con estos polos básicos.
-            Combínalos para armar tu look perfecto.</p>
+        <b>Renueva tu guardarropa con estos polos básicos. Combínalos para armar tu look<br></b>
     </div>
     <div class="center">
-        <h2>Productos Relacionados</h2>
+        <b>perfecto.</b>
     </div>
-    <div>
+    <div class="center02">
+        Productos Relacionados
+    </div>
+    <!--------------------------- Carrusel de IMG ------------------------------- -->
+    <div class="center03">
         <p-carousel class="d" [value]="cars">
             <ng-template let-car pTemplate="item">
                 <div class="product-item">
                     <div class="product-item-content flex">
                         <div class="p-mb-3"></div>
                         <div>
-                            <h4 class="p-mb-1">
-                                <img src=".\assets\details\prenda01.png" style="width: 30%" />
+                            <h4 class="center">
+                                <img src=".\assets\details\prenda01.png" style="width: 80%" />
                             </h4>
+                            <!--------------------------- ejemplo poner atributo con refe Carrusel de IMG ------------------------------- 
                             <h4 class="p-mb-1">
                                 {{ car.name }}
                             </h4>
-                            <h4 class="p-mb-1">
-                                {{ car.description }}
-                            </h4>
-                            <h6 class="p-mt-0 p-mb-3">
-                                ${{ car.price }}
-                            </h6>
-                            <div class="car-buttons p-mt-3">
-                                <p-button type="button" styleClass="p-button 
-                                    p-button-rounded p-mr-2" icon="pi pi-search">
-                                </p-button>
-                                <p-button type="button" styleClass="p-button-success 
-                                    p-button-rounded p-mr-2" icon="pi pi-star">
-                                </p-button>
-                                <p-button type="button" styleClass="p-button-help 
-                                    p-button-rounded" icon="pi pi-cog">
-                                </p-button>
+                          -------------------------- Carrusel de IMG ------------------------------- -->
+                            <h4 class="center"> CHOMPA 1</h4>
+                            <h4 class="center">CHOMPA PRUEBA N°1</h4>
+                            <h6 class="center">S/.150</h6>
+
+                            <div class="center">
+                                <p-button [style]="{backgroundColor:'#9b9b9b', color: '#000000', margin: '10px'}"
+                                label="Agregar Al Carrito"></p-button>
                             </div>
                         </div>
                         <div>
-                            <h4 class="p-mb-1">
-                            
-                                   <img src=".\assets\details\prenda01.png" style="width: 30%" />
-                             
+                            <h4 class="center">
+
+                                <img src=".\assets\details\prenda01.png" style="width: 80%" />
+
                             </h4>
-                            <h4 class="p-mb-1">
-                                {{ car.name }}
-                            </h4>
-                            <h4 class="p-mb-1">
-                                {{ car.description }}
-                            </h4>
-                            <h6 class="p-mt-0 p-mb-3">
-                                ${{ car.price }}
-                            </h6>
-                            <div class="car-buttons p-mt-3">
-                                <p-button type="button" styleClass="p-button 
-                                    p-button-rounded p-mr-2" icon="pi pi-search">
-                                </p-button>
-                                <p-button type="button" styleClass="p-button-success 
-                                    p-button-rounded p-mr-2" icon="pi pi-star">
-                                </p-button>
-                                <p-button type="button" styleClass="p-button-help 
-                                    p-button-rounded" icon="pi pi-cog">
-                                </p-button>
+                            <h4 class="center">CHOMPA 1</h4>
+                            <h4 class="center">CHOMPA PRUEBA N°1</h4>
+                            <h6 class="center">S/.150</h6>
+                            <div class="center">
+                                <p-button [style]="{backgroundColor:'#9b9b9b', color: '#000000', margin: '10px'}"
+                                label="Agregar Al Carrito"></p-button>
                             </div>
                         </div>
                         <div>
-                            <h4 class="p-mb-1">
-                                <img src=".\assets\details\prenda01.png" style="width: 30%" />
+                            <h4 class="center">
+                                <img src=".\assets\details\prenda01.png" style="width: 80%" />
                             </h4>
-                            <h4 class="p-mb-1">
-                                {{ car.name }}
-                            </h4>
-                            <h4 class="p-mb-1">
-                                {{ car.description }}
-                            </h4>
-                            <h6 class="p-mt-0 p-mb-3">
-                                ${{ car.price }}
-                            </h6>
-                            <div class="car-buttons p-mt-3">
-                                <p-button type="button" styleClass="p-button 
-                                    p-button-rounded p-mr-2" icon="pi pi-search">
-                                </p-button>
-                                <p-button type="button" styleClass="p-button-success 
-                                    p-button-rounded p-mr-2" icon="pi pi-star">
-                                </p-button>
-                                <p-button type="button" styleClass="p-button-help 
-                                    p-button-rounded" icon="pi pi-cog">
-                                </p-button>
+                            <h4 class="center">CHOMPA 1</h4>
+                            <h4 class="center">CHOMPA PRUEBA N°1</h4>
+                            <h6 class="center">S/.150</h6>
+                            <div class="center">
+                                <p-button [style]="{backgroundColor:'#9b9b9b', color: '#000000', margin: '10px'}"
+                                label="Agregar Al Carrito"></p-button>
                             </div>
                         </div>
                     </div>
@@ -132,4 +137,5 @@
             </ng-template>
         </p-carousel>
     </div>
+    <!------------------------------------------------------------------------------------ -->
 </section>
