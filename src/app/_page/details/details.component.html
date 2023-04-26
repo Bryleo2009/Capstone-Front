@@ -12,9 +12,7 @@
             </ng-template>
         </p-galleria>
     </div>
-    <!--------------------------------------------------------------->
     <!-- Descripcion producto -->
-
     <div class="eje">
         <h3> Chompa <br></h3>
         <div class="letra">
@@ -24,11 +22,9 @@
             <br>
             <p class="letra">S/95.00</p>
         </div>
-
         <div>
             <br>
             <p> Cod. SCR1001 - Chompa Acampanada Con Motivo Flora/Fauna, Tela: Poliester/Suplex. No Destiñe.</p>
-
         </div>
         <div>
             <br>
@@ -49,19 +45,18 @@
             <p-button [style]="{backgroundColor:'#E5E5E5', color: '#000000', padding : '8px 25px', margin: '10px'}"
                 label="XL"></p-button>
         </div>
+        <!-- botones compra -->
         <div class="separador01">
-            <!-- <p-inputNumber  [showButtons]="true" [min]="1" [max]="500"> </p-inputNumber>-->
-            <p-button [style]="{backgroundColor:'#F5F5F5', color: '#000000', padding : '8px 25px', margin: '10px'}"
-                label="1" icon="pi pi-plus"></p-button>
-            <p-button [style]="{backgroundColor:'#E5E5E5', color: '#000000', padding : '8px 25px', margin: '10px'}"
+            <p-inputNumber [showButtons]="true" inputId="minmax-buttons" [min]="1" [max]="500"> </p-inputNumber>
+
+            <p-button [style]="{backgroundColor:'#E5E5E5', color: '#000000', padding : '06px 10px', margin: '10px'}"
                 label="Agregar Al Carrito"></p-button>
-            <p-button [style]="{backgroundColor:'#FFFFFF', color: '#000000', padding : '8px 25px', margin: '10px'}"
-                label="Lista De Deseos" icon="pi pi-star"></p-button>
+            <p-button [style]="{backgroundColor:'#FFFFFF', color: '#000000', padding : '06px 10px', margin: '10px'}"
+                label="Lista De Deseos" icon="fa-regular fa-heart"></p-button>
         </div>
     </div>
-
     <p-divider align="center"></p-divider>
-    <!-- ------------------------------------------------------------------------------------ -->
+    <!-- Descripcion de productos relacionados -->
     <div class="separador03"></div>
     <div class="center">
         <h1>
@@ -83,53 +78,76 @@
     </div>
     <!--------------------------- Carrusel de IMG ------------------------------- -->
     <div class="center03">
-        <p-carousel class="d" [value]="cars">
+        <p-carousel [value]="cars">
             <ng-template let-car pTemplate="item">
                 <div class="product-item">
                     <div class="product-item-content flex">
                         <div class="p-mb-3"></div>
                         <div>
-                            <h4 class="center">
-                                <img src=".\assets\details\prenda01.png" style="width: 80%" />
+                            <h4 class="centerlimg">
+                                <img src=".\assets\details\prenda01.png" style="width: 70%;" />
                             </h4>
-                            <!--------------------------- ejemplo poner atributo con refe Carrusel de IMG ------------------------------- 
-                            <h4 class="p-mb-1">
+                            <h4 class="centerlimg">
                                 {{ car.name }}
                             </h4>
-                          -------------------------- Carrusel de IMG ------------------------------- -->
-                            <h4 class="center"> CHOMPA 1</h4>
-                            <h4 class="center">CHOMPA PRUEBA N°1</h4>
-                            <h6 class="center">S/.150</h6>
+                            <h4 class="centerlimg">
+                                {{ car.description }}
+                            </h4>
+                            <h6 class="centerlimg">
+                                <p class="txtporiginal">S/.{{ car.price }}</p>
+                                <p class="txtpdescuento">S/.{{ car.priced }}</p>
+                            </h6>
 
-                            <div class="center">
+                            <div class="centerlimg">
                                 <p-button [style]="{backgroundColor:'#9b9b9b', color: '#000000', margin: '10px'}"
-                                label="Agregar Al Carrito"></p-button>
+                                    label="Agregar Al Carrito"></p-button>
+                                <div class="center06">
+                                    <a href="" class="" target="_blank"><i class="fa-regular fa-heart"></i></a>
+                                </div>
                             </div>
                         </div>
                         <div>
-                            <h4 class="center">
-
-                                <img src=".\assets\details\prenda01.png" style="width: 80%" />
-
+                            <h4 class="centerlimg">
+                                <img src=".\assets\details\prenda01.png" style="width: 70%" />
                             </h4>
-                            <h4 class="center">CHOMPA 1</h4>
-                            <h4 class="center">CHOMPA PRUEBA N°1</h4>
-                            <h6 class="center">S/.150</h6>
-                            <div class="center">
+                            <h4 class="centerlimg">
+                                {{ car.name }}
+                            </h4>
+                            <h4 class="centerlimg">
+                                {{ car.description }}
+                            </h4>
+                            <h6 class="centerlimg">
+                                <p class="txtporiginal">S/.{{ car.price }}</p>
+                                <p class="txtpdescuento">S/.{{ car.priced }}</p>
+                            </h6>
+                            <div class="centerlimg">
                                 <p-button [style]="{backgroundColor:'#9b9b9b', color: '#000000', margin: '10px'}"
-                                label="Agregar Al Carrito"></p-button>
+                                    label="Agregar Al Carrito"></p-button>
+                                <div class="center06">
+                                    <a href="" class="" target="_blank"><i class="fa-regular fa-heart"></i></a>
+                                </div>
                             </div>
                         </div>
                         <div>
-                            <h4 class="center">
-                                <img src=".\assets\details\prenda01.png" style="width: 80%" />
+                            <h4 class="centerlimg">
+                                <img src=".\assets\details\prenda01.png" style="width: 70%" />
                             </h4>
-                            <h4 class="center">CHOMPA 1</h4>
-                            <h4 class="center">CHOMPA PRUEBA N°1</h4>
-                            <h6 class="center">S/.150</h6>
-                            <div class="center">
+                            <h4 class="centerlimg">
+                                {{ car.name }}
+                            </h4>
+                            <h4 class="centerlimg">
+                                {{ car.description }}
+                            </h4>
+                            <h6 class="centerlimg">
+                                <p class="txtporiginal">S/.{{ car.price }}</p>
+                                <p class="txtpdescuento">S/.{{ car.priced }}</p>
+                            </h6>
+                            <div class="centerlimg">
                                 <p-button [style]="{backgroundColor:'#9b9b9b', color: '#000000', margin: '10px'}"
-                                label="Agregar Al Carrito"></p-button>
+                                    label="Agregar Al Carrito"></p-button>
+                                <div class="center06">
+                                    <a href="" class="" target="_blank"><i class="fa-regular fa-heart"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -137,5 +155,4 @@
             </ng-template>
         </p-carousel>
     </div>
-    <!------------------------------------------------------------------------------------ -->
 </section>

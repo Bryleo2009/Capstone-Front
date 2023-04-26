@@ -5,6 +5,7 @@ interface Car {
   name?: string;
   description?: string;
   price?: number;
+  priced?: number;
 }
 
 @Component({
@@ -13,8 +14,6 @@ interface Car {
   styleUrls: ['./details.component.css']
 })
 export class Details01Component {
-
-
 
   title = 'HOMBRE';
 
@@ -46,36 +45,32 @@ export class Details01Component {
   ];
 
   cars: Car[] = [];
-  
-    constructor() { }
-  
-    ngOnInit() {
-        this.cars = [
-            {
-                id: '1',
-                name: 'Chompa 1',
-                description: 'Racing car',
-                price: 800,
-            },
-            {
-                id: '2',
-                name: 'Chompa 2',
-                description: 'The Prancing Horse',
-                price: 1500,
-            },
-            {
-                id: '3',
-                name: 'Chompa 3',
-                description: 'Full spectrum',
-                price: 10000,
-            },
-            {
-              id: '4',
-              name: 'Chompa 4',
-              description: 'Full spectrum',
-              price: 100500,
-          },
-        ];
-    }
 
+  constructor() { }
+
+  ngOnInit() {
+    this.cars = [
+      {
+        id: '1',
+        name: 'Chompa 1',
+        description: 'Chompa Prueba N°1',
+        price: 150,
+        priced: 95,
+      },
+      {
+        id: '2',
+        name: 'Chompa 2',
+        description: 'Chompa Prueba N°5',
+        price: 160,
+        priced: 100,
+      },
+      {
+        id: '3',
+        name: 'Chompa 3',
+        description: 'Chompa Prueba N°3',
+        price: 170,
+        priced: 105,
+      },
+    ];
+  }
 }

@@ -21,16 +21,6 @@ section {
   padding: 50px;
 }
 
-.d {
-
-  height: auto;
-  display: flex;
-  margin: 30px auto;
-  justify-content: center;
-  padding: 50px;
-  display: inline-block;
-}
-
 .eje {
   max-width: 50%;
   height: auto;
@@ -58,6 +48,37 @@ section {
   padding: 25px;
 
 }
+
 .separador03 {
   padding: 40px;
+}
+
+.center06 {
+
+  position: absolute;
+  bottom: 4em;
+  height: 23.6em;
+  text-transform: uppercase;
+  padding: 1em 1.5em;
+  margin-left: 280px;
+
+}
+
+.centerlimg {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.txtporiginal {
+
+  text-decoration: line-through;
+  margin-right: 50px;
+  text-decoration-color: black;
+}
+
+.txtpdescuento {
+
+  color: red;
+
 }
