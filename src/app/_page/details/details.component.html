@@ -3,11 +3,11 @@
     <div class="eje">
         <p-galleria [numVisible]="3" [value]="images">
             <ng-template pTemplate="item" let-item>
-                <img [src]="item.previewImageSrc" [alt]="item.alt" [title]="item.title" style="width: 68%" />
+                <img [src]="item.previewImageSrc" [alt]="item.alt" [title]="item.title" style="width: 65%" />
             </ng-template>
-            <ng-template pTemplate="thumbnail" let-item width="20%">
+            <ng-template pTemplate="thumbnail" let-item width="50%">
                 <div class="grid  grid-nogutter justify-content-center">
-                    <img [src]="item.thumbnailImageSrc" [alt]="item.alt" [title]="item.title" width=30% />
+                    <img [src]="item.thumbnailImageSrc" [alt]="item.alt" [title]="item.title" width=50% />
                 </div>
             </ng-template>
         </p-galleria>
@@ -48,11 +48,12 @@
         <!-- botones compra -->
         <div class="separador01">
             <p-inputNumber [showButtons]="true" inputId="minmax-buttons" [min]="1" [max]="500"> </p-inputNumber>
-
-            <p-button [style]="{backgroundColor:'#E5E5E5', color: '#000000', padding : '06px 10px', margin: '10px'}"
-                label="Agregar Al Carrito"></p-button>
-            <p-button [style]="{backgroundColor:'#FFFFFF', color: '#000000', padding : '06px 10px', margin: '10px'}"
-                label="Lista De Deseos" icon="fa-regular fa-heart"></p-button>
+            <p-button [style]="{backgroundColor:'#E5E5E5', color: '#000000', padding : '06px 10px', margin: '05px'}"
+                label="Agregar Al Carrito"><i class="fa-solid fa-cart-shopping"
+                    style="color: var(--color-white); margin:05px"></i></p-button>
+            <p-button icon="fa-regular fa-heart"
+                [style]="{backgroundColor:'#FFFFFF', color: '#000000', padding : '09px 15px', margin: '05px', border: '#000000 1px solid'}"
+                label="Lista De Deseos"></p-button>
         </div>
     </div>
     <p-divider align="center"></p-divider>
@@ -102,7 +103,8 @@
                                 <p-button [style]="{backgroundColor:'#9b9b9b', color: '#000000', margin: '10px'}"
                                     label="Agregar Al Carrito"></p-button>
                                 <div class="center06">
-                                    <a href="" class="" target="_blank"><i class="fa-regular fa-heart"></i></a>
+                                    <a href="" class="" target="_blank"><i class="fa-regular fa-heart"
+                                            style="color: #000000;"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -124,7 +126,8 @@
                                 <p-button [style]="{backgroundColor:'#9b9b9b', color: '#000000', margin: '10px'}"
                                     label="Agregar Al Carrito"></p-button>
                                 <div class="center06">
-                                    <a href="" class="" target="_blank"><i class="fa-regular fa-heart"></i></a>
+                                    <a href="" class="" target="_blank"><i class="fa-regular fa-heart"
+                                            style="color: #000000;"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -146,7 +149,8 @@
                                 <p-button [style]="{backgroundColor:'#9b9b9b', color: '#000000', margin: '10px'}"
                                     label="Agregar Al Carrito"></p-button>
                                 <div class="center06">
-                                    <a href="" class="" target="_blank"><i class="fa-regular fa-heart"></i></a>
+                                    <a href="" class="" target="_blank"><i class="fa-regular fa-heart"
+                                            style="color: #000000;"></i></a>
                                 </div>
                             </div>
                         </div>

@@ -23,8 +23,8 @@ export class Details01Component {
         '../assets/details/prenda01.png',
       thumbnailImageSrc:
         '../assets/details/prenda01.png',
-      alt: 'Description for Image 1',
-      title: 'Title 1'
+        alt: 'Description for Image 1',
+        title: 'Title 1'
     },
     {
       previewImageSrc:
