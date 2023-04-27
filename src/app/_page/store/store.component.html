@@ -79,7 +79,7 @@
                             <p class="precio descuento" *ngIf="producto.isPrecioDescProduct"><b>S/ {{ producto.precioDescuProduct }}</b></p>
                     </div>
                     <ng-template pTemplate="footer">
-                        <p-button [style]="{backgroundColor:'#E5E5E5', color: '#000000', 'border-radius': '25px 25px 0px 0px', padding : '8px 25px'}" class="btnCompra" label="Agregar a carrito"  ></p-button>
+                        <p-button [style]="{backgroundColor:'#E5E5E5', color: '#000000', 'border-radius': '25px 25px 0px 0px', padding : '8px 25px'}" class="btnCompra" label="Agregar a carrito" routerLink="/details" ></p-button>
                     </ng-template>
                 </p-card>
             </div>
