@@ -5,6 +5,7 @@ import { environment } from '../../../environments/environment.development';
 import { Categoria } from '@app/_model/categoria';
 import { Producto } from '@app/_model/producto';
 import { Page } from '@app/_model/Page';
+import { ProductoFilter } from '@app/_model/filter/productoFilter';
 
 
 @Injectable({
@@ -15,13 +16,30 @@ export class ProductoService {
 
   constructor(private http: HttpClient) { }
 
-  listar(page: number, pageSize: number,token: string): Observable<Page<Producto>> {
+  listar(
+    categoria: string,
+    tipos: string,
+    etiquetas: string[],
+    tallas: string[],
+    marcas: string[],
+    menorPrecio: number,
+    mayorPrecio: number,
+    cantidad: number,
+    pagina: number,
+    token: string): Observable<Page<ProductoFilter>> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     const params = {
-      pageNo: `${page}`,
-      pageSize: `${pageSize}`
+      categoria: `${categoria}`,
+      tipos: `${tipos}`,
+      etiquetas: `${etiquetas}`,
+      tallas: `${tallas}`,
+      marcas: `${marcas}`,
+      menorPrecio: `${menorPrecio}`,
+      mayorPrecio: `${mayorPrecio}`,
+      cantidad: `${cantidad}`,
+      pagina: `${pagina}`,
     };
-    return this.http.get<Page<Producto>>(this.url, { headers, params });
+    return this.http.get<Page<ProductoFilter>>(this.url, { headers, params });
   }
 
   listarPorId(id: string, token: string): Observable<Producto> {

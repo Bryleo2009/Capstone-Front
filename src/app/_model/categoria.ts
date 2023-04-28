@@ -1,4 +1,9 @@
+import { Enum } from "./enum";
+
 export class Categoria {
     idCateg!: number;
-    nombreCateg!: string;
+    abreviItem!: string;
+    identItem!: string;
+    nombreItem!: string;
+    vistaItem!: string;
 }

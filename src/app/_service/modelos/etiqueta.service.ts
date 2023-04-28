@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment.development';
-import { Enum } from '@app/_model/enum';
+import { Colors, Enum } from '@app/_model/enum';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CategoriasService {
-  url:string = `${environment.HOST_URL}/Categorias`;
+export class EtiquetaService {
+  url:string = `${environment.HOST_URL}/Etiquetas`;
 
   constructor(private http: HttpClient) { }
 
@@ -35,5 +35,10 @@ export class CategoriasService {
   eliminar(id: string, token: string): Observable<any> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.delete(`${this.url}/${id}`, { headers });
+  }
+
+  getColor(token: string): Observable<Colors[]> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<Colors[]>(`${this.url}/colors`, { headers });
   }
 }
