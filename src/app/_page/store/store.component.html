@@ -1,19 +1,20 @@
 <section class="grid s-store">
     <div class="col">
         <div class="store-filtro">
+            <!--Precios-->
             <div class="card flex flex-wrap gap-3 p-fluid">
                 <div class="flex-auto">
                     <label class="mb-2 block font-bold" for="stacked">Precio Min</label>
-                    <p-inputNumber [(ngModel)]="precioMin" [showButtons]="true" inputId="stacked" [min]="40" [max]="400"
-                        mode="currency" currency="PEN" (ngModelChange)="filtrar()"> </p-inputNumber>
+                    <p-inputNumber [(ngModel)]="precioMin" [showButtons]="true" inputId="stacked" [min]="10"
+                        [max]="1000" mode="currency" currency="PEN" (ngModelChange)="filtrar()"> </p-inputNumber>
                 </div>
                 <div class="flex-auto">
                     <label class="mb-2 block font-bold" for="minmax-buttons">Precio Max</label>
                     <p-inputNumber [(ngModel)]="precioMax" mode="decimal" [showButtons]="true" inputId="minmax-buttons"
-                        [min]="40" [max]="400" mode="currency" currency="PEN" (ngModelChange)="filtrar()"> </p-inputNumber>
+                        [min]="40" [max]="400" mode="currency" currency="PEN" (ngModelChange)="filtrar()">
+                    </p-inputNumber>
                 </div>
             </div>
-
             <!-- marcas -->
             <div class="card ">
                 <h3> Marca </h3>
@@ -23,6 +24,27 @@
                             [inputId]="categoryMarca.abreviItem" (ngModelChange)="filtrar()"></p-checkbox>
                         <label class="reducctam" [for]="categoryMarca.abreviItem">{{ categoryMarca.vistaItem }}</label>
                     </div>
+                </div>
+            </div>
+             <!-- Etiquetas -->
+             <div class="card">
+                <h3> Etiquetas </h3>
+                <div class="flex flex-column gap-2 marca">
+                    <p-chip class="flex align-items-start" *ngFor="let etiqueta of values" [label]="etiqueta" [removable]="true" (onRemove)="removeEtiqueta(etiqueta)"></p-chip>
+                    <p-dropdown [options]="etiquetas" [(ngModel)]="selectedCountry" optionLabel="abreviItem"
+                        [filter]="true" filterBy="vistaItem" [showClear]="true" placeholder="Selecciona una etiqueta"
+                        (ngModelChange)="updateValues()">
+                        <ng-template pTemplate="selectedItem">
+                            <div class="flex align-items-center gap-2" *ngIf="selectedCountry">
+                                <div>{{ selectedCountry.vistaItem }}</div>
+                            </div>
+                        </ng-template>
+                        <ng-template let-etiqueta pTemplate="item">
+                            <div class="flex align-items-center gap-2">
+                                <div>{{ etiqueta.vistaItem }}</div>
+                            </div>
+                        </ng-template>
+                    </p-dropdown>
                 </div>
             </div>
             <!-- tallas -->
@@ -40,7 +62,8 @@
                     <div class="card flex flex-wrap">
                         <p-checkbox *ngFor="let color of colores" name="group" class="btn-sel gap-1"
                             [style.background]="color.nombre_item" [value]="color.abrevi_item"
-                            [(ngModel)]="selectedCategoriesColors" [inputId]="color.nombre_item" (ngModelChange)="filtrar()"></p-checkbox>
+                            [(ngModel)]="selectedCategoriesColors" [inputId]="color.nombre_item"
+                            (ngModelChange)="filtrar()"></p-checkbox>
                     </div>
                 </div>
             </div>

@@ -13,7 +13,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { DividerModule } from 'primeng/divider';
 import { ChipModule } from 'primeng/chip';
 import { SelectButtonModule } from 'primeng/selectbutton';
-
+import { ChipsModule } from 'primeng/chips';
 
 @NgModule({
   declarations: [],
@@ -32,6 +32,7 @@ import { SelectButtonModule } from 'primeng/selectbutton';
     DividerModule,
     ChipModule,
     SelectButtonModule,
+    ChipsModule,
 
   ],exports: [
     ButtonModule,
@@ -47,6 +48,7 @@ import { SelectButtonModule } from 'primeng/selectbutton';
     DividerModule,
     ChipModule,
     SelectButtonModule,
+    ChipsModule,
   ]
 })
 export class PrimeNGModule { }
