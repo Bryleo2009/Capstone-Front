@@ -19,9 +19,9 @@ export class ProductoService {
   listar(
     categoria: string,
     tipos: string,
-    etiquetas: string,
-    tallas: string,
-    marcas: string,
+    etiquetas: string[],
+    tallas: string[],
+    marcas: string[],
     menorPrecio: number,
     mayorPrecio: number,
     cantidad: number,

@@ -27,10 +27,11 @@ export class StoreComponent implements OnInit {
   selectedCategories: any[] = [];
   categories!: any[];
   selectedCategoriesTalla: any[] = [];
+  selectedCategoriesColors: any[] = [];
   categoriesTalla!: any[];
   categoriaActual: string = 'Caballeros';
-  value1: number = 40;
-  value2: number = 100;
+  precioMin: number = 10;
+  precioMax: number = 1000;
   categorias!: Enum[];
   colores!: Colors[];
   tallas!: Enum[];
@@ -77,7 +78,8 @@ export class StoreComponent implements OnInit {
   }
 
   listarProductos(): void {
-    this.productoService.listar('','','','','',1,9999,this.pageSize,this.first / this.pageSize,'token').subscribe(
+    console.log("🔥 > StoreComponent > listarProductos > this.selectedCategories:", this.selectedCategoriesTalla)
+    this.productoService.listar('CAB','',this.selectedCategoriesColors,this.selectedCategoriesTalla,this.selectedCategories,this.precioMin,this.precioMax,this.pageSize,this.first / this.pageSize,'token').subscribe(
       (response) => {
         this.productos = response.content;
         this.totalRecords = response.totalElements;
@@ -94,6 +96,9 @@ export class StoreComponent implements OnInit {
     this.listarProductos();
   }
 
-  
+  filtrar(){
+    //listar productos
+    this.listarProductos();
+  }
 
 }

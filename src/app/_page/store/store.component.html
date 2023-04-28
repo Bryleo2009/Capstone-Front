@@ -4,13 +4,13 @@
             <div class="card flex flex-wrap gap-3 p-fluid">
                 <div class="flex-auto">
                     <label class="mb-2 block font-bold" for="stacked">Precio Min</label>
-                    <p-inputNumber [(ngModel)]="value1" [showButtons]="true" inputId="stacked" [min]="40" [max]="400"
-                        mode="currency" currency="PEN"> </p-inputNumber>
+                    <p-inputNumber [(ngModel)]="precioMin" [showButtons]="true" inputId="stacked" [min]="40" [max]="400"
+                        mode="currency" currency="PEN" (ngModelChange)="filtrar()"> </p-inputNumber>
                 </div>
                 <div class="flex-auto">
                     <label class="mb-2 block font-bold" for="minmax-buttons">Precio Max</label>
-                    <p-inputNumber [(ngModel)]="value2" mode="decimal" [showButtons]="true" inputId="minmax-buttons"
-                        [min]="40" [max]="400" mode="currency" currency="PEN"> </p-inputNumber>
+                    <p-inputNumber [(ngModel)]="precioMax" mode="decimal" [showButtons]="true" inputId="minmax-buttons"
+                        [min]="40" [max]="400" mode="currency" currency="PEN" (ngModelChange)="filtrar()"> </p-inputNumber>
                 </div>
             </div>
 
@@ -19,9 +19,9 @@
                 <h3> Marca </h3>
                 <div class="flex flex-column gap-2 marca">
                     <div *ngFor="let categoryMarca of categories" class="field-checkbox">
-                        <p-checkbox name="group" [value]="categoryMarca" [(ngModel)]="selectedCategories"
-                            [inputId]="categoryMarca.key"></p-checkbox>
-                        <label class="reducctam" [for]="categoryMarca.key">{{ categoryMarca.vistaItem }}</label>
+                        <p-checkbox name="group" [value]="categoryMarca.abreviItem" [(ngModel)]="selectedCategories"
+                            [inputId]="categoryMarca.abreviItem" (ngModelChange)="filtrar()"></p-checkbox>
+                        <label class="reducctam" [for]="categoryMarca.abreviItem">{{ categoryMarca.vistaItem }}</label>
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                 <h3> Talla </h3>
                 <div class="flex flex-column gap-2 talla">
                     <p-selectButton [options]="categoriesTalla" [(ngModel)]="selectedCategoriesTalla" [multiple]="true"
-                        optionLabel="vistaItem" optionValue="idTalla"></p-selectButton>
+                        optionLabel="vistaItem" optionValue="abreviItem" (ngModelChange)="filtrar()"></p-selectButton>
                 </div>
             </div>
             <!-- color -->
@@ -40,7 +40,7 @@
                     <div class="card flex flex-wrap">
                         <p-checkbox *ngFor="let color of colores" name="group" class="btn-sel gap-1"
                             [style.background]="color.nombre_item" [value]="color.abrevi_item"
-                            [(ngModel)]="color.nombre_item" [inputId]="color.nombre_item"></p-checkbox>
+                            [(ngModel)]="selectedCategoriesColors" [inputId]="color.nombre_item" (ngModelChange)="filtrar()"></p-checkbox>
                     </div>
                 </div>
             </div>
