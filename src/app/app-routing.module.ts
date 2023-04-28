@@ -5,6 +5,7 @@ import { Details01Component } from './_page/details/details.component';
 import { HomeComponent } from './_page/home/home.component';
 import { StoreComponent } from './_page/store/store.component';
 
+
 const routes: Routes = [
   { path : '' , component : HomeComponent},
   { path : 'store' , component : StoreComponent},

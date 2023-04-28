@@ -62,40 +62,17 @@ div > img {
     margin-top: 10px;
 }
 
-.btn-1{
-    background-color: white;
-}
 
-
-.btn-2{
-    background-color: black;
+p-checkbox.btn-sel {
+    padding: 10px 10px ;
+    border-radius: 50% ;
+    margin: 5px ;
+    display:inline-block;
+  }
+  
+  :host ::ng-deep .btn-sel .p-checkbox-box  {
+    border: 0px solid transparent !important; 
+    background: transparent !important; 
 }
-.btn-3{
-    background-color: red;
-}
-
-.btn-4{
-    background-color: purple;
-}
-
-.btn-5{
-    background-color: green;
-}
-
-.btn-6{
-    background-color: blue;
-}
-
-.btn-7{
-    background-color: gray;
-}
-
-.btn-8{
-    background-color: brown;
-}
-
-.btn-sel{
-    padding: 15px 15px;
-    border-radius: 50%;
-    margin: 15px;
-}
+  
+  

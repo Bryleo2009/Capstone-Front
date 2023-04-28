@@ -10,6 +10,9 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { PaginatorModule } from 'primeng/paginator';
 import { DropdownModule } from 'primeng/dropdown';
+import { DividerModule } from 'primeng/divider';
+import { ChipModule } from 'primeng/chip';
+import { SelectButtonModule } from 'primeng/selectbutton';
 
 
 @NgModule({
@@ -25,7 +28,10 @@ import { DropdownModule } from 'primeng/dropdown';
     CheckboxModule,
     InputNumberModule,
     PaginatorModule,
-    DropdownModule
+    DropdownModule,
+    DividerModule,
+    ChipModule,
+    SelectButtonModule,
 
   ],exports: [
     ButtonModule,
@@ -37,7 +43,10 @@ import { DropdownModule } from 'primeng/dropdown';
     CheckboxModule,
     InputNumberModule,
     PaginatorModule,
-    DropdownModule
+    DropdownModule,
+    DividerModule,
+    ChipModule,
+    SelectButtonModule,
   ]
 })
 export class PrimeNGModule { }
