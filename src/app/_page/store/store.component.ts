@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Categoria } from '@app/_model/categoria';
+import { Colors, Enum } from '@app/_model/enum';
+import { ProductoFilter } from '@app/_model/filter/productoFilter';
 import { Producto } from '@app/_model/producto';
 import { CategoriasService } from '@app/_service/modelos/categorias.service';
+import { EtiquetaService } from '@app/_service/modelos/etiqueta.service';
+import { MarcaService } from '@app/_service/modelos/marca.service';
 import { ProductoService } from '@app/_service/modelos/producto.service';
+import { TallaService } from '@app/_service/modelos/talla.service';
 import { TipoProductoService } from '@app/_service/modelos/tipo-producto.service';
 
 @Component({
@@ -13,29 +18,25 @@ import { TipoProductoService } from '@app/_service/modelos/tipo-producto.service
 export class StoreComponent implements OnInit {
   constructor(
     private categoriaService: CategoriasService,
-    private productoService: ProductoService
+    private productoService: ProductoService,
+    private tallaService: TallaService,
+    private marcaService: MarcaService,
+    private etiquetaService: EtiquetaService,
   ){}
   rangeValues: number[] = [20, 80];
   selectedCategories: any[] = [];
-  categories: any[] = [
-      { name: 'Nike', key: 'N' },
-      { name: 'Adidas', key: 'A' },
-      { name: 'Doo Australia', key: 'Z' },
-      { name: 'Denimlab', key: 'D' },
-      { name: 'Newport', key: 'T' }
-  ];
+  categories!: any[];
   selectedCategoriesTalla: any[] = [];
-  categoriesTalla: any[] = [
-      { name: 'S', key: 'S' },
-      { name: 'M', key: 'M' },
-      { name: 'L', key: 'L' },
-      { name: 'XL', key: 'XL' },
-  ];
+  categoriesTalla!: any[];
   categoriaActual: string = 'Caballeros';
   value1: number = 40;
   value2: number = 100;
-  categorias!: Categoria[];
-  productos!: Producto[];
+  categorias!: Enum[];
+  colores!: Colors[];
+  tallas!: Enum[];
+  marcas!: Enum[];
+  etiquetas!: Enum[];
+  productos!: ProductoFilter[];
   totalRecords: number = 0;
   pageSize: number = 12;
   first: number = 0;
@@ -44,6 +45,31 @@ export class StoreComponent implements OnInit {
     //listar categorias
     this.categoriaService.listar('token').subscribe((data) => {
       this.categorias = data;
+      console.log("🔥 > StoreComponent > this.categoriaService.listar > this.categorias:", this.categorias)
+    });
+
+    //listar tallas
+    this.tallaService.listar('token').subscribe((data) => {
+      this.categoriesTalla = data;
+      console.log("🔥 > StoreComponent > this.tallaService.listar > this.categoriesTalla:", this.categoriesTalla)
+    });
+
+    //listar marcas
+    this.marcaService.listar('token').subscribe((data) => {
+      this.categories = data;
+      console.log("🔥 > StoreComponent > this.marcaService.listar > this.categories:", this.categories)
+    });
+
+    //listar etiquetas
+    this.etiquetaService.listar('token').subscribe((data) => {
+      this.etiquetas = data;
+      console.log("🔥 > StoreComponent > this.etiquetaService.listar > this.etiquetas:", this.etiquetas)
+    });
+
+    //listar colores
+    this.etiquetaService.getColor('token').subscribe((data) => {
+       this.colores = data;
+       console.log("🔥 > StoreComponent > this.etiquetaService.getColor > his.colores:", this.colores)
     });
 
     //listar productos
@@ -51,7 +77,7 @@ export class StoreComponent implements OnInit {
   }
 
   listarProductos(): void {
-    this.productoService.listar(this.first / this.pageSize, this.pageSize,'token').subscribe(
+    this.productoService.listar('','','','','',1,9999,this.pageSize,this.first / this.pageSize,'token').subscribe(
       (response) => {
         this.productos = response.content;
         this.totalRecords = response.totalElements;

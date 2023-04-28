@@ -11,6 +11,8 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { PaginatorModule } from 'primeng/paginator';
 import { DropdownModule } from 'primeng/dropdown';
 import { DividerModule } from 'primeng/divider';
+import { ChipModule } from 'primeng/chip';
+import { SelectButtonModule } from 'primeng/selectbutton';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { DividerModule } from 'primeng/divider';
     InputNumberModule,
     PaginatorModule,
     DropdownModule,
-    DividerModule
+    DividerModule,
+    ChipModule,
+    SelectButtonModule,
 
   ],exports: [
     ButtonModule,
@@ -40,7 +44,9 @@ import { DividerModule } from 'primeng/divider';
     InputNumberModule,
     PaginatorModule,
     DropdownModule,
-    DividerModule
+    DividerModule,
+    ChipModule,
+    SelectButtonModule,
   ]
 })
 export class PrimeNGModule { }
