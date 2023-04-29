@@ -7,8 +7,9 @@ import { Enum } from '@app/_model/enum';
 @Injectable({
   providedIn: 'root'
 })
-export class CategoriasService {
-  url:string = `${environment.HOST_URL}/Categorias`;
+export class TallaService {
+
+  url:string = `${environment.HOST_URL}/Tallas`;
 
   constructor(private http: HttpClient) { }
 

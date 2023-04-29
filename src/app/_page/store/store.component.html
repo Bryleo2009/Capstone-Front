@@ -1,69 +1,89 @@
 <section class="grid s-store">
     <div class="col">
-    <div class="store-filtro">
-        <div class="card flex flex-wrap gap-3 p-fluid">
-            <div class="flex-auto">
-                <label class="mb-2 block font-bold" for="stacked">Precio Min</label>
-                <p-inputNumber [(ngModel)]="value1" [showButtons]="true" inputId="stacked" [min]="40" [max]="400"
-                    mode="currency" currency="PEN"> </p-inputNumber>
+        <div class="store-filtro">
+            <!--Precios-->
+            <div class="card flex flex-wrap gap-3 p-fluid">
+                <div class="flex-auto">
+                    <label class="mb-2 block font-bold" for="stacked">Precio Min</label>
+                    <p-inputNumber [(ngModel)]="precioMin" [showButtons]="true" inputId="stacked" [min]="10"
+                        [max]="1000" mode="currency" currency="PEN" (ngModelChange)="filtrar()"> </p-inputNumber>
+                </div>
+                <div class="flex-auto">
+                    <label class="mb-2 block font-bold" for="minmax-buttons">Precio Max</label>
+                    <p-inputNumber [(ngModel)]="precioMax" mode="decimal" [showButtons]="true" inputId="minmax-buttons"
+                        [min]="40" [max]="400" mode="currency" currency="PEN" (ngModelChange)="filtrar()">
+                    </p-inputNumber>
+                </div>
             </div>
-            <div class="flex-auto">
-                <label class="mb-2 block font-bold" for="minmax-buttons">Precio Max</label>
-                <p-inputNumber [(ngModel)]="value2" mode="decimal" [showButtons]="true" inputId="minmax-buttons"
-                    [min]="40" [max]="400" mode="currency" currency="PEN"> </p-inputNumber>
+            <!-- marcas -->
+            <div class="card ">
+                <h3> Marca </h3>
+                <div class="flex flex-column gap-2 marca">
+                    <div *ngFor="let categoryMarca of categories" class="field-checkbox">
+                        <p-checkbox name="group" [value]="categoryMarca.abreviItem" [(ngModel)]="selectedCategories"
+                            [inputId]="categoryMarca.abreviItem" (ngModelChange)="filtrar()"></p-checkbox>
+                        <label class="reducctam" [for]="categoryMarca.abreviItem">{{ categoryMarca.vistaItem }}</label>
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <!-- marcas -->
-        <div class="card ">
-            <h3> Marca </h3>
-            <div class="flex flex-column gap-2 marca">
-                <div *ngFor="let category of categories" class="field-checkbox">
-                    <p-checkbox name="group" [value]="category" [(ngModel)]="selectedCategories"
-                        [inputId]="category.key"></p-checkbox>
-                    <label class="reducctam" [for]="category.key">{{ category.name }}</label>
+             <!-- Etiquetas -->
+             <div class="card">
+                <h3> Etiquetas </h3>
+                <div class="flex flex-column gap-2 marca">
+                    <p-chip class="flex align-items-start" *ngFor="let etiqueta of values" [label]="etiqueta" [removable]="true" (onRemove)="removeEtiqueta(etiqueta)"></p-chip>
+                    <p-dropdown [options]="etiquetas" [(ngModel)]="selectedCountry" optionLabel="abreviItem"
+                        [filter]="true" filterBy="vistaItem" [showClear]="true" placeholder="Selecciona una etiqueta"
+                        (ngModelChange)="updateValues()">
+                        <ng-template pTemplate="selectedItem">
+                            <div class="flex align-items-center gap-2" *ngIf="selectedCountry">
+                                <div>{{ selectedCountry.vistaItem }}</div>
+                            </div>
+                        </ng-template>
+                        <ng-template let-etiqueta pTemplate="item">
+                            <div class="flex align-items-center gap-2">
+                                <div>{{ etiqueta.vistaItem }}</div>
+                            </div>
+                        </ng-template>
+                    </p-dropdown>
+                </div>
+            </div>
+            <!-- tallas -->
+            <div class="card">
+                <h3> Talla </h3>
+                <div class="flex flex-column gap-2 talla">
+                    <p-selectButton [options]="categoriesTalla" [(ngModel)]="selectedCategoriesTalla" [multiple]="true"
+                        optionLabel="vistaItem" optionValue="abreviItem" (ngModelChange)="filtrar()"></p-selectButton>
+                </div>
+            </div>
+            <!-- color -->
+            <div class="card ">
+                <h3> Color </h3>
+                <div class="flex-wrap gap-3 mb-4 color">
+                    <div class="card flex flex-wrap">
+                        <p-checkbox *ngFor="let color of colores" name="group" class="btn-sel gap-1"
+                            [style.background]="color.nombre_item" [value]="color.abrevi_item"
+                            [(ngModel)]="selectedCategoriesColors" [inputId]="color.nombre_item"
+                            (ngModelChange)="filtrar()"></p-checkbox>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- color -->
-        <div class="card ">
-            <h3> Color </h3>
-            <div class="flex-wrap gap-3 mb-4 color" >
-            <button class="btn-1 btn-sel"></button>
-            <button class="btn-2 btn-sel"></button>
-            <button class="btn-3 btn-sel" ></button>
-            <button class="btn-4 btn-sel"></button>
-            <button class="btn-5 btn-sel"></button>
-            <button class="btn-6 btn-sel"></button>
-            <button class="btn-7 btn-sel"></button>
-            <button class="btn-8 btn-sel"></button>
-        </div> 
-        </div>
-        <!-- tallas -->
-        <div class="card">
-            <h3> Talla </h3>
-            <div class="flex flex-column gap-2 talla">
-                <div *ngFor="let category of categoriesTalla" class="field-checkbox">
-                    <p-checkbox name="group" [value]="category" [(ngModel)]="selectedCategoriesTalla"
-                        [inputId]="category.key"></p-checkbox>
-                    <label [for]="category.key">{{ category.name }}</label>
-                </div>
-            </div>
-        </div>
-    </div>
     </div>
     <div class="col-9 store-catalogo">
         <!--Categorias-->
         <div class="store-catego flex align-items-center justify-content-between">
-            <h1 *ngFor="let categoria of categorias">{{ categoria.nombreCateg }}</h1>
+            <h1 *ngFor="let categoria of categorias">{{ categoria.vistaItem }}</h1>
         </div>
         <!--Productos-->
-        <div >
-            <u class="categoriaTipo"><h1>{{categoriaActual}}</h1></u>
+        <div>
+            <u class="categoriaTipo">
+                <h1>{{categoriaActual}}</h1>
+            </u>
         </div>
         <div class="flex store-imgcatego flex-wrap justify-content-center">
             <div class="card col" *ngFor="let producto of productos">
-                <p-card [header]="producto.nombreProduct" [subheader]="producto.etiquetas" [style]="{ width: '289px' }">
+                <p-card [header]="producto.nombre_product" [subheader]="producto.etiquetas"
+                    [style]="{ width: '289px' }">
                     <ng-template pTemplate="header">
                         <img alt="Card" class="img-card" src="..\assets\Store\image 14.jpg"
                             *ngIf="producto.imagen !== null; else elseTemplate">
@@ -72,11 +92,14 @@
                         </ng-template>
                     </ng-template>
                     <div class="cont-card flex justify-content-center">
-                            <del *ngIf="producto.isPrecioDescProduct, else sinTachado"><p class="precio">S/ {{ producto.precioUni }}</p></del>
-                            <ng-template #sinTachado>
-                                <p class="precio">S/ {{ producto.precioUni }}</p>
-                            </ng-template>
-                            <p class="precio descuento" *ngIf="producto.isPrecioDescProduct"><b>S/ {{ producto.precioDescuProduct }}</b></p>
+                        <del *ngIf="producto.is_precio_desc_product, else sinTachado">
+                            <p class="precio">S/ {{ producto.precio_uni }}</p>
+                        </del>
+                        <ng-template #sinTachado>
+                            <p class="precio">S/ {{ producto.precio_uni }}</p>
+                        </ng-template>
+                        <p class="precio descuento" *ngIf="producto.is_precio_desc_product"><b>S/ {{
+                                producto.precio_descu_product }}</b></p>
                     </div>
                     <ng-template pTemplate="footer flex">
                         <p-button [style]="{backgroundColor:'#E5E5E5', color: '#000000', 'border-radius': '165px 25px 0px 0px', padding : '8px 25px'}" label="Agregar a carrito"  ></p-button>

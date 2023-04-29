@@ -45,3 +45,18 @@ ofsystem>a:hover {
 section, body{
     background-color: #F9F9F9;
 }
+
+element.style {
+    transform: translate3d(-1176px, 0px, 0px);
+    transition: all 1.2s ease 0s;
+    width: 3924px;
+}
+element.style {
+    transform: translate3d(-1346px, 0px, 0px);
+    transition: all 1.2s ease 0s;
+    width: 2693px;
+  }
+  element.style {
+    width: 244.219px;
+    margin-right: 25px;
+  }
