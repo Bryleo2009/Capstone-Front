@@ -10,6 +10,9 @@ import { ProductoService } from '@app/_service/modelos/producto.service';
 import { TallaService } from '@app/_service/modelos/talla.service';
 import { TipoProductoService } from '@app/_service/modelos/tipo-producto.service';
 import { ColorService } from '../../_service/modelos/color.service';
+import { MenuItem } from 'primeng/api';
+import { ActivatedRoute, Router } from '@angular/router';
+import { EncryptionService } from '@app/_service/util/encryption.service';
 
 @Component({
   selector: 'app-store',
@@ -24,15 +27,22 @@ export class StoreComponent implements OnInit {
     private marcaService: MarcaService,
     private etiquetaService: EtiquetaService,
     private colorService: ColorService,
-    private cdRef: ChangeDetectorRef
-  ) {}
+    private router: Router,
+    private encryp: EncryptionService,
+    private route: ActivatedRoute,
+  ) {
+    this.seleccion = '';
+    this.categoriaActual = "Todas las categorias"
+  }
+
+
   rangeValues: number[] = [20, 80];
   selectedCategories: any[] = [];
   categories!: any[];
   selectedCategoriesTalla: any[] = [];
   selectedCategoriesColors: any[] = [];
   categoriesTalla!: any[];
-  categoriaActual: string = 'Caballeros';
+  categoriaActual!: string;
   precioMin: number = 10;
   precioMax: number = 1000;
   categorias!: Enum[];
@@ -46,17 +56,16 @@ export class StoreComponent implements OnInit {
   first: number = 0;
   rows: number = 12;
   selectedCountry!: Enum;
-  ngOnInit(): void {
+  items!: MenuItem[];
+  seleccion!:string;
+  ngOnInit(): void {     
+
     this.updateValues(); // llama a la función para asegurarte de que los valores iniciales se muestren en el chip
 
-    //listar categorias
-    this.categoriaService.listar('token').subscribe((data) => {
-      this.categorias = data;
-    });
-
+    console.log("🔥 > StoreComponent > this.items=Object.values > this.items:", this.items)
     //listar tallas
     this.tallaService.listar('token').subscribe((data) => {
-      this.categoriesTalla = data;
+      this.categoriesTalla = data.filter(color => color.vistaItem !== 'Talla unica');
     });
 
     //listar marcas
@@ -66,24 +75,37 @@ export class StoreComponent implements OnInit {
 
     //listar etiquetas
     this.etiquetaService.listar('token').subscribe((data) => {
-      this.etiquetas = data.filter(
-        (etiqueta) => !etiqueta.identItem.startsWith('COLOR')
-      );
+      this.etiquetas = data;
     });
 
     //listar colores
     this.colorService.getColor('token').subscribe((data) => {
-      this.colores = data;
+      this.colores = data.filter(color => color.vista_item !== '');
     });
 
-    //listar productos
-    this.listarProductos();
+    //listar categorias
+    this.categoriaService.listar('token').subscribe((data) => {
+      this.categorias = data;
+      this.items  = this.categorias.map(categoria => {
+        return {
+          label: categoria.nombreItem,
+          icon: categoria.abreviItem,
+          command: () => {            
+            this.seleccion=categoria.abreviItem;
+            this.categoriaActual=categoria.vistaItem;
+            this.filtrar(this.seleccion);
+          }
+        };
+      });
+    });
+
+    this.filtrar(this.seleccion);
   }
 
-  listarProductos(): void {
+  listarProductos(categoria:string): void {
     this.productoService
       .listar(
-        'CAB',
+        categoria,
         [],
         this.abreviaturas,
         this.selectedCategoriesTalla,
@@ -109,12 +131,12 @@ export class StoreComponent implements OnInit {
   onPageChange(event: { first: number; rows: number }) {
     this.first = event.first;
     this.pageSize = event.rows;
-    this.listarProductos();
+    console.log(this.seleccion)
+    this.filtrar(this.seleccion);
   }
 
-  filtrar() {
-    //listar productos
-    this.listarProductos();
+  filtrar(categoria:string) {
+    this.listarProductos(categoria);
   }
 
   values: any[] = [];
@@ -125,17 +147,27 @@ export class StoreComponent implements OnInit {
       if (!this.values.includes(newItem)) {
         this.values.push(newItem);
         this.abreviaturas.push(this.selectedCountry.abreviItem);
-        this.filtrar();
+        this.filtrar(this.seleccion);
       }
     }
   }
 
+  //etiqwuetas de filtrado
   removeEtiqueta(etiqueta: string) {
     const index = this.values.indexOf(etiqueta);
     if (index !== -1) {
       this.values.splice(index, 1);
       this.abreviaturas.splice(index, 1);
-      this.filtrar();
+      this.filtrar(this.seleccion);
     }
   }
+
+   //encriptamiento de ruta de visualizacion
+   visualizar(id: number) {
+    this.router.navigate(['/details'], {
+      relativeTo: this.route,
+      queryParams: { id: this.encryp.encrypt(String(id)), estado: '_?' },
+    });
+  }
+
 }

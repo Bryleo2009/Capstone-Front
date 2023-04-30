@@ -6,12 +6,12 @@
                 <div class="flex-auto">
                     <label class="mb-2 block font-bold" for="stacked">Precio Min</label>
                     <p-inputNumber [(ngModel)]="precioMin" [showButtons]="true" inputId="stacked" [min]="10"
-                        [max]="1000" mode="currency" currency="PEN" (ngModelChange)="filtrar()"> </p-inputNumber>
+                        [max]="1000" mode="currency" currency="PEN" (ngModelChange)="filtrar(seleccion)"> </p-inputNumber>
                 </div>
                 <div class="flex-auto">
                     <label class="mb-2 block font-bold" for="minmax-buttons">Precio Max</label>
                     <p-inputNumber [(ngModel)]="precioMax" mode="decimal" [showButtons]="true" inputId="minmax-buttons"
-                        [min]="40" [max]="400" mode="currency" currency="PEN" (ngModelChange)="filtrar()">
+                        [min]="40" [max]="400" mode="currency" currency="PEN" (ngModelChange)="filtrar(seleccion)">
                     </p-inputNumber>
                 </div>
             </div>
@@ -21,16 +21,17 @@
                 <div class="flex flex-column gap-2 marca">
                     <div *ngFor="let categoryMarca of categories" class="field-checkbox">
                         <p-checkbox name="group" [value]="categoryMarca.abreviItem" [(ngModel)]="selectedCategories"
-                            [inputId]="categoryMarca.abreviItem" (ngModelChange)="filtrar()"></p-checkbox>
+                            [inputId]="categoryMarca.abreviItem" (ngModelChange)="filtrar(seleccion)"></p-checkbox>
                         <label class="reducctam" [for]="categoryMarca.abreviItem">{{ categoryMarca.vistaItem }}</label>
                     </div>
                 </div>
             </div>
-             <!-- Etiquetas -->
-             <div class="card">
+            <!-- Etiquetas -->
+            <div class="card">
                 <h3> Etiquetas </h3>
                 <div class="flex flex-column gap-2 marca">
-                    <p-chip class="flex align-items-start" *ngFor="let etiqueta of values" [label]="etiqueta" [removable]="true" (onRemove)="removeEtiqueta(etiqueta)"></p-chip>
+                    <p-chip class="flex align-items-start" *ngFor="let etiqueta of values" [label]="etiqueta"
+                        [removable]="true" (onRemove)="removeEtiqueta(etiqueta)"></p-chip>
                     <p-dropdown [options]="etiquetas" [(ngModel)]="selectedCountry" optionLabel="abreviItem"
                         [filter]="true" filterBy="vistaItem" [showClear]="true" placeholder="Selecciona una etiqueta"
                         (ngModelChange)="updateValues()">
@@ -52,7 +53,7 @@
                 <h3> Talla </h3>
                 <div class="flex flex-column gap-2 talla">
                     <p-selectButton [options]="categoriesTalla" [(ngModel)]="selectedCategoriesTalla" [multiple]="true"
-                        optionLabel="vistaItem" optionValue="abreviItem" (ngModelChange)="filtrar()"></p-selectButton>
+                        optionLabel="vistaItem" optionValue="abreviItem" (ngModelChange)="filtrar(seleccion)"></p-selectButton>
                 </div>
             </div>
             <!-- color -->
@@ -63,7 +64,7 @@
                         <p-checkbox *ngFor="let color of colores" name="group" class="btn-sel gap-1"
                             [style.background]="color.nombre_item" [value]="color.abrevi_item"
                             [(ngModel)]="selectedCategoriesColors" [inputId]="color.nombre_item"
-                            (ngModelChange)="filtrar()"></p-checkbox>
+                            (ngModelChange)="filtrar(seleccion)" pTooltip="{{color.vista_item}}"></p-checkbox>
                     </div>
                 </div>
             </div>
@@ -71,8 +72,8 @@
     </div>
     <div class="col-9 store-catalogo">
         <!--Categorias-->
-        <div class="store-catego flex align-items-center justify-content-between">
-            <h1 *ngFor="let categoria of categorias">{{ categoria.vistaItem }}</h1>
+        <div class="store-catego flex flex-column">
+            <p-tabMenu [model]="items" class="mi-clase-css"></p-tabMenu>
         </div>
         <!--Productos-->
         <div>
@@ -102,8 +103,12 @@
                                 producto.precio_descu_product }}</b></p>
                     </div>
                     <ng-template pTemplate="footer flex">
-                        <p-button [style]="{backgroundColor:'#E5E5E5', color: '#000000', 'border-radius': '165px 25px 0px 0px', padding : '8px 25px'}" label="Agregar a carrito"  ></p-button>
-                        <p-button icon="pi pi-eye"[style]="{backgroundColor:'#E5E5E5', color: '#000000', 'border-radius': '25px 165px 0px 0px', padding : '8px 25px 8px 15px', 'margin-left' : '5px' }" routerLink="/details"></p-button>
+                        <p-button
+                            [style]="{backgroundColor:'#E5E5E5', color: '#000000', 'border-radius': '165px 25px 0px 0px', padding : '8px 25px'}"
+                            label="Agregar a carrito"></p-button>
+                        <p-button icon="pi pi-eye"
+                            [style]="{backgroundColor:'#E5E5E5', color: '#000000', 'border-radius': '25px 165px 0px 0px', padding : '8px 25px 8px 15px', 'margin-left' : '5px' }"
+                            (click)="visualizar(producto.id_product)"></p-button>
                     </ng-template>
                 </p-card>
             </div>

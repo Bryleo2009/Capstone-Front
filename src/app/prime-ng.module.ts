@@ -14,6 +14,9 @@ import { DividerModule } from 'primeng/divider';
 import { ChipModule } from 'primeng/chip';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { ChipsModule } from 'primeng/chips';
+import { TabMenuModule } from 'primeng/tabmenu';
+import { TooltipModule } from 'primeng/tooltip';
+import { RatingModule } from 'primeng/rating';
 
 @NgModule({
   declarations: [],
@@ -33,6 +36,9 @@ import { ChipsModule } from 'primeng/chips';
     ChipModule,
     SelectButtonModule,
     ChipsModule,
+    TabMenuModule,
+    TooltipModule,
+    RatingModule,
 
   ],exports: [
     ButtonModule,
@@ -49,6 +55,9 @@ import { ChipsModule } from 'primeng/chips';
     ChipModule,
     SelectButtonModule,
     ChipsModule,
+    TabMenuModule,
+    TooltipModule,
+    RatingModule,
   ]
 })
 export class PrimeNGModule { }

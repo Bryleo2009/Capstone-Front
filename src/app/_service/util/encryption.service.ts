@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import * as bcrypt from 'bcryptjs';
 import * as CryptoJS from 'crypto-js';
 
 
