@@ -24,8 +24,6 @@ section {
 .eje {
   max-width: 50%;
   height: auto;
-  margin: 30px auto;
-  padding: 2%;
   display: inline-block;
   background: transparent;
 }
@@ -34,18 +32,6 @@ section {
 
   font-size: 30px !important;
   font-weight: bold;
-  margin-top: 20px;
-
-}
-.letra2 {
-
-  margin-top: 20px;
-
-}
-
-.separador01 {
-
-  padding-top: 20px;
 
 }
 
@@ -87,4 +73,9 @@ section {
 
   color: red;
 
+}
+
+.etiquetas {
+  display: inline-block;
+  font-size: 8px !important;
 }

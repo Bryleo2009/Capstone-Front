@@ -14,7 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './_page/footer/footer.component';
 import { HomeComponent } from './_page/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { NgImageSliderModule } from 'ng-image-slider';
 
 @NgModule({
   declarations: [
@@ -32,11 +32,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserModule,
+    NgImageSliderModule,
     BrowserAnimationsModule
   ],exports: [
     PrimeNGModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
