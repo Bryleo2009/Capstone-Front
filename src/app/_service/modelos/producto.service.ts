@@ -22,6 +22,7 @@ export class ProductoService {
     etiquetas: string[],
     tallas: string[],
     marcas: string[],
+    colores: string[],
     menorPrecio: number,
     mayorPrecio: number,
     cantidad: number,
@@ -34,6 +35,7 @@ export class ProductoService {
       etiquetas: `${etiquetas}`,
       tallas: `${tallas}`,
       marcas: `${marcas}`,
+      colores: `${colores}`,
       menorPrecio: `${menorPrecio}`,
       mayorPrecio: `${mayorPrecio}`,
       cantidad: `${cantidad}`,
@@ -42,7 +44,7 @@ export class ProductoService {
     return this.http.get<Page<ProductoFilter>>(this.url, { headers, params });
   }
 
-  listarPorId(id: string, token: string): Observable<Producto> {
+  listarPorId(id: number, token: string): Observable<Producto> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get<Producto>(`${this.url}/${id}`, { headers });
   }
