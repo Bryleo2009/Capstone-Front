@@ -77,7 +77,7 @@ export class HomeComponent implements OnInit{
 
   listarProductos(): void {
     console.log("🔥 > StoreComponent > listarProductos > this.selectedCategories:", this.selectedCategoriesTalla)
-    this.productoService.listar('CAB',[],[],[],[],1,5000,10,0,'token').subscribe(
+    this.productoService.listar('CAB',[],[],[],[],[],1,5000,10,0,'token').subscribe(
       (response) => {
         this.productos = response.content;
         console.log(this.productos);
