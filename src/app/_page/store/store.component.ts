@@ -79,7 +79,7 @@ export class StoreComponent implements OnInit {
 
   listarProductos(): void {
     console.log("🔥 > StoreComponent > listarProductos > this.selectedCategories:", this.selectedCategoriesTalla)
-    this.productoService.listar('CAB','',this.selectedCategoriesColors,this.selectedCategoriesTalla,this.selectedCategories,this.precioMin,this.precioMax,this.pageSize,this.first / this.pageSize,'token').subscribe(
+    this.productoService.listar('CAB',[],this.selectedCategoriesColors,this.selectedCategoriesTalla,this.selectedCategories,this.precioMin,this.precioMax,this.pageSize,this.first / this.pageSize,'token').subscribe(
       (response) => {
         this.productos = response.content;
         this.totalRecords = response.totalElements;

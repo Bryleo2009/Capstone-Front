@@ -56,8 +56,25 @@
     </ul>
     </div>
     <div class="product-slider owl-carousel owl-loaded owl-drag"> 
-      <ng-image-slider [images]="imgCollection" #nav></ng-image-slider>   
-     </div>
+
+      <div class="card" >
+        <p-carousel [value]="productos"  [numVisible]="3" [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions" >
+            <ng-template  let-producto pTemplate="item">
+                <div class="border-1 surface-border border-round m-2 text-center py-5 px-3" >
+                    <div class="mb-3">
+                        <img src="..\assets\Store\image 14.jpg" [alt]="producto.imagen" class="w-6 shadow-2" />
+                    </div >
+                        <h4 class="mb-1">{{ producto.nombre_product}}</h4>
+                        <h6 class="mt-0 mb-3">{{ '$' + producto.precio_uni }}</h6>
+                        <div class="car-buttons mt-5">
+                            <p-button type="button" styleClass="p-button p-button-rounded mr-2" icon="pi pi-shopping-cart"></p-button>
+                            <p-button type="button" styleClass="p-button-success p-button-rounded mr-2" icon="pi pi-star-fill"></p-button>
+                        </div>
+                </div>
+            </ng-template>
+        </p-carousel>
+    </div>     
+  </div>
     </div>
     </div>
   </div>
@@ -83,7 +100,23 @@
       </ul>
       </div>
       <div class="product-slider owl-carousel owl-loaded owl-drag"> 
-        <ng-image-slider [images]="imgCollection" #nav></ng-image-slider>   
+        <div class="card" >
+          <p-carousel [value]="productos"  [numVisible]="3" [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions" >
+              <ng-template  let-producto pTemplate="item">
+                  <div class="border-1 surface-border border-round m-2 text-center py-5 px-3" >
+                      <div class="mb-3">
+                          <img src="..\assets\Store\image 14.jpg" [alt]="producto.imagen" class="w-6 shadow-2" />
+                      </div >
+                          <h4 class="mb-1">{{ producto.nombre_product}}</h4>
+                          <h6 class="mt-0 mb-3">{{ '$' + producto.precio_uni }}</h6>
+                          <div class="car-buttons mt-5">
+                              <p-button type="button" styleClass="p-button p-button-rounded mr-2" icon="pi pi-shopping-cart"></p-button>
+                              <p-button type="button" styleClass="p-button-success p-button-rounded mr-2" icon="pi pi-star-fill"></p-button>
+                          </div>
+                  </div>
+              </ng-template>
+          </p-carousel>
+      </div>     
        </div>
       </div>
       </div>
