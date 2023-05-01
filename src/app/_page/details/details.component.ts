@@ -17,13 +17,15 @@ interface Car {
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.css']
 })
+
 export class Details01Component {
 
   constructor(
     private route: ActivatedRoute,
     private encryp: EncryptionService,
     private router: Router,
-    private producSerive: ProductoService
+    private producSerive: ProductoService,
+
     ) { } 
 
   id!: string;
@@ -72,32 +74,6 @@ export class Details01Component {
     ];
   }
 
-  images: any[] = [
-    {
-      previewImageSrc:
-        '../assets/details/prenda01.png',
-      thumbnailImageSrc:
-        '../assets/details/prenda01.png',
-        alt: 'Description for Image 1',
-        title: 'Title 1'
-    },
-    {
-      previewImageSrc:
-        './assets/details/prenda01.png',
-      thumbnailImageSrc:
-        './assets/details/prenda01.png',
-      alt: 'Description for Image 2',
-      title: 'Title 2'
-    },
-    {
-      previewImageSrc:
-        './assets/details/prenda01.png',
-      thumbnailImageSrc:
-        './assets/details/prenda01.png',
-      alt: 'Description for Image 3',
-      title: 'Title 3'
-    },
-  ];
-
   cars: Car[] = [];
+ 
 }
