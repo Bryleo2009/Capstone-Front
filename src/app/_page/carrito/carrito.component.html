@@ -1,0 +1,49 @@
+<section>
+    <!--TITULO CARRITO-->
+    <div class="titulo">
+        <h1 class="letra">
+            CARRITO DE COMPRAS
+        </h1>
+    </div>
+    <!--PRODUCTOS A COMPRAR-->
+    <div class="card1">
+        <p-dataView #dv [value]="productos" [rows]="5" [paginator]="true">
+            <ng-template let-product pTemplate="listItem">
+                <div class="col-12">
+                    <div class="flex flex-column xl:flex-row xl:align-items-start p-4 gap-4">
+                        <img class="w-9 sm:w-16rem xl:w-9rem block xl:block mx-auto border-round"
+                            src=".\assets\details\prenda01.png" [alt]="product.name" />
+                        <div
+                            class="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
+                            <div class="flex flex-column align-items-center sm:align-items-start gap-4">
+                                <div class="text-2xl font-bold text-900">Polo Manga Corta Hombre</div>
+                                <p-rating [(ngModel)]="product.rating" [readonly]="true" [cancel]="false"></p-rating>
+                                <div class="flex align-items-center gap-3">
+                                    <span class="flex align-items-center gap-2">
+                                        <i class="pi pi-tag"></i>
+                                        <span class="font-semibold">Prendas</span>
+                                    </span>
+                                    <p-tag styleClass="p-button-success" value="INSTOCK" severity="success"></p-tag>
+                                    <!--<p-tag styleClass="p-button-success" value="LOWSTOCK" severity="warning"></p-tag>-->
+                                </div>
+                            </div>
+                            <div class="flex sm:flex-column align-items-center sm:align-items-end gap-3 sm:gap-2">
+                                <span class="text-2xl font-semibold">{{ '$' + 98 }}</span>
+                                <p-button icon="pi pi-times" styleClass="p-button-rounded"></p-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </p-dataView>
+    </div>
+    <!--BOTONES DE AGREGAR Y PAGAR-->
+    <div class="btn_1">
+        <p-button label="Agregar Productos" icon="pi pi-tag" iconPos="right"
+            [style]="{backgroundColor:'#000000', color: '#E5E5E5', padding : '15px 30px', margin: '0px 10px'}"></p-button>
+    </div>
+    <div class="btn_2">
+        <p-button label="Pagar" icon="fa-solid fa-cart-shopping" iconPos="right"
+            [style]="{backgroundColor:'#1cab85', color: '#000000', padding : '15px 30px', margin: '0px 10px'}"></p-button>
+    </div>
+</section>

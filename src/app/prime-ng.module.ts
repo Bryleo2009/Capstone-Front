@@ -17,6 +17,8 @@ import { ChipsModule } from 'primeng/chips';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { TooltipModule } from 'primeng/tooltip';
 import { RatingModule } from 'primeng/rating';
+import { DataViewModule, DataViewLayoutOptions } from 'primeng/dataview';
+import { TagModule } from 'primeng/tag';
 
 @NgModule({
   declarations: [],
@@ -39,6 +41,8 @@ import { RatingModule } from 'primeng/rating';
     TabMenuModule,
     TooltipModule,
     RatingModule,
+    DataViewModule,
+    TagModule,
 
   ],exports: [
     ButtonModule,
@@ -58,6 +62,9 @@ import { RatingModule } from 'primeng/rating';
     TabMenuModule,
     TooltipModule,
     RatingModule,
+    DataViewModule,
+    TagModule,
+    
   ]
 })
 export class PrimeNGModule { }
