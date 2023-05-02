@@ -15,6 +15,8 @@ import { FooterComponent } from './_page/footer/footer.component';
 import { HomeComponent } from './_page/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { PedidoshComponent } from './_page/pedidosh/pedidosh.component';
+import { SeguimientoComponent } from './_page/seguimiento/seguimiento.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { NgImageSliderModule } from 'ng-image-slider';
     HeaderComponent,
     StoreComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    PedidoshComponent,
+    SeguimientoComponent
   ],
   imports: [
     BrowserModule,

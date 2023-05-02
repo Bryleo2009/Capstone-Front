@@ -60,3 +60,56 @@ element.style {
     width: 244.219px;
     margin-right: 25px;
   }
+
+/*pedidos*/
+
+.user-account-card {
+    background-color: #fefefe;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 35px;
+    cursor: pointer;
+    border-top: 2px solid #fefefe;
+    transition: all .25s ease-in-out;
+}
+.user-account-card-icon {
+    margin-right: 30px;
+}
+.user-account-card-icon i {
+    font-size: 30px;
+    color: #1c1c1c;
+    transition: all .25s ease-in-out;
+}
+.far {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 400;
+}
+.far{
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+}
+.user-account-card-text {
+    width: 100%;
+}
+.user-account-card-text h4 {
+    font-family: franklin-gothic-urw-cond,Arial,sans-serif;
+    color: #1c1c1c;
+    font-size: 20px;
+    margin: 0 0 10px;
+    transition: all .25s ease-in-out;
+}
+ h4 {
+    font-family: franklin-gothic-urw-cond,Arial,sans-serif;
+    font-weight: 700;
+}
+.user-account-card-sep {
+    border-bottom: 1px solid #d8d9d5;
+    width: 100%;
+}
