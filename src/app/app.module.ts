@@ -15,6 +15,8 @@ import { FooterComponent } from './_page/footer/footer.component';
 import { HomeComponent } from './_page/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { PedidoshComponent } from './_page/pedidosh/pedidosh.component';
+import { SeguimientoComponent } from './_page/seguimiento/seguimiento.component';
 import { CarritoComponent } from './_page/carrito/carrito.component';
 
 @NgModule({
@@ -25,6 +27,8 @@ import { CarritoComponent } from './_page/carrito/carrito.component';
     StoreComponent,
     FooterComponent,
     HomeComponent,
+    PedidoshComponent,
+    SeguimientoComponent
     CarritoComponent
   ],
   imports: [
