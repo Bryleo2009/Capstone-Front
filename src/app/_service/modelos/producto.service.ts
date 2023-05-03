@@ -44,9 +44,14 @@ export class ProductoService {
     return this.http.get<Page<ProductoFilter>>(this.url, { headers, params });
   }
 
-  listarPorId(id: number, token: string): Observable<Producto> {
+  listarPorId(id: string, token: string): Observable<Producto> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get<Producto>(`${this.url}/${id}`, { headers });
+  }
+
+  listarGeneral(token: string): Observable<Producto[]> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<Producto[]>(`${this.url}/listar`, { headers });
   }
 
   registrar(Rol: Producto, token: string): Observable<any> {

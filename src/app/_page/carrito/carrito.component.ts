@@ -14,12 +14,13 @@ import { MenuItem } from 'primeng/api';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EncryptionService } from '@app/_service/util/encryption.service';
 
+
 @Component({
-  selector: 'app-store',
-  templateUrl: './store.component.html',
-  styleUrls: ['./store.component.css'],
+  selector: 'app-carrito',
+  templateUrl: './carrito.component.html',
+  styleUrls: ['./carrito.component.css']
 })
-export class StoreComponent implements OnInit {
+export class CarritoComponent {
   constructor(
     private categoriaService: CategoriasService,
     private productoService: ProductoService,
@@ -34,8 +35,6 @@ export class StoreComponent implements OnInit {
     this.seleccion = '';
     this.categoriaActual = "Todas las categorias"
   }
-
-
   rangeValues: number[] = [20, 80];
   selectedCategories: any[] = [];
   categories!: any[];
@@ -58,7 +57,8 @@ export class StoreComponent implements OnInit {
   selectedCountry!: Enum;
   items!: MenuItem[];
   seleccion!:string;
-  ngOnInit(): void {     
+  ngOnInit(): void {   
+      
 
     this.updateValues(); // llama a la función para asegurarte de que los valores iniciales se muestren en el chip
 
@@ -120,7 +120,6 @@ export class StoreComponent implements OnInit {
       .subscribe(
         (response) => {
           this.productos = response.content;
-          console.log("🔥 > StoreComponent > listarProductos > this.productos:", this.productos)
           this.totalRecords = response.totalElements;
         },
         (error) => {
@@ -170,5 +169,6 @@ export class StoreComponent implements OnInit {
       queryParams: { id: this.encryp.encrypt(String(id)), estado: '_?' },
     });
   }
+
 
 }

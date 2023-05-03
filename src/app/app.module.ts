@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { PedidoshComponent } from './_page/pedidosh/pedidosh.component';
 import { SeguimientoComponent } from './_page/seguimiento/seguimiento.component';
+import { CarritoComponent } from './_page/carrito/carrito.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { SeguimientoComponent } from './_page/seguimiento/seguimiento.component'
     HomeComponent,
     PedidoshComponent,
     SeguimientoComponent
+    CarritoComponent
   ],
   imports: [
     BrowserModule,
