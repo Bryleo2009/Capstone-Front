@@ -14,7 +14,7 @@ const routes: Routes = [
   { path : 'store' , component : StoreComponent},
   { path : 'details' , component : Details01Component},
   { path : 'pedido', component : PedidoshComponent},
-  { path : 'seguimiento', component: SeguimientoComponent}
+  { path : 'seguimiento', component: SeguimientoComponent},
   { path : 'carrito' , component : CarritoComponent},
 ];
 

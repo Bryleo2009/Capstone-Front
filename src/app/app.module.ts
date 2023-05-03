@@ -28,7 +28,7 @@ import { CarritoComponent } from './_page/carrito/carrito.component';
     FooterComponent,
     HomeComponent,
     PedidoshComponent,
-    SeguimientoComponent
+    SeguimientoComponent,
     CarritoComponent
   ],
   imports: [
