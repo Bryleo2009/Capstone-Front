@@ -79,32 +79,5 @@ export class Details01Component {
     ];
   }
 
-  images: any[] = [
-    {
-      previewImageSrc:
-        '../assets/details/prenda01.png',
-      thumbnailImageSrc:
-        '../assets/details/prenda01.png',
-        alt: 'Description for Image 1',
-        title: 'Title 1'
-    },
-    {
-      previewImageSrc:
-        './assets/details/prenda01.png',
-      thumbnailImageSrc:
-        './assets/details/prenda01.png',
-      alt: 'Description for Image 2',
-      title: 'Title 2'
-    },
-    {
-      previewImageSrc:
-        './assets/details/prenda01.png',
-      thumbnailImageSrc:
-        './assets/details/prenda01.png',
-      alt: 'Description for Image 3',
-      title: 'Title 3'
-    },
-  ];
-
   cars: Car[] = [];
 }

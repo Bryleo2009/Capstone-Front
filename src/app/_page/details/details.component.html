@@ -2,16 +2,7 @@
     <div class="card flex p-5">
         <!-- Imagen descripcion producto -->
         <div class="eje flex m-5">
-            <p-galleria [numVisible]="3" [value]="images">
-                <ng-template pTemplate="item" let-item>
-                    <img [src]="item.previewImageSrc" [alt]="item.alt" [title]="item.title" style="width: 65%" />
-                </ng-template>
-                <ng-template pTemplate="thumbnail" let-item width="50%">
-                    <div class="grid  grid-nogutter justify-content-center">
-                        <img [src]="item.thumbnailImageSrc" [alt]="item.alt" [title]="item.title" width=50% />
-                    </div>
-                </ng-template>
-            </p-galleria>
+            <p-image src="https://primefaces.org/cdn/primeng/images/galleria/galleria1.jpg" alt="Image" width="500" height="500" [preview]="true"></p-image>
         </div>
         <!-- Descripcion producto -->
         <div class="flex m-5 flex-column">
