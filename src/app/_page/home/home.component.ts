@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit{
   precioMax: number = 1000;
   categorias!: Enum[];
   marcas!: Enum[];
-  productos!: ProductoFilter[];
+  productos!: Producto[];
   totalRecords: number = 0;
   pageSize: number = 12;
   first: number = 0;
@@ -77,12 +77,10 @@ export class HomeComponent implements OnInit{
 
   listarProductos(): void {
     console.log("🔥 > StoreComponent > listarProductos > this.selectedCategories:", this.selectedCategoriesTalla)
-    this.productoService.listar('CAB',[],[],[],[],1,5000,10,0,'token').subscribe(
+    this.productoService.listarGeneral('token').subscribe(
       (response) => {
-        this.productos = response.content;
+        this.productos = response;
         console.log(this.productos);
-
-        this.totalRecords = response.totalElements;
       },
       error => {
         console.error(error);
