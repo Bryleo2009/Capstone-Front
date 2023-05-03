@@ -1,124 +1,132 @@
- <!-- Hero Section-->
- <div class="hero" id="home">
-    <div class="hero_container ">
-      <h1 class="hero_heading ">Que la moda sea parte <br>de tu dia a dia</h1>
-      <b class="hero_description "></b>
-    </div>
+<!-- Hero Section-->
+<div class="hero" id="home">
+  <div class="hero_container ">
+    <h1 class="hero_heading ">Que la moda sea parte <br>de tu dia a dia</h1>
+    <b class="hero_description "></b>
   </div>
-  <!--2daparte-->
-  <div class="banner-section spad">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="single-banner">
-            <img src="assets/imgs_inicio/boy.png" alt="">
-              <div class="inner-text">
-                <h4>Men’s</h4>
-              </div>
-           </div>
-        </div>
-    <div class="col-lg-4">
-      <div class="single-banner">
-        <img src="assets/imgs_inicio/women.png" alt="">
+</div>
+<!--2daparte-->
+<div class="banner-section spad">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="single-banner">
+          <img src="assets/imgs_inicio/boy.png" alt="">
           <div class="inner-text">
-              <h4>Women’s</h4>
+            <h4>Men’s</h4>
           </div>
+        </div>
       </div>
-    </div>
-        <div class="col-lg-4">
-          <div class="single-banner">
-            <img src="assets/imgs_inicio/kid.png" alt="">
+      <div class="col-lg-4">
+        <div class="single-banner">
+          <img src="assets/imgs_inicio/women.png" alt="">
+          <div class="inner-text">
+            <h4>Women’s</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="single-banner">
+          <img src="assets/imgs_inicio/kid.png" alt="">
           <div class="inner-text">
             <h4>Kid’s</h4>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Seccion3-->
+<section class="women-banner spad">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="product-large set-bg" data-setbg="assets/imgs_inicio/womenm.png"
+          style="background-image: url(&quot;assets/imgs_inicio/womenm.png&quot;);">
+          <h2>Women’s</h2>
+          <a href="#">Discover More</a>
+        </div>
+      </div>
+      <div class="col-lg-8 offset-lg-1">
+        <div class="filter-control">
+          <ul>
+            <li class="active">Clothings</li>
+            <li>HandBag</li>
+            <li>Shoes</li>
+            <li>Accessories</li>
+          </ul>
+        </div>
+        <div class="product-slider owl-carousel owl-loaded owl-drag">
+
+          <div class="card">
+            <p-carousel [value]="productos" [numVisible]="3" [numScroll]="3" [circular]="false"
+              [responsiveOptions]="responsiveOptions">
+              <ng-template let-producto pTemplate="item">
+                <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+                  <div class="mb-3">
+                    <img src="..\assets\Store\image 14.jpg" [alt]="producto.imagen" class="w-6 shadow-2" />
+                  </div>
+                  <h4 class="mb-1">{{ producto.nombre_product}}</h4>
+                  <h6 class="mt-0 mb-3">{{ '$' + producto.precio_uni }}</h6>
+                  <div class="car-buttons mt-5">
+                    <p-button type="button" styleClass="p-button p-button-rounded mr-2"
+                      icon="pi pi-shopping-cart"></p-button>
+                    <p-button type="button" styleClass="p-button-success p-button-rounded mr-2"
+                      icon="pi pi-star-fill"></p-button>
+                  </div>
+                </div>
+              </ng-template>
+            </p-carousel>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!--Seccion3-->
-  <section class="women-banner spad">
-    <div class="container-fluid">
+</section>
+<!--Seccion 4-->
+
+<section class="women-banner spad">
+  <div class="container-fluid">
     <div class="row">
-    <div class="col-lg-3">
-    <div class="product-large set-bg" data-setbg="assets/imgs_inicio/womenm.png" style="background-image: url(&quot;assets/imgs_inicio/womenm.png&quot;);">
-    <h2>Women’s</h2>
-    <a href="#">Discover More</a>
-    </div>
-    </div>
-    <div class="col-lg-8 offset-lg-1">
-    <div class="filter-control">
-    <ul>
-    <li class="active">Clothings</li>
-    <li>HandBag</li>
-    <li>Shoes</li>
-    <li>Accessories</li>
-    </ul>
-    </div>
-    <div class="product-slider owl-carousel owl-loaded owl-drag"> 
-
-      <div class="card" >
-        <p-carousel [value]="productos"  [numVisible]="3" [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions" >
-            <ng-template  let-producto pTemplate="item">
-                <div class="border-1 surface-border border-round m-2 text-center py-5 px-3" >
-                    <div class="mb-3">
-                        <img src="..\assets\Store\image 14.jpg" [alt]="producto.imagen" class="w-6 shadow-2" />
-                    </div >
-                        <h4 class="mb-1">{{ producto.nombre_product}}</h4>
-                        <h6 class="mt-0 mb-3">{{ '$' + producto.precio_uni }}</h6>
-                        <div class="car-buttons mt-5">
-                            <p-button type="button" styleClass="p-button p-button-rounded mr-2" icon="pi pi-shopping-cart"></p-button>
-                            <p-button type="button" styleClass="p-button-success p-button-rounded mr-2" icon="pi pi-star-fill"></p-button>
-                        </div>
-                </div>
-            </ng-template>
-        </p-carousel>
-    </div>     
-  </div>
-    </div>
-    </div>
-  </div>
-    </section>
-    <!--Seccion 4-->
-
-    <section class="women-banner spad">
-      <div class="container-fluid">
-      <div class="row">
       <div class="col-lg-3">
-      <div class="product-large set-bg" data-setbg="assets/imgs_inicio/man.png" style="background-image: url(&quot;assets/imgs_inicio/man.png&quot;);">
-      <h2>Women’s</h2>
-      <a href="#">Discover More</a>
-      </div>
+        <div class="product-large set-bg" data-setbg="assets/imgs_inicio/man.png"
+          style="background-image: url(&quot;assets/imgs_inicio/man.png&quot;);">
+          <h2>Women’s</h2>
+          <a href="#">Discover More</a>
+        </div>
       </div>
       <div class="col-lg-8 offset-lg-1">
-      <div class="filter-control">
-      <ul>
-      <li class="active">Clothings</li>
-      <li>HandBag</li>
-      <li>Shoes</li>
-      <li>Accessories</li>
-      </ul>
-      </div>
-      <div class="product-slider owl-carousel owl-loaded owl-drag"> 
-        <div class="card" >
-          <p-carousel [value]="productos"  [numVisible]="3" [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions" >
-              <ng-template  let-producto pTemplate="item">
-                  <div class="border-1 surface-border border-round m-2 text-center py-5 px-3" >
-                      <div class="mb-3">
-                          <img src="..\assets\Store\image 14.jpg" [alt]="producto.imagen" class="w-6 shadow-2" />
-                      </div >
-                          <h4 class="mb-1">{{ producto.nombre_product}}</h4>
-                          <h6 class="mt-0 mb-3">{{ '$' + producto.precio_uni }}</h6>
-                          <div class="car-buttons mt-5">
-                              <p-button type="button" styleClass="p-button p-button-rounded mr-2" icon="pi pi-shopping-cart"></p-button>
-                              <p-button type="button" styleClass="p-button-success p-button-rounded mr-2" icon="pi pi-star-fill"></p-button>
-                          </div>
+        <div class="filter-control">
+          <ul>
+            <li class="active">Clothings</li>
+            <li>HandBag</li>
+            <li>Shoes</li>
+            <li>Accessories</li>
+          </ul>
+        </div>
+        <div class="product-slider owl-carousel owl-loaded owl-drag">
+          <div class="card">
+            <p-carousel [value]="productos" [numVisible]="3" [numScroll]="3" [circular]="false"
+              [responsiveOptions]="responsiveOptions">
+              <ng-template let-producto pTemplate="item">
+                <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+                  <div class="mb-3">
+                    <img src="..\assets\Store\image 14.jpg" [alt]="producto.imagen" class="w-6 shadow-2" />
                   </div>
+                  <h4 class="mb-1">{{ producto.nombre_product}}</h4>
+                  <h6 class="mt-0 mb-3">{{ '$' + producto.precio_uni }}</h6>
+                  <div class="car-buttons mt-5">
+                    <p-button type="button" styleClass="p-button p-button-rounded mr-2"
+                      icon="pi pi-shopping-cart"></p-button>
+                    <p-button type="button" styleClass="p-button-success p-button-rounded mr-2"
+                      icon="pi pi-star-fill"></p-button>
+                  </div>
+                </div>
               </ng-template>
-          </p-carousel>
-      </div>     
-       </div>
-      </div>
+            </p-carousel>
+          </div>
+        </div>
       </div>
     </div>
-      </section>
+  </div>
+</section>
