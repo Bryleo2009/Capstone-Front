@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment.development';
 import { Categoria } from '@app/_model/categoria';
 import { Producto } from '@app/_model/producto';
-import { Page } from '@app/_model/Page';
+import { Page } from '@app/_model/page';
 import { ProductoFilter } from '@app/_model/filter/productoFilter';
 
 
