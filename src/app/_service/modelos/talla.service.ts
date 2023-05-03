@@ -23,6 +23,11 @@ export class TallaService {
     return this.http.get<Enum>(`${this.url}/${id}`, { headers });
   }
 
+  listarPorIdTalla(id: number, token: string): Observable<Enum[]> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<Enum[]>(`${this.url}/activas/${id}`, { headers });
+  }
+
   registrar(objeto: Enum, token: string): Observable<any> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.post(`${this.url}`,objeto, { headers });

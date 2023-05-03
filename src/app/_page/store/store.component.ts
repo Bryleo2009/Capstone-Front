@@ -120,6 +120,7 @@ export class StoreComponent implements OnInit {
       .subscribe(
         (response) => {
           this.productos = response.content;
+          console.log("🔥 > StoreComponent > listarProductos > this.productos:", this.productos)
           this.totalRecords = response.totalElements;
         },
         (error) => {

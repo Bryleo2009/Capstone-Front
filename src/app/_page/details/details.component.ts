@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Producto } from '@app/_model/producto';
 import { ProductoService } from '@app/_service/modelos/producto.service';
+import { TallaService } from '@app/_service/modelos/talla.service';
 import { EncryptionService } from '@app/_service/util/encryption.service';
 
 interface Car {
@@ -23,7 +24,8 @@ export class Details01Component {
     private route: ActivatedRoute,
     private encryp: EncryptionService,
     private router: Router,
-    private producSerive: ProductoService
+    private producSerive: ProductoService,
+    private tallaSerive: TallaService
     ) { } 
 
   id!: string;
@@ -40,12 +42,17 @@ export class Details01Component {
 
     if (this.id !== null && this.id !== undefined && this.id !== '') {
       this.producSerive
-        .listarPorId(Number(this.encryp.decrypt(this.id)), 'token')
+        .listarPorId(this.encryp.decrypt(this.id), 'token')
         .subscribe((unproducto: Producto) => {
           this.producto = unproducto;
           console.log("🔥 > Details01Component > .subscribe > producto:", this.producto)
+           //listar tallas
+          this.tallaSerive.listarPorIdTalla(unproducto.idProduct,'token').subscribe((data) => {
+            console.log(data);
+          });
         });
     }
+    
 
     this.cars = [
       {

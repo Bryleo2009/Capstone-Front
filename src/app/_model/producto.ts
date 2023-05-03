@@ -5,6 +5,7 @@ import { TipoProducto } from "./tipoProducto";
 export class Producto {
 
 	idProduct!: number;
+	iup!: string;
 	descripcionProduct!: string;
 	nombreProduct!: string;
 	precioUni!: number;
