@@ -2,14 +2,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment.development';
-import { Enum } from '@app/_model/enum';
+import { Colors, Enum } from '@app/_model/enum';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TallaService {
-
-  url:string = `${environment.HOST_URL}/Tallas`;
+export class ColorService {
+  url:string = `${environment.HOST_URL}/Colors`;
 
   constructor(private http: HttpClient) { }
 
@@ -21,11 +20,6 @@ export class TallaService {
   listarPorId(id: string, token: string): Observable<Enum> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get<Enum>(`${this.url}/${id}`, { headers });
-  }
-
-  listarPorIdTalla(id: number, token: string): Observable<Enum[]> {
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<Enum[]>(`${this.url}/activas/${id}`, { headers });
   }
 
   registrar(objeto: Enum, token: string): Observable<any> {
@@ -41,5 +35,10 @@ export class TallaService {
   eliminar(id: string, token: string): Observable<any> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.delete(`${this.url}/${id}`, { headers });
+  }
+
+  getColor(token: string): Observable<Colors[]> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<Colors[]>(`${this.url}/colors`, { headers });
   }
 }

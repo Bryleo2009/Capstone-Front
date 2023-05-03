@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment.development';
 import { Categoria } from '@app/_model/categoria';
 import { Producto } from '@app/_model/producto';
-import { Page } from '@app/_model/page';
+import { Page } from './../../_model/page';
 import { ProductoFilter } from '@app/_model/filter/productoFilter';
 
 
@@ -22,6 +22,7 @@ export class ProductoService {
     etiquetas: string[],
     tallas: string[],
     marcas: string[],
+    colores: string[],
     menorPrecio: number,
     mayorPrecio: number,
     cantidad: number,
@@ -34,6 +35,7 @@ export class ProductoService {
       etiquetas: `${etiquetas}`,
       tallas: `${tallas}`,
       marcas: `${marcas}`,
+      colores: `${colores}`,
       menorPrecio: `${menorPrecio}`,
       mayorPrecio: `${mayorPrecio}`,
       cantidad: `${cantidad}`,
