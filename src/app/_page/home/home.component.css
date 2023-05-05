@@ -594,17 +594,27 @@ ul{
   padding: 5px;
 }
 
-.ng-star-inserted {
-
-  text-align: center !important ;
-}
-
 .precio {
   margin: 0 25px 20px 25px;
 }
 
 .descuento {
   color: var(--color-prin);
+}
+
+:host ::ng-deep .p-card-title,:host ::ng-deep .p-card-subtitle {
+  text-align: center;
+}
+
+:host ::ng-deep .p-card.p-component{
+  display: flex !important;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+:host ::ng-deep .card.col.ng-star-inserted{
+  display: flex !important;
+  justify-content: center;
 }
 
 
