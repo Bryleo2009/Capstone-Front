@@ -78,11 +78,11 @@
     </div>
     <!--------------------------- Carrusel de IMG ------------------------------- -->
     <div class="center03">
-        <p-carousel  [value]="productos" [numVisible]="5" [numScroll]="5" [circular]="false"
+        <p-carousel  [value]="productos" [numVisible]="4" [numScroll]="4" [circular]="false"
         [responsiveOptions]="responsiveOptions">
         <ng-template let-producto pTemplate="item">
           <p-card [header]="producto.nombre_product" [subheader]="producto.etiquetas"
-            [style]="{ width: '260px' }">
+            [style]="{ width: '260px', height: '480px' , 'margin-bottom': '25px' }">
             <ng-template pTemplate="header">
               <img alt="Card" class="img-card" src="..\assets\Store\image 14.jpg"
                 *ngIf="producto.imagen !== null; else elseTemplate">
@@ -101,12 +101,14 @@
                   producto.precio_descu_product }}</b></p>
             </div>
             <ng-template pTemplate="footer flex">
-              <p-button
-                [style]="{backgroundColor:'#E5E5E5', color: '#000000', 'border-radius': '165px 25px 0px 0px', padding : '8px 25px'}"
-                label="Agregar a carrito"></p-button>
-              <p-button icon="pi pi-eye"
-                [style]="{backgroundColor:'#E5E5E5', color: '#000000', 'border-radius': '25px 165px 0px 0px', padding : '8px 25px 8px 15px', 'margin-left' : '5px' }"
-                (click)="visualizar(producto.id_product)"></p-button>
+                <div class="flex justify-content-center">
+                    <p-button
+                        [style]="{backgroundColor:'#E5E5E5', color: '#000000', 'border-radius': '165px 25px 0px 0px', padding : '8px 25px'}"
+                        label="Agregar a carrito"></p-button>
+                    <p-button icon="pi pi-eye"
+                        [style]="{backgroundColor:'#E5E5E5', color: '#000000', 'border-radius': '25px 165px 0px 0px', padding : '8px 25px 8px 15px', 'margin-left' : '5px' }"
+                        (click)="visualizar(producto.id_product)"></p-button>
+                    </div>
             </ng-template>
           </p-card>
         </ng-template>
