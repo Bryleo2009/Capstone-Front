@@ -131,7 +131,7 @@
         <div class="flex store-imgcatego flex-wrap justify-content-center">
             <div class="card col" *ngFor="let producto of productos">
                 <p-card [header]="producto.nombre_product" [subheader]="producto.etiquetas"
-                    [style]="{ width: '289px' }">
+                    [style]="{ width: '289px', height: '480px' }">
                     <ng-template pTemplate="header">
                         <img alt="Card" class="img-card" src="..\assets\Store\image 14.jpg"
                             *ngIf="producto.imagen !== null; else elseTemplate">

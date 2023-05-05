@@ -87,3 +87,18 @@ p-checkbox.btn-sel {
 }
   
 
+:host ::ng-deep .p-tabmenu-nav.p-reset{
+    display: flex !important;
+    justify-content: space-between;
+}
+
+:host ::ng-deep .p-card.p-component{
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+:host ::ng-deep .card.col.ng-star-inserted{
+    display: flex !important;
+    justify-content: center;
+}
