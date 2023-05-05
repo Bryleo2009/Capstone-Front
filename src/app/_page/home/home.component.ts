@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Categoria } from '@app/_model/categoria';
 import { Colors, Enum } from '@app/_model/enum';
 import { ProductoFilter } from '@app/_model/filter/productoFilter';
@@ -9,6 +10,7 @@ import { MarcaService } from '@app/_service/modelos/marca.service';
 import { ProductoService } from '@app/_service/modelos/producto.service';
 import { TallaService } from '@app/_service/modelos/talla.service';
 import { TipoProductoService } from '@app/_service/modelos/tipo-producto.service';
+import { EncryptionService } from '@app/_service/util/encryption.service';
 
 @Component({
   selector: 'app-home',
@@ -23,37 +25,15 @@ export class HomeComponent implements OnInit{
     private tallaService: TallaService,
     private marcaService: MarcaService,
     private etiquetaService: EtiquetaService,
+    private router: Router,
+    private encryp: EncryptionService,
+    private route: ActivatedRoute,
   ){}
-  rangeValues: number[] = [20, 80];
+ 
   responsiveOptions: any[] = [];
-  selectedCategories: any[] = [];
-  categories!: any[];
-  selectedCategoriesTalla: any[] = [];
-  selectedCategoriesColors: any[] = [];
-  categoriesTalla!: any[];
-  categoriaActual: string = 'Caballeros';
-  precioMin: number = 10;
-  precioMax: number = 1000;
-  categorias!: Enum[];
-  marcas!: Enum[];
-  productos!: Producto[];
-  totalRecords: number = 0;
-  pageSize: number = 12;
-  first: number = 0;
-  rows: number = 12;
+  
   ngOnInit(): void {
-    //listar categorias
-    this.categoriaService.listar('token').subscribe((data) => {
-      this.categorias = data;
-      console.log("🔥 > StoreComponent > this.categoriaService.listar > this.categorias:", this.categorias)
-    });
-
-    //listar marcas
-    this.marcaService.listar('token').subscribe((data) => {
-      this.categories = data;
-      console.log("🔥 > StoreComponent > this.marcaService.listar > this.categories:", this.categories)
-    });
-
+   
     this.responsiveOptions = [
       {
           breakpoint: '1199px',
@@ -72,31 +52,38 @@ export class HomeComponent implements OnInit{
       }
   ];
     //listar productos
-    this.listarProductos();
+    this.listarProductosCaballeros();
+    this.listarProductosDamas();
   }
 
-  listarProductos(): void {
-    console.log("🔥 > StoreComponent > listarProductos > this.selectedCategories:", this.selectedCategoriesTalla)
-    this.productoService.listarGeneral('token').subscribe(
-      (response) => {
-        this.productos = response;
-        console.log(this.productos);
-      },
-      error => {
-        console.error(error);
+
+
+
+  productosCaballeros!:ProductoFilter[];
+  listarProductosCaballeros(): void {
+    this.productoService.listar('CAB',[],[],[],[],[],0,999,20,0,'token').subscribe(
+      (data) => {
+        this.productosCaballeros = data.content;
       }
     );
   }
 
-  onPageChange(event: { first: number; rows: number; }) {
-    this.first = event.first;
-    this.pageSize = event.rows;
-    this.listarProductos();
+
+  productosDamas!:ProductoFilter[];
+  listarProductosDamas(): void {
+  this.productoService.listar('DAM',[],[],[],[],[],0,999,20,0,'token').subscribe(
+    (data) => {
+      this.productosDamas = data.content;
+    }
+  );
   }
 
-  filtrar(){
-    //listar productos
-    this.listarProductos();
-  }
+     //encriptamiento de ruta de visualizacion
+     visualizar(id: number) {
+      this.router.navigate(['/details'], {
+        relativeTo: this.route,
+        queryParams: { id: this.encryp.encrypt(String(id)), estado: '_?' },
+      });
+    }
 
 }
