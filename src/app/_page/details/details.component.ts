@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProductoFilter } from '@app/_model/filter/productoFilter';
 import { Producto } from '@app/_model/producto';
 import { ProductoService } from '@app/_service/modelos/producto.service';
 import { TallaService } from '@app/_service/modelos/talla.service';
@@ -27,7 +28,7 @@ export class Details01Component {
     private producSerive: ProductoService,
     private tallaSerive: TallaService
     ) { } 
-
+    responsiveOptions: any[] = [];
   id!: string;
   estado: string = '';
   producto:Producto = new Producto();
@@ -52,32 +53,53 @@ export class Details01Component {
           });
         });
     }
+
     
 
-    this.cars = [
+    this.responsiveOptions = [
       {
-        id: '1',
-        name: 'Chompa 1',
-        description: 'Chompa Prueba N°1',
-        price: 150,
-        priced: 95,
+        breakpoint: '1199px',
+        numVisible: 1,
+        numScroll: 1
       },
       {
-        id: '2',
-        name: 'Chompa 2',
-        description: 'Chompa Prueba N°5',
-        price: 160,
-        priced: 100,
+        breakpoint: '991px',
+        numVisible: 2,
+        numScroll: 1
       },
       {
-        id: '3',
-        name: 'Chompa 3',
-        description: 'Chompa Prueba N°3',
-        price: 170,
-        priced: 105,
-      },
+        breakpoint: '767px',
+        numVisible: 1,
+        numScroll: 1
+      }
     ];
+
+    this.listarProductos();
   }
 
+
+
+  
   cars: Car[] = [];
+
+
+
+  productos!: ProductoFilter[];
+  listarProductos(): void{
+    this.producSerive.listar('',[],[],[],[],[],0,999,20,0,'token').subscribe(
+      (data) => {
+        this.productos = data.content;
+      }
+    );
+  }
+
+  
+     //encriptamiento de ruta de visualizacion
+     visualizar(id: number) {
+      this.router.navigate(['/details'], {
+        relativeTo: this.route,
+        queryParams: { id: this.encryp.encrypt(String(id)), estado: '_?' },
+      });
+    }
+
 }

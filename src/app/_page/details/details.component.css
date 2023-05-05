@@ -16,9 +16,9 @@ section {
 }
 
 .center03 {
-  display: flex;
-  justify-content: center;
-  padding: 50px;
+
+  padding: 25px;
+  margin: 50px;
 }
 
 .eje {

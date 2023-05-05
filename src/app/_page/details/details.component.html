@@ -2,7 +2,8 @@
     <div class="card flex p-5">
         <!-- Imagen descripcion producto -->
         <div class="eje flex m-5">
-            <p-image src="https://primefaces.org/cdn/primeng/images/galleria/galleria1.jpg" alt="Image" width="500" height="500" [preview]="true"></p-image>
+            <p-image src="https://primefaces.org/cdn/primeng/images/galleria/galleria1.jpg" alt="Image" width="500"
+                height="500" [preview]="true"></p-image>
         </div>
         <!-- Descripcion producto -->
         <div class="flex m-5 flex-column">
@@ -17,7 +18,8 @@
             </div>
             <div class="flex flex-column">
                 <h1 class="letra mt-3">{{producto.nombreProduct}}</h1>
-                <p-rating  class="mt-3 mb-3" starStyleClass="custom-star" [(ngModel)]="estrellas" [readonly]="true" [cancel]="false"></p-rating>
+                <p-rating class="mt-3 mb-3" starStyleClass="custom-star" [(ngModel)]="estrellas" [readonly]="true"
+                    [cancel]="false"></p-rating>
                 <div *ngIf="producto.isPrecioDescProduct, else sinDescuento">
                     <p class="letra" style="color: var(--color-prin);">S/ {{producto.precioDescuProduct}}</p>
                     <p><del>S/ {{ producto.precioUni }}</del></p>
@@ -45,7 +47,8 @@
             </div>
             <!-- botones compra -->
             <div class="flex justify-content-center align-items-center">
-                <p-inputNumber [(ngModel)]="cant" suffix=" ud." [showButtons]="true" mode="decimal" [useGrouping]="false" inputId="minmax-buttons" [min]="1" [max]="500"> </p-inputNumber>
+                <p-inputNumber [(ngModel)]="cant" suffix=" ud." [showButtons]="true" mode="decimal"
+                    [useGrouping]="false" inputId="minmax-buttons" [min]="1" [max]="500"> </p-inputNumber>
                 <p-button [style]="{backgroundColor:'#E5E5E5', color: '#000000', padding : '06px 10px', margin: '05px'}"
                     label="Agregar Al Carrito"><i class="fa-solid fa-cart-shopping"
                         style="color: var(--color-white); margin:05px"></i></p-button>
@@ -75,84 +78,38 @@
     </div>
     <!--------------------------- Carrusel de IMG ------------------------------- -->
     <div class="center03">
-        <p-carousel [value]="cars">
-            <ng-template let-car pTemplate="item">
-                <div class="product-item">
-                    <div class="product-item-content flex">
-                        <div class="p-mb-3"></div>
-                        <div>
-                            <h4 class="centerlimg">
-                                <img src=".\assets\details\prenda01.png" style="width: 70%;" />
-                            </h4>
-                            <h4 class="centerlimg">
-                                {{ car.name }}
-                            </h4>
-                            <h4 class="centerlimg">
-                                {{ car.description }}
-                            </h4>
-                            <h6 class="centerlimg">
-                                <p class="txtporiginal">S/.{{ car.price }}</p>
-                                <p class="txtpdescuento">S/.{{ car.priced }}</p>
-                            </h6>
-
-                            <div class="centerlimg">
-                                <p-button [style]="{backgroundColor:'#9b9b9b', color: '#000000', margin: '10px'}"
-                                    label="Agregar Al Carrito"></p-button>
-                                <div class="center06">
-                                    <a href="" class="" target="_blank"><i class="fa-regular fa-heart"
-                                            style="color: #000000;"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <h4 class="centerlimg">
-                                <img src=".\assets\details\prenda01.png" style="width: 70%" />
-                            </h4>
-                            <h4 class="centerlimg">
-                                {{ car.name }}
-                            </h4>
-                            <h4 class="centerlimg">
-                                {{ car.description }}
-                            </h4>
-                            <h6 class="centerlimg">
-                                <p class="txtporiginal">S/.{{ car.price }}</p>
-                                <p class="txtpdescuento">S/.{{ car.priced }}</p>
-                            </h6>
-                            <div class="centerlimg">
-                                <p-button [style]="{backgroundColor:'#9b9b9b', color: '#000000', margin: '10px'}"
-                                    label="Agregar Al Carrito"></p-button>
-                                <div class="center06">
-                                    <a href="" class="" target="_blank"><i class="fa-regular fa-heart"
-                                            style="color: #000000;"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <h4 class="centerlimg">
-                                <img src=".\assets\details\prenda01.png" style="width: 70%" />
-                            </h4>
-                            <h4 class="centerlimg">
-                                {{ car.name }}
-                            </h4>
-                            <h4 class="centerlimg">
-                                {{ car.description }}
-                            </h4>
-                            <h6 class="centerlimg">
-                                <p class="txtporiginal">S/.{{ car.price }}</p>
-                                <p class="txtpdescuento">S/.{{ car.priced }}</p>
-                            </h6>
-                            <div class="centerlimg">
-                                <p-button [style]="{backgroundColor:'#9b9b9b', color: '#000000', margin: '10px'}"
-                                    label="Agregar Al Carrito"></p-button>
-                                <div class="center06">
-                                    <a href="" class="" target="_blank"><i class="fa-regular fa-heart"
-                                            style="color: #000000;"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <p-carousel  [value]="productos" [numVisible]="5" [numScroll]="5" [circular]="false"
+        [responsiveOptions]="responsiveOptions">
+        <ng-template let-producto pTemplate="item">
+          <p-card [header]="producto.nombre_product" [subheader]="producto.etiquetas"
+            [style]="{ width: '260px' }">
+            <ng-template pTemplate="header">
+              <img alt="Card" class="img-card" src="..\assets\Store\image 14.jpg"
+                *ngIf="producto.imagen !== null; else elseTemplate">
+              <ng-template #elseTemplate>
+                <img alt="Card" class="img-card" src="..\assets\Store\image 14.jpg">
+              </ng-template>
             </ng-template>
-        </p-carousel>
+            <div class="cont-card flex justify-content-center">
+              <del *ngIf="producto.is_precio_desc_product, else sinTachado">
+                <p class="precio">S/ {{ producto.precio_uni }}</p>
+              </del>
+              <ng-template #sinTachado>
+                <p class="precio">S/ {{ producto.precio_uni }}</p>
+              </ng-template>
+              <p class="precio descuento" *ngIf="producto.is_precio_desc_product"><b>S/ {{
+                  producto.precio_descu_product }}</b></p>
+            </div>
+            <ng-template pTemplate="footer flex">
+              <p-button
+                [style]="{backgroundColor:'#E5E5E5', color: '#000000', 'border-radius': '165px 25px 0px 0px', padding : '8px 25px'}"
+                label="Agregar a carrito"></p-button>
+              <p-button icon="pi pi-eye"
+                [style]="{backgroundColor:'#E5E5E5', color: '#000000', 'border-radius': '25px 165px 0px 0px', padding : '8px 25px 8px 15px', 'margin-left' : '5px' }"
+                (click)="visualizar(producto.id_product)"></p-button>
+            </ng-template>
+          </p-card>
+        </ng-template>
+      </p-carousel>
     </div>
 </section>
