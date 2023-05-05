@@ -1,18 +1,16 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { Categoria } from '@app/_model/categoria';
+import { Component, OnInit } from '@angular/core';
 import { Colors, Enum } from '@app/_model/enum';
 import { ProductoFilter } from '@app/_model/filter/productoFilter';
-import { Producto } from '@app/_model/producto';
 import { CategoriasService } from '@app/_service/modelos/categorias.service';
 import { EtiquetaService } from '@app/_service/modelos/etiqueta.service';
 import { MarcaService } from '@app/_service/modelos/marca.service';
 import { ProductoService } from '@app/_service/modelos/producto.service';
 import { TallaService } from '@app/_service/modelos/talla.service';
-import { TipoProductoService } from '@app/_service/modelos/tipo-producto.service';
 import { ColorService } from '../../_service/modelos/color.service';
 import { MenuItem } from 'primeng/api';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EncryptionService } from '@app/_service/util/encryption.service';
+import { TipoProductoService } from '@app/_service/modelos/tipo-producto.service';
 
 @Component({
   selector: 'app-store',
@@ -25,6 +23,7 @@ export class StoreComponent implements OnInit {
     private productoService: ProductoService,
     private tallaService: TallaService,
     private marcaService: MarcaService,
+    private tipoProductoService: TipoProductoService,
     private etiquetaService: EtiquetaService,
     private colorService: ColorService,
     private router: Router,
@@ -38,8 +37,6 @@ export class StoreComponent implements OnInit {
 
   rangeValues: number[] = [20, 80];
   selectedCategories: any[] = [];
-  categories!: any[];
-  selectedCategoriesTalla: any[] = [];
   selectedCategoriesColors: any[] = [];
   categoriesTalla!: any[];
   categoriaActual!: string;
@@ -47,30 +44,39 @@ export class StoreComponent implements OnInit {
   precioMax: number = 1000;
   categorias!: Enum[];
   colores!: Colors[];
-  tallas!: Enum[];
-  marcas!: Enum[];
+  talla!: Enum[];
+  marca!: Enum[];
+  tipoproducto!: Enum[];
   etiquetas!: Enum[];
   productos!: ProductoFilter[];
   totalRecords: number = 0;
   pageSize: number = 12;
   first: number = 0;
   rows: number = 12;
-  selectedCountry!: Enum;
+  selectedEtiqueta!: Enum;
+  selectedtalla!: Enum;
+  selectedmarca!: Enum;
+  selectedtipoproducto!: Enum;
   items!: MenuItem[];
   seleccion!:string;
   ngOnInit(): void {     
 
-    this.updateValues(); // llama a la función para asegurarte de que los valores iniciales se muestren en el chip
-
-    console.log("🔥 > StoreComponent > this.items=Object.values > this.items:", this.items)
+    this.updateValuesEtiquetas(); // llama a la función para asegurarte de que los valores iniciales se muestren en el chip
+    this.updateValuestalla();
+    this.updateValuesmarca();
     //listar tallas
     this.tallaService.listar('token').subscribe((data) => {
-      this.categoriesTalla = data.filter(color => color.vistaItem !== 'Talla unica');
+      this.talla = data.filter(color => color.vistaItem !== 'Talla unica');
+    });
+
+    //listar tipod eporducto
+    this.tipoProductoService.listar('token').subscribe((data) => {
+      this.tipoproducto = data;
     });
 
     //listar marcas
     this.marcaService.listar('token').subscribe((data) => {
-      this.categories = data;
+      this.marca = data;
     });
 
     //listar etiquetas
@@ -106,10 +112,10 @@ export class StoreComponent implements OnInit {
     this.productoService
       .listar(
         categoria,
-        [],
-        this.abreviaturas,
-        this.selectedCategoriesTalla,
-        this.selectedCategories,
+        this.abreviaturastipoproducto,
+        this.abreviaturasEtiqueta,
+        this.abreviaturastalla,
+        this.abreviaturasmarca,
         this.selectedCategoriesColors,
         this.precioMin,
         this.precioMax,
@@ -140,14 +146,14 @@ export class StoreComponent implements OnInit {
     this.listarProductos(categoria);
   }
 
-  values: any[] = [];
-  abreviaturas: any[] = [];
-  updateValues() {
-    if (this.selectedCountry) {
-      const newItem = this.selectedCountry.vistaItem;
-      if (!this.values.includes(newItem)) {
-        this.values.push(newItem);
-        this.abreviaturas.push(this.selectedCountry.abreviItem);
+  valuesEtiqueta: any[] = [];
+  abreviaturasEtiqueta: any[] = [];
+  updateValuesEtiquetas() {
+    if (this.selectedEtiqueta) {
+      const newItem = this.selectedEtiqueta.vistaItem;
+      if (!this.valuesEtiqueta.includes(newItem)) {
+        this.valuesEtiqueta.push(newItem);
+        this.abreviaturasEtiqueta.push(this.selectedEtiqueta.abreviItem);
         this.filtrar(this.seleccion);
       }
     }
@@ -155,10 +161,79 @@ export class StoreComponent implements OnInit {
 
   //etiqwuetas de filtrado
   removeEtiqueta(etiqueta: string) {
-    const index = this.values.indexOf(etiqueta);
+    const index = this.valuesEtiqueta.indexOf(etiqueta);
     if (index !== -1) {
-      this.values.splice(index, 1);
-      this.abreviaturas.splice(index, 1);
+      this.valuesEtiqueta.splice(index, 1);
+      this.abreviaturasEtiqueta.splice(index, 1);
+      this.filtrar(this.seleccion);
+    }
+  }
+
+  valuestalla: any[] = [];
+  abreviaturastalla: any[] = [];
+  updateValuestalla() {
+    if (this.selectedtalla) {
+      const newItem = this.selectedtalla.vistaItem;
+      if (!this.valuestalla.includes(newItem)) {
+        this.valuestalla.push(newItem);
+        this.abreviaturastalla.push(this.selectedtalla.abreviItem);
+        this.filtrar(this.seleccion);
+      }
+    }
+  }
+
+  //etiqwuetas de filtrado
+  removetalla(talla: string) {
+    const index = this.valuestalla.indexOf(talla);
+    if (index !== -1) {
+      this.valuestalla.splice(index, 1);
+      this.abreviaturastalla.splice(index, 1);
+      this.filtrar(this.seleccion);
+    }
+  }
+
+  valuesmarca: any[] = [];
+  abreviaturasmarca: any[] = [];
+  updateValuesmarca() {
+    if (this.selectedmarca) {
+      const newItem = this.selectedmarca.vistaItem;
+      if (!this.valuesmarca.includes(newItem)) {
+        this.valuesmarca.push(newItem);
+        this.abreviaturasmarca.push(this.selectedmarca.abreviItem);
+        this.filtrar(this.seleccion);
+      }
+    }
+  }
+
+  //etiqwuetas de filtrado
+  removemarca(marca: string) {
+    const index = this.valuesmarca.indexOf(marca);
+    if (index !== -1) {
+      this.valuesmarca.splice(index, 1);
+      this.abreviaturasmarca.splice(index, 1);
+      this.filtrar(this.seleccion);
+    }
+  }
+
+  valuestipoproducto: any[] = [];
+  abreviaturastipoproducto: any[] = [];
+  updateValuestipoproducto() {
+    if (this.selectedtipoproducto) {
+      const newItem = this.selectedtipoproducto.vistaItem;
+      if (!this.valuestipoproducto.includes(newItem)) {
+        this.valuestipoproducto.push(newItem);
+        this.abreviaturastipoproducto.push(this.selectedtipoproducto.abreviItem);
+        this.filtrar(this.seleccion);
+      }
+    }
+  }
+
+  //etiqwuetas de filtrado
+  removetipoproducto(tipoproducto: string) {
+    const index = this.valuestipoproducto.indexOf(tipoproducto);
+    if (index !== -1) {
+      this.valuestipoproducto.splice(index, 1);
+      this.abreviaturastipoproducto.splice(index, 1);
       this.filtrar(this.seleccion);
     }
   }

@@ -73,3 +73,17 @@ p-checkbox.btn-sel {
     border: 0px solid transparent !important;
     background: transparent !important;
 }
+
+:host ::ng-deep .p-checkbox-icon.pi.pi-bookmark-fill.ng-star-inserted {
+    color: white !important;
+    -webkit-box-shadow: 8px 5px 19px 5px rgba(0,0,0,0.2);
+    box-shadow:  8px 5px 19px 5px rgba(0,0,0,0.2);
+}
+  
+:host ::ng-deep .p-tabmenu-nav p-reset{
+    color: white !important;
+    -webkit-box-shadow: 8px 5px 19px 5px rgba(0,0,0,0.2);
+    box-shadow:  8px 5px 19px 5px rgba(0,0,0,0.2);
+}
+  
+

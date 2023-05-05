@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment.development';
 import { Categoria } from '@app/_model/categoria';
 import { TipoProducto } from '@app/_model/tipoProducto';
+import { Enum } from '@app/_model/enum';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +14,9 @@ export class TipoProductoService {
 
   constructor(private http: HttpClient) { }
 
-  listar(token: string): Observable<TipoProducto[]> {
+  listar(token: string): Observable<Enum[]> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<TipoProducto[]>(this.url, { headers });
+    return this.http.get<Enum[]>(this.url, { headers });
   }
 
   listarPorId(id: string, token: string): Observable<TipoProducto> {
