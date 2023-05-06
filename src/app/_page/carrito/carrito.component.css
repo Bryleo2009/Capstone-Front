@@ -44,3 +44,14 @@
     margin-bottom: 50px;
 
 }
+
+.boton-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 40px;
+}
+
+.botfin {
+
+    margin: 25px;
+}

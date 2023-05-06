@@ -17,19 +17,23 @@
                             class="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
                             <div class="flex flex-column align-items-center sm:align-items-start gap-4">
                                 <div class="text-2xl font-bold text-900">Polo Manga Corta Hombre</div>
-                                <p-rating [(ngModel)]="product.rating" [readonly]="true" [cancel]="false"></p-rating>
+                                <!-- <p-rating [(ngModel)]="product.rating" [readonly]="true" [cancel]="false"></p-rating> -->
+                                <p-inputNumber [(ngModel)]="cant" suffix=" ud." [showButtons]="true" mode="decimal"
+                                    [useGrouping]="false" inputId="minmax-buttons" [min]="1" [max]="500"></p-inputNumber>
                                 <div class="flex align-items-center gap-3">
                                     <span class="flex align-items-center gap-2">
                                         <i class="pi pi-tag"></i>
                                         <span class="font-semibold">Prendas</span>
                                     </span>
+
                                     <!-- <p-tag styleClass="p-button-success" value="INSTOCK" severity="success"></p-tag> -->
                                     <!--<p-tag styleClass="p-button-success" value="LOWSTOCK" severity="warning"></p-tag>-->
                                 </div>
                             </div>
                             <div class="flex sm:flex-column align-items-center sm:align-items-end gap-3 sm:gap-2">
                                 <span class="text-2xl font-semibold">{{ '$' + 98 }}</span>
-                                <p-button icon="pi pi-times" styleClass="p-button-rounded"></p-button>
+                                <p-button class="boton-container" icon="pi pi-trash" styleClass="p-button-rounded"
+                                    [style]="{backgroundColor:'var(--color-prin)', color: '#E5E5E5'}"></p-button>
                             </div>
                         </div>
                     </div>
@@ -37,13 +41,18 @@
             </ng-template>
         </p-dataView>
     </div>
-    <!--BOTONES DE AGREGAR Y PAGAR-->
-    <div class="btn_1">
-        <p-button label="Agregar Productos" icon="pi pi-tag" iconPos="right"
-            [style]="{backgroundColor:'#000000', color: '#E5E5E5', padding : '15px 30px', margin: '0px 10px'}"></p-button>
+    <div>
+        <title>Resumen de la orden</title>
+
+        
     </div>
-    <div class="btn_2">
+    <!--BOTONES DE AGREGAR Y PAGAR-->
+    <div class="flex justify-content-center botfin">
+        <p-button label="Agregar Productos" icon="pi pi-tag" iconPos="right"
+            [style]="{backgroundColor:'#000000', color: '#E5E5E5', padding : '15px 30px', margin: '0px 100px'}"></p-button>
+
+
         <p-button label="Pagar" icon="fa-solid fa-cart-shopping" iconPos="right"
-            [style]="{backgroundColor:'#1cab85', color: '#000000', padding : '15px 30px', margin: '0px 10px'}"></p-button>
+            [style]="{backgroundColor:'var(--color-prin)', color: '#000000', padding : '15px 10px', margin: '0px 100px'}"></p-button>
     </div>
 </section>

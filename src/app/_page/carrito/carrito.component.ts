@@ -57,6 +57,7 @@ export class CarritoComponent {
   selectedCountry!: Enum;
   items!: MenuItem[];
   seleccion!:string;
+  cant = 1;
   ngOnInit(): void {   
       
 
