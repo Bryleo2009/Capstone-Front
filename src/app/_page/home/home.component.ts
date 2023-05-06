@@ -78,6 +78,18 @@ export class HomeComponent implements OnInit{
   );
   }
 
+
+  navegar(categoria: string){
+    console.log(categoria);
+    this.router.navigate(['/store'] , {
+      relativeTo: this.route,
+      queryParams: { categoria: this.encryp.encrypt(String(categoria)), estado: '_?' },
+      fragment: 'filtrado'
+    });
+  }
+
+
+
      //encriptamiento de ruta de visualizacion
      visualizar(id: number) {
       this.router.navigate(['/details'], {

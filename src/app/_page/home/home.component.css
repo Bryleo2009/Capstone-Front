@@ -142,13 +142,14 @@ img {
   align-items: center;
   height: 100%;
 }
-.single-banner .inner-text h4 {
+.single-banner .inner-text button {
     color: #252525;
     font-weight: 700;
     padding: 11px 28px;
     background: #ffffff;
     border-radius: 2px;
 }
+
 h4 {
   font-size: 24px;
 }
@@ -618,3 +619,11 @@ ul{
 }
 
 
+:host ::ng-deep .p-button{
+  background-color: var(--color-prin);
+  color: black;
+}
+
+:host ::ng-deep .p-button:enabled:hover{
+  background-color: var(--color-prin);
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Colors, Enum } from '@app/_model/enum';
 import { ProductoFilter } from '@app/_model/filter/productoFilter';
 import { CategoriasService } from '@app/_service/modelos/categorias.service';
@@ -11,6 +11,7 @@ import { MenuItem } from 'primeng/api';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EncryptionService } from '@app/_service/util/encryption.service';
 import { TipoProductoService } from '@app/_service/modelos/tipo-producto.service';
+import { TabMenu } from 'primeng/tabmenu';
 
 @Component({
   selector: 'app-store',
@@ -28,12 +29,11 @@ export class StoreComponent implements OnInit {
     private colorService: ColorService,
     private router: Router,
     private encryp: EncryptionService,
-    private route: ActivatedRoute,
+    private route: ActivatedRoute
   ) {
     this.seleccion = '';
-    this.categoriaActual = "Todas las categorias"
+    this.categoriaActual = 'Todas las categorias';
   }
-
 
   rangeValues: number[] = [20, 80];
   selectedCategories: any[] = [];
@@ -58,15 +58,15 @@ export class StoreComponent implements OnInit {
   selectedmarca!: Enum;
   selectedtipoproducto!: Enum;
   items!: MenuItem[];
-  seleccion!:string;
-  ngOnInit(): void {     
-
+  seleccion!: string;
+  activeItem!: MenuItem;
+  ngOnInit(): void {
     this.updateValuesEtiquetas(); // llama a la función para asegurarte de que los valores iniciales se muestren en el chip
     this.updateValuestalla();
     this.updateValuesmarca();
     //listar tallas
     this.tallaService.listar('token').subscribe((data) => {
-      this.talla = data.filter(color => color.vistaItem !== 'Talla unica');
+      this.talla = data.filter((color) => color.vistaItem !== 'Talla unica');
     });
 
     //listar tipod eporducto
@@ -86,29 +86,50 @@ export class StoreComponent implements OnInit {
 
     //listar colores
     this.colorService.getColor('token').subscribe((data) => {
-      this.colores = data.filter(color => color.vista_item !== '');
+      this.colores = data.filter((color) => color.vista_item !== '');
     });
 
     //listar categorias
     this.categoriaService.listar('token').subscribe((data) => {
       this.categorias = data;
-      this.items  = this.categorias.map(categoria => {
+      this.items = this.categorias.map((categoria) => {
         return {
           label: categoria.nombreItem,
           icon: categoria.abreviItem,
-          command: () => {            
-            this.seleccion=categoria.abreviItem;
-            this.categoriaActual=categoria.vistaItem;
+          command: () => {
+            this.seleccion = categoria.abreviItem;
+            this.categoriaActual = categoria.vistaItem;
             this.filtrar(this.seleccion);
-          }
+          },
         };
       });
     });
 
-    this.filtrar(this.seleccion);
+    this.route.queryParams.subscribe((params) => {
+      this.seleccion = this.encryp.decrypt(String( params['categoria']));
+      console.log("🔥 > StoreComponent > this.route.queryParams.subscribe > this.seleccion:", this.seleccion)
+      switch (this.seleccion) {
+        case 'CAB':
+          this.categoriaActual = 'Caballeros';
+          break;
+        case 'DAM':
+          this.categoriaActual = 'Damas';
+          break;
+        case 'NIÑ':
+          this.categoriaActual = 'Niños y Niñas';
+          break;
+        case 'ACC':
+          this.categoriaActual = 'Accesorios';
+          break;
+        default:
+          this.categoriaActual = 'Todas las categorias';
+          break;
+      }
+      this.filtrar(this.seleccion);
+    });
   }
 
-  listarProductos(categoria:string): void {
+  listarProductos(categoria: string): void {
     this.productoService
       .listar(
         categoria,
@@ -126,7 +147,10 @@ export class StoreComponent implements OnInit {
       .subscribe(
         (response) => {
           this.productos = response.content;
-          console.log("🔥 > StoreComponent > listarProductos > this.productos:", this.productos)
+          console.log(
+            '🔥 > StoreComponent > listarProductos > this.productos:',
+            this.productos
+          );
           this.totalRecords = response.totalElements;
         },
         (error) => {
@@ -138,11 +162,12 @@ export class StoreComponent implements OnInit {
   onPageChange(event: { first: number; rows: number }) {
     this.first = event.first;
     this.pageSize = event.rows;
-    console.log(this.seleccion)
+    console.log(this.seleccion);
     this.filtrar(this.seleccion);
   }
 
-  filtrar(categoria:string) {
+  filtrar(categoria: string) {
+    console.log("🔥 > StoreComponent > filtrar > categoria:", categoria)
     this.listarProductos(categoria);
   }
 
@@ -222,7 +247,9 @@ export class StoreComponent implements OnInit {
       const newItem = this.selectedtipoproducto.vistaItem;
       if (!this.valuestipoproducto.includes(newItem)) {
         this.valuestipoproducto.push(newItem);
-        this.abreviaturastipoproducto.push(this.selectedtipoproducto.abreviItem);
+        this.abreviaturastipoproducto.push(
+          this.selectedtipoproducto.abreviItem
+        );
         this.filtrar(this.seleccion);
       }
     }
@@ -238,12 +265,11 @@ export class StoreComponent implements OnInit {
     }
   }
 
-   //encriptamiento de ruta de visualizacion
-   visualizar(id: number) {
+  //encriptamiento de ruta de visualizacion
+  visualizar(id: number) {
     this.router.navigate(['/details'], {
       relativeTo: this.route,
       queryParams: { id: this.encryp.encrypt(String(id)), estado: '_?' },
     });
   }
-
 }

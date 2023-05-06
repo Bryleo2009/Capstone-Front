@@ -10,36 +10,53 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-4">
-        <div class="single-banner">
-          <img src="assets/imgs_inicio/boy.png" alt="">
-          <div class="inner-text">
-            <h4>Caballeros</h4>
+        <a (click)="navegar('CAB');" style="cursor: pointer;">
+          <div class="single-banner">
+            <img src="assets/imgs_inicio/boy.png" alt="">
+            <div class="inner-text">
+              <p-button (click)="navegar('CAB');">
+                <h4>Caballeros</h4>
+              </p-button>
+            </div>
           </div>
-        </div>
+        </a>
+        
       </div>
       <div class="col-lg-4">
-        <div class="single-banner">
-          <img src="assets/imgs_inicio/women.png" alt="">
-          <div class="inner-text">
-            <h4>Damas</h4>
+        <a (click)="navegar('DAM');" style="cursor: pointer;">
+          <div class="single-banner">
+            <img src="assets/imgs_inicio/women.png" alt="">
+            <div class="inner-text">
+              <p-button (click)="navegar('DAM');">
+                <h4>Damas</h4>
+              </p-button>
+            </div>
           </div>
-        </div>
+        </a>        
       </div>
       <div class="col-lg-4">
-        <div class="single-banner">
-          <img src="assets/imgs_inicio/kid.png" alt="">
-          <div class="inner-text">
-            <h4>Niños</h4>
+        <a (click)="navegar('NIÑ');" style="cursor: pointer;">
+          <div class="single-banner">
+            <img src="assets/imgs_inicio/kid.png" alt="">
+            <div class="inner-text">
+              <p-button (click)="navegar('NIÑ');">
+                <h4>Niños</h4>
+              </p-button>
+            </div>
           </div>
-        </div>
+        </a>        
       </div>
       <div class="col-lg-4">
-        <div class="single-banner">
+        <a (click)="navegar('ACC');" style="cursor: pointer;">
+          <div class="single-banner">
           <img src="assets/imgs_inicio/accesorios3.png" alt="">
           <div class="inner-text">
-            <h4>Accesorios</h4>
+            <p-button (click)="navegar('ACC');">
+              <h4>Accesorios</h4>
+            </p-button>
           </div>
         </div>
+      </a>        
       </div>
     </div>
   </div>
@@ -49,16 +66,18 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-3">
-        <div class="product-large set-bg" data-setbg="assets/imgs_inicio/womenm.png"
-          style="background-image: url(&quot;assets/imgs_inicio/womenm.png&quot;);">
-          <h2>Damas</h2>
-          <a href="#">Descubre más</a>
-        </div>
+        <a (click)="navegar('DAM');" style="cursor: pointer;">
+          <div class="product-large set-bg" data-setbg="assets/imgs_inicio/womenm.png"
+            style="background-image: url(&quot;assets/imgs_inicio/womenm.png&quot;);">
+            <h2>Damas</h2>
+            <a (click)="navegar('DAM');" style="cursor: pointer;">Descubre más</a>
+          </div>
+        </a>
       </div>
       <div class="col-lg-8 offset-lg-1">
         <div class="product-slider owl-carousel owl-loaded owl-drag">
           <div class="card">
-            <p-carousel [value]="productosDamas" [numVisible]="3" [numScroll]="3" [circular]="false"
+            <p-carousel [value]="productosDamas" [numVisible]="2" [numScroll]="2" [circular]="false"
               [responsiveOptions]="responsiveOptions">
               <ng-template let-producto pTemplate="item">
                 <p-card [header]="producto.nombre_product" [subheader]="producto.etiquetas"
@@ -83,12 +102,12 @@
                   <ng-template pTemplate="footer flex">
                     <div class="flex justify-content-center">
                       <p-button
-                      [style]="{backgroundColor:'#E5E5E5', color: '#000000', 'border-radius': '165px 25px 0px 0px', padding : '8px 25px'}"
-                      label="Agregar a carrito"></p-button>
-                    <p-button icon="pi pi-eye"
-                      [style]="{backgroundColor:'#E5E5E5', color: '#000000', 'border-radius': '25px 165px 0px 0px', padding : '8px 25px 8px 15px', 'margin-left' : '5px' }"
-                      (click)="visualizar(producto.id_product)"></p-button>
-                    </div>                      
+                        [style]="{backgroundColor:'#E5E5E5', color: '#000000', 'border-radius': '165px 25px 0px 0px', padding : '8px 25px'}"
+                        label="Agregar a carrito"></p-button>
+                      <p-button icon="pi pi-eye"
+                        [style]="{backgroundColor:'#E5E5E5', color: '#000000', 'border-radius': '25px 165px 0px 0px', padding : '8px 25px 8px 15px', 'margin-left' : '5px' }"
+                        (click)="visualizar(producto.id_product)"></p-button>
+                    </div>
                   </ng-template>
                 </p-card>
               </ng-template>
@@ -105,16 +124,18 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-3">
-        <div class="product-large set-bg" data-setbg="assets/imgs_inicio/man.png"
+        <a (click)="navegar('CAB');" style="cursor: pointer;">
+          <div class="product-large set-bg" data-setbg="assets/imgs_inicio/man.png"
           style="background-image: url(&quot;assets/imgs_inicio/man.png&quot;);">
           <h2>Caballeros</h2>
-          <a href="#">Descubre más</a>
+          <a (click)="navegar('CAB');" style="cursor: pointer;">Descubre más</a>
         </div>
+        </a>
       </div>
       <div class="col-lg-8 offset-lg-1">
         <div class="product-slider owl-carousel owl-loaded owl-drag">
           <div class="card">
-            <p-carousel [value]="productosCaballeros" [numVisible]="3" [numScroll]="3" [circular]="false"
+            <p-carousel [value]="productosCaballeros" [numVisible]="2" [numScroll]="2" [circular]="false"
               [responsiveOptions]="responsiveOptions">
               <ng-template let-producto pTemplate="item">
                 <p-card [header]="producto.nombre_product" [subheader]="producto.etiquetas"
@@ -139,12 +160,12 @@
                   <ng-template pTemplate="footer flex">
                     <div class="flex justify-content-center">
                       <p-button
-                      [style]="{backgroundColor:'#E5E5E5', color: '#000000', 'border-radius': '165px 25px 0px 0px', padding : '8px 25px'}"
-                      label="Agregar a carrito"></p-button>
-                    <p-button icon="pi pi-eye"
-                      [style]="{backgroundColor:'#E5E5E5', color: '#000000', 'border-radius': '25px 165px 0px 0px', padding : '8px 25px 8px 15px', 'margin-left' : '5px' }"
-                      (click)="visualizar(producto.id_product)"></p-button>
-                    </div> 
+                        [style]="{backgroundColor:'#E5E5E5', color: '#000000', 'border-radius': '165px 25px 0px 0px', padding : '8px 25px'}"
+                        label="Agregar a carrito"></p-button>
+                      <p-button icon="pi pi-eye"
+                        [style]="{backgroundColor:'#E5E5E5', color: '#000000', 'border-radius': '25px 165px 0px 0px', padding : '8px 25px 8px 15px', 'margin-left' : '5px' }"
+                        (click)="visualizar(producto.id_product)"></p-button>
+                    </div>
                   </ng-template>
                 </p-card>
               </ng-template>

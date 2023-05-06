@@ -13,9 +13,9 @@ const routes: Routes = [
   { path : '' , component : HomeComponent},
   { path : 'store' , component : StoreComponent},
   { path : 'details' , component : Details01Component},
-  { path : 'pedido', component : PedidoshComponent},
-  { path : 'seguimiento', component: SeguimientoComponent},
-  { path : 'carrito' , component : CarritoComponent},
+  { path : 'queeseesto', component : PedidoshComponent},
+  { path : 'trazabilidad', component: SeguimientoComponent},
+  { path : 'pedido' , component : CarritoComponent},
 ];
 
 @NgModule({
