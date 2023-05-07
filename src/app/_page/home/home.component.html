@@ -161,7 +161,7 @@
                     <div class="flex justify-content-center">
                       <p-button
                         [style]="{backgroundColor:'#E5E5E5', color: '#000000', 'border-radius': '165px 25px 0px 0px', padding : '8px 25px'}"
-                        label="Agregar a carrito"></p-button>
+                        label="Agregar a carrito" (click)="show(producto.id_product)"></p-button>
                       <p-button icon="pi pi-eye"
                         [style]="{backgroundColor:'#E5E5E5', color: '#000000', 'border-radius': '25px 165px 0px 0px', padding : '8px 25px 8px 15px', 'margin-left' : '5px' }"
                         (click)="visualizar(producto.id_product)"></p-button>

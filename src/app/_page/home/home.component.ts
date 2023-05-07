@@ -12,6 +12,8 @@ import { ProductoService } from '@app/_service/modelos/producto.service';
 import { TallaService } from '@app/_service/modelos/talla.service';
 import { TipoProductoService } from '@app/_service/modelos/tipo-producto.service';
 import { EncryptionService } from '@app/_service/util/encryption.service';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { DialogComponent } from '../store/dialog/dialog.component';
 
 @Component({
   selector: 'app-home',
@@ -28,11 +30,12 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private encryp: EncryptionService,
     private route: ActivatedRoute,
-    private viewportScroller: ViewportScroller
+    private viewportScroller: ViewportScroller,
+    public dialogService: DialogService,
   ) {}
 
   responsiveOptions: any[] = [];
-
+  ref!: DynamicDialogRef;
   ngOnInit(): void {
     this.responsiveOptions = [
       {
@@ -103,6 +106,18 @@ export class HomeComponent implements OnInit {
         .then(() => {
           this.viewportScroller.scrollToPosition([0, 0]); // Scroll hacia arriba
         });
+    });
+  }
+
+  show(idProduct: number) {
+    this.ref = this.dialogService.open(DialogComponent, {
+      header: 'Seleccion de producto',
+      height: '40%',
+      width: '60%',
+      contentStyle: { overflow: 'auto' },
+      data: {
+        id: idProduct,
+      },
     });
   }
 }

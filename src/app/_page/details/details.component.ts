@@ -6,6 +6,8 @@ import { Producto } from '@app/_model/producto';
 import { ProductoService } from '@app/_service/modelos/producto.service';
 import { TallaService } from '@app/_service/modelos/talla.service';
 import { EncryptionService } from '@app/_service/util/encryption.service';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { DialogComponent } from '../store/dialog/dialog.component';
 
 interface Car {
   id?: string;
@@ -27,7 +29,8 @@ export class Details01Component {
     private router: Router,
     private producSerive: ProductoService,
     private tallaSerive: TallaService,
-    private viewportScroller: ViewportScroller
+    private viewportScroller: ViewportScroller,
+    public dialogService: DialogService,
   ) {}
   responsiveOptions: any[] = [];
   id!: string;
@@ -35,6 +38,7 @@ export class Details01Component {
   producto: Producto = new Producto();
   estrellas = 3;
   cant = 1;
+  ref!: DynamicDialogRef;
   ngOnInit() {
     //si estoy visualizando
     this.route.queryParams.subscribe((params) => {
@@ -103,6 +107,18 @@ export class Details01Component {
       }).then(() => {
         this.viewportScroller.scrollToPosition([0, 0]); // Scroll hacia arriba
       });
+    });
+  }
+
+  show(idProduct: number) {
+    this.ref = this.dialogService.open(DialogComponent, {
+      header: 'Seleccion de producto',
+      height: '40%',
+      width: '60%',
+      contentStyle: { overflow: 'auto' },
+      data: {
+        id: idProduct,
+      },
     });
   }
 }
