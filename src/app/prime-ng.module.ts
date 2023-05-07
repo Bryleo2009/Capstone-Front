@@ -20,6 +20,7 @@ import { RatingModule } from 'primeng/rating';
 import { DataViewModule, DataViewLayoutOptions } from 'primeng/dataview';
 import { TagModule } from 'primeng/tag';
 import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
+import { BadgeModule } from 'primeng/badge';
 
 @NgModule({
   declarations: [],
@@ -44,7 +45,10 @@ import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
     RatingModule,
     DataViewModule,
     TagModule,
-    DynamicDialogModule
+    DynamicDialogModule,
+    BadgeModule
+
+    
   ],exports: [
     ButtonModule,
     GalleriaModule,
@@ -65,7 +69,10 @@ import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
     RatingModule,
     DataViewModule,
     TagModule,
-    DynamicDialogModule    
+    DynamicDialogModule,
+    BadgeModule
+    
+    
   ],
   providers: [DialogService],
 })
