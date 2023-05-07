@@ -108,3 +108,12 @@ section {
   display: flex !important;
   justify-content: center;
 }
+
+:host ::ng-deep .p-element.p-button-icon-only.p-inputnumber-button.p-inputnumber-button-down.p-button.p-component,
+:host ::ng-deep .p-element.p-button-icon-only.p-inputnumber-button.p-inputnumber-button-up.p-button.p-component{
+    background-color: var(--color-prin);
+}
+
+:host ::ng-deep .p-inputtext.p-component.p-element.p-inputnumber-input.p-filled{
+  width: 80px !important;
+}

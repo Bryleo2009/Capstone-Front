@@ -7,15 +7,19 @@ import { StoreComponent } from './_page/store/store.component';
 import { PedidoshComponent } from './_page/pedidosh/pedidosh.component';
 import { SeguimientoComponent } from './_page/seguimiento/seguimiento.component';
 import { CarritoComponent } from './_page/carrito/carrito.component';
+import { DialogComponent } from './_page/store/dialog/dialog.component';
 
 
 const routes: Routes = [
   { path : '' , component : HomeComponent},
-  { path : 'store' , component : StoreComponent},
+  { path : 'store' , component : StoreComponent, children: [
+    { path: 'open', component: DialogComponent}
+    ]
+  },
   { path : 'details' , component : Details01Component},
   { path : 'queeseesto', component : PedidoshComponent},
   { path : 'trazabilidad', component: SeguimientoComponent},
-  { path : 'pedido' , component : CarritoComponent},
+  { path : 'pedido', component : CarritoComponent },
 ];
 
 @NgModule({

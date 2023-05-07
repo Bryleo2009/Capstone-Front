@@ -1,3 +1,4 @@
+import { ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Categoria } from '@app/_model/categoria';
@@ -15,10 +16,9 @@ import { EncryptionService } from '@app/_service/util/encryption.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit{
-
+export class HomeComponent implements OnInit {
   constructor(
     private categoriaService: CategoriasService,
     private productoService: ProductoService,
@@ -28,74 +28,81 @@ export class HomeComponent implements OnInit{
     private router: Router,
     private encryp: EncryptionService,
     private route: ActivatedRoute,
-  ){}
- 
+    private viewportScroller: ViewportScroller
+  ) {}
+
   responsiveOptions: any[] = [];
-  
+
   ngOnInit(): void {
-   
     this.responsiveOptions = [
       {
-          breakpoint: '1199px',
-          numVisible: 1,
-          numScroll: 1
+        breakpoint: '1199px',
+        numVisible: 1,
+        numScroll: 1,
       },
       {
-          breakpoint: '991px',
-          numVisible: 2,
-          numScroll: 1
+        breakpoint: '991px',
+        numVisible: 2,
+        numScroll: 1,
       },
       {
-          breakpoint: '767px',
-          numVisible: 1,
-          numScroll: 1
-      }
-  ];
+        breakpoint: '767px',
+        numVisible: 1,
+        numScroll: 1,
+      },
+    ];
     //listar productos
     this.listarProductosCaballeros();
     this.listarProductosDamas();
   }
 
-
-
-
-  productosCaballeros!:ProductoFilter[];
+  productosCaballeros!: ProductoFilter[];
   listarProductosCaballeros(): void {
-    this.productoService.listar('CAB',[],[],[],[],[],0,999,20,0,'token').subscribe(
-      (data) => {
+    this.productoService
+      .listar('CAB', [], [], [], [], [], 0, 999, 20, 0, 'token')
+      .subscribe((data) => {
         this.productosCaballeros = data.content;
-      }
-    );
+      });
   }
 
-
-  productosDamas!:ProductoFilter[];
+  productosDamas!: ProductoFilter[];
   listarProductosDamas(): void {
-  this.productoService.listar('DAM',[],[],[],[],[],0,999,20,0,'token').subscribe(
-    (data) => {
-      this.productosDamas = data.content;
-    }
-  );
+    this.productoService
+      .listar('DAM', [], [], [], [], [], 0, 999, 20, 0, 'token')
+      .subscribe((data) => {
+        this.productosDamas = data.content;
+      });
   }
 
+  navegar(categoria: string) {
+    const encryptedCategoria = this.encryp.encrypt(String(categoria));
 
-  navegar(categoria: string){
-    console.log(categoria);
-    this.router.navigate(['/store'] , {
-      relativeTo: this.route,
-      queryParams: { categoria: this.encryp.encrypt(String(categoria)), estado: '_?' },
-      fragment: 'filtrado'
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router
+        .navigate(['/store'], {
+          relativeTo: this.route,
+          queryParams: { categoria: encryptedCategoria, estado: '_?' },
+          fragment: 'filtrado',
+        })
+        .then(() => {
+          this.viewportScroller.scrollToPosition([0, 0]); // Scroll hacia arriba
+        });
     });
   }
 
+  //encriptamiento de ruta de visualizacion
+  visualizar(id: number) {
+    const encryptedId = this.encryp.encrypt(String(id));
 
-
-     //encriptamiento de ruta de visualizacion
-     visualizar(id: number) {
-      this.router.navigate(['/details'], {
-        relativeTo: this.route,
-        queryParams: { id: this.encryp.encrypt(String(id)), estado: '_?' },
-      });
-    }
-
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router
+        .navigate(['/details'], {
+          relativeTo: this.route,
+          queryParams: { id: encryptedId, estado: '_?' },
+        })
+        .then(() => {
+          this.viewportScroller.scrollToPosition([0, 0]); // Scroll hacia arriba
+        });
+    });
+  }
 }

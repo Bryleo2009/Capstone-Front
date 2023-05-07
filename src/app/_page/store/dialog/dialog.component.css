@@ -1,0 +1,25 @@
+
+.prod {
+    text-align: left;
+}
+
+.img-store {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.descrip {
+    font-size: 14px;
+    font-family: var(--Parrafo);
+    font-weight: none;
+}
+
+:host ::ng-deep .p-inputtext.p-component.p-element.p-inputnumber-input.p-filled{
+    width: 120px !important;
+}
+
+:host ::ng-deep .p-element.p-button-icon-only.p-inputnumber-button.p-inputnumber-button-down.p-button.p-component,
+:host ::ng-deep .p-element.p-button-icon-only.p-inputnumber-button.p-inputnumber-button-up.p-button.p-component{
+    background-color: var(--color-prin);
+}

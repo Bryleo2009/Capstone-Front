@@ -55,3 +55,7 @@
 
     margin: 25px;
 }
+
+:host ::ng-deep .p-inputtext.p-component.p-element.p-inputnumber-input.p-filled{
+    width: 80px !important;
+}

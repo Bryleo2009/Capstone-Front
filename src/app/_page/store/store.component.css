@@ -107,3 +107,8 @@ p-checkbox.btn-sel {
 :host ::ng-deep .p-inputnumber.p-component.p-inputnumber-buttons-stacked{
     width: 280px !important;
 }
+
+:host ::ng-deep .p-element.p-button-icon-only.p-inputnumber-button.p-inputnumber-button-down.p-button.p-component,
+:host ::ng-deep .p-element.p-button-icon-only.p-inputnumber-button.p-inputnumber-button-up.p-button.p-component{
+    background-color: var(--color-prin);
+}

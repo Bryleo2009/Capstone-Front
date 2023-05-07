@@ -12,6 +12,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EncryptionService } from '@app/_service/util/encryption.service';
 import { TipoProductoService } from '@app/_service/modelos/tipo-producto.service';
 import { TabMenu } from 'primeng/tabmenu';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { DialogComponent } from './dialog/dialog.component';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-store',
@@ -29,12 +32,15 @@ export class StoreComponent implements OnInit {
     private colorService: ColorService,
     private router: Router,
     private encryp: EncryptionService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public dialogService: DialogService,
+    private viewportScroller: ViewportScroller
   ) {
     this.seleccion = '';
     this.categoriaActual = 'Todas las categorias';
   }
 
+  ref!: DynamicDialogRef;
   rangeValues: number[] = [20, 80];
   selectedCategories: any[] = [];
   selectedCategoriesColors: any[] = [];
@@ -106,8 +112,11 @@ export class StoreComponent implements OnInit {
     });
 
     this.route.queryParams.subscribe((params) => {
-      this.seleccion = this.encryp.decrypt(String( params['categoria']));
-      console.log("🔥 > StoreComponent > this.route.queryParams.subscribe > this.seleccion:", this.seleccion)
+      this.seleccion = this.encryp.decrypt(String(params['categoria']));
+      console.log(
+        '🔥 > StoreComponent > this.route.queryParams.subscribe > this.seleccion:',
+        this.seleccion
+      );
       switch (this.seleccion) {
         case 'CAB':
           this.categoriaActual = 'Caballeros';
@@ -127,6 +136,24 @@ export class StoreComponent implements OnInit {
       }
       this.filtrar(this.seleccion);
     });
+  }
+
+  show(idProduct: number) {
+    this.ref = this.dialogService.open(DialogComponent, {
+      header: 'Seleccion de producto',
+      height: '40%',
+      width: '60%',
+      contentStyle: { overflow: 'auto' },
+      data: {
+        id: idProduct,
+      },
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.ref) {
+      this.ref.close();
+    }
   }
 
   listarProductos(categoria: string): void {
@@ -167,7 +194,7 @@ export class StoreComponent implements OnInit {
   }
 
   filtrar(categoria: string) {
-    console.log("🔥 > StoreComponent > filtrar > categoria:", categoria)
+    console.log('🔥 > StoreComponent > filtrar > categoria:', categoria);
     this.listarProductos(categoria);
   }
 
@@ -267,9 +294,17 @@ export class StoreComponent implements OnInit {
 
   //encriptamiento de ruta de visualizacion
   visualizar(id: number) {
-    this.router.navigate(['/details'], {
-      relativeTo: this.route,
-      queryParams: { id: this.encryp.encrypt(String(id)), estado: '_?' },
+    const encryptedId = this.encryp.encrypt(String(id));
+
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router
+        .navigate(['/details'], {
+          relativeTo: this.route,
+          queryParams: { id: encryptedId, estado: '_?' },
+        })
+        .then(() => {
+          this.viewportScroller.scrollToPosition([0, 0]); // Scroll hacia arriba
+        });
     });
   }
 }

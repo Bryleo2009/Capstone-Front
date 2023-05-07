@@ -18,6 +18,7 @@ import { NgImageSliderModule } from 'ng-image-slider';
 import { PedidoshComponent } from './_page/pedidosh/pedidosh.component';
 import { SeguimientoComponent } from './_page/seguimiento/seguimiento.component';
 import { CarritoComponent } from './_page/carrito/carrito.component';
+import { DialogComponent } from './_page/store/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CarritoComponent } from './_page/carrito/carrito.component';
     HomeComponent,
     PedidoshComponent,
     SeguimientoComponent,
-    CarritoComponent
+    CarritoComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,

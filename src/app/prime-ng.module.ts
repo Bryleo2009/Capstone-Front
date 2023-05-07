@@ -19,6 +19,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { RatingModule } from 'primeng/rating';
 import { DataViewModule, DataViewLayoutOptions } from 'primeng/dataview';
 import { TagModule } from 'primeng/tag';
+import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
 
 @NgModule({
   declarations: [],
@@ -43,7 +44,7 @@ import { TagModule } from 'primeng/tag';
     RatingModule,
     DataViewModule,
     TagModule,
-
+    DynamicDialogModule
   ],exports: [
     ButtonModule,
     GalleriaModule,
@@ -64,7 +65,8 @@ import { TagModule } from 'primeng/tag';
     RatingModule,
     DataViewModule,
     TagModule,
-    
-  ]
+    DynamicDialogModule    
+  ],
+  providers: [DialogService],
 })
 export class PrimeNGModule { }
