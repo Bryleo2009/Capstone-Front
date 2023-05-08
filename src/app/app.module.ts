@@ -46,7 +46,9 @@ import { DialogComponent } from './_page/store/dialog/dialog.component';
   ],exports: [
     PrimeNGModule
   ],
-  providers: [],
+  providers: [
+    AppComponent
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

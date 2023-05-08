@@ -24,8 +24,10 @@
         </div>
     </div>
     <div class="flex justify-content-end align-items-center">
+        <p-toast></p-toast>
             <a style="cursor: pointer;" (click)="cerrarModal()"><u>Regresar a catalogo</u></a>
             <p-button label="Agregar a carrito" icon="fa-solid fa-cart-shopping" iconPos="left"
-            [style]="{backgroundColor:'var(--color-prin)', color: '#000000',  margin: '10px 30px 10px 60px', width: '250px'}"></p-button>
+            [style]="{backgroundColor:'var(--color-prin)', color: '#000000',  margin: '10px 30px 10px 60px', width: '250px'}"
+            (click)="agregarAlCarrito(producto.idProduct,cant)"></p-button>
     </div>
 </section>

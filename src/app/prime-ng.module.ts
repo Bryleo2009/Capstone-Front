@@ -21,6 +21,8 @@ import { DataViewModule, DataViewLayoutOptions } from 'primeng/dataview';
 import { TagModule } from 'primeng/tag';
 import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
 import { BadgeModule } from 'primeng/badge';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [],
@@ -46,7 +48,8 @@ import { BadgeModule } from 'primeng/badge';
     DataViewModule,
     TagModule,
     DynamicDialogModule,
-    BadgeModule
+    BadgeModule,
+    ToastModule
 
     
   ],exports: [
@@ -70,10 +73,13 @@ import { BadgeModule } from 'primeng/badge';
     DataViewModule,
     TagModule,
     DynamicDialogModule,
-    BadgeModule
+    BadgeModule,
+    ToastModule
     
     
   ],
-  providers: [DialogService],
+  providers: [
+    DialogService,
+    MessageService],
 })
 export class PrimeNGModule { }
