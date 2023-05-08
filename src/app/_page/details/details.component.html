@@ -50,7 +50,7 @@
                 <p-inputNumber [(ngModel)]="cant" suffix=" ud." [showButtons]="true" mode="decimal"
                     [useGrouping]="false" inputId="minmax-buttons" [min]="1" [max]="500"> </p-inputNumber>
                 <p-button [style]="{backgroundColor:'#E5E5E5', color: '#000000', padding : '06px 10px', margin: '05px'}"
-                    label="Agregar Al Carrito"><i class="fa-solid fa-cart-shopping"
+                    label="Agregar Al Carrito" (click)="agregarAlCarrito(producto.idProduct,cant)"><i class="fa-solid fa-cart-shopping"
                         style="color: var(--color-secun); margin:05px"></i></p-button>
                 <p-button icon="fa-regular fa-heart"
                     [style]="{backgroundColor:'#FFFFFF', color: '#000000', padding : '09px 15px', margin: '05px', border: '#000000 1px solid'}"

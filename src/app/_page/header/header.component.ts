@@ -21,10 +21,10 @@ export class HeaderComponent implements OnInit {
   tempEnviroment!: number;
   cantCarrito: string = '';
   ngOnInit(): void { 
-    this.carritoService.carrito$.subscribe((valor) => {
-      this.cantCarrito = valor.toString();
-      console.log("🔥 > HeaderComponent > this.carritoService.carrito$.subscribe > this.cantCarrito:", this.cantCarrito)
-      this.tempEnviroment = parseInt(this.cantCarrito, 10);
+    this.cantCarrito = this.carritoService.obtenerCantidadTotalCarrito().toString();
+    this.carritoService.carrito$.subscribe((productos) => {
+      this.cantCarrito = this.carritoService.obtenerCantidadTotalCarrito().toString();
+      this.tempEnviroment = this.carritoService.obtenerCantidadTotalCarrito();
     });
     
     const menu: Element | null = document.querySelector('#mobile-menu');

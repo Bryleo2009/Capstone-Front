@@ -8,6 +8,8 @@ import { TallaService } from '@app/_service/modelos/talla.service';
 import { EncryptionService } from '@app/_service/util/encryption.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { DialogComponent } from '../store/dialog/dialog.component';
+import { AppComponent } from '@app/app.component';
+import { CarritoService } from '@app/_service/modelos/carrito.service';
 
 interface Car {
   id?: string;
@@ -31,6 +33,8 @@ export class Details01Component {
     private tallaSerive: TallaService,
     private viewportScroller: ViewportScroller,
     public dialogService: DialogService,
+    private general: AppComponent,
+    private carritoService: CarritoService,
   ) {}
   responsiveOptions: any[] = [];
   id!: string;
@@ -120,5 +124,12 @@ export class Details01Component {
         id: idProduct,
       },
     });
+  }
+
+  agregarAlCarrito(idProducto: number, cantidadProducto: number){
+    console.log("🔥 > Details01Component > agregarAlCarrito > cantidadProducto:", cantidadProducto)
+    console.log("🔥 > Details01Component > agregarAlCarrito > idProducto:", idProducto)
+    // Lógica para agregar los productos al carrito
+    this.carritoService.agregarAlCarrito(idProducto, cantidadProducto);
   }
 }

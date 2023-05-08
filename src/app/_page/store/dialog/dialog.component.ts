@@ -53,7 +53,8 @@ export class DialogComponent implements OnInit {
     this.ref.close(this.ref);
   }
 
-  agregarAlCarrito(id: number, cant: number){
-    this.general.agregarAlCarrito(id,cant);
+  agregarAlCarrito(idProducto: number, cantidadProducto: number){
+    // Lógica para agregar los productos al carrito
+    this.carritoService.agregarAlCarrito(idProducto, cantidadProducto);
   }
 }
