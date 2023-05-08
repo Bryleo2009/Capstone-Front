@@ -54,6 +54,7 @@ export class DialogComponent implements OnInit {
   }
 
   agregarAlCarrito(idProducto: number, cantidadProducto: number){
+    this.messageService.add({ severity: 'success', summary: 'Regristro exitoso!', detail: 'El producto ha sido agregado al carrito' });
     // Lógica para agregar los productos al carrito
     this.carritoService.agregarAlCarrito(idProducto, cantidadProducto);
   }

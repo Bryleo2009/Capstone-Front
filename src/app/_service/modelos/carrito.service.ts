@@ -44,4 +44,8 @@ export class CarritoService {
   obtenerCantidadTotalCarrito(): number {
     return this.carrito.reduce((total, producto) => total + producto.cantProduct, 0);
   }
+
+  obtenerProductosCarrito(): ProductoStorage[] {
+    return this.carrito;
+  }
 }

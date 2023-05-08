@@ -20,4 +20,5 @@ export class Producto {
 	idEtiqueta: Enum[] = [];
 	idTalla: Enum[] = [];
 	idColor: Enum[] = [];
+	idMarca: Enum = new Enum();
 }

@@ -6,7 +6,7 @@ import { EtiquetaService } from '@app/_service/modelos/etiqueta.service';
 import { MarcaService } from '@app/_service/modelos/marca.service';
 import { ProductoService } from '@app/_service/modelos/producto.service';
 import { TallaService } from '@app/_service/modelos/talla.service';
-import { ColorService } from '../../_service/modelos/color.service';
+import { ColorService } from '../../../_service/modelos/color.service';
 import { MenuItem } from 'primeng/api';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EncryptionService } from '@app/_service/util/encryption.service';

@@ -59,3 +59,11 @@
 :host ::ng-deep .p-inputtext.p-component.p-element.p-inputnumber-input.p-filled{
     width: 80px !important;
 }
+
+.precio {
+    margin: 0 25px 20px 25px;
+}
+
+.descuento {
+    color: var(--color-prin);
+}

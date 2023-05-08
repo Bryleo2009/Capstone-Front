@@ -13,7 +13,7 @@ import { TallaService } from '@app/_service/modelos/talla.service';
 import { TipoProductoService } from '@app/_service/modelos/tipo-producto.service';
 import { EncryptionService } from '@app/_service/util/encryption.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { DialogComponent } from '../store/dialog/dialog.component';
+import { DialogComponent } from '@app/_page/producto/store/dialog/dialog.component';
 
 @Component({
   selector: 'app-home',

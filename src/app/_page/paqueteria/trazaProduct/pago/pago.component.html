@@ -1,0 +1,22 @@
+<section>
+  <div class="container d-flex justify-content-center">
+    <form>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Introducir Importe</label>
+          <input type="number" class="form-control" id="amount" name="amount" [(ngModel)]="amount">
+        </div>
+      </form>
+</div>
+<div>
+  <ngx-braintree 
+  [getClientToken]="getClientToken.bind(this)" 
+  [createPurchase]="checkcout.bind(this)" 
+  [chargeAmount]="amount"
+  (paymentStatus)="onPaymentStatus()"
+  [buttonText]="'Realizar pago'"
+  [showCardholderName]="true"
+  [allowChoose]="true"
+  [locale]="'es_PE'">
+</ngx-braintree>
+</div>
+</section>

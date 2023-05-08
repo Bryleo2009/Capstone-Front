@@ -22,7 +22,9 @@ import { TagModule } from 'primeng/tag';
 import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
 import { BadgeModule } from 'primeng/badge';
 import { ToastModule } from 'primeng/toast';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { StepsModule } from 'primeng/steps';
 
 @NgModule({
   declarations: [],
@@ -49,7 +51,9 @@ import { MessageService } from 'primeng/api';
     TagModule,
     DynamicDialogModule,
     BadgeModule,
-    ToastModule
+    ToastModule,
+    ConfirmPopupModule,
+    StepsModule
 
     
   ],exports: [
@@ -74,12 +78,17 @@ import { MessageService } from 'primeng/api';
     TagModule,
     DynamicDialogModule,
     BadgeModule,
-    ToastModule
+    ToastModule,
+    ConfirmPopupModule,
+    StepsModule
     
     
   ],
   providers: [
     DialogService,
-    MessageService],
+    MessageService,
+    ConfirmationService
+
+  ],
 })
 export class PrimeNGModule { }

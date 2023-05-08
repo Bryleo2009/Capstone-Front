@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { environment } from '@env/environment.development';
 import { CarritoService } from '@app/_service/modelos/carrito.service';
 import { AppComponent } from '@app/app.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 
@@ -16,7 +17,9 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private carritoService: CarritoService,
-    private general: AppComponent
+    private general: AppComponent,
+    private route: ActivatedRoute,
+    private router: Router,
   ){}
   tempEnviroment!: number;
   cantCarrito: string = '';
@@ -109,4 +112,5 @@ export class HeaderComponent implements OnInit {
       stagger: 0.4,
     });
   }
+
 }

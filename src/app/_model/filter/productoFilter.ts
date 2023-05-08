@@ -10,5 +10,7 @@ export class ProductoFilter {
     tallas!: string;
     marca!: string;
     colores!: string;
+    cantidad!: number;
+    tipoProduct!: string;
 }
 /* */
