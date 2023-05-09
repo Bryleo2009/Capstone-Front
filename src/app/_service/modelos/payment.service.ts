@@ -11,11 +11,11 @@ export class PaymentService {
 
   url:string = `${environment.HOST_URL}/api`;
   constructor(private http: HttpClient) { }
-
+ //token
   getTokenPayment(): Observable<any>{
     return this.http.get<any>(`${this.url}/tokenPayment`);
   }
-
+ //Nonce
   checkout(filter: PaymentFilter): Observable<any>{
     return this.http.post<any>(`${this.url}/checkout`,filter);
   }

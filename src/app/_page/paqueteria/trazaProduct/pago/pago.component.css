@@ -1,0 +1,48 @@
+.titulo {
+
+    padding: 20px;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.letra {
+
+    font-size: 40px !important;
+    font-weight: bold;
+    text-decoration: underline;
+
+}
+
+.form {
+    background-color: var(--color-white);
+    padding: 50px;
+    max-height: 395px;
+}
+
+.spinner {
+    background-color: rgba(174, 179, 179, 0.397);
+    position: absolute;
+    height: 395px;
+    z-index: 9;
+}
+
+#card-number,
+#expiration-date,
+#cvv,
+#cardholder-name {
+    height: 20px;
+}
+
+.metodo {
+    background-color: white;
+    padding: 50px;
+}
+
+.cartel {
+    width: 70%;
+    text-align: left;
+    border-radius: 21px;
+    box-shadow: 5px 5px 17px 5px rgba(0, 0, 0, 0.15);
+    padding: 25px;
+}

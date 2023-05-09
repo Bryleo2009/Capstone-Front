@@ -1,22 +1,59 @@
 <section>
-  <div class="container d-flex justify-content-center">
-    <form>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Introducir Importe</label>
-          <input type="number" class="form-control" id="amount" name="amount" [(ngModel)]="amount">
+  <div class="titulo">
+    <h1 class="letra">
+      Método de pago
+    </h1>
+  </div>
+
+  <div *ngIf="pagoRealizado === false" class="grid flex justify-content-center align-items-center">
+    <div *ngIf="carga" class="card spinner col-8 flex align-items-center justify-content-center">
+      <p-progressSpinner styleClass="w-4rem h-4rem" strokeWidth="8" fill="var(--surface-ground)"
+        animationDuration=".5s"></p-progressSpinner>
+    </div>
+    <form [formGroup]="paymentForm" id="payment-form" (ngSubmit)="makePayment()" class="col-8 form flex flex-column">
+      <div class="flex justify-content-between align-items-end grid">
+        <div class="col-6">
+          <p-fieldset legend="Número de tarjeta"
+            class="flex flex-column justify-items-center font-bold block mb-2 content">
+            <div id="card-number" class="p-inputMask p-component" mask="9999-9999-9999-9999"></div>
+          </p-fieldset>
+          <p-fieldset legend="Nombre del titular"
+            class="flex flex-column justify-items-center font-bold block mb-2 content">
+            <div id="cardholder-name"></div>
+          </p-fieldset>
         </div>
-      </form>
-</div>
-<div>
-  <ngx-braintree 
-  [getClientToken]="getClientToken.bind(this)" 
-  [createPurchase]="checkcout.bind(this)" 
-  [chargeAmount]="amount"
-  (paymentStatus)="onPaymentStatus()"
-  [buttonText]="'Realizar pago'"
-  [showCardholderName]="true"
-  [allowChoose]="true"
-  [locale]="'es_PE'">
-</ngx-braintree>
-</div>
+        <div class="col-6">
+          <p-fieldset legend="Vencimiento" class="flex flex-column justify-items-center font-bold block mb-2 content">
+            <div id="expiration-date"></div>
+          </p-fieldset>
+          <p-fieldset legend="CVV" class="flex flex-column justify-items-center font-bold block mb-2 content">
+            <div id="cvv"></div>
+          </p-fieldset>
+        </div>
+      </div>
+      <div class="grid flex justify-content-center mt-5">
+        <p-button label="Pagar" class="col-8" type="submit"
+          [style]="{backgroundColor:'var(--color-prin)', color: '#000000', padding : '15px 10px', width: '100%'}"></p-button>
+      </div>
+    </form>
+
+  </div>
+
+
+  <div class="grid flex justify-content-center align-items-center">
+    <div class="col-8 metodo flex flex-column align-items-center">
+      <div class="grid cartel">
+        <img src=".\assets\pago\pago.png" alt="" class="col-3">
+        <div class="col-9">
+          <h2 class="mb-3">TARJETA CREDITO / DEBITO</h2>
+          <p>Transaccion realizada con éxito. Tu pedido esta cada vez mas cerca de ti 😍</p>
+        </div>
+      </div>
+      <div class=" flex justify-content-center mt-5">
+        <p-button label="Siguiente" class="col" type="submit" routerLink="/trazabilidad/ok"
+          [style]="{backgroundColor:'var(--color-prin)', color: '#000000', padding : '15px 10px', width: '100%'}"></p-button>
+      </div>
+    </div>
+  </div>
+
 </section>

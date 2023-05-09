@@ -26,7 +26,7 @@ export class TrazaProductComponent implements OnInit {
       },
       {
         label: 'Confirmacion',
-        routerLink: 'confirmation',
+        routerLink: 'ok',
       },
     ];
   }

@@ -25,7 +25,11 @@ import { ToastModule } from 'primeng/toast';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { StepsModule } from 'primeng/steps';
-
+import { InputMaskModule } from 'primeng/inputmask';
+import { FieldsetModule } from 'primeng/fieldset';
+import { CalendarModule } from 'primeng/calendar';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { TimelineModule } from 'primeng/timeline';
 @NgModule({
   declarations: [],
   imports: [
@@ -53,7 +57,12 @@ import { StepsModule } from 'primeng/steps';
     BadgeModule,
     ToastModule,
     ConfirmPopupModule,
-    StepsModule
+    StepsModule,
+    InputMaskModule,
+    FieldsetModule,
+    CalendarModule,
+    ProgressSpinnerModule,
+    TimelineModule
 
     
   ],exports: [
@@ -80,7 +89,12 @@ import { StepsModule } from 'primeng/steps';
     BadgeModule,
     ToastModule,
     ConfirmPopupModule,
-    StepsModule
+    StepsModule,
+    InputMaskModule,
+    FieldsetModule,
+    CalendarModule,
+    ProgressSpinnerModule,
+    TimelineModule
     
     
   ],
