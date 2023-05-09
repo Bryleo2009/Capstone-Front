@@ -1,7 +1,7 @@
 .titulo {
 
     padding: 20px;
-    margin: 20px;
+    margin: 10px;
     display: flex;
     justify-content: center;
 }
@@ -18,7 +18,7 @@
     margin: 30px;
     padding-left: 200px;
     padding-right: 200px;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
 .redondo {
@@ -67,3 +67,34 @@
 .descuento {
     color: var(--color-prin);
 }
+
+.s-store {
+    margin: 30px;
+}
+
+.marco {
+
+    background-color: rgb(255, 255, 255);
+    height: 250px;
+    padding: 30px;
+}
+
+
+.spacio{
+    margin: 10px;
+}
+
+.spacio1{
+    margin: 15px;
+    width: 300px;
+    height: 40px;
+    background-color: rgb(57, 187, 148);
+     /* codigo rgb del color que usamos para todo el programa */
+}
+.tamañot{
+    font-size: 30px !important;
+    display: flex;
+    justify-content: center;
+}
+
+

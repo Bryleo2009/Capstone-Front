@@ -11,11 +11,13 @@ import { DialogComponent } from './_page/producto/store/dialog/dialog.component'
 import { TrazaProductComponent } from './_page/paqueteria/trazaProduct/trazaProduct.component';
 import { EntregaComponent } from './_page/paqueteria/trazaProduct/entrega/entrega.component';
 import { PagoComponent } from './_page/paqueteria/trazaProduct/pago/pago.component';
+import { DeseosComponent } from './_page/deseos/deseos.component';
 
 
 
 const routes: Routes = [
   { path : '' , component : HomeComponent},
+  { path : 'deseos' , component : DeseosComponent},
   { path : 'store' , component : StoreComponent, children: [
       { path: 'open', component: DialogComponent}
     ]

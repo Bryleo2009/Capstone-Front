@@ -22,6 +22,7 @@ import { DialogComponent } from './_page/producto/store/dialog/dialog.component'
 import { TrazaProductComponent } from './_page/paqueteria/trazaProduct/trazaProduct.component';
 import { EntregaComponent } from './_page/paqueteria/trazaProduct/entrega/entrega.component';
 import { PagoComponent } from './_page/paqueteria/trazaProduct/pago/pago.component';
+import { DeseosComponent } from './_page/deseos/deseos.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { PagoComponent } from './_page/paqueteria/trazaProduct/pago/pago.compone
     DialogComponent,
     TrazaProductComponent,
     EntregaComponent,
-    PagoComponent
+    PagoComponent,
+    DeseosComponent
   ],
   imports: [
     RouterModule,
