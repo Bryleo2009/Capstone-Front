@@ -28,7 +28,6 @@
     "gsap": "^3.11.5",
     "jquery": "^3.6.4",
     "ng-image-slider": "^7.0.0",
-    "ngx-braintree": "^8.0.0",
     "ngx-pagination": "^6.0.3",
     "primeflex": "^3.3.0",
     "primeicons": "^6.0.1",

@@ -6,7 +6,8 @@
         </h1>
     </div>
     <!--PRODUCTOS A COMPRAR-->
-    <div class="card1">
+<div class="grid">
+    <div class="card1 col-8 ">
         <p-dataView #dv [value]="products" [rows]="5" [paginator]="true">
             <ng-template let-product pTemplate="listItem">
                 <div class="col-12">
@@ -46,11 +47,27 @@
             </ng-template>
         </p-dataView>
     </div>
-    <div>
-        <title>Resumen de la orden</title>
-
+    <div class="marco  col-3" >
+        <h1 class="tamañot">Resumen de la orden</h1>
+        <div class="flex justify-content-between spacio">
+            <h2>
+            <b>Productos</b>
+            </h2>
+            <h2>2</h2>
+        </div>
         
+        <div class="flex justify-content-between spacio">
+            <b>IGV(18%):</b>
+            <h2>2</h2>
+        </div>
+        <div class="flex justify-content-between spacio">
+            <b>Total:</b>
+            <h2>2</h2>
+        </div>
+        <button pButton pRipple label="Agregar al carrito" class="p-button-success spacio1"></button>
+    
     </div>
+</div>
     <!--BOTONES DE AGREGAR Y PAGAR-->
     <div class="flex justify-content-center botfin">
         <p-button label="Agregar más Productos" icon="pi pi-tag" iconPos="right" routerLink="/store"

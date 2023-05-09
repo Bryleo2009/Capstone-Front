@@ -8,15 +8,6 @@
       </form>
 </div>
 <div>
-  <ngx-braintree 
-  [getClientToken]="getClientToken.bind(this)" 
-  [createPurchase]="checkcout.bind(this)" 
-  [chargeAmount]="amount"
-  (paymentStatus)="onPaymentStatus()"
-  [buttonText]="'Realizar pago'"
-  [showCardholderName]="true"
-  [allowChoose]="true"
-  [locale]="'es_PE'">
-</ngx-braintree>
+
 </div>
 </section>

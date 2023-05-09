@@ -113,4 +113,6 @@ export class CarritoComponent {
     // Recargar vista
     location.reload();
   }
+
+  
 }

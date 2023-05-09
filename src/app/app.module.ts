@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { Details01Component } from './_page/producto/details/details.component';
-import { NgxBraintreeModule } from 'ngx-braintree';
 import { HeaderComponent } from './_page/inicial/header/header.component';
 import { StoreComponent } from './_page/producto/store/store.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -22,6 +21,7 @@ import { DialogComponent } from './_page/producto/store/dialog/dialog.component'
 import { TrazaProductComponent } from './_page/paqueteria/trazaProduct/trazaProduct.component';
 import { EntregaComponent } from './_page/paqueteria/trazaProduct/entrega/entrega.component';
 import { PagoComponent } from './_page/paqueteria/trazaProduct/pago/pago.component';
+import { DeseosComponent } from './_page/deseos/deseos.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +37,8 @@ import { PagoComponent } from './_page/paqueteria/trazaProduct/pago/pago.compone
     DialogComponent,
     TrazaProductComponent,
     EntregaComponent,
-    PagoComponent
+    PagoComponent,
+    DeseosComponent
   ],
   imports: [
     RouterModule,
@@ -50,7 +51,7 @@ import { PagoComponent } from './_page/paqueteria/trazaProduct/pago/pago.compone
     BrowserModule,
     NgImageSliderModule,
     BrowserAnimationsModule,
-    NgxBraintreeModule
+
   ],exports: [
     PrimeNGModule
   ],
