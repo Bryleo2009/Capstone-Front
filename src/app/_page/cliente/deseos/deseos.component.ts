@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProductoService } from '@app/_service/modelos/producto.service';
 import { EncryptionService } from '@app/_service/util/encryption.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { DialogComponent } from '../producto/store/dialog/dialog.component';
+import { DialogComponent } from '../../producto/store/dialog/dialog.component';
 import { ProductoFilter } from '@app/_model/filter/productoFilter';
 import { Card } from 'primeng/card';
 import { Producto } from '@app/_model/producto';

@@ -1,10 +1,4 @@
 <section>
-  <div class="titulo">
-    <h1 class="letra">
-      Método de pago
-    </h1>
-  </div>
-
   <div *ngIf="pagoRealizado === false" class="grid flex justify-content-center align-items-center">
     <div *ngIf="carga" class="card spinner col-8 flex align-items-center justify-content-center">
       <p-progressSpinner styleClass="w-4rem h-4rem" strokeWidth="8" fill="var(--surface-ground)"
@@ -36,11 +30,10 @@
           [style]="{backgroundColor:'var(--color-prin)', color: '#000000', padding : '15px 10px', width: '100%'}"></p-button>
       </div>
     </form>
-
   </div>
 
 
-  <div class="grid flex justify-content-center align-items-center">
+  <div *ngIf="pagoRealizado === true" class="grid flex justify-content-center align-items-center">
     <div class="col-8 metodo flex flex-column align-items-center">
       <div class="grid cartel">
         <img src=".\assets\pago\pago.png" alt="" class="col-3">
@@ -50,7 +43,7 @@
         </div>
       </div>
       <div class=" flex justify-content-center mt-5">
-        <p-button label="Siguiente" class="col" type="submit" routerLink="/trazabilidad/ok"
+        <p-button label="Siguiente" class="col" type="submit" (onClick)="comprado()"
           [style]="{backgroundColor:'var(--color-prin)', color: '#000000', padding : '15px 10px', width: '100%'}"></p-button>
       </div>
     </div>

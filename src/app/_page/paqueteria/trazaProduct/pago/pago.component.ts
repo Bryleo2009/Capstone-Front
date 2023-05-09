@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import * as braintree from 'braintree-web';
@@ -6,42 +6,58 @@ import * as braintree from 'braintree-web';
 import { PaymentService } from '@app/_service/modelos/payment.service';
 import { PaymentFilter } from '@app/_model/filter/paymentFilter';
 
+import { ActivatedRoute, Router } from '@angular/router';
+import { PaqueteriaComponent } from '../../paqueteria.component';
+import { CarritoService } from '@app/_service/modelos/carrito.service';
+
 @Component({
   selector: 'app-pago',
   templateUrl: './pago.component.html',
-  styleUrls: ['./pago.component.css']
+  styleUrls: ['./pago.component.css'],
 })
-export class PagoComponent implements OnInit {
+export class PagoComponent implements OnInit{
   paymentForm!: FormGroup;
   clientToken!: string;
-  amount: number = 1;
+  amount: number = 0;
   carga: boolean = false;
   pagoRealizado: boolean = false;
   constructor(
     private paymentService: PaymentService,
     private formBuilder: FormBuilder,
-    private messageService: MessageService
-  ) { }
+    private messageService: MessageService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private pedidoComponent: PaqueteriaComponent,
+    private carritoService: CarritoService
+  ) {}
 
   ngOnInit() {
+
+    const objetoAlmacenadoStr = localStorage.getItem('resumenCarrito');
+    if (objetoAlmacenadoStr !== null) {
+      const objetoAlmacenado = JSON.parse(objetoAlmacenadoStr);
+      this.amount = objetoAlmacenado.ammout;
+    }
+
+
     this.paymentForm = this.formBuilder.group({
       cardNumber: ['', Validators.required],
       cardholderName: ['', Validators.required],
       expirationDate: ['', Validators.required],
-      cvv: ['', Validators.required]
+      cvv: ['', Validators.required],
     });
 
     this.paymentService.getTokenPayment().subscribe(
-      response => {
+      (response) => {
         this.clientToken = response.token;
         this.initializeBraintree();
       },
-      error => {
+      (error) => {
         console.error(error);
         this.messageService.add({
           severity: 'error',
           summary: 'Error',
-          detail: 'Error en procesado de pago :('
+          detail: 'Error en procesado de pago :(',
         });
       }
     );
@@ -50,7 +66,7 @@ export class PagoComponent implements OnInit {
   initializeBraintree() {
     braintree.client.create(
       {
-        authorization: this.clientToken
+        authorization: this.clientToken,
       },
       (clientErr: any, clientInstance: any) => {
         if (clientErr) {
@@ -58,7 +74,7 @@ export class PagoComponent implements OnInit {
           this.messageService.add({
             severity: 'error',
             summary: 'Error',
-            detail: 'Error en procesado de pago :('
+            detail: 'Error en procesado de pago :(',
           });
           this.carga = false;
           return;
@@ -70,27 +86,27 @@ export class PagoComponent implements OnInit {
             styles: {
               input: {
                 'font-size': '14px',
-                'font-family': 'Arial, sans-serif'
-              }
+                'font-family': 'Arial, sans-serif',
+              },
             },
             fields: {
               number: {
                 selector: '#card-number',
-                placeholder: '1234 5678 9012 3456'
+                placeholder: '1234 5678 9012 3456',
               },
               cardholderName: {
                 selector: '#cardholder-name',
-                placeholder: 'Nombre del titular'
+                placeholder: 'Nombre del titular',
               },
               expirationDate: {
                 selector: '#expiration-date',
-                placeholder: 'MM/YY'
+                placeholder: 'MM/YY',
               },
               cvv: {
                 selector: '#cvv',
-                placeholder: '000'
-              }
-            }
+                placeholder: '000',
+              },
+            },
           },
           (hostedFieldsErr: any, hostedFieldsInstance: any) => {
             if (hostedFieldsErr) {
@@ -98,54 +114,60 @@ export class PagoComponent implements OnInit {
               this.messageService.add({
                 severity: 'error',
                 summary: 'Error',
-                detail: 'Error en procesado de pago :('
+                detail: 'Error en procesado de pago :(',
               });
               this.carga = false;
               return;
             }
 
             const form = document.getElementById('payment-form');
-            form?.addEventListener('submit', event => {
+            form?.addEventListener('submit', (event) => {
               event.preventDefault();
 
-              hostedFieldsInstance.tokenize((tokenizeErr: any, payload: any) => {
-                if (tokenizeErr) {
-                  console.error(tokenizeErr);
-                  this.messageService.add({
-                    severity: 'error',
-                    summary: 'Error',
-                    detail: 'Campos de tarjeta erroneos :('
-                  });
-                  this.carga = false;
-                  return;
-                }
-
-                const filter = new PaymentFilter(payload.nonce, this.amount);
-                this.paymentService.checkout(filter).subscribe(
-                  data => {
-                    this.messageService.add({
-                      severity: 'success',
-                      summary: 'Pago realizado de manera exitosa',
-                      detail: 'El monto ha sido cobrado :)'
-                    });
-                    this.carga = false;
-                    this.pagoRealizado = true;
-                    // Eliminar todos los productos del localStorage
-                    localStorage.removeItem('carrito');
-                    // Agrega lógica adicional según tus necesidades
-                  },
-                  error => {
-                    console.error(error);
-                    // Agrega manejo de errores según sea necesario
+              hostedFieldsInstance.tokenize(
+                (tokenizeErr: any, payload: any) => {
+                  if (tokenizeErr) {
+                    console.error(tokenizeErr);
                     this.messageService.add({
                       severity: 'error',
                       summary: 'Error',
-                      detail: error
+                      detail: 'Campos de tarjeta erroneos :(',
                     });
                     this.carga = false;
+                    return;
                   }
-                );
-              });
+
+                  const filter = new PaymentFilter(payload.nonce, this.amount);
+                  this.paymentService.checkout(filter).subscribe(
+                    (data) => {
+                      this.messageService.add({
+                        severity: 'success',
+                        summary: 'Pago realizado de manera exitosa',
+                        detail: 'El monto ha sido cobrado :)',
+                      });
+                      this.carga = false;
+                      this.pagoRealizado = true;
+                      this.actualizarResumenEnPadre();
+                      // Eliminar todos los productos del localStorage
+                      localStorage.removeItem('carrito');
+                      localStorage.removeItem('cantCarrito');
+                      localStorage.removeItem('resumenCarrito');
+                      this.carritoService.limpiarCarrito();
+                      // Agrega lógica adicional según tus necesidades
+                    },
+                    (error) => {
+                      console.error(error);
+                      // Agrega manejo de errores según sea necesario
+                      this.messageService.add({
+                        severity: 'error',
+                        summary: 'Error',
+                        detail: error,
+                      });
+                      this.carga = false;
+                    }
+                  );
+                }
+              );
             });
           }
         );
@@ -161,5 +183,15 @@ export class PagoComponent implements OnInit {
 
     const form = document.getElementById('payment-form');
     form?.dispatchEvent(new Event('submit'));
+  }
+
+  actualizarResumenEnPadre() {
+    const nuevoResumen = false;
+    this.pedidoComponent.actualizarResumenDesdeHijo(nuevoResumen);
+  }
+
+  comprado() {
+    const nuevoResumen = false;
+    this.router.navigate(['/pedido/trazabilidad/ok']);
   }
 }

@@ -48,4 +48,11 @@ export class CarritoService {
   obtenerProductosCarrito(): ProductoStorage[] {
     return this.carrito;
   }
+
+  limpiarCarrito() {
+    this.carrito = [];
+    this.guardarCarritoLocalStorage();
+    this.carritoSubject.next(this.carrito);
+  }
+  
 }

@@ -16,6 +16,7 @@ import { EncryptionService } from '@app/_service/util/encryption.service';
 import { ProductoStorage } from '@app/_model/filter/productoStorage';
 import { CarritoService } from '@app/_service/modelos/carrito.service';
 import { Observable, forkJoin } from 'rxjs';
+import { PaqueteriaComponent } from '../paqueteria.component';
 
 @Component({
   selector: 'app-carrito',
@@ -37,13 +38,24 @@ export class CarritoComponent {
     private carrito: CarritoService,
     private changeDetectorRef: ChangeDetectorRef,
     private confirmationService: ConfirmationService,
-    private messageService: MessageService
-  ) {}
+    private messageService: MessageService,
+    private pequeteriaComponent: PaqueteriaComponent
+  ) {
+    this.monto = 0;
+  }
+
   cant = 1;
   carritoLocalStorage: ProductoStorage[] = [];
   products: ProductoFilter[] = [];
+  monto: number;
   ngOnInit(): void {
+    
     this.carritoLocalStorage = this.carrito.obtenerProductosCarrito();
+    
+    if(this.carritoLocalStorage.length === 0){
+      this.actualizarMontoEnPadre(0);
+      this.actualizarCantidadEnPadre(0);
+    }
     const requests: Observable<Producto>[] = [];
     for (const producto of this.carritoLocalStorage) {
       const request = this.productoNormService.listarPorId(
@@ -72,8 +84,22 @@ export class CarritoComponent {
         };
         return productoFilter;
       });
+      this.calcMonto(this.products);
     });
+
+    
   }
+
+
+  actualizarMontoEnPadre(monto:number) {
+    this.pequeteriaComponent.actualizarMontoDesdeHijo(monto);
+  }
+
+  actualizarCantidadEnPadre(cantidad:number) {
+    this.pequeteriaComponent.actualizarCantidadDesdeHijo(cantidad);
+  }
+  
+
 
   confirm(event: Event, id: number) {
     this.confirmationService.confirm({
@@ -115,4 +141,18 @@ export class CarritoComponent {
   }
 
   
+  calcMonto(listProductos: ProductoFilter[] = []) {
+    let valor: number = 0;
+    let productos: number = 0;
+    for(var i=0; i<listProductos.length; i++){
+      productos = productos + listProductos[i].cantidad;
+      if(listProductos[i].is_precio_desc_product){
+        valor =  valor + (listProductos[i].precio_descu_product * listProductos[i].cantidad);
+      } else {
+        valor = valor + (listProductos[i].precio_uni * listProductos[i].cantidad);
+      }
+    }
+    this.actualizarCantidadEnPadre(productos);
+    this.actualizarMontoEnPadre(valor);
+  }
 }

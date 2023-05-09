@@ -5,7 +5,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { PrimeNGModule } from './prime-ng.module';
 import { AppRoutingModule } from './app-routing.module';
-import { GalleriaModule } from 'primeng/galleria';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Details01Component } from './_page/producto/details/details.component';
@@ -15,14 +14,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './_page/inicial/footer/footer.component';
 import { HomeComponent } from './_page/inicial/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PedidoshComponent } from './_page/paqueteria/pedidosh/pedidosh.component';
 import { SeguimientoComponent } from './_page/paqueteria/trazaProduct/seguimiento/seguimiento.component';
 import { CarritoComponent } from './_page/paqueteria/carrito/carrito.component';
 import { DialogComponent } from './_page/producto/store/dialog/dialog.component';
 import { TrazaProductComponent } from './_page/paqueteria/trazaProduct/trazaProduct.component';
 import { EntregaComponent } from './_page/paqueteria/trazaProduct/entrega/entrega.component';
 import { PagoComponent } from './_page/paqueteria/trazaProduct/pago/pago.component';
-import { DeseosComponent } from './_page/deseos/deseos.component';
+import { DeseosComponent } from './_page/cliente/deseos/deseos.component';
+import { PaqueteriaComponent } from './_page/paqueteria/paqueteria.component';
 
 @NgModule({
   declarations: [
@@ -32,14 +31,14 @@ import { DeseosComponent } from './_page/deseos/deseos.component';
     StoreComponent,
     FooterComponent,
     HomeComponent,
-    PedidoshComponent,
     SeguimientoComponent,
     CarritoComponent,
     DialogComponent,
     TrazaProductComponent,
     EntregaComponent,
     PagoComponent,
-    DeseosComponent
+    DeseosComponent,
+    PaqueteriaComponent
   ],
   imports: [
     RouterModule,

@@ -5,7 +5,7 @@
             <div class="card flex flex-wrap flex-column gap-3 p-fluid"  >
                 <div class="flex-auto">
                     <label class="mb-2 block font-bolvaluesEtiquetad" for="stacked">Precio Min</label>
-                    <p-inputNumber [(ngModel)]="precioMin" [showButtons]="true" inputId="stacked" [min]="10"
+                    <p-inputNumber [(ngModel)]="precioMin" [showButtons]="true" inputId="stacked" [min]="1"
                         [max]="1000" mode="currency" currency="PEN" (ngModelChange)="filtrar(seleccion)"> </p-inputNumber>
                 </div>
                 <div class="flex-auto">
