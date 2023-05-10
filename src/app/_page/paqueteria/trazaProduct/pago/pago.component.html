@@ -1,5 +1,8 @@
 <section>
-  <div *ngIf="pagoRealizado === false" class="grid flex justify-content-center align-items-center">
+  <div *ngIf="pagoRealizado === false" class=" flex justify-content-center align-items-center">
+    <div *ngIf="isFormLoaded === false" class="card spinner col-8 flex align-items-center justify-content-center">
+      <span class="loader"></span>
+    </div>
     <div *ngIf="carga" class="card spinner col-8 flex align-items-center justify-content-center">
       <p-progressSpinner styleClass="w-4rem h-4rem" strokeWidth="8" fill="var(--surface-ground)"
         animationDuration=".5s"></p-progressSpinner>
@@ -9,7 +12,15 @@
         <div class="col-6">
           <p-fieldset legend="Número de tarjeta"
             class="flex flex-column justify-items-center font-bold block mb-2 content">
-            <div id="card-number" class="p-inputMask p-component" mask="9999-9999-9999-9999"></div>
+            <div class="flex">
+              <div id="card-number"></div>
+              <i  *ngIf="tarjetaActual !== 'visa' && tarjetaActual !== 'master-card' && tarjetaActual !== 'a' && tarjetaActual !== 'c' && tarjetaActual == '' "class="fa-regular fa-credit-card"></i>
+              <img *ngIf="tarjetaActual === 'visa'" src=".\assets\pago\visa-logo.svg" alt="Visa" width="50px">
+              <img *ngIf="tarjetaActual === 'master-card'" src=".\assets\pago\mastercard-logo.svg" alt="Mastercard" width="50px">
+              <img *ngIf="tarjetaActual === 'american-express'" src=".\assets\pago\amex-logo.svg" alt="Amex" width="50px">
+              <img *ngIf="tarjetaActual === 'diners-club'" src=".\assets\pago\diners-club-logo.svg" alt="DinersClub" width="50px">
+            </div>
+            
           </p-fieldset>
           <p-fieldset legend="Nombre del titular"
             class="flex flex-column justify-items-center font-bold block mb-2 content">
@@ -25,6 +36,33 @@
           </p-fieldset>
         </div>
       </div>
+      
+
+      <div class="payment-notice p-grid p-nogutter p-align-center mt-3">
+        <div class="p-col-12 p-md-6 p-lg-4">
+          <div class="payment-notice-card p-shadow-2 flex justify-content-between">
+            <div>
+              <h2 class="payment-notice-title"><i class="fa-solid fa-lock"></i> Pago seguro</h2>
+              <p class="payment-notice-description">Aceptamos las siguientes tarjetas:</p>
+            </div>            
+            <div class="payment-notice-icons grid p-nogutter p-justify-center flex align-items-center">
+              <div class="col-2">
+                <img src=".\assets\pago\amex-logo.svg" alt="" width="50px">
+              </div>
+              <div class="col-2">
+                <img src=".\assets\pago\diners-club-logo.svg" alt="" width="50px">
+              </div>
+              <div class="col-2">
+                <img src=".\assets\pago\mastercard-logo.svg" alt="" width="50px">
+              </div>
+              <div class="col-2">
+                <img src=".\assets\pago\visa-logo.svg" alt=""  width="50px">
+              </div>
+              <!-- Agrega más imágenes de tarjetas aquí -->
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="grid flex justify-content-center mt-5">
         <p-button label="Pagar" class="col-8" type="submit"
           [style]="{backgroundColor:'var(--color-prin)', color: '#000000', padding : '15px 10px', width: '100%'}"></p-button>
@@ -33,7 +71,7 @@
   </div>
 
 
-  <div *ngIf="pagoRealizado === true" class="grid flex justify-content-center align-items-center">
+  <div *ngIf="pagoRealizado === true" class=" flex justify-content-center align-items-center">
     <div class="col-8 metodo flex flex-column align-items-center">
       <div class="grid cartel">
         <img src=".\assets\pago\pago.png" alt="" class="col-3">

@@ -55,7 +55,7 @@ import { PaqueteriaComponent } from './_page/paqueteria/paqueteria.component';
     PrimeNGModule,
   ],
   providers: [
-    AppComponent
+    AppComponent,PaqueteriaComponent 
   ],
   bootstrap: [AppComponent],
 })

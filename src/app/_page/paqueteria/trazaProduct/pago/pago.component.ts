@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import * as braintree from 'braintree-web';
+import * as creditCardType from 'credit-card-type';
 
 import { PaymentService } from '@app/_service/modelos/payment.service';
 import { PaymentFilter } from '@app/_model/filter/paymentFilter';
@@ -15,12 +16,13 @@ import { CarritoService } from '@app/_service/modelos/carrito.service';
   templateUrl: './pago.component.html',
   styleUrls: ['./pago.component.css'],
 })
-export class PagoComponent implements OnInit{
+export class PagoComponent implements OnInit {
   paymentForm!: FormGroup;
   clientToken!: string;
   amount: number = 0;
   carga: boolean = false;
   pagoRealizado: boolean = false;
+  isFormLoaded: boolean = false;
   constructor(
     private paymentService: PaymentService,
     private formBuilder: FormBuilder,
@@ -32,13 +34,11 @@ export class PagoComponent implements OnInit{
   ) {}
 
   ngOnInit() {
-
     const objetoAlmacenadoStr = localStorage.getItem('resumenCarrito');
     if (objetoAlmacenadoStr !== null) {
       const objetoAlmacenado = JSON.parse(objetoAlmacenadoStr);
       this.amount = objetoAlmacenado.ammout;
     }
-
 
     this.paymentForm = this.formBuilder.group({
       cardNumber: ['', Validators.required],
@@ -63,6 +63,7 @@ export class PagoComponent implements OnInit{
     );
   }
 
+  tarjetaActual: string = '';
   initializeBraintree() {
     braintree.client.create(
       {
@@ -119,8 +120,40 @@ export class PagoComponent implements OnInit{
               this.carga = false;
               return;
             }
+            hostedFieldsInstance.on('cardTypeChange', (event: any) => {
+              if (event.cards && event.cards.length > 0) {
+                const cardType = event.cards[0].type;
+                this.tarjetaActual = cardType;
+                console.log("🔥 > PagoComponent > hostedFieldsInstance.on > cardType:", cardType);
+              } else {
+                this.tarjetaActual = ''; // Valor por defecto si no se detecta ningún tipo de tarjeta
+              }
+            });
+            
+            
+
+            const checkFormLoaded = setInterval(() => {
+              const cardNumberInput = document.querySelector('#card-number');
+              const cardholderNameInput =
+                document.querySelector('#cardholder-name');
+              const expirationDateInput =
+                document.querySelector('#expiration-date');
+              const cvvInput = document.querySelector('#cvv');
+
+              if (
+                cardNumberInput &&
+                cardholderNameInput &&
+                expirationDateInput &&
+                cvvInput
+              ) {
+                console.log('El formulario de pago ha cargado completamente');
+                this.isFormLoaded = true;
+                clearInterval(checkFormLoaded);
+              }
+            }, 100);
 
             const form = document.getElementById('payment-form');
+
             form?.addEventListener('submit', (event) => {
               event.preventDefault();
 
@@ -187,6 +220,7 @@ export class PagoComponent implements OnInit{
 
   actualizarResumenEnPadre() {
     const nuevoResumen = false;
+    console.log("acrtualizando resumen")
     this.pedidoComponent.actualizarResumenDesdeHijo(nuevoResumen);
   }
 
