@@ -1,7 +1,0 @@
-export class EstProduct {
-	idEstProduct!: number;
-	nombreItem!: string;
-	abreviItem!: string;
-	vistaItem!: string;
-	identItem!: string;	
-}

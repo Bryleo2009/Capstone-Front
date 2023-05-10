@@ -69,14 +69,12 @@ export class Details01Component {
             .listarPorIdTalla(unproducto.idProduct, 'token')
             .subscribe((data) => {
               this.tallas= data;
-              console.log("🔥 > Details01Component > .subscribe > data:", data)
             });
             //listar colores
           this.colorSerive
           .listarPorIdColor(unproducto.idProduct, 'token')
           .subscribe((data) => {
             this.colores = data;
-            console.log("🔥 > Details01Component > .subscribe > data:", data)
           });
         });
     }

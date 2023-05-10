@@ -58,9 +58,9 @@ export class HomeComponent implements OnInit {
   productosCaballeros!: ProductoFilter[];
   listarProductosCaballeros(): void {
     this.productoService
-      .listar('CAB', [], [], [], [], [], 0, 999, 20, 0, 'token')
+      .listarRandom('CAB', 20,'token')
       .subscribe((data) => {
-        this.productosCaballeros = data.content;
+        this.productosCaballeros = data;
         console.log("🔥 > HomeComponent > .subscribe > this.productosCaballeros:", this.productosCaballeros)
       });
   }
@@ -68,9 +68,11 @@ export class HomeComponent implements OnInit {
   productosDamas!: ProductoFilter[];
   listarProductosDamas(): void {
     this.productoService
-      .listar('DAM', [], [], [], [], [], 0, 999, 20, 0, 'token')
+      .listarRandom('DAM', 20,'token')
       .subscribe((data) => {
-        this.productosDamas = data.content;
+        this.productosDamas = data;
+        console.log("🔥 > HomeComponent > .subscribe > data:", data)
+        console.log("🔥 > HomeComponent > .subscribe > this.productosDamas:", this.productosDamas)
       });
   }
 

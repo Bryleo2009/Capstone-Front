@@ -69,5 +69,16 @@ export class ProductoService {
     return this.http.delete(`${this.url}/${id}`, { headers });
   }
 
+  listarRandom(
+    categoria: string,
+    cantidad: number,
+    token: string): Observable<ProductoFilter[]> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    const params = {
+      categoria: `${categoria}`,
+      cantidad: `${cantidad}`
+    };
+    return this.http.get<ProductoFilter[]>(`${this.url}/random`, { headers, params });
+  }
  
 }
