@@ -131,7 +131,7 @@
         <div class="flex store-imgcatego flex-wrap justify-content-center">
             <div class="card col" *ngFor="let producto of productos">
                 <p-card [header]="producto.nombre_product" [subheader]="producto.etiquetas"
-                    [style]="{ width: '289px', height: '480px' }">
+                    [style]="{ width: '289px', height: '512px' }">
                     <ng-template pTemplate="header">
                         <img alt="Card" class="img-card" [src]="producto.imagen"
                             *ngIf="producto.imagen !== null; else elseTemplate">
@@ -165,6 +165,6 @@
     </div>
     <div class="card flex justify-content-center" style="width: 100%;">
         <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="totalRecords"
-            [rowsPerPageOptions]="[6,12, 24, 30]"></p-paginator>
+            [rowsPerPageOptions]="[12,30,42,99]"></p-paginator>
     </div>
 </section>

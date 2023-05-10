@@ -118,6 +118,18 @@ section {
   width: 80px !important;
 }
 
+
 :host ::ng-deep .p-card-title.ng-star-inserted{
   font-size: 20px;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+:host ::ng-deep .p-card-subtitle.ng-star-inserted{
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

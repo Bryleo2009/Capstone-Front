@@ -63,7 +63,7 @@
             "descripcionProduct": "Tipo de cuello: Clásico | Estilo de vestuario: Casual",
             "nombreProduct": "Polo Hombre Doo Australia",
             "precioUni": 49.90,
-            "isPrecioDescProduct": false,
+            "isPrecioDescProduct": true,
             "isExistente": true,
             "precioDescuProduct": 44.95,
             "imagen": "https://falabella.scene7.com/is/image/FalabellaPE/19711427_1?wid=1004&hei=1500&crop=248,0,1004,1500&qlt=70",
