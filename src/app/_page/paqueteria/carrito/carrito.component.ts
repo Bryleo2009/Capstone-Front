@@ -14,6 +14,8 @@ import { ProductoStorage } from '@app/_model/filter/productoStorage';
 import { CarritoService } from '@app/_service/modelos/carrito.service';
 import { Observable, forkJoin } from 'rxjs';
 import { PaqueteriaComponent } from '../paqueteria.component';
+import { Enum, EnumInter } from '@app/_model/enum';
+import { TipoProductoService } from '@app/_service/modelos/tipo-producto.service';
 
 @Component({
   selector: 'app-carrito',
@@ -36,7 +38,8 @@ export class CarritoComponent {
     private changeDetectorRef: ChangeDetectorRef,
     private confirmationService: ConfirmationService,
     private messageService: MessageService,
-    private pequeteriaComponent: PaqueteriaComponent
+    private pequeteriaComponent: PaqueteriaComponent,
+    private tipoProductoService: TipoProductoService
   ) {
     this.monto = 0;
   }
@@ -64,6 +67,7 @@ export class CarritoComponent {
 
     forkJoin(requests).subscribe((data: Producto[]) => {
       this.products = data.map((producto, index) => {
+        const carritoItem = this.carritoLocalStorage[index];
         const productoFilter: ProductoFilter = {
           id_product: producto.idProduct,
           iup: producto.iup,
@@ -73,16 +77,36 @@ export class CarritoComponent {
           is_precio_desc_product: producto.isPrecioDescProduct,
           precio_descu_product: producto.precioDescuProduct,
           etiquetas: '',
-          tallas: '',
-          cantidad: this.carritoLocalStorage[index].cantProduct,
+          tallas: new Enum(), // Actualizar con los datos de la talla correspondiente
+          cantidad: carritoItem.cantProduct,
           marca: producto.idMarca.vistaItem,
-          colores: '',
-          tipoProduct: '',
+          colores: new Enum(), // Actualizar con los datos del color correspondiente
+          tipoProduct: '', // Actualizar con los datos del tipo de producto correspondiente
         };
+    
+        // Obtener datos de la talla
+        this.tallaService.listarPorId(carritoItem.tallaid.toString(), 'token').subscribe((talla) => {
+          productoFilter.tallas = talla;
+          console.log("🔥 > CarritoComponent > this.tallaService.listarPorId > talla:", talla)
+        });
+    
+        // Obtener datos del color
+        this.colorService.listarPorId(carritoItem.colorid.toString(), 'token').subscribe((color) => {
+          productoFilter.colores = color;
+          console.log("🔥 > CarritoComponent > this.colorService.listarPorId > color:", color)
+        });
+    
+        // Obtener datos del tipo de producto
+        this.tipoProductoService.listarPorId(producto.idTipoProduc.idTipoProduc.toString(), 'token').subscribe((tipoProducto) => {
+          productoFilter.tipoProduct = tipoProducto.vistaItem;
+        });
+        console.log("🔥 > CarritoComponent > this.products=data.map > productoFilter:", productoFilter)
+    
         return productoFilter;
       });
       this.calcMonto(this.products);
     });
+    
 
     
   }

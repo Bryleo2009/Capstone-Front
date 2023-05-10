@@ -8,9 +8,12 @@ export class Enum {
     idMarca!: number;
     idEtiqueta!: number;
     idEstProduct!: number;
+    idTipoProduc!: number;
 }
 
 export interface EnumInter {
+    id_color: any;
+    id_talla: any;
 	vista_item: any;
     nombre_item: any;
     abrevi_item: any;

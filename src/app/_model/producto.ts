@@ -3,7 +3,6 @@ import { Enum } from "./enum";
 import { TipoProducto } from "./tipoProducto";
 
 export class Producto {
-
 	idProduct!: number;
 	iup!: string;
 	descripcionProduct!: string;
@@ -18,7 +17,5 @@ export class Producto {
 	idCateg: Categoria = new Categoria();
 	idTipoProduc: Enum = new Enum();
 	idEtiqueta: Enum[] = [];
-	idTalla: Enum[] = [];
-	idColor: Enum[] = [];
 	idMarca: Enum = new Enum();
 }

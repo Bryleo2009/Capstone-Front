@@ -1,3 +1,5 @@
+import { Enum } from "../enum";
+
 export class ProductoFilter {
     id_product!: number;
     iup!: string;
@@ -7,9 +9,9 @@ export class ProductoFilter {
     is_precio_desc_product!: boolean;
     precio_descu_product!: number;
     etiquetas!: string;
-    tallas!: string;
+    tallas: Enum = new Enum();
     marca!: string;
-    colores!: string;
+    colores: Enum = new Enum();
     cantidad!: number;
     tipoProduct!: string;
 }

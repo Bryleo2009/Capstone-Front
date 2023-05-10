@@ -19,9 +19,9 @@ export class TipoProductoService {
     return this.http.get<Enum[]>(this.url, { headers });
   }
 
-  listarPorId(id: string, token: string): Observable<TipoProducto> {
+  listarPorId(id: string, token: string): Observable<Enum> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<TipoProducto>(`${this.url}/${id}`, { headers });
+    return this.http.get<Enum>(`${this.url}/${id}`, { headers });
   }
 
   registrar(Rol: TipoProducto, token: string): Observable<any> {

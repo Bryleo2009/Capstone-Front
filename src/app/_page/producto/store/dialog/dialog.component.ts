@@ -54,6 +54,8 @@ export class DialogComponent implements OnInit {
   selectedCategoriesColors: any[] = [];
   seleccion!: string;
   cant = 1;
+  colorSelect!:EnumInter;
+  tallaSelect!:EnumInter;
   talla!: EnumInter[];
   producto: Producto = new Producto();
   ngOnInit(): void {
@@ -82,10 +84,10 @@ export class DialogComponent implements OnInit {
     this.ref.close(this.ref);
   }
 
-  agregarAlCarrito(idProducto: number, cantidadProducto: number){
+  agregarAlCarrito(idProducto: number, cantidadProducto: number,colorid:EnumInter, tallaid:EnumInter){
     this.messageService.add({ severity: 'success', summary: 'Regristro exitoso!', detail: 'El producto ha sido agregado al carrito' });
     // Lógica para agregar los productos al carrito
-    this.carritoService.agregarAlCarrito(idProducto, cantidadProducto);
+    this.carritoService.agregarAlCarrito(idProducto, cantidadProducto, colorid, tallaid);
   }
 
   listarProductos(categoria: string): void {

@@ -11,15 +11,23 @@
                 <ng-template let-product pTemplate="listItem">
                     <div class="col-12">
                         <div class="flex flex-column xl:flex-row xl:align-items-start p-4 gap-4">
-                            <img class="w-9 sm:w-16rem xl:w-9rem block xl:block mx-auto border-round"
-                                src=".\assets\details\prenda01.png" [alt]="product.name" />
+                            <img class="w-9 sm:w-16rem xl:w-9rem block xl:block mx-auto border-round imgproduct"
+                                [src]="product.imagen" [alt]="product.name" />
                             <div
                                 class="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
                                 <div class="flex flex-column align-items-center sm:align-items-start gap-4">
                                     <div class="text-2xl font-bold text-900">{{product.nombre_product}}</div>
-                                    <p-inputNumber [(ngModel)]="product.cantidad" suffix=" ud." mode="decimal"
+                                    <div class="flex align-items-center">
+                                        <p-inputNumber [(ngModel)]="product.cantidad" suffix=" ud." mode="decimal"
                                         [useGrouping]="false" inputId="minmax-buttons" [min]="1" [max]="500"
                                         [disabled]="true"></p-inputNumber>
+                                    <p-button
+                                        [style]="{backgroundColor:'#E5E5E5', color: '#000000', padding : '8px 25px', margin: '0px 10px'}"
+                                        [label]="product.tallas.vistaItem"></p-button>
+                                    <p-button
+                                        [style]="{'background-color': product.colores.nombreItem, 'padding': '10px 10px', 'border-radius': '0%', 'margin': '0px 5px', 'display': 'inline-block', 'border': '0.5px dotted black'}"
+                                        pTooltip="{{product.colores.vistaItem}}"></p-button>
+                                    </div>
                                     <div class="flex align-items-center gap-3">
                                         <span class="flex align-items-center gap-2">
                                             <i class="pi pi-tag"></i>
