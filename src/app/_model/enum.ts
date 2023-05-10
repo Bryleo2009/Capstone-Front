@@ -10,7 +10,7 @@ export class Enum {
     idEstProduct!: number;
 }
 
-export interface Colors {
+export interface EnumInter {
 	vista_item: any;
     nombre_item: any;
     abrevi_item: any;

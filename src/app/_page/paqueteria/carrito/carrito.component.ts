@@ -1,6 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { Categoria } from '@app/_model/categoria';
-import { Colors, Enum } from '@app/_model/enum';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { ProductoFilter } from '@app/_model/filter/productoFilter';
 import { Producto } from '@app/_model/producto';
 import { CategoriasService } from '@app/_service/modelos/categorias.service';
@@ -8,9 +6,8 @@ import { EtiquetaService } from '@app/_service/modelos/etiqueta.service';
 import { MarcaService } from '@app/_service/modelos/marca.service';
 import { ProductoService } from '@app/_service/modelos/producto.service';
 import { TallaService } from '@app/_service/modelos/talla.service';
-import { TipoProductoService } from '@app/_service/modelos/tipo-producto.service';
 import { ColorService } from '@app/_service/modelos/color.service';
-import { ConfirmationService, MenuItem, MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EncryptionService } from '@app/_service/util/encryption.service';
 import { ProductoStorage } from '@app/_model/filter/productoStorage';

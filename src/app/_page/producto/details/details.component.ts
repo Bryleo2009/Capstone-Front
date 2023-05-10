@@ -10,6 +10,8 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { DialogComponent } from '../store/dialog/dialog.component';
 import { AppComponent } from '@app/app.component';
 import { CarritoService } from '@app/_service/modelos/carrito.service';
+import { ColorService } from '@app/_service/modelos/color.service';
+import { Enum, EnumInter } from '@app/_model/enum';
 
 interface Car {
   id?: string;
@@ -31,6 +33,7 @@ export class Details01Component {
     private router: Router,
     private producSerive: ProductoService,
     private tallaSerive: TallaService,
+    private colorSerive: ColorService,
     private viewportScroller: ViewportScroller,
     public dialogService: DialogService,
     private general: AppComponent,
@@ -43,6 +46,8 @@ export class Details01Component {
   estrellas = 3;
   cant = 1;
   ref!: DynamicDialogRef;
+  tallas:EnumInter[] = [];
+  colores:EnumInter[] = [];
   ngOnInit() {
     //si estoy visualizando
     this.route.queryParams.subscribe((params) => {
@@ -63,8 +68,16 @@ export class Details01Component {
           this.tallaSerive
             .listarPorIdTalla(unproducto.idProduct, 'token')
             .subscribe((data) => {
-              console.log(data);
+              this.tallas= data;
+              console.log("🔥 > Details01Component > .subscribe > data:", data)
             });
+            //listar colores
+          this.colorSerive
+          .listarPorIdColor(unproducto.idProduct, 'token')
+          .subscribe((data) => {
+            this.colores = data;
+            console.log("🔥 > Details01Component > .subscribe > data:", data)
+          });
         });
     }
 
@@ -126,10 +139,9 @@ export class Details01Component {
     });
   }
 
-  agregarAlCarrito(idProducto: number, cantidadProducto: number){
-    console.log("🔥 > Details01Component > agregarAlCarrito > cantidadProducto:", cantidadProducto)
-    console.log("🔥 > Details01Component > agregarAlCarrito > idProducto:", idProducto)
-    // Lógica para agregar los productos al carrito
-    this.carritoService.agregarAlCarrito(idProducto, cantidadProducto);
-  }
+  // agregarAlCarrito(idProducto: number, cantidadProducto: number){
+  //   // Lógica para agregar los productos al carrito
+  //   this.carritoService.agregarAlCarrito(idProducto, cantidadProducto);
+  // }
+  
 }

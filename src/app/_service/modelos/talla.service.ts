@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment.development';
-import { Enum } from '@app/_model/enum';
+import { Enum, EnumInter } from '@app/_model/enum';
 
 @Injectable({
   providedIn: 'root'
@@ -23,9 +23,9 @@ export class TallaService {
     return this.http.get<Enum>(`${this.url}/${id}`, { headers });
   }
 
-  listarPorIdTalla(id: number, token: string): Observable<Enum[]> {
+  listarPorIdTalla(id: number, token: string): Observable<EnumInter[]> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<Enum[]>(`${this.url}/activas/${id}`, { headers });
+    return this.http.get<EnumInter[]>(`${this.url}/activas/${id}`, { headers });
   }
 
   registrar(objeto: Enum, token: string): Observable<any> {

@@ -1,16 +1,12 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Categoria } from '@app/_model/categoria';
-import { Colors, Enum } from '@app/_model/enum';
 import { ProductoFilter } from '@app/_model/filter/productoFilter';
-import { Producto } from '@app/_model/producto';
 import { CategoriasService } from '@app/_service/modelos/categorias.service';
 import { EtiquetaService } from '@app/_service/modelos/etiqueta.service';
 import { MarcaService } from '@app/_service/modelos/marca.service';
 import { ProductoService } from '@app/_service/modelos/producto.service';
 import { TallaService } from '@app/_service/modelos/talla.service';
-import { TipoProductoService } from '@app/_service/modelos/tipo-producto.service';
 import { EncryptionService } from '@app/_service/util/encryption.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { DialogComponent } from '@app/_page/producto/store/dialog/dialog.component';

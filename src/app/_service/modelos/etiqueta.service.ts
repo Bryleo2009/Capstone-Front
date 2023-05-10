@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment.development';
-import { Colors, Enum } from '@app/_model/enum';
+import { EnumInter, Enum } from '@app/_model/enum';
 
 @Injectable({
   providedIn: 'root'
@@ -37,8 +37,8 @@ export class EtiquetaService {
     return this.http.delete(`${this.url}/${id}`, { headers });
   }
 
-  getColor(token: string): Observable<Colors[]> {
+  getColor(token: string): Observable<EnumInter[]> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<Colors[]>(`${this.url}/colors`, { headers });
+    return this.http.get<EnumInter[]>(`${this.url}/colors`, { headers });
   }
 }

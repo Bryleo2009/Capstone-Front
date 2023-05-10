@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Colors, Enum } from '@app/_model/enum';
+import { Component, OnInit } from '@angular/core';
+import { EnumInter, Enum } from '@app/_model/enum';
 import { ProductoFilter } from '@app/_model/filter/productoFilter';
 import { CategoriasService } from '@app/_service/modelos/categorias.service';
 import { EtiquetaService } from '@app/_service/modelos/etiqueta.service';
@@ -11,7 +11,6 @@ import { MenuItem } from 'primeng/api';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EncryptionService } from '@app/_service/util/encryption.service';
 import { TipoProductoService } from '@app/_service/modelos/tipo-producto.service';
-import { TabMenu } from 'primeng/tabmenu';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { DialogComponent } from './dialog/dialog.component';
 import { ViewportScroller } from '@angular/common';
@@ -49,7 +48,7 @@ export class StoreComponent implements OnInit {
   precioMin: number = 10;
   precioMax: number = 1000;
   categorias!: Enum[];
-  colores!: Colors[];
+  colores!: EnumInter[];
   talla!: Enum[];
   marca!: Enum[];
   tipoproducto!: Enum[];
