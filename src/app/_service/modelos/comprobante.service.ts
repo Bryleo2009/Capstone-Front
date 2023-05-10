@@ -10,7 +10,7 @@ import { Comprobante } from '@app/_model/comprobante';
 })
 export class ComprobanteService {
 
-  url:string = `${environment.HOST_URL}/Rols`;
+  url:string = `${environment.HOST_URL}/Comprobantes`;
 
   constructor(private http: HttpClient) { }
 

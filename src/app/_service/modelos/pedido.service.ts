@@ -10,7 +10,7 @@ import { Pedido } from '@app/_model/pedido';
 })
 export class PedidoService {
 
-  url:string = `${environment.HOST_URL}/Rols`;
+  url:string = `${environment.HOST_URL}/Pedidos`;
 
   constructor(private http: HttpClient) { }
 

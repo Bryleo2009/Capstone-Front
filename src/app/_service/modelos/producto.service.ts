@@ -6,7 +6,6 @@ import { Categoria } from '@app/_model/categoria';
 import { Producto } from '@app/_model/producto';
 import { Page } from './../../_model/page';
 import { ProductoFilter } from '@app/_model/filter/productoFilter';
-import { CarritoFilter } from '@app/_model/carritofilter';
 
 
 @Injectable({
@@ -70,8 +69,5 @@ export class ProductoService {
     return this.http.delete(`${this.url}/${id}`, { headers });
   }
 
-  prueba(Rol: CarritoFilter, token: string): Observable<any>{
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.put(`${this.url}`,Rol, { headers });
-  }
+ 
 }

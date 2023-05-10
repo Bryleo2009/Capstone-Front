@@ -10,7 +10,7 @@ import { Cliente } from '@app/_model/cliente';
 })
 export class ClienteService {
 
-  url:string = `${environment.HOST_URL}/Rols`;
+  url:string = `${environment.HOST_URL}/Clientes`;
 
   constructor(private http: HttpClient) { }
 
