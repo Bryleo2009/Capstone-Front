@@ -43,7 +43,7 @@ export class ProductoService {
     };
     return this.http.get<Page<ProductoFilter>>(this.url, { headers, params });
   }
-
+  
   listarPorId(id: string, token: string): Observable<Producto> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get<Producto>(`${this.url}/${id}`, { headers });
@@ -68,4 +68,6 @@ export class ProductoService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.delete(`${this.url}/${id}`, { headers });
   }
+
+ 
 }

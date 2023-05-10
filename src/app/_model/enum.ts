@@ -7,6 +7,7 @@ export class Enum {
     idCateg!: number;
     idMarca!: number;
     idEtiqueta!: number;
+    idEstProduct!: number;
 }
 
 export interface Colors {
