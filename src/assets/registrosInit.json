@@ -1,0 +1,160 @@
+[
+    {
+        "producto": {
+            "descripcionProduct": "Composicion: 80% Algodón, 20% Poliester | Bolsillos: 3",
+            "nombreProduct": "Short de Buzo Hombre Fila",
+            "precioUni": 149.99,
+            "isPrecioDescProduct": true,
+            "isExistente": true,
+            "precioDescuProduct": 89.99,
+            "imagen": "https://falabella.scene7.com/is/image/FalabellaPE/19468343_2?wid=1500&hei=1500&qlt=70",
+            "idCateg": {
+                "idCateg": 1
+            },
+            "idMarca": {
+                "idMarca": 6
+            },
+            "idTipoProduc": {
+                "idTipoProduc": 8
+            },
+            "idEtiqueta": [
+                {
+                    "idEtiqueta": 7
+                },
+                {
+                    "idEtiqueta": 1
+                },
+                {
+                    "idEtiqueta": 2
+                },
+                {
+                    "idEtiqueta": 3
+                },
+                {
+                    "idEtiqueta": 4
+                }
+            ]
+        },
+        "tallaColorFilters": [
+            {
+                "cantidad": 50,
+                "talla": 2,
+                "color": 8
+            },
+            {
+                "cantidad": 50,
+                "talla": 3,
+                "color": 8
+            },
+            {
+                "cantidad": 50,
+                "talla": 4,
+                "color": 8
+            },
+            {
+                "cantidad": 50,
+                "talla": 5,
+                "color": 8
+            }
+        ]
+    },
+    {
+        "producto": {
+            "descripcionProduct": "Tipo de cuello: Clásico | Estilo de vestuario: Casual",
+            "nombreProduct": "Polo Hombre Doo Australia",
+            "precioUni": 49.90,
+            "isPrecioDescProduct": false,
+            "isExistente": true,
+            "precioDescuProduct": 44.95,
+            "imagen": "https://falabella.scene7.com/is/image/FalabellaPE/19711427_1?wid=1004&hei=1500&crop=248,0,1004,1500&qlt=70",
+            "idCateg": {
+                "idCateg": 1
+            },
+            "idMarca": {
+                "idMarca": 6
+            },
+            "idTipoProduc": {
+                "idTipoProduc": 4
+            },
+            "idEtiqueta": [
+                {
+                    "idEtiqueta": 7
+                },
+                {
+                    "idEtiqueta": 1
+                },
+                {
+                    "idEtiqueta": 2
+                },
+                {
+                    "idEtiqueta": 3
+                },
+                {
+                    "idEtiqueta": 4
+                }
+            ]
+        },
+        "tallaColorFilters": [
+            {
+                "cantidad": 50,
+                "talla": 2,
+                "color": 1
+            },
+            {
+                "cantidad": 50,
+                "talla": 3,
+                "color": 1
+            },
+            {
+                "cantidad": 50,
+                "talla": 4,
+                "color": 1
+            },
+            {
+                "cantidad": 50,
+                "talla": 5,
+                "color": 1
+            },
+            {
+                "cantidad": 50,
+                "talla": 2,
+                "color": 7
+            },
+            {
+                "cantidad": 50,
+                "talla": 3,
+                "color": 7
+            },
+            {
+                "cantidad": 50,
+                "talla": 4,
+                "color": 7
+            },
+            {
+                "cantidad": 50,
+                "talla": 5,
+                "color": 7
+            },
+            {
+                "cantidad": 50,
+                "talla": 2,
+                "color": 4
+            },
+            {
+                "cantidad": 50,
+                "talla": 3,
+                "color": 4
+            },
+            {
+                "cantidad": 50,
+                "talla": 4,
+                "color": 4
+            },
+            {
+                "cantidad": 50,
+                "talla": 5,
+                "color": 4
+            }
+        ]
+    }
+]

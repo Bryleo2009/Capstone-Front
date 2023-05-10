@@ -117,3 +117,7 @@ section {
 :host ::ng-deep .p-inputtext.p-component.p-element.p-inputnumber-input.p-filled{
   width: 80px !important;
 }
+
+:host ::ng-deep .p-card-title.ng-star-inserted{
+  font-size: 20px;
+}

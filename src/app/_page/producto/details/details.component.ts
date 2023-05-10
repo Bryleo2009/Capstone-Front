@@ -76,6 +76,8 @@ export class Details01Component {
           .subscribe((data) => {
             this.colores = data;
           });
+          this.listarProductos();
+
         });
     }
 
@@ -96,8 +98,6 @@ export class Details01Component {
         numScroll: 1,
       },
     ];
-
-    this.listarProductos();
   }
 
   cars: Car[] = [];
@@ -105,9 +105,9 @@ export class Details01Component {
   productos!: ProductoFilter[];
   listarProductos(): void {
     this.producSerive
-      .listar('', [], [], [], [], [], 0, 999, 20, 0, 'token')
+      .listarRandom(this.producto.idCateg.abreviItem, 20,'token')
       .subscribe((data) => {
-        this.productos = data.content;
+        this.productos = data;
       });
   }
 

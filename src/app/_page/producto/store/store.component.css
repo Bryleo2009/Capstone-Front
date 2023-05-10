@@ -112,3 +112,8 @@ p-checkbox.btn-sel {
 :host ::ng-deep .p-element.p-button-icon-only.p-inputnumber-button.p-inputnumber-button-up.p-button.p-component{
     background-color: var(--color-prin);
 }
+
+
+:host ::ng-deep .p-card-title.ng-star-inserted{
+    font-size: 20px;
+}
