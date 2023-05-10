@@ -1,0 +1,114 @@
+.s-store {
+    margin: 30px;
+}
+
+.store-imgcatego {
+    margin-top: 25px;
+}
+
+.store-filtro {
+    background-color: white;
+    border-radius: 3%;
+    margin-right: 10px;
+}
+
+div>img {
+    width: 100%;
+    height: 100%;
+}
+
+.card {
+    padding: 25px;
+}
+
+.img-card {
+    height: 250px;
+    object-fit: cover;
+    padding: 5px;
+}
+
+:host ::ng-deep .p-card-title,:host ::ng-deep .p-card-subtitle {
+    text-align: center;
+  }
+
+  
+.precio {
+    margin: 0 25px 20px 25px;
+}
+
+.descuento {
+    color: var(--color-prin);
+}
+
+.categoriaTipo>* {
+    font-size: var(--Titulo-size);
+    margin-top: 45px;
+}
+
+.reducctam {
+    font-size: var(--Parrafo-size);
+}
+
+.marca {
+    margin-top: 15px;
+}
+
+.talla {
+    margin-top: 10px;
+    padding: 7px;
+}
+
+.color {
+    margin-top: 10px;
+}
+
+
+p-checkbox.btn-sel {
+    padding: 10px 10px;
+    border-radius: 50%;
+    margin: 5px;
+    display: inline-block;
+}
+
+:host ::ng-deep .btn-sel .p-checkbox-box {
+    border: 0px solid transparent !important;
+    background: transparent !important;
+}
+
+:host ::ng-deep .p-checkbox-icon.pi.pi-bookmark-fill.ng-star-inserted {
+    color: white !important;
+    -webkit-box-shadow: 8px 5px 19px 5px rgba(0,0,0,0.2);
+    box-shadow:  8px 5px 19px 5px rgba(0,0,0,0.2);
+}
+  
+:host ::ng-deep .p-tabmenu-nav p-reset{
+    color: white !important;
+    -webkit-box-shadow: 8px 5px 19px 5px rgba(0,0,0,0.2);
+    box-shadow:  8px 5px 19px 5px rgba(0,0,0,0.2);
+}
+  
+
+:host ::ng-deep .p-tabmenu-nav.p-reset{
+    display: flex !important;
+    justify-content: space-between;
+}
+
+:host ::ng-deep .p-card.p-component{
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+:host ::ng-deep .card.col.ng-star-inserted{
+    display: flex !important;
+    justify-content: center;
+}
+
+:host ::ng-deep .p-inputnumber.p-component.p-inputnumber-buttons-stacked{
+    width: 280px !important;
+}
+
+:host ::ng-deep .p-element.p-button-icon-only.p-inputnumber-button.p-inputnumber-button-down.p-button.p-component,
+:host ::ng-deep .p-element.p-button-icon-only.p-inputnumber-button.p-inputnumber-button-up.p-button.p-component{
+    background-color: var(--color-prin);
+}

@@ -1,0 +1,170 @@
+<section class="grid s-store">
+    <div class="col-3">
+        <div class="store-filtro flex flex-column" id="filtrado">
+            <!--Precios-->
+            <div class="card flex flex-wrap flex-column gap-3 p-fluid"  >
+                <div class="flex-auto">
+                    <label class="mb-2 block font-bolvaluesEtiquetad" for="stacked">Precio Min</label>
+                    <p-inputNumber [(ngModel)]="precioMin" [showButtons]="true" inputId="stacked" [min]="1"
+                        [max]="1000" mode="currency" currency="PEN" (ngModelChange)="filtrar(seleccion)"> </p-inputNumber>
+                </div>
+                <div class="flex-auto">
+                    <label class="mb-2 block font-bold" for="minmax-buttons">Precio Max</label>
+                    <p-inputNumber [(ngModel)]="precioMax" mode="decimal" [showButtons]="true" inputId="minmax-buttons"
+                        [min]="40" [max]="400" mode="currency" currency="PEN" (ngModelChange)="filtrar(seleccion)">
+                    </p-inputNumber>
+                </div>
+            </div>
+            <!-- tipos -->
+            <div class="card ">
+                <h3> Tipos de prendas </h3>
+                <div class="flex flex-column gap-2 marca">
+                    <p-chip class="flex align-items-start" *ngFor="let tipoproducto of valuestipoproducto" [label]="tipoproducto"
+                        [removable]="true" (onRemove)="removetipoproducto(tipoproducto)"></p-chip>
+                    <p-dropdown [options]="tipoproducto" [(ngModel)]="selectedtipoproducto" optionLabel="abreviItem"
+                        [filter]="true" filterBy="vistaItem" [showClear]="true" placeholder="Selecciona una tipo"
+                        (ngModelChange)="updateValuestipoproducto()" [style]="{ width: '280px' }">
+                        <ng-template pTemplate="selectedItem">
+                            <div class="flex align-items-center gap-2" *ngIf="selectedtipoproducto">
+                                <div>{{ selectedtipoproducto.vistaItem }}</div>
+                            </div>
+                        </ng-template>
+                        <ng-template let-tipoproducto pTemplate="item">
+                            <div class="flex align-items-center gap-2">
+                                <div>{{ tipoproducto.vistaItem }}</div>
+                            </div>
+                        </ng-template>
+                    </p-dropdown>
+                </div>
+            </div>
+            <!-- marcas -->
+            <div class="card ">
+                <h3> Marca </h3>
+                <div class="flex flex-column gap-2 marca">
+                    <p-chip class="flex align-items-start" *ngFor="let marca of valuesmarca" [label]="marca"
+                        [removable]="true" (onRemove)="removemarca(marca)"></p-chip>
+                    <p-dropdown [options]="marca" [(ngModel)]="selectedmarca" optionLabel="abreviItem"
+                        [filter]="true" filterBy="vistaItem" [showClear]="true" placeholder="Selecciona una marca"
+                        (ngModelChange)="updateValuesmarca()" [style]="{ width: '280px' }">
+                        <ng-template pTemplate="selectedItem">
+                            <div class="flex align-items-center gap-2" *ngIf="selectedmarca">
+                                <div>{{ selectedmarca.vistaItem }}</div>
+                            </div>
+                        </ng-template>
+                        <ng-template let-marca pTemplate="item">
+                            <div class="flex align-items-center gap-2">
+                                <div>{{ marca.vistaItem }}</div>
+                            </div>
+                        </ng-template>
+                    </p-dropdown>
+                </div>
+            </div>
+            <!-- Etiquetas -->
+            <div class="card">
+                <h3> Etiquetas </h3>
+                <div class="flex flex-column gap-2 marca">
+                    <p-chip class="flex align-items-start" *ngFor="let etiqueta of valuesEtiqueta" [label]="etiqueta"
+                        [removable]="true" (onRemove)="removeEtiqueta(etiqueta)"></p-chip>
+                    <p-dropdown [options]="etiquetas" [(ngModel)]="selectedEtiqueta" optionLabel="abreviItem"
+                        [filter]="true" filterBy="vistaItem" [showClear]="true" placeholder="Selecciona una etiqueta"
+                        (ngModelChange)="updateValuesEtiquetas()" [style]="{ width: '280px' }">
+                        <ng-template pTemplate="selectedItem">
+                            <div class="flex align-items-center gap-2" *ngIf="selectedEtiqueta">
+                                <div>{{ selectedEtiqueta.vistaItem }}</div>
+                            </div>
+                        </ng-template>
+                        <ng-template let-etiqueta pTemplate="item">
+                            <div class="flex align-items-center gap-2">
+                                <div>{{ etiqueta.vistaItem }}</div>
+                            </div>
+                        </ng-template>
+                    </p-dropdown>
+                </div>
+            </div>
+            <!-- tallas -->
+            <div class="card">
+                <h3> Talla </h3>
+                <div class="flex flex-column gap-2 marca">
+                    <p-chip class="flex align-items-start" *ngFor="let talla of valuestalla" [label]="talla"
+                        [removable]="true" (onRemove)="removetalla(talla)"></p-chip>
+                    <p-dropdown [options]="talla" [(ngModel)]="selectedtalla" optionLabel="abreviItem"
+                        [filter]="true" filterBy="vistaItem" [showClear]="true" placeholder="Selecciona una talla"
+                        (ngModelChange)="updateValuestalla()" [style]="{ width: '280px' }">
+                        <ng-template pTemplate="selectedItem">
+                            <div class="flex align-items-center gap-2" *ngIf="selectedtalla">
+                                <div>{{ selectedtalla.vistaItem }}</div>
+                            </div>
+                        </ng-template>
+                        <ng-template let-talla pTemplate="item">
+                            <div class="flex align-items-center gap-2">
+                                <div>{{ talla.vistaItem }}</div>
+                            </div>
+                        </ng-template>
+                    </p-dropdown>
+                </div>
+            </div>
+            <!-- color -->
+            <div class="card ">
+                <h3> Color </h3>
+                <div class="flex-wrap gap-3 mb-4 color">
+                    <div class="card flex flex-wrap">
+                        <p-checkbox *ngFor="let color of colores" name="group" class="btn-sel gap-1"
+                            [style.background]="color.nombre_item" [value]="color.abrevi_item"
+                            [(ngModel)]="selectedCategoriesColors" [inputId]="color.nombre_item"
+                            (ngModelChange)="filtrar(seleccion)" pTooltip="{{color.vista_item}}" [style]="{icon: 'black'}" checkboxIcon="pi pi-bookmark-fill" ></p-checkbox>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-9 store-catalogo">
+        <!--Categorias-->
+        <div class="store-catego flex flex-column">
+            <p-tabMenu [model]="items"></p-tabMenu>
+        </div>
+        <!--Productos-->
+        <div>
+            <u class="categoriaTipo">
+                <h1>{{categoriaActual}}</h1>
+            </u>
+        </div>
+        <div class="flex store-imgcatego flex-wrap justify-content-center">
+            <div class="card col" *ngFor="let producto of productos">
+                <p-card [header]="producto.nombre_product" [subheader]="producto.etiquetas"
+                    [style]="{ width: '289px', height: '480px' }">
+                    <ng-template pTemplate="header">
+                        <img alt="Card" class="img-card" src="..\assets\Store\image 14.jpg"
+                            *ngIf="producto.imagen !== null; else elseTemplate">
+                        <ng-template #elseTemplate>
+                            <img alt="Card" class="img-card" src="..\assets\Store\image 14.jpg">
+                        </ng-template>
+                    </ng-template>
+                    <div class="cont-card flex justify-content-center">
+                        <del *ngIf="producto.is_precio_desc_product, else sinTachado">
+                            <p class="precio">S/ {{ producto.precio_uni }}</p>
+                        </del>
+                        <ng-template #sinTachado>
+                            <p class="precio">S/ {{ producto.precio_uni }}</p>
+                        </ng-template>
+                        <p class="precio descuento" *ngIf="producto.is_precio_desc_product"><b>S/ {{
+                                producto.precio_descu_product }}</b></p>
+                    </div>
+                    <ng-template pTemplate="footer flex">
+                        <div class="flex justify-content-center">
+                        <p-button
+                            [style]="{backgroundColor:'#E5E5E5', color: '#000000', 'border-radius': '165px 25px 0px 0px', padding : '8px 25px'}"
+                            label="Agregar a carrito" (click)="show(producto.id_product)"></p-button>
+                        <p-button icon="pi pi-eye"
+                            [style]="{backgroundColor:'#E5E5E5', color: '#000000', 'border-radius': '25px 165px 0px 0px', padding : '8px 25px 8px 15px', 'margin-left' : '5px' }"
+                            (click)="visualizar(producto.id_product)"></p-button>
+                        </div>
+                    </ng-template>
+                </p-card>
+            </div>
+        </div>
+    </div>
+    <div class="card flex justify-content-center" style="width: 100%;">
+        <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="totalRecords"
+            [rowsPerPageOptions]="[6,12, 24, 30]"></p-paginator>
+    </div>
+</section>

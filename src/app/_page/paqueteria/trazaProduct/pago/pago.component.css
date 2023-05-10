@@ -1,0 +1,86 @@
+.titulo {
+
+    padding: 20px;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.letra {
+
+    font-size: 40px !important;
+    font-weight: bold;
+    text-decoration: underline;
+
+}
+
+.form {
+    background-color: var(--color-white);
+    padding: 50px;
+    height: 100%;
+}
+
+.spinner {
+    background-color: rgba(174, 179, 179, 0.397);
+    position: absolute;
+    height: 410px;
+    z-index: 9;
+}
+
+#card-number,
+#expiration-date,
+#cvv,
+#cardholder-name {
+    height: 20px;
+}
+
+#card-number{
+  width: 70%;
+}
+
+.metodo {
+    background-color: white;
+    padding: 50px;
+}
+
+.cartel {
+    text-align: left;
+    border-radius: 21px;
+    box-shadow: 5px 5px 17px 5px rgba(0, 0, 0, 0.15);
+    padding: 25px;
+}
+
+.loader, .loader:before, .loader:after {
+    border-radius: 50%;
+    width: 2.5em;
+    height: 2.5em;
+    animation-fill-mode: both;
+    animation: bblFadInOut 1.8s infinite ease-in-out;
+  }
+  .loader {
+    color: #ff0000;
+    font-size: 7px;
+    position: relative;
+    text-indent: -9999em;
+    transform: translateZ(0);
+    animation-delay: -0.16s;
+  }
+  .loader:before,
+  .loader:after {
+    content: '';
+    position: absolute;
+    top: 0;
+  }
+  .loader:before {
+    left: -3.5em;
+    animation-delay: -0.32s;
+  }
+  .loader:after {
+    left: 3.5em;
+  }
+  
+  @keyframes bblFadInOut {
+    0%, 80%, 100% { box-shadow: 0 2.5em 0 -1.3em }
+    40% { box-shadow: 0 2.5em 0 0 }
+  }
+      

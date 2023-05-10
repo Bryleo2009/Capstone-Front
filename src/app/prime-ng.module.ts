@@ -19,7 +19,17 @@ import { TooltipModule } from 'primeng/tooltip';
 import { RatingModule } from 'primeng/rating';
 import { DataViewModule, DataViewLayoutOptions } from 'primeng/dataview';
 import { TagModule } from 'primeng/tag';
-
+import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
+import { BadgeModule } from 'primeng/badge';
+import { ToastModule } from 'primeng/toast';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { StepsModule } from 'primeng/steps';
+import { InputMaskModule } from 'primeng/inputmask';
+import { FieldsetModule } from 'primeng/fieldset';
+import { CalendarModule } from 'primeng/calendar';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { TimelineModule } from 'primeng/timeline';
 @NgModule({
   declarations: [],
   imports: [
@@ -43,7 +53,18 @@ import { TagModule } from 'primeng/tag';
     RatingModule,
     DataViewModule,
     TagModule,
+    DynamicDialogModule,
+    BadgeModule,
+    ToastModule,
+    ConfirmPopupModule,
+    StepsModule,
+    InputMaskModule,
+    FieldsetModule,
+    CalendarModule,
+    ProgressSpinnerModule,
+    TimelineModule
 
+    
   ],exports: [
     ButtonModule,
     GalleriaModule,
@@ -64,7 +85,24 @@ import { TagModule } from 'primeng/tag';
     RatingModule,
     DataViewModule,
     TagModule,
+    DynamicDialogModule,
+    BadgeModule,
+    ToastModule,
+    ConfirmPopupModule,
+    StepsModule,
+    InputMaskModule,
+    FieldsetModule,
+    CalendarModule,
+    ProgressSpinnerModule,
+    TimelineModule
     
-  ]
+    
+  ],
+  providers: [
+    DialogService,
+    MessageService,
+    ConfirmationService
+
+  ],
 })
 export class PrimeNGModule { }

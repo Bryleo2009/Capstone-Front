@@ -1,0 +1,33 @@
+<section class="s-open">
+    <div class="grid">
+        <div class="col-2 flex align-items-center">
+            <img src=".\assets\Store\image 14.jpg" alt="" class="img-store">
+        </div>
+        <div class="col-5 flex flex-column align-items-center justify-content-center">
+            <div style="width: 100%;">
+                <h1 class="prod">{{producto.nombreProduct}}</h1>
+                <p class="prod descrip">{{producto.descripcionProduct}}</p>
+            </div>
+        </div>
+        <div class="col-2 flex align-items-center">
+            <div *ngIf="producto.isPrecioDescProduct, else sinDescuento">
+                <p style="color: var(--color-prin); font-weight: bold;">S/ {{producto.precioDescuProduct}}</p>
+                <p><del>S/ {{ producto.precioUni }}</del></p>
+            </div>
+            <ng-template #sinDescuento>
+                <p><b>S/ {{ producto.precioUni }}</b></p>
+            </ng-template>
+        </div>
+        <div class="col-3 flex align-items-center">
+            <p-inputNumber [(ngModel)]="cant" suffix=" ud." [showButtons]="true" mode="decimal" [useGrouping]="false"
+                inputId="minmax-buttons" [min]="1" [max]="500"></p-inputNumber>
+        </div>
+    </div>
+    <div class="flex justify-content-end align-items-center">
+        <p-toast></p-toast>
+            <a style="cursor: pointer;" (click)="cerrarModal()"><u>Regresar a catalogo</u></a>
+            <p-button label="Agregar a carrito" icon="fa-solid fa-cart-shopping" iconPos="left"
+            [style]="{backgroundColor:'var(--color-prin)', color: '#000000',  margin: '10px 30px 10px 60px', width: '250px'}"
+            (click)="agregarAlCarrito(producto.idProduct,cant)"></p-button>
+    </div>
+</section>
