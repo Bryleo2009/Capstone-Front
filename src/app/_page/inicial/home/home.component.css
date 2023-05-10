@@ -627,3 +627,23 @@ ul{
 :host ::ng-deep .p-button:enabled:hover{
   background-color: var(--color-prin);
 }
+
+:host ::ng-deep .p-card-title{
+  font-size: 20px;
+  height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+:host ::ng-deep .p-card-subtitle{
+  height: 58px;
+  display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+:host ::ng-deep .p-card.p-component {
+  height: 512px !important;
+}
