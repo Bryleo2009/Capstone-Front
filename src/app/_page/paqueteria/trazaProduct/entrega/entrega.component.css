@@ -1,0 +1,25 @@
+.formulario {
+    width: 80%;
+}
+
+.metodo {
+    background-color: white;
+    padding: 50px;
+}
+
+.cartel {
+    text-align: left;
+    border-radius: 21px;
+    box-shadow: 5px 5px 17px 5px rgba(0, 0, 0, 0.15);
+    padding: 25px;
+}
+
+.p-inputtext.p-component.p-element{
+    width: 100%;
+    margin: 15px auto;
+}
+
+:host ::ng-deep .p-dropdown.p-component{
+    width: 100%;
+    margin: 6px auto;
+}

@@ -31,7 +31,7 @@ const routes: Routes = [
     ] },
   ]},
   { path : 'details' , component : Details01Component},
-  { path: 'payments', component: PagoComponent},
+  { path: 'entregas', component: EntregaComponent},
 ];
 
 @NgModule({

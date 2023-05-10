@@ -4,4 +4,5 @@ export const environment = {
     modalAbierto: false,
     token: '',
     contCarrito: 0,
+    dataJSON : './assets/ubigeo.json',
 };

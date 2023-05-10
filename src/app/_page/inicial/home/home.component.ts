@@ -65,6 +65,7 @@ export class HomeComponent implements OnInit {
       .listar('CAB', [], [], [], [], [], 0, 999, 20, 0, 'token')
       .subscribe((data) => {
         this.productosCaballeros = data.content;
+        console.log("🔥 > HomeComponent > .subscribe > this.productosCaballeros:", this.productosCaballeros)
       });
   }
 
