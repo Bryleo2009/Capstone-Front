@@ -30,6 +30,7 @@ import { FieldsetModule } from 'primeng/fieldset';
 import { CalendarModule } from 'primeng/calendar';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { TimelineModule } from 'primeng/timeline';
+import { RadioButtonModule } from 'primeng/radiobutton';
 @NgModule({
   declarations: [],
   imports: [
@@ -62,7 +63,8 @@ import { TimelineModule } from 'primeng/timeline';
     FieldsetModule,
     CalendarModule,
     ProgressSpinnerModule,
-    TimelineModule
+    TimelineModule,
+    RadioButtonModule
 
     
   ],exports: [
@@ -94,7 +96,8 @@ import { TimelineModule } from 'primeng/timeline';
     FieldsetModule,
     CalendarModule,
     ProgressSpinnerModule,
-    TimelineModule
+    TimelineModule,
+    RadioButtonModule
     
     
   ],

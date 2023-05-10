@@ -109,7 +109,7 @@ listarProductos(): void {
   show(idProduct: number) {
     this.ref = this.dialogService.open(DialogComponent, {
       header: 'Seleccion de producto',
-      height: '40%',
+      height: '60%',
       width: '60%',
       contentStyle: { overflow: 'auto' },
       data: {

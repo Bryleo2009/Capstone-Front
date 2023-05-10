@@ -3,13 +3,38 @@
         <div class="col-2 flex align-items-center">
             <img src=".\assets\Store\image 14.jpg" alt="" class="img-store">
         </div>
-        <div class="col-5 flex flex-column align-items-center justify-content-center">
-            <div style="width: 100%;">
+        <div class="col-5 flex flex-column">
+            <div class="mt-3"       style="width: 100%;">
                 <h1 class="prod">{{producto.nombreProduct}}</h1>
                 <p class="prod descrip">{{producto.descripcionProduct}}</p>
             </div>
+            <div class="mt-4 grid">
+                <div class="col">
+                    <h3> Color </h3>
+                    <div class="">
+                        <p-radioButton *ngFor="let color of colores" name="group" class="btn-sel gap-1"
+                            [style.background]="color.nombre_item" [value]="color.abrevi_item"
+                            [style]="{margin: '10px'}" [(ngModel)]="selectedCategoriesColors"
+                            [inputId]="color.nombre_item" (ngModelChange)="filtrar(seleccion)"
+                            pTooltip="{{color.vista_item}}" [style]="{icon: 'black'}"
+                            checkboxIcon="pi pi-bookmark-fill"></p-radioButton>
+                    </div>
+                </div>
+                <div class=" col ">
+                    <h3> Tallas </h3>
+                    <div>
+                        <p-selectButton [options]="talla" [style]="{margin: '0px 0px 0px 0px'}">
+                            <ng-template let-item>
+                                {{item.vista_item}} <!-- <i [class]="item.vistaItem"></i> -->
+                            </ng-template>
+                        </p-selectButton>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <div class="col-2 flex align-items-center">
+
+        <div class="col-2 flex align-items-start mt-3   ">
             <div *ngIf="producto.isPrecioDescProduct, else sinDescuento">
                 <p style="color: var(--color-prin); font-weight: bold;">S/ {{producto.precioDescuProduct}}</p>
                 <p><del>S/ {{ producto.precioUni }}</del></p>
@@ -18,15 +43,17 @@
                 <p><b>S/ {{ producto.precioUni }}</b></p>
             </ng-template>
         </div>
-        <div class="col-3 flex align-items-center">
+        <div class="col-3 flex align-items-start mt-3">
             <p-inputNumber [(ngModel)]="cant" suffix=" ud." [showButtons]="true" mode="decimal" [useGrouping]="false"
                 inputId="minmax-buttons" [min]="1" [max]="500"></p-inputNumber>
         </div>
+
+
     </div>
     <div class="flex justify-content-end align-items-center">
         <p-toast></p-toast>
-            <a style="cursor: pointer;" (click)="cerrarModal()"><u>Regresar a catalogo</u></a>
-            <p-button label="Agregar a carrito" icon="fa-solid fa-cart-shopping" iconPos="left"
+        <a style="cursor: pointer;" (click)="cerrarModal()"><u>Regresar a catalogo</u></a>
+        <p-button label="Agregar a carrito" icon="fa-solid fa-cart-shopping" iconPos="left"
             [style]="{backgroundColor:'var(--color-prin)', color: '#000000',  margin: '10px 30px 10px 60px', width: '250px'}"
             (click)="agregarAlCarrito(producto.idProduct,cant)"></p-button>
     </div>

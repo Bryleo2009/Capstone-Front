@@ -14,6 +14,10 @@ import {
   DynamicDialogConfig,
 } from 'primeng/dynamicdialog';
 import { AppComponent } from '@app/app.component';
+import { Enum, EnumInter } from '@app/_model/enum';
+import { ProductoFilter } from '@app/_model/filter/productoFilter';
+import { ColorService } from '@app/_service/modelos/color.service';
+import { TallaService } from '@app/_service/modelos/talla.service';
 
 @Component({
   selector: 'app-dialog',
@@ -21,7 +25,8 @@ import { AppComponent } from '@app/app.component';
   styleUrls: ['./dialog.component.css'],
 })
 export class DialogComponent implements OnInit {
-
+  ingredient!: string; 
+  
   constructor(
     private router: Router,
     private encryp: EncryptionService,
@@ -31,10 +36,25 @@ export class DialogComponent implements OnInit {
     private productoService: ProductoService,
     private messageService: MessageService,
     private carritoService: CarritoService,
-    private general: AppComponent
+    private general: AppComponent,
+    private colorSerive: ColorService,
+    private tallaService: TallaService
   ) {}
-
+  abreviaturastipoproducto: any[] = [];
+  abreviaturasEtiqueta: any[] = [];
+  abreviaturastalla: any[] = [];
+  abreviaturasmarca: any[] = [];
+  precioMin: number = 10;
+  precioMax: number = 1000;
+  pageSize: number = 12;
+  first: number = 0;
+  productos!: ProductoFilter[];
+  totalRecords: number = 0;
+  colores!: EnumInter[];
+  selectedCategoriesColors: any[] = [];
+  seleccion!: string;
   cant = 1;
+  talla!: EnumInter[];
   producto: Producto = new Producto();
   ngOnInit(): void {
     
@@ -46,7 +66,16 @@ export class DialogComponent implements OnInit {
           '🔥 > DialogComponent > .subscribe > this.producto :',
           this.producto
         );
+        this.tallaService.listarPorIdTalla(this.producto.idProduct, 'token').subscribe((data) => {
+          this.talla = data;
+        });
+
+      this.colorSerive
+      .listarPorIdColor(this.producto.idProduct, 'token')
+      .subscribe((data) => {
+        this.colores = data;
       });
+    });
   }
 
   cerrarModal() {
@@ -57,5 +86,40 @@ export class DialogComponent implements OnInit {
     this.messageService.add({ severity: 'success', summary: 'Regristro exitoso!', detail: 'El producto ha sido agregado al carrito' });
     // Lógica para agregar los productos al carrito
     this.carritoService.agregarAlCarrito(idProducto, cantidadProducto);
+  }
+
+  listarProductos(categoria: string): void {
+    this.productoService
+      .listar(
+        categoria,
+        this.abreviaturastipoproducto,
+        this.abreviaturasEtiqueta,
+        this.abreviaturastalla,
+        this.abreviaturasmarca,
+        this.selectedCategoriesColors,
+        this.precioMin,
+        this.precioMax,
+        this.pageSize,
+        this.first / this.pageSize,
+        'token'
+      )
+      .subscribe(
+        (response) => {
+          this.productos = response.content;
+          console.log(
+            '🔥 > StoreComponent > listarProductos > this.productos:',
+            this.productos
+          );
+          this.totalRecords = response.totalElements;
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+  }
+
+  filtrar(categoria: string) {
+    console.log('🔥 > StoreComponent > filtrar > categoria:', categoria);
+    this.listarProductos(categoria);
   }
 }

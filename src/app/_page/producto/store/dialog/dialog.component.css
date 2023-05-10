@@ -23,3 +23,31 @@
 :host ::ng-deep .p-element.p-button-icon-only.p-inputnumber-button.p-inputnumber-button-up.p-button.p-component{
     background-color: var(--color-prin);
 }
+
+.btncolor{
+
+    margin: 20px;
+}
+
+p-radioButton.btn-sel {
+    padding: 6px 6px;
+    border-radius: 50%;
+    border: 1px solid black;
+    margin: 5px;
+    display: inline-block;
+}
+
+p-selectButton.btn-color {
+    padding: 3px 3px ;
+  
+}
+
+:host ::ng-deep .btn-sel .p-radioButton-box {
+    border: 0px solid transparent !important;
+    background: transparent !important;
+}
+
+:host ::ng-deep .p-radiobutton-box{
+    background: transparent;
+    border: transparent;
+}
