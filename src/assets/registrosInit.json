@@ -156,5 +156,106 @@
                 "color": 4
             }
         ]
+    },
+    {
+        "producto": {
+            "descripcionProduct": "Tipo de cuello: Redondo | Estilo de vestuario: Casual | Diseño: Liso",
+            "nombreProduct": "Polo Manga Corta 100% Algodón Hombre Basement",
+            "precioUni": 39.90,
+            "isPrecioDescProduct": true,
+            "isExistente": true,
+            "precioDescuProduct": 34.95,
+            "imagen": "https://falabella.scene7.com/is/image/FalabellaPE/17011002_1?wid=1004&hei=1500&crop=248,0,1004,1500&qlt=70",
+            "idCateg": {
+                "idCateg": 1
+            },
+            "idMarca": {
+                "idMarca": 5
+            },
+            "idTipoProduc": {
+                "idTipoProduc": 4
+            },
+            "idEtiqueta": [
+                {
+                    "idEtiqueta": 7
+                },{
+                    "idEtiqueta": 6
+                },
+                {
+                    "idEtiqueta": 1
+                },
+                {
+                    "idEtiqueta": 2
+                },
+                {
+                    "idEtiqueta": 3
+                },
+                {
+                    "idEtiqueta": 4
+                }
+            ]
+        },
+        "tallaColorFilters": [
+            {
+                "cantidad": 50,
+                "talla": 2,
+                "color": 1
+            },
+            {
+                "cantidad": 50,
+                "talla": 3,
+                "color": 1
+            },
+            {
+                "cantidad": 50,
+                "talla": 4,
+                "color": 1
+            },
+            {
+                "cantidad": 50,
+                "talla": 5,
+                "color": 1
+            },
+            {
+                "cantidad": 50,
+                "talla": 2,
+                "color": 7
+            },
+            {
+                "cantidad": 50,
+                "talla": 3,
+                "color": 7
+            },
+            {
+                "cantidad": 50,
+                "talla": 4,
+                "color": 7
+            },
+            {
+                "cantidad": 50,
+                "talla": 5,
+                "color": 7
+            },
+            {
+                "cantidad": 50,
+                "talla": 2,
+                "color": 4
+            },
+            {
+                "cantidad": 50,
+                "talla": 3,
+                "color": 4
+            },
+            {
+                "cantidad": 50,
+                "talla": 4,
+                "color": 4
+            },
+            {
+                "cantidad": 50,
+                "talla": 5,
+                "color": 4
+            }
+        ]
     }
 ]
