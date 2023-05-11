@@ -53,7 +53,7 @@ export class CarritoComponent {
     this.carritoLocalStorage = this.carrito.obtenerProductosCarrito();
     
     if(this.carritoLocalStorage.length === 0){
-      this.actualizarMontoEnPadre(0);
+      this.actualizarMontoEnPadre(0,0,0);
       this.actualizarCantidadEnPadre(0);
     }
     const requests: Observable<Producto>[] = [];
@@ -112,8 +112,8 @@ export class CarritoComponent {
   }
 
 
-  actualizarMontoEnPadre(monto:number) {
-    this.pequeteriaComponent.actualizarMontoDesdeHijo(monto);
+  actualizarMontoEnPadre(monto:number,igv:number, amount:number) {
+    this.pequeteriaComponent.actualizarMontoDesdeHijo(monto, igv, amount);
   }
 
   actualizarCantidadEnPadre(cantidad:number) {
@@ -174,6 +174,6 @@ export class CarritoComponent {
       }
     }
     this.actualizarCantidadEnPadre(productos);
-    this.actualizarMontoEnPadre(valor);
+    this.actualizarMontoEnPadre(Number(valor.toFixed(2)), Number((valor * 0.18).toFixed(2)), Number((valor + Number((valor * 0.18).toFixed(2))).toFixed(2)));
   }
 }

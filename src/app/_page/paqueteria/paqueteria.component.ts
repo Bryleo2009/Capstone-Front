@@ -24,14 +24,16 @@ export class PaqueteriaComponent implements OnInit {
 
   @ViewChild(CarritoComponent) carritoComponent!: CarritoComponent;
   montoProducto: number = 0;
+
   IGV: number = 0;
   ammout: number = 0;
-  actualizarMontoDesdeHijo(nuevoMonto: number) {
+  actualizarMontoDesdeHijo(nuevoMonto: number,igv:number, amount:number) {
     const objetoTemporal = {
-      montoProducto: Number(nuevoMonto.toFixed(2)),
-      IGV: Number((nuevoMonto * 0.18).toFixed(2)),
-      ammout: Number((nuevoMonto + this.IGV).toFixed(2)),
+      montoProducto: nuevoMonto,
+      IGV:igv,
+      ammout: amount,
     };
+    console.log(objetoTemporal.ammout);
     // Almacenar el objeto en el localStorage
     localStorage.setItem('resumenCarrito', JSON.stringify(objetoTemporal));
     this.montoProducto = Number(nuevoMonto.toFixed(2));
@@ -60,9 +62,7 @@ export class PaqueteriaComponent implements OnInit {
 
     if (objetoAlmacenadoStr !== null) {
       const objetoAlmacenado = JSON.parse(objetoAlmacenadoStr);
-      this.montoProducto = objetoAlmacenado.montoProducto;
-      this.IGV = objetoAlmacenado.IGV;
-      this.ammout = objetoAlmacenado.ammout;
+      this.actualizarMontoDesdeHijo(objetoAlmacenado.montoProducto,objetoAlmacenado.IGV,objetoAlmacenado.ammout);
     } else {
       this.montoProducto = 0;
       this.IGV = 0;

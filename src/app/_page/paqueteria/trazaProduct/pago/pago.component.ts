@@ -1,3 +1,4 @@
+import { ViewportScroller } from '@angular/common';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
@@ -33,7 +34,8 @@ export class PagoComponent implements OnInit {
     private route: ActivatedRoute,
     private pedidoComponent: PaqueteriaComponent,
     private carritoService: CarritoService,
-    private carritoFilter: ProductoStorageService
+    private carritoFilter: ProductoStorageService,
+    private viewportScroller: ViewportScroller,
   ) {}
 
   carritoLocalStorage: ProductoStorage[] = [];
@@ -238,6 +240,14 @@ export class PagoComponent implements OnInit {
 
   comprado() {
     const nuevoResumen = false;
-    this.router.navigate(['/pedido/trazabilidad/ok']);
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router
+        .navigate(['/'], {
+          relativeTo: this.route
+        })
+        .then(() => {
+          this.viewportScroller.scrollToPosition([0, 0]); // Scroll hacia arriba
+        });
+    });
   }
 }
