@@ -1,3 +1,4 @@
+import { ViewportScroller } from '@angular/common';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
@@ -10,6 +11,8 @@ import { PaymentFilter } from '@app/_model/filter/paymentFilter';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PaqueteriaComponent } from '../../paqueteria.component';
 import { CarritoService } from '@app/_service/modelos/carrito.service';
+import { ProductoStorage } from '@app/_model/filter/productoStorage';
+import { ProductoStorageService } from '@app/_service/modelos/productoStorage.service';
 
 @Component({
   selector: 'app-pago',
@@ -30,9 +33,12 @@ export class PagoComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private pedidoComponent: PaqueteriaComponent,
-    private carritoService: CarritoService
+    private carritoService: CarritoService,
+    private carritoFilter: ProductoStorageService,
+    private viewportScroller: ViewportScroller,
   ) {}
 
+  carritoLocalStorage: ProductoStorage[] = [];
   ngOnInit() {
     const objetoAlmacenadoStr = localStorage.getItem('resumenCarrito');
     if (objetoAlmacenadoStr !== null) {
@@ -181,6 +187,14 @@ export class PagoComponent implements OnInit {
                       this.carga = false;
                       this.pagoRealizado = true;
                       this.actualizarResumenEnPadre();
+                      console.log("🔥 > PagoComponent > form?.addEventListener > this.carritoService.obtenerProductosCarrito():", this.carritoService.obtenerProductosCarrito())
+                      this.carritoFilter.carritoStock(this.carritoService.obtenerProductosCarrito(),'token').subscribe(
+                        (data) => {
+                          console.log("stok desminuido");
+                        },(error) => {
+                          console.log(error);
+                        }
+                      );
                       // Eliminar todos los productos del localStorage
                       localStorage.removeItem('carrito');
                       localStorage.removeItem('cantCarrito');
@@ -226,6 +240,14 @@ export class PagoComponent implements OnInit {
 
   comprado() {
     const nuevoResumen = false;
-    this.router.navigate(['/pedido/trazabilidad/ok']);
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router
+        .navigate(['/'], {
+          relativeTo: this.route
+        })
+        .then(() => {
+          this.viewportScroller.scrollToPosition([0, 0]); // Scroll hacia arriba
+        });
+    });
   }
 }
