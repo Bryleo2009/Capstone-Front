@@ -1,5 +1,5 @@
 [
-    {
+    {   
         "producto": {
             "descripcionProduct": "Composicion: 80% Algodón, 20% Poliester | Bolsillos: 3",
             "nombreProduct": "Short de Buzo Hombre Fila",
@@ -156,5 +156,885 @@
                 "color": 4
             }
         ]
+    },
+    {
+        "producto": {
+            "descripcionProduct": "Composición: 70% Algodón 28% Poliéster 2% Elastano | Estilo: Casual",
+            "nombreProduct": "Jean Slim Hombre Basement",
+            "precioUni": 109.90,
+            "isPrecioDescProduct": false,
+            "isExistente": true,
+            "precioDescuProduct": 0,
+            "imagen": "https://falabella.scene7.com/is/image/FalabellaPE/882073622_1?wid=1500&hei=1500&qlt=70",
+            "idCateg": {
+                "idCateg": 1
+            },
+            "idMarca": {
+                "idMarca": 4
+            },
+            "idTipoProduc": {
+                "idTipoProduc": 3
+            },
+            "idEtiqueta": [
+                {
+                    "idEtiqueta": 7
+                },
+                {
+                    "idEtiqueta": 1
+                },
+                {
+                    "idEtiqueta": 2
+                },
+                {
+                    "idEtiqueta": 3
+                },
+                {
+                    "idEtiqueta": 4
+                }
+            ]
+        },
+        "tallaColorFilters": [
+            
+            {
+                "cantidad":50,
+                "talla":18,
+                "color": 1
+            },
+            {
+                "cantidad":50,
+                "talla":19,
+                "color": 1
+            },
+            {
+                "cantidad":50,
+                "talla":20,
+                "color": 1
+            },
+            {
+                "cantidad":50,
+                "talla":21,
+                "color": 1
+            },
+            {
+                "cantidad":50,
+                "talla":18,
+                "color": 9
+            },
+            {
+                "cantidad":50,
+                "talla":19,
+                "color": 9
+            },
+            {
+                "cantidad":50,
+                "talla":20,
+                "color": 9
+            },
+            {
+                "cantidad":50,
+                "talla":21,
+                "color": 9
+            }
+        ]
+    },
+    {
+        "producto": {
+            "descripcionProduct": "Composición: Algodón| Estilo: Casual",
+            "nombreProduct": "Polo Manga corta Hombre",
+            "precioUni": 79.90,
+            "isPrecioDescProduct": false,
+            "isExistente": true,
+            "precioDescuProduct": 0,
+            "imagen": "https://falabella.scene7.com/is/image/FalabellaPE/19638069_1?wid=1004&hei=1500&crop=248,0,1004,1500&qlt=70",
+            "idCateg": {
+                "idCateg": 1
+            },
+            "idMarca": {
+                "idMarca": 7
+            },
+            "idTipoProduc": {
+                "idTipoProduc": 4
+            },
+            "idEtiqueta": [
+                {
+                    "idEtiqueta": 7
+                },
+                {
+                    "idEtiqueta": 1
+                },
+                {
+                    "idEtiqueta": 2
+                },
+                {
+                    "idEtiqueta": 3
+                },
+                {
+                    "idEtiqueta": 4
+                },
+                {
+                    "idEtiqueta": 6
+                }
+            ]
+        },
+        "tallaColorFilters": [
+            
+            {
+                "cantidad":50,
+                "talla":2,
+                "color": 4
+            },
+            {
+                "cantidad":50,
+                "talla":3,
+                "color": 4
+            },
+            {
+                "cantidad":50,
+                "talla":4,
+                "color": 4
+            },
+            {
+                "cantidad":50,
+                "talla":5,
+                "color": 4
+            }
+            
+        ]
+    },
+    {
+        "producto": {
+            "descripcionProduct": "Composición: Algodón| Estilo: Casual",
+            "nombreProduct": "Polera Deportiva Hombre Adidas",
+            "precioUni": 249.90,
+            "isPrecioDescProduct": false,
+            "isExistente": true,
+            "precioDescuProduct": 0,
+            "imagen": "https://falabella.scene7.com/is/image/FalabellaPE/19579266_1?wid=800&hei=800&qlt=70",
+            "idCateg": {
+                "idCateg": 1
+            },
+            "idMarca": {
+                "idMarca": 2
+            },
+            "idTipoProduc": {
+                "idTipoProduc": 9
+            },
+            "idEtiqueta": [
+                {
+                    "idEtiqueta": 7
+                },
+                {
+                    "idEtiqueta": 1
+                },
+                {
+                    "idEtiqueta": 2
+                },
+                {
+                    "idEtiqueta": 3
+                },
+                {
+                    "idEtiqueta": 4
+                },
+                {
+                    "idEtiqueta": 6
+                }
+            ]
+        },
+        "tallaColorFilters": [
+            
+            {
+                "cantidad":50,
+                "talla":2,
+                "color": 3
+            },
+            {
+                "cantidad":50,
+                "talla":3,
+                "color": 3
+            },
+            {
+                "cantidad":50,
+                "talla":4,
+                "color": 3
+            },
+            {
+                "cantidad":50,
+                "talla":5,
+                "color": 3
+            }
+            
+        ]
+    },
+    {
+        "producto": {
+            "descripcionProduct": "Composición: Polialgodón| Estilo: Deportivo",
+            "nombreProduct": "Polo Deportivo Logo Mujer",
+            "precioUni": 99.00,
+            "isPrecioDescProduct": true,
+            "isExistente": true,
+            "precioDescuProduct": 69.30,
+            "imagen": "https://falabella.scene7.com/is/image/FalabellaPE/17034754_1?wid=800&hei=800&qlt=70",
+            "idCateg": {
+                "idCateg": 2
+            },
+            "idMarca": {
+                "idMarca": 1
+            },
+            "idTipoProduc": {
+                "idTipoProduc": 4
+            },
+            "idEtiqueta": [
+                {
+                    "idEtiqueta": 7
+                },
+                {
+                    "idEtiqueta": 1
+                },
+                {
+                    "idEtiqueta": 2
+                },
+                {
+                    "idEtiqueta": 3
+                },
+                {
+                    "idEtiqueta": 4
+                },
+                {
+                    "idEtiqueta": 6
+                },
+                {
+                    "idEtiqueta": 8
+                }
+            ]
+        },
+        "tallaColorFilters": [
+            
+            {
+                "cantidad":50,
+                "talla":1,
+                "color": 3
+            },
+            {
+                "cantidad":50,
+                "talla":2,
+                "color": 3
+            },
+            {
+                "cantidad":50,
+                "talla":3,
+                "color": 3
+            },
+            {
+                "cantidad":50,
+                "talla":4,
+                "color": 3
+            }
+            
+        ]
+    },
+    {
+        "producto": {
+            "descripcionProduct": "Composición: Algodón Poliéster Elastano| Estilo: Casual",
+            "nombreProduct": "Jean Skinny Mujer Sybilla",
+            "precioUni": 59.90,
+            "isPrecioDescProduct": false,
+            "isExistente": true,
+            "precioDescuProduct": 0,
+            "imagen": "https://falabella.scene7.com/is/image/FalabellaPE/880995076_1?wid=800&hei=800&qlt=70",
+            "idCateg": {
+                "idCateg": 2
+            },
+            "idMarca": {
+                "idMarca": 3
+            },
+            "idTipoProduc": {
+                "idTipoProduc": 3
+            },
+            "idEtiqueta": [
+                {
+                    "idEtiqueta": 7
+                },
+                {
+                    "idEtiqueta": 1
+                },
+                {
+                    "idEtiqueta": 2
+                },
+                {
+                    "idEtiqueta": 3
+                },
+                {
+                    "idEtiqueta": 4
+                }
+                
+            ]
+        },
+        "tallaColorFilters": [
+            
+            {
+                "cantidad":50,
+                "talla":16,
+                "color": 1
+            },
+            {
+                "cantidad":50,
+                "talla":17,
+                "color": 1
+            },
+            {
+                "cantidad":50,
+                "talla":18,
+                "color": 1
+            },
+            {
+                "cantidad":50,
+                "talla":19,
+                "color": 1
+            },
+            {
+                "cantidad":50,
+                "talla":20,
+                "color": 1
+            },
+            {
+                "cantidad":50,
+                "talla":21,
+                "color": 1
+            },
+            {
+                "cantidad":50,
+                "talla":16,
+                "color": 4
+            },
+            {
+                "cantidad":50,
+                "talla":17,
+                "color": 4
+            },
+            {
+                "cantidad":50,
+                "talla":18,
+                "color": 4
+            },
+            {
+                "cantidad":50,
+                "talla":19,
+                "color": 4
+            },
+            {
+                "cantidad":50,
+                "talla":20,
+                "color": 4
+            },
+            {
+                "cantidad":50,
+                "talla":21,
+                "color": 4
+            },
+            {
+                "cantidad":50,
+                "talla":16,
+                "color": 9
+            },
+            {
+                "cantidad":50,
+                "talla":17,
+                "color":9
+            },
+            {
+                "cantidad":50,
+                "talla":18,
+                "color": 9
+            },
+            {
+                "cantidad":50,
+                "talla":19,
+                "color": 9
+            },
+            {
+                "cantidad":50,
+                "talla":20,
+                "color": 9
+            },
+            {
+                "cantidad":50,
+                "talla":21,
+                "color": 9
+            }
+        ]
+    },
+    {
+        "producto": {
+            "descripcionProduct": "Composición: 98%algodón 2%elastano| Estilo: Casual",
+            "nombreProduct": "Pantalón Niño",
+            "precioUni": 99.90,
+            "isPrecioDescProduct": false,
+            "isExistente": true,
+            "precioDescuProduct": 0,
+            "imagen": "https://falabella.scene7.com/is/image/FalabellaPE/19235485_1?wid=800&hei=800&qlt=70",
+            "idCateg": {
+                "idCateg": 3
+            },
+            "idMarca": {
+                "idMarca": 5
+            },
+            "idTipoProduc": {
+                "idTipoProduc": 3
+            },
+            "idEtiqueta": [
+                {
+                    "idEtiqueta": 7
+                },
+                
+                {
+                    "idEtiqueta": 2
+                },
+                {
+                    "idEtiqueta": 3
+                }
+                
+            ]
+        },
+        "tallaColorFilters": [
+            
+            {
+                "cantidad":50,
+                "talla":7,
+                "color": 2
+            },
+            {
+                "cantidad":50,
+                "talla":8,
+                "color": 2
+            },
+            {
+                "cantidad":50,
+                "talla":9,
+                "color": 2
+            },
+            {
+                "cantidad":50,
+                "talla":7,
+                "color": 5
+            },
+            {
+                "cantidad":50,
+                "talla":8,
+                "color": 5
+            },
+            {
+                "cantidad":50,
+                "talla":9,
+                "color": 5
+            }
+            
+        ]
+    },
+    {
+        "producto": {
+            "descripcionProduct": "Composición: Poliester| Estilo: Casual",
+            "nombreProduct": "Casaca Acolchada Mujer Sybilla",
+            "precioUni": 129.90,
+            "isPrecioDescProduct": true,
+            "isExistente": true,
+            "precioDescuProduct": 99.90,
+            "imagen": "https://falabella.scene7.com/is/image/FalabellaPE/881698549_1?wid=800&hei=800&qlt=70",
+            "idCateg": {
+                "idCateg": 2
+            },
+            "idMarca": {
+                "idMarca": 3
+            },
+            "idTipoProduc": {
+                "idTipoProduc": 10
+            },
+            "idEtiqueta": [
+                {
+                    "idEtiqueta": 8
+                },
+                {
+                    "idEtiqueta": 1
+                },
+                {
+                    "idEtiqueta": 2
+                },
+                {
+                    "idEtiqueta": 3
+                },
+                {
+                    "idEtiqueta": 4
+                }
+                
+            ]
+        },
+        "tallaColorFilters": [
+            
+            {
+                "cantidad":50,
+                "talla":1,
+                "color": 1
+            },
+            {
+                "cantidad":50,
+                "talla":2,
+                "color": 1
+            },
+            {
+                "cantidad":50,
+                "talla":3,
+                "color": 1
+            },
+            {
+                "cantidad":50,
+                "talla":4,
+                "color": 1
+            },
+            {
+                "cantidad":50,
+                "talla":5,
+                "color": 1
+            },
+
+            {
+                "cantidad":50,
+                "talla":1,
+                "color": 3
+            },
+            {
+                "cantidad":50,
+                "talla":2,
+                "color": 3
+            },
+            {
+                "cantidad":50,
+                "talla":3,
+                "color": 3
+            },
+            {
+                "cantidad":50,
+                "talla":4,
+                "color": 3
+            },
+            {
+                "cantidad":50,
+                "talla":5,
+                "color": 3
+            },
+
+            {
+                "cantidad":50,
+                "talla":1,
+                "color": 9
+            },
+            {
+                "cantidad":50,
+                "talla":2,
+                "color": 9
+            },
+            {
+                "cantidad":50,
+                "talla":3,
+                "color": 9
+            },
+            {
+                "cantidad":50,
+                "talla":4,
+                "color": 9
+            },
+            {
+                "cantidad":50,
+                "talla":5,
+                "color": 9
+            }
+            
+        ]
+    },
+    {
+        "producto": {
+            "descripcionProduct": "Composición: 100%&nbsp;poliéster reciclado| Estilo: Casual",
+            "nombreProduct": "Casaca Niño Mickey Mouse Adidas",
+            "precioUni": 229.90,
+            "isPrecioDescProduct": false,
+            "isExistente": true,
+            "precioDescuProduct": 0,
+            "imagen": "https://falabella.scene7.com/is/image/FalabellaPE/19559208_1?wid=800&hei=800&qlt=70",
+            "idCateg": {
+                "idCateg": 3
+            },
+            "idMarca": {
+                "idMarca": 2
+            },
+            "idTipoProduc": {
+                "idTipoProduc": 10
+            },
+            "idEtiqueta": [
+                {
+                    "idEtiqueta": 8
+                },
+                {
+                    "idEtiqueta": 1
+                },
+                {
+                    "idEtiqueta": 2
+                },
+                {
+                    "idEtiqueta": 3
+                },
+                {
+                    "idEtiqueta": 4
+                }
+                
+            ]
+        },
+        "tallaColorFilters": [
+            
+            {
+                "cantidad":50,
+                "talla":1,
+                "color": 8
+            },
+            {
+                "cantidad":50,
+                "talla":9,
+                "color": 8
+            },
+            {
+                "cantidad":50,
+                "talla":10,
+                "color": 8
+            }
+            
+        ]
+    },
+    {
+        "producto": {
+            "descripcionProduct": "Composición: 100%&nbsp;poliéster reciclado| Estilo: Casual",
+            "nombreProduct": "Camisa Manga Larga Algodón Niño",
+            "precioUni": 79.90,
+            "isPrecioDescProduct": false,
+            "isExistente": true,
+            "precioDescuProduct": 0,
+            "imagen": "https://falabella.scene7.com/is/image/FalabellaPE/882713095_1?wid=800&hei=800&qlt=70",
+            "idCateg": {
+                "idCateg": 3
+            },
+            "idMarca": {
+                "idMarca": 3
+            },
+            "idTipoProduc": {
+                "idTipoProduc": 1
+            },
+            "idEtiqueta": [
+                {
+                    "idEtiqueta": 7
+                },
+                {
+                    "idEtiqueta": 1
+                },
+                {
+                    "idEtiqueta": 2
+                },
+                {
+                    "idEtiqueta": 3
+                },
+                {
+                    "idEtiqueta": 4
+                },
+                {
+                    "idEtiqueta": 5
+                }
+                
+            ]
+        },
+        "tallaColorFilters": [
+            
+            {
+                "cantidad":50,
+                "talla":11,
+                "color": 4
+            },
+            {
+                "cantidad":50,
+                "talla":11,
+                "color": 4
+            },
+            {
+                "cantidad":50,
+                "talla":11,
+                "color": 4
+            },
+            {
+                "cantidad":50,
+                "talla":11,
+                "color": 4
+            },
+            {
+                "cantidad":50,
+                "talla":13,
+                "color": 1
+            },
+            {
+                "cantidad":50,
+                "talla":13,
+                "color": 1
+            },
+            {
+                "cantidad":50,
+                "talla":13,
+                "color": 1
+            },
+            {
+                "cantidad":50,
+                "talla":13,
+                "color": 1
+            },
+            {
+                "cantidad":50,
+                "talla":14,
+                "color": 2
+            },
+            {
+                "cantidad":50,
+                "talla":14,
+                "color": 2
+            },
+            {
+                "cantidad":50,
+                "talla":14,
+                "color": 2
+            },
+            {
+                "cantidad":50,
+                "talla":14,
+                "color": 2
+            },
+
+            {
+                "cantidad":50,
+                "talla":15,
+                "color": 4
+            },
+            {
+                "cantidad":50,
+                "talla":15,
+                "color": 4
+            },
+            {
+                "cantidad":50,
+                "talla":15,
+                "color": 4
+            },
+            {
+                "cantidad":50,
+                "talla":15,
+                "color": 4
+            }
+            
+        ]
+    },
+    {
+        "producto": {
+            "descripcionProduct": "Material del forro: Sintético| Estilo: Modo",
+            "nombreProduct": "Billetera para Mujer",
+            "precioUni": 50,
+            "isPrecioDescProduct": false,
+            "isExistente": true,
+            "precioDescuProduct": 0
+            ,
+            "imagen": "https://falabella.scene7.com/is/image/FalabellaPE/gsc_116114554_1375745_1?wid=800&hei=800&qlt=70",
+            "idCateg": {
+                "idCateg": 4
+            },
+            "idMarca": {
+                "idMarca": 3
+            },
+            "idTipoProduc": {
+                "idTipoProduc": 7
+            },
+            "idEtiqueta": [
+                {
+                    "idEtiqueta": 8
+                },
+                {
+                    "idEtiqueta": 1
+                },
+                {
+                    "idEtiqueta": 2
+                },
+                {
+                    "idEtiqueta": 3
+                },
+                {
+                    "idEtiqueta": 4
+                },
+                {
+                    "idEtiqueta": 5
+                }
+                
+            ]
+        },
+        "tallaColorFilters": [
+            
+            {
+                "cantidad":50,
+                "talla":29,
+                "color": 3
+            }
+            
+            
+        ]
+    },
+    {
+        "producto": {
+            "descripcionProduct": "Material del forro: Sintético| Estilo: Modo",
+            "nombreProduct": "Billetera para Mujer",
+            "precioUni": 59,
+            "isPrecioDescProduct": true,
+            "isExistente": true,
+            "precioDescuProduct": 49.90
+            ,
+            "imagen": "https://falabella.scene7.com/is/image/FalabellaPE/gsc_117773476_1890136_1?wid=800&hei=800&qlt=70",
+            "idCateg": {
+                "idCateg": 4
+            },
+            "idMarca": {
+                "idMarca": 3
+            },
+            "idTipoProduc": {
+                "idTipoProduc": 7
+            },
+            "idEtiqueta": [
+                {
+                    "idEtiqueta": 8
+                },
+                {
+                    "idEtiqueta": 1
+                },
+                {
+                    "idEtiqueta": 2
+                },
+                {
+                    "idEtiqueta": 3
+                },
+                {
+                    "idEtiqueta": 4
+                },
+                {
+                    "idEtiqueta": 5
+                }
+                
+            ]
+        },
+        "tallaColorFilters": [
+            
+            {
+                "cantidad":50,
+                "talla":1,
+                "color": 1
+            }
+            
+            
+        ]
     }
+
 ]
