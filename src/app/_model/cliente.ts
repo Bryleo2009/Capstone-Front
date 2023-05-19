@@ -1,10 +1,13 @@
-export class Cliente {
+import { Usuario } from "./usuario";
 
-	idCliente!: number;
-	nombreCliente!: string;
-	apellidoCliente!: string;
-	direccionCliente!: string;
-	telefonoCliente!: string;	
-    ubigueoCliente!: number;
-	username!: string;
+export class Cliente {
+	id!: number;
+	nombre!: string;
+	apellido!: string;
+	fechaNac: Date = new Date();
+	telefono!: string;
+	direccion!: string;
+	ubigueo!: string;
+	numDocumento!: string;
+	idUserCliente: Usuario = new Usuario();
 }

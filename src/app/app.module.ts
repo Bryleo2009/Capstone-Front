@@ -1,3 +1,4 @@
+import { Error } from './_page/error/error';
 import { RouterModule } from '@angular/router';
 import { NgImageSliderModule } from 'ng-image-slider';
 
@@ -24,11 +25,17 @@ import { DeseosComponent } from './_page/cliente/deseos/deseos.component';
 import { PaqueteriaComponent } from './_page/paqueteria/paqueteria.component';
 import { LoginComponent } from './_page/cliente/login/login.component';
 import { SessionComponent } from './_page/cliente/login/session/session.component';
+import { SessionStorageService } from 'ngx-webstorage';
+import { AuthService } from './_service/rutas/auth.service';
+import { NgxWebstorageModule } from 'ngx-webstorage';
+import { AuthGuard } from './_service/rutas/auth-guard.service';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     Details01Component,
+    Error,
     HeaderComponent,
     StoreComponent,
     FooterComponent,
@@ -55,11 +62,12 @@ import { SessionComponent } from './_page/cliente/login/session/session.componen
     BrowserModule,
     NgImageSliderModule,
     BrowserAnimationsModule,
+    NgxWebstorageModule.forRoot(),
   ],exports: [
     PrimeNGModule,
   ],
   providers: [
-    AppComponent,PaqueteriaComponent 
+    AppComponent,PaqueteriaComponent,AuthGuard
   ],
   bootstrap: [AppComponent],
 })

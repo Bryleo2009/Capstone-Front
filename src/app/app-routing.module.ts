@@ -14,6 +14,7 @@ import { DeseosComponent } from './_page/cliente/deseos/deseos.component';
 import { PaqueteriaComponent } from './_page/paqueteria/paqueteria.component';
 import { LoginComponent } from './_page/cliente/login/login.component';
 import { SessionComponent } from './_page/cliente/login/session/session.component';
+import { Error } from './_page/error/error';
 
 
 
@@ -24,6 +25,7 @@ const routes: Routes = [
   ]
   },
   { path : 'deseos' , component : DeseosComponent},
+  { path: 'error/:type', component: Error },
   { path : 'store' , component : StoreComponent, children: [
       { path: 'open', component: DialogComponent}
     ]

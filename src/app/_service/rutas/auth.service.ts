@@ -15,7 +15,6 @@ export class AuthService {
   public removeAll () {
     this.removeToken();
     this.removeNick();
-    this.removeGen();
     this.removeRol();
     this.removeUser()
   }
@@ -30,10 +29,10 @@ export class AuthService {
   public getToken(): string {
     const token = this.sessionStorage.retrieve('token');
 
-    if (!token) {
+    /*if (!token) {
       // Si no hay token, redirigir al usuario a la página de inicio de sesión
-      this.router.navigate(['/login']);
-    }
+      this.router.navigate(['/']);
+    }*/
 
     return token;
   }
@@ -53,19 +52,6 @@ export class AuthService {
 
   public removeNick(): void {
     this.sessionStorage.clear('nick');
-  }
-
-  //almacenar genero para foto
-  public setGen(nick: string): void {
-    this.sessionStorage.store('genero', nick);
-  }
-
-  public getGen(): string {
-    return this.sessionStorage.retrieve('genero');
-  }
-
-  public removeGen(): void {
-    this.sessionStorage.clear('genero');
   }
 
   //almacenar rol
@@ -98,6 +84,6 @@ export class AuthService {
   public logout(): void {
     this.removeAll();
     // Redirigir al usuario a la página de inicio de sesión
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
 }

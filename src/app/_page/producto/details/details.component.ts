@@ -12,6 +12,7 @@ import { AppComponent } from '@app/app.component';
 import { CarritoService } from '@app/_service/modelos/carrito.service';
 import { ColorService } from '@app/_service/modelos/color.service';
 import { Enum, EnumInter } from '@app/_model/enum';
+import { AuthService } from '@app/_service/rutas/auth.service';
 
 interface Car {
   id?: string;
@@ -38,6 +39,7 @@ export class Details01Component {
     public dialogService: DialogService,
     private general: AppComponent,
     private carritoService: CarritoService,
+    private auth: AuthService
   ) {}
   responsiveOptions: any[] = [];
   id!: string;
@@ -57,7 +59,7 @@ export class Details01Component {
 
     if (this.id !== null && this.id !== undefined && this.id !== '') {
       this.producSerive
-        .listarPorId(this.encryp.decrypt(this.id), 'token')
+        .listarPorId(this.encryp.decrypt(this.id), this.auth.getToken())
         .subscribe((unproducto: Producto) => {
           this.producto = unproducto;
           console.log(
@@ -66,13 +68,13 @@ export class Details01Component {
           );
           //listar tallas
           this.tallaSerive
-            .listarPorIdTalla(unproducto.idProduct, 'token')
+            .listarPorIdTalla(unproducto.idProduct, this.auth.getToken())
             .subscribe((data) => {
               this.tallas= data;
             });
             //listar colores
           this.colorSerive
-          .listarPorIdColor(unproducto.idProduct, 'token')
+          .listarPorIdColor(unproducto.idProduct, this.auth.getToken())
           .subscribe((data) => {
             this.colores = data;
           });
@@ -105,7 +107,7 @@ export class Details01Component {
   productos!: ProductoFilter[];
   listarProductos(): void {
     this.producSerive
-      .listarRandom(this.producto.idCateg.abreviItem, 20,'token')
+      .listarRandom(this.producto.idCateg.abreviItem, 20,this.auth.getToken())
       .subscribe((data) => {
         this.productos = data;
       });
