@@ -23,10 +23,13 @@ import { EntregaComponent } from './_page/paqueteria/trazaProduct/entrega/entreg
 import { PagoComponent } from './_page/paqueteria/trazaProduct/pago/pago.component';
 import { DeseosComponent } from './_page/cliente/deseos/deseos.component';
 import { PaqueteriaComponent } from './_page/paqueteria/paqueteria.component';
+import { LoginComponent } from './_page/cliente/login/login.component';
+import { SessionComponent } from './_page/cliente/login/session/session.component';
 import { SessionStorageService } from 'ngx-webstorage';
 import { AuthService } from './_service/rutas/auth.service';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { AuthGuard } from './_service/rutas/auth-guard.service';
+
 
 @NgModule({
   declarations: [
@@ -44,7 +47,9 @@ import { AuthGuard } from './_service/rutas/auth-guard.service';
     EntregaComponent,
     PagoComponent,
     DeseosComponent,
-    PaqueteriaComponent
+    PaqueteriaComponent,
+    LoginComponent,
+    SessionComponent
   ],
   imports: [
     RouterModule,
