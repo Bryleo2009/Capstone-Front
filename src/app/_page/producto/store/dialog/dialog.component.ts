@@ -18,6 +18,7 @@ import { Enum, EnumInter } from '@app/_model/enum';
 import { ProductoFilter } from '@app/_model/filter/productoFilter';
 import { ColorService } from '@app/_service/modelos/color.service';
 import { TallaService } from '@app/_service/modelos/talla.service';
+import { AuthService } from '@app/_service/rutas/auth.service';
 
 @Component({
   selector: 'app-dialog',
@@ -38,7 +39,8 @@ export class DialogComponent implements OnInit {
     private carritoService: CarritoService,
     private general: AppComponent,
     private colorSerive: ColorService,
-    private tallaService: TallaService
+    private tallaService: TallaService,
+    private auth: AuthService
   ) {}
   abreviaturastipoproducto: any[] = [];
   abreviaturasEtiqueta: any[] = [];
@@ -61,19 +63,19 @@ export class DialogComponent implements OnInit {
   ngOnInit(): void {
     
     this.productoService
-      .listarPorId(this.config.data.id, 'token')
+      .listarPorId(this.config.data.id, this.auth.getToken())
       .subscribe((data) => {
         this.producto = data;
         console.log(
           '🔥 > DialogComponent > .subscribe > this.producto :',
           this.producto
         );
-        this.tallaService.listarPorIdTalla(this.producto.idProduct, 'token').subscribe((data) => {
+        this.tallaService.listarPorIdTalla(this.producto.idProduct, this.auth.getToken()).subscribe((data) => {
           this.talla = data;
         });
 
       this.colorSerive
-      .listarPorIdColor(this.producto.idProduct, 'token')
+      .listarPorIdColor(this.producto.idProduct, this.auth.getToken())
       .subscribe((data) => {
         this.colores = data;
       });
@@ -103,7 +105,7 @@ export class DialogComponent implements OnInit {
         this.precioMax,
         this.pageSize,
         this.first / this.pageSize,
-        'token'
+        this.auth.getToken()
       )
       .subscribe(
         (response) => {

@@ -1,8 +1,8 @@
+import { ClienteService } from './../modelos/cliente.service';
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot } from '@angular/router';
 import { AuthService } from './auth.service';
 import { UsuarioService } from '../modelos/usuario.service';
-import { EmpleadoService } from '../modelos/empleado.service';
 
 interface RouteData {
   expectedRoles: string[];
@@ -13,7 +13,7 @@ interface RouteData {
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private router: Router, private authService: AuthService, private usuario: UsuarioService, private emple: EmpleadoService) {}
+  constructor(private router: Router, private authService: AuthService, private usuario: UsuarioService, private emple: ClienteService) {}
 
   async canActivate(route: ActivatedRouteSnapshot): Promise<boolean> {
     const token = this.authService.getToken();
@@ -24,8 +24,7 @@ export class AuthGuard implements CanActivate {
       const persona = await this.emple.byNum(data?.username  ?? 'admin',this.authService.getToken()).toPromise();
 
       if (persona) {
-        this.authService.setNick(persona.nombresEmple ?? "");
-        this.authService.setGen(persona.idGen.descGen.toLowerCase() ?? "");
+        this.authService.setNick(persona.nombre ?? "");
         this.authService.setRol(data?.idRol.descRol.substring(5) ?? "");
         this.authService.setUser(data?.username ?? "");
       }      

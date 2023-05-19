@@ -41,17 +41,17 @@ export class ProductoService {
       cantidad: `${cantidad}`,
       pagina: `${pagina}`,
     };
-    return this.http.get<Page<ProductoFilter>>(this.url, { headers, params });
+    return this.http.get<Page<ProductoFilter>>(this.url, { params });
   }
   
   listarPorId(id: string, token: string): Observable<Producto> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<Producto>(`${this.url}/${id}`, { headers });
+    return this.http.get<Producto>(`${this.url}/${id}`);
   }
 
   listarGeneral(token: string): Observable<Producto[]> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<Producto[]>(`${this.url}/listar`, { headers });
+    return this.http.get<Producto[]>(`${this.url}/listar`);
   }
 
   registrar(Rol: Producto, token: string): Observable<any> {
@@ -78,7 +78,7 @@ export class ProductoService {
       categoria: `${categoria}`,
       cantidad: `${cantidad}`
     };
-    return this.http.get<ProductoFilter[]>(`${this.url}/random`, { headers, params });
+    return this.http.get<ProductoFilter[]>(`${this.url}/random`, { params });
   }
  
 }
