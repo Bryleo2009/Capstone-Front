@@ -97,4 +97,7 @@
     justify-content: center;
 }
 
-
+.p-button-success{
+    display:flex;
+    justify-content: center ;
+}

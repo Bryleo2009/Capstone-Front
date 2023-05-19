@@ -12,7 +12,7 @@ import { environment } from '@env/environment.development';
   styleUrls: ['./entrega.component.css']
 })
 export class EntregaComponent implements OnInit {
-
+  checked!: boolean;
   constructor(
     private http: HttpClient,
   ) { }
