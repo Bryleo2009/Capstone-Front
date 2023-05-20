@@ -1,5 +1,7 @@
 .formulario {
     background-image: url('/assets/imgs_login/fondo.png');
+    background-size: cover;
+    background-repeat: no-repeat;
     padding: 50px 0px;
 }
 

@@ -87,4 +87,6 @@ export class EntregaComponent implements OnInit {
       );
     }
   }
+
+  isWrap = true;
 }

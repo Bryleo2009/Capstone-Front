@@ -1,25 +1,16 @@
-<div>
-    <!-- <div class="text-center mb-5">
-        <img src="./assets/imgs_inicio/L0.png" alt="Image" height="80" class="mb-3">
-        <div class="text-900 text-3xl font-medium mb-3">Registrate</div>
-        <div class="text-900 text-xl font-medium mb-3">"¡Únete y sé parte de nuestra comunidad!"</div>
-    </div> -->
-    <section style="background-color: white;" class="p-3">
-        <div class="flex justify-content-center m-5">
-            <!-- Primero verifica si esta logeado o no, si no esta logeado, entonces Login -->
-            <div class="text-center logo-esp mb-5">
-                <img src="./assets/imgs_inicio/L0.png" alt="Image" height="80" class="mb-3">
-                <div class="text-900 text-3xl font-medium mb-3">Registrate</div>
-                <div class="text-900 text-xl font-medium mb-3">"¡Únete y sé parte de nuestra comunidad!"</div>
-            </div>
-            <div *ngIf="false" class="formulario">
-                <app-session></app-session>
-            </div>
-            <!-- Primero verifica si esta logeado o no, si no esta logeado, entonces Login -->
-            <div *ngIf="true" class="grid" style="width: 100%;">
-                <form action="" class="col-12 flex" [formGroup]="form" #frmUser="ngForm">
+<section style="background-color: white;" class="p-3">
+    <div [ngClass]="{'contenedor-a': true, 'wrap': flexWrap}" class="flex justify-content-center ">
+        <!-- Primero verifica si esta logeado o no, si no esta logeado, entonces Login -->
+        <div class="text-center flex flex-column align-items-center justify-content-center logo-esp m-5">
+            <img src="./assets/imgs_inicio/L0.png" alt="Image" height="80" class="mb-3">
+            <div class="text-900 text-3xl font-medium mb-3">Registrate</div>
+            <div class="text-900 text-xl font-medium mb-3">"¡Únete y sé parte grandes descuentos y promociones!"</div>
+        </div>
+        <div class="grid" style="width: 100%;">
+            <form action="" class="col-12 flex flex-column" [formGroup]="form" #frmUser="ngForm">
+                <div class="flex">
                     <div class="col-6">
-                        <div class="mb-2 mt-3">
+                        <div class="mb-2">
                             <p-fieldset>
                                 <ng-template pTemplate="header">
                                     <div class="flex align-items-center text-primary">
@@ -90,11 +81,10 @@
                             </div>
                         </p-fieldset>
                     </div>
-                </form>
+                </div>
                 <button pButton pRipple label="Registrarme" icon="pi pi-check-circle" class="w-full"
-                [style]="{backgroundColor:'var(--color-prin)', color: '#E5E5E5'}"></button>
-            </div>
+                    [style]="{backgroundColor:'var(--color-prin)', color: '#E5E5E5'}"></button>
+            </form>
         </div>
-    </section>
-
-</div>
+    </div>
+</section>
