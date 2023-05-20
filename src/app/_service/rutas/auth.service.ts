@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { SessionStorageService } from 'ngx-webstorage';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { Usuario } from '@app/_model/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,6 @@ export class AuthService {
   public removeAll () {
     this.removeToken();
     this.removeNick();
-    this.removeGen();
     this.removeRol();
     this.removeUser()
   }
@@ -30,10 +30,10 @@ export class AuthService {
   public getToken(): string {
     const token = this.sessionStorage.retrieve('token');
 
-    if (!token) {
+    /*if (!token) {
       // Si no hay token, redirigir al usuario a la página de inicio de sesión
-      this.router.navigate(['/login']);
-    }
+      this.router.navigate(['/']);
+    }*/
 
     return token;
   }
@@ -55,19 +55,6 @@ export class AuthService {
     this.sessionStorage.clear('nick');
   }
 
-  //almacenar genero para foto
-  public setGen(nick: string): void {
-    this.sessionStorage.store('genero', nick);
-  }
-
-  public getGen(): string {
-    return this.sessionStorage.retrieve('genero');
-  }
-
-  public removeGen(): void {
-    this.sessionStorage.clear('genero');
-  }
-
   //almacenar rol
   public setRol(nick: string): void {
     this.sessionStorage.store('rol', nick);
@@ -82,11 +69,11 @@ export class AuthService {
   }
 
   //alamcenar username
-  public setUser(nick: string): void {
-    this.sessionStorage.store('user', nick);
+  public setUser(usuario: Usuario): void {
+    this.sessionStorage.store('user', usuario);
   }
 
-  public getUser(): string {
+  public getUser(): Usuario {
     return this.sessionStorage.retrieve('user');
   }
 
@@ -98,6 +85,6 @@ export class AuthService {
   public logout(): void {
     this.removeAll();
     // Redirigir al usuario a la página de inicio de sesión
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
 }

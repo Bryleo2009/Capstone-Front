@@ -1,0 +1,94 @@
+<section style="background-color: white;" class="p-3">
+    <div [ngClass]="{'contenedor-a': true, 'wrap': flexWrap}" class="flex justify-content-center ">
+        <!-- Primero verifica si esta logeado o no, si no esta logeado, entonces Login -->
+        <div class="text-center flex flex-column align-items-center justify-content-center logo-esp m-5">
+            <img src="./assets/imgs_inicio/L0.png" alt="Image" height="80" class="mb-3">
+            <div class="text-900 text-3xl font-medium mb-3">Registrate</div>
+            <div class="text-900 text-xl font-medium mb-3">"¡Únete y sé parte grandes descuentos y promociones!"</div>
+        </div>
+        <div class="grid" style="width: 100%;">
+            <form action="" class="col-12 flex flex-column" [formGroup]="form" #frmUser="ngForm">
+                <div class="flex">
+                    <div class="col-6">
+                        <div class="mb-2">
+                            <p-fieldset>
+                                <ng-template pTemplate="header">
+                                    <div class="flex align-items-center text-primary">
+                                        <span class="pi pi-user mr-2"></span>
+                                        <span class="font-bold text-lg">Datos de usuario</span>
+                                    </div>
+                                </ng-template>
+                                <span class="p-float-label">
+                                    <input pInputText id="username" />
+                                    <label htmlFor="username">Nombres</label>
+                                </span>
+                                <span class="p-float-label">
+                                    <input pInputText id="username" />
+                                    <label htmlFor="username">Apellidos</label>
+                                </span>
+                            </p-fieldset>
+                        </div>
+                        <div class="mb-2 mt-3">
+                            <p-fieldset>
+                                <ng-template pTemplate="header">
+                                    <div class="flex align-items-center text-primary">
+                                        <span class="pi pi-phone mr-2"></span>
+                                        <span class="font-bold text-lg">Datos de contacto</span>
+                                    </div>
+                                </ng-template>
+                                <span class="p-float-label">
+                                    <input pInputText id="username" />
+                                    <label htmlFor="username">Número de celular</label>
+                                </span>
+                                <span class="p-float-label">
+                                    <input pInputText id="username" />
+                                    <label htmlFor="username">Correo electrónico</label>
+                                </span>
+                            </p-fieldset>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <p-fieldset>
+                            <ng-template pTemplate="header">
+                                <div class="flex align-items-center text-primary">
+                                    <span class="pi pi-map-marker mr-2"></span>
+                                    <span class="font-bold text-lg">Datos de Direccion</span>
+                                </div>
+                            </ng-template>
+                            <div class="col-12">
+                                <div class="form-group selectores col flex flex-column">
+                                    <p-dropdown formControlName="departamentoPaciente" [(ngModel)]="selectedDepartment"
+                                        name="selectedDepartment" placeholder="Departamento"
+                                        (ngModelChange)="updateDistrictsAndProvinces()" id="departmentSelect"
+                                        [options]="departments" optionLabel="nombre_departamento"></p-dropdown>
+                                </div>
+                                <div class="form-group selectores col flex flex-column">
+                                    <p-dropdown formControlName="provinciaPaciente" [(ngModel)]="selectedProvince"
+                                        name="selectedProvince" placeholder="Provincia"
+                                        (ngModelChange)="updateDistrictsAndProvinces()" id="provinceSelect"
+                                        [options]="provinces" optionLabel="nombre_provincia"></p-dropdown>
+                                </div>
+                                <div class="form-group selectores col flex flex-column">
+                                    <p-dropdown formControlName="distritoPaciente" [(ngModel)]="selectedDistrict"
+                                        name="selectedDistrict" placeholder="Distrito"
+                                        (ngModelChange)="updateDistrictsAndProvinces()" id="districtSelect"
+                                        [options]="districts" optionLabel="nombre_distrito"></p-dropdown>
+                                </div>
+                                <span class="p-float-label">
+                                    <input pInputText id="username" />
+                                    <label htmlFor="username">Direccion</label>
+                                </span>
+                                <span class="p-float-label">
+                                    <input pInputText id="username" />
+                                    <label htmlFor="username">Correo electrónico</label>
+                                </span>
+                            </div>
+                        </p-fieldset>
+                    </div>
+                </div>
+                <button pButton pRipple label="Registrarme" icon="pi pi-check-circle" class="w-full"
+                    [style]="{backgroundColor:'var(--color-prin)', color: '#E5E5E5'}"></button>
+            </form>
+        </div>
+    </div>
+</section>

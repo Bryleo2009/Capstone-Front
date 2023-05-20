@@ -5,6 +5,9 @@ import { environment } from '@env/environment.development';
 import { CarritoService } from '@app/_service/modelos/carrito.service';
 import { AppComponent } from '@app/app.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MenuItem } from 'primeng/api';
+import { AuthService } from '@app/_service/rutas/auth.service';
+import { DataService } from '@app/_service/modelos/data.service';
 
 
 
@@ -17,15 +20,38 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private carritoService: CarritoService,
-    private general: AppComponent,
+    private principal: AppComponent,
     private route: ActivatedRoute,
     private router: Router,
+    private almacen: AuthService,
+    private dataService: DataService
   ){}
+  items!: MenuItem[];
   tempEnviroment!: number;
   cantCarrito: string = '';
-  ngOnInit(): void { 
+  logeado!: boolean;
+  ngOnInit(): void {
+    this.logeado = this.dataService.obtenerLogueado();
+    this.dataService.logeado$.subscribe(() => {
+      this.logeado = this.dataService.obtenerLogueado();
+    });
+
+    this.items = [
+      {
+          label: 'Mi perfil',
+          icon: 'fa-solid fa-house',
+          routerLink: ['/menu']
+      },
+      { separator: true },
+      { label: 'Cerrar Sesion', icon: 'fa-solid fa-arrow-right-from-bracket', command: () => {
+        this.almacen.removeAll();
+        this.router.navigateByUrl('/login');
+        this.dataService.updateVariable(false);
+    } }
+  ];
+
     this.cantCarrito = this.carritoService.obtenerCantidadTotalCarrito().toString();
-    this.carritoService.carrito$.subscribe((productos) => {
+    this.carritoService.carrito$.subscribe(() => {
       this.cantCarrito = this.carritoService.obtenerCantidadTotalCarrito().toString();
       this.tempEnviroment = this.carritoService.obtenerCantidadTotalCarrito();
     });

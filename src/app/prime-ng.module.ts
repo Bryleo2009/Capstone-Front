@@ -31,6 +31,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { TimelineModule } from 'primeng/timeline';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { TieredMenuModule } from 'primeng/tieredmenu';
 @NgModule({
   declarations: [],
   imports: [
@@ -64,7 +65,8 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     CalendarModule,
     ProgressSpinnerModule,
     TimelineModule,
-    RadioButtonModule
+    RadioButtonModule,
+    TieredMenuModule
 
     
   ],exports: [
@@ -97,7 +99,8 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     CalendarModule,
     ProgressSpinnerModule,
     TimelineModule,
-    RadioButtonModule
+    RadioButtonModule,
+    TieredMenuModule
     
     
   ],

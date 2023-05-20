@@ -1,36 +1,23 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Departamento } from '@app/_model/ubigeo/departamento';
 import { Distrito } from '@app/_model/ubigeo/distrito';
 import { Provincia } from '@app/_model/ubigeo/privincia';
-import { SessionComponent } from '@app/_page/cliente/login/session/session.component';
-import { DataService } from '@app/_service/modelos/data.service';
-import { AuthService } from '@app/_service/rutas/auth.service';
 import { environment } from '@env/environment.development';
 
+
 @Component({
-  selector: 'app-entrega',
-  templateUrl: './entrega.component.html',
-  styleUrls: ['./entrega.component.css']
+  selector: 'app-registro',
+  templateUrl: './registro.component.html',
+  styleUrls: ['./registro.component.css']
 })
-export class EntregaComponent implements OnInit {
-  
+export class RegistroComponent {
   constructor(
     private http: HttpClient,
-    private almacen: AuthService,
-    private dataService: DataService
   ) { }
-
-  isWrap = true;
-  checked!: boolean;
   form!: FormGroup;
-  logeado!: boolean;
   ngOnInit() {
-    this.logeado = this.dataService.obtenerLogueado();
-    this.dataService.logeado$.subscribe(() => {
-      this.logeado = this.dataService.obtenerLogueado();
-    });
     //cargar JSOn de ubigeo
     this.http.get<Departamento[]>('./assets/ubigeo.json').subscribe(
       (data) => {
@@ -100,4 +87,6 @@ export class EntregaComponent implements OnInit {
       );
     }
   }
+
+  @Input() flexWrap: boolean = false;
 }
