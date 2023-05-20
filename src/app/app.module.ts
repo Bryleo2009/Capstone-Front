@@ -30,7 +30,9 @@ import { AuthService } from './_service/rutas/auth.service';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { AuthGuard } from './_service/rutas/auth-guard.service';
 import { RegistroComponent } from './_page/cliente/login/registro/registro.component';
-
+import { environment } from '@env/environment.development';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { getAuth, provideAuth } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,8 @@ import { RegistroComponent } from './_page/cliente/login/registro/registro.compo
   ],
   imports: [
     RouterModule,
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideAuth(() => getAuth()),
     BrowserModule,
     AppRoutingModule,
     PrimeNGModule,
