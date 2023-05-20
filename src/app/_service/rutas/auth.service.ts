@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { SessionStorageService } from 'ngx-webstorage';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { Usuario } from '@app/_model/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -68,11 +69,11 @@ export class AuthService {
   }
 
   //alamcenar username
-  public setUser(nick: string): void {
-    this.sessionStorage.store('user', nick);
+  public setUser(usuario: Usuario): void {
+    this.sessionStorage.store('user', usuario);
   }
 
-  public getUser(): string {
+  public getUser(): Usuario {
     return this.sessionStorage.retrieve('user');
   }
 

@@ -33,6 +33,9 @@ import { RegistroComponent } from './_page/cliente/login/registro/registro.compo
 import { environment } from '@env/environment.development';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { MenuComponent } from './_page/cliente/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -53,12 +56,15 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
     PaqueteriaComponent,
     LoginComponent,
     SessionComponent,
-    RegistroComponent
+    RegistroComponent,
+    MenuComponent
   ],
   imports: [
     RouterModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideAuth(() => getAuth()),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
     BrowserModule,
     AppRoutingModule,
     PrimeNGModule,
@@ -73,7 +79,7 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
     PrimeNGModule,
   ],
   providers: [
-    AppComponent,PaqueteriaComponent,AuthGuard
+    AppComponent,PaqueteriaComponent,AuthGuard,EntregaComponent
   ],
   bootstrap: [AppComponent],
 })
