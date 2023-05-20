@@ -26,7 +26,13 @@ export class AuthGuard implements CanActivate {
       if (persona) {
         this.authService.setNick(persona.nombre ?? "");
         this.authService.setRol(data?.idRol.descRol.substring(5) ?? "");
-        this.authService.setUser(data?.username ?? "");
+        if (data !== undefined) {
+          this.authService.setUser(data);
+        } else {
+          // Manejar el caso en el que data sea undefined
+          // Por ejemplo, mostrar un mensaje de error o asignar un valor por defecto
+        }
+        
       }      
       if (data && data.idRol && data.idRol.descRol) {
         userRoles = data.idRol.descRol.substring(5);

@@ -28,4 +28,14 @@ export class AppComponent implements OnInit {
     }
     return cantidadTotal;
   }
+
+  mensaje(tipo:string, titulo:string, detalle?:string){
+    this.messageService.add({
+      severity: tipo,
+      summary: titulo,
+      detail: detalle,
+    });
+  }
+
+  
 }

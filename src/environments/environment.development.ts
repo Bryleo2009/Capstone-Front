@@ -12,5 +12,5 @@ export const environment = {
         storageBucket: 'capstone-387313.appspot.com',
         messagingSenderId: '393912616941',
         appId: '1:393912616941:web:1234567890abcdef'
-    }      
+    },
 };

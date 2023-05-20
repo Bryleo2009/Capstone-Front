@@ -16,6 +16,7 @@ import { LoginComponent } from './_page/cliente/login/login.component';
 import { SessionComponent } from './_page/cliente/login/session/session.component';
 import { Error } from './_page/error/error';
 import { RegistroComponent } from './_page/cliente/login/registro/registro.component';
+import { MenuComponent } from './_page/cliente/menu/menu.component';
 
 
 
@@ -40,8 +41,9 @@ const routes: Routes = [
       { path: 'ok', component: SeguimientoComponent},
     ] },
   ]},
-  { path : 'details' , component : Details01Component},
+  { path: 'details' , component : Details01Component},
   { path: 'seguimiento', component: SeguimientoComponent},
+  { path: 'menu', component: MenuComponent}
 ];
 
 @NgModule({

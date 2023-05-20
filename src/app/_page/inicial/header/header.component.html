@@ -18,9 +18,17 @@
       <li class="navbar_item">
         <a href="#about" class="navbar_links" id="about-page">Nosotros</a>
       </li>
-      <li class="navbar_ico">
-        <a href="" class=""><i class="fa-solid fa-user-tag" style="color: var(--color-white); margin:10px"></i></a>
-      </li>
+      <ng-container *ngIf="logeado; else elselogin">
+        <li class="navbar_ico">
+          <a (click)="menu.toggle($event)" class=""><i class="fa-solid fa-user-tag" style="color: var(--color-white); margin:10px"></i></a>
+          <p-tieredMenu #menu [model]="items" [popup]="true"></p-tieredMenu>
+        </li>
+      </ng-container>
+      <ng-template #elselogin>
+        <li class="navbar_ico">
+          <a href="/login" class=""><i class="fa-solid fa-right-to-bracket" style="color: var(--color-white); margin:10px"></i></a>
+        </li>
+      </ng-template>
       <li class="navbar_ico">
         <a href="" class=""><i class="fa-regular fa-heart" style="color: var(--color-white); margin:10px"></i></a>
       </li>
