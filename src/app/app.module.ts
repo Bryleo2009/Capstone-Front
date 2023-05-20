@@ -22,6 +22,9 @@ import { EntregaComponent } from './_page/paqueteria/trazaProduct/entrega/entreg
 import { PagoComponent } from './_page/paqueteria/trazaProduct/pago/pago.component';
 import { DeseosComponent } from './_page/cliente/deseos/deseos.component';
 import { PaqueteriaComponent } from './_page/paqueteria/paqueteria.component';
+import { environment } from '@env/environment.development';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { getAuth, provideAuth } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -42,6 +45,8 @@ import { PaqueteriaComponent } from './_page/paqueteria/paqueteria.component';
   ],
   imports: [
     RouterModule,
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideAuth(() => getAuth()),
     BrowserModule,
     AppRoutingModule,
     PrimeNGModule,
