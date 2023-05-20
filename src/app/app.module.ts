@@ -29,6 +29,7 @@ import { SessionStorageService } from 'ngx-webstorage';
 import { AuthService } from './_service/rutas/auth.service';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { AuthGuard } from './_service/rutas/auth-guard.service';
+import { RegistroComponent } from './_page/cliente/login/registro/registro.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { AuthGuard } from './_service/rutas/auth-guard.service';
     DeseosComponent,
     PaqueteriaComponent,
     LoginComponent,
-    SessionComponent
+    SessionComponent,
+    RegistroComponent
   ],
   imports: [
     RouterModule,
