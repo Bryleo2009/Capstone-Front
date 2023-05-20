@@ -16,6 +16,7 @@ import { Observable, forkJoin } from 'rxjs';
 import { PaqueteriaComponent } from '../paqueteria.component';
 import { Enum, EnumInter } from '@app/_model/enum';
 import { TipoProductoService } from '@app/_service/modelos/tipo-producto.service';
+import { AuthService } from '@app/_service/rutas/auth.service';
 
 @Component({
   selector: 'app-carrito',
@@ -39,7 +40,8 @@ export class CarritoComponent {
     private confirmationService: ConfirmationService,
     private messageService: MessageService,
     private pequeteriaComponent: PaqueteriaComponent,
-    private tipoProductoService: TipoProductoService
+    private tipoProductoService: TipoProductoService,
+    private auth: AuthService
   ) {
     this.monto = 0;
   }
@@ -60,7 +62,7 @@ export class CarritoComponent {
     for (const producto of this.carritoLocalStorage) {
       const request = this.productoNormService.listarPorId(
         producto.idProduct.toString(),
-        'token'
+        this.auth.getToken()
       );
       requests.push(request);
     }
@@ -85,19 +87,19 @@ export class CarritoComponent {
         };
     
         // Obtener datos de la talla
-        this.tallaService.listarPorId(carritoItem.tallaid.toString(), 'token').subscribe((talla) => {
+        this.tallaService.listarPorId(carritoItem.tallaid.toString(), this.auth.getToken()).subscribe((talla) => {
           productoFilter.tallas = talla;
           console.log("🔥 > CarritoComponent > this.tallaService.listarPorId > talla:", talla)
         });
     
         // Obtener datos del color
-        this.colorService.listarPorId(carritoItem.colorid.toString(), 'token').subscribe((color) => {
+        this.colorService.listarPorId(carritoItem.colorid.toString(), this.auth.getToken()).subscribe((color) => {
           productoFilter.colores = color;
           console.log("🔥 > CarritoComponent > this.colorService.listarPorId > color:", color)
         });
     
         // Obtener datos del tipo de producto
-        this.tipoProductoService.listarPorId(producto.idTipoProduc.idTipoProduc.toString(), 'token').subscribe((tipoProducto) => {
+        this.tipoProductoService.listarPorId(producto.idTipoProduc.idTipoProduc.toString(), this.auth.getToken()).subscribe((tipoProducto) => {
           productoFilter.tipoProduct = tipoProducto.vistaItem;
         });
         console.log("🔥 > CarritoComponent > this.products=data.map > productoFilter:", productoFilter)

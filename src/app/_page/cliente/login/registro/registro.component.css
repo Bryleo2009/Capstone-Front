@@ -82,3 +82,15 @@
     color: var(--color-prin);
     font-weight: bold;
   }
+
+  .logo-esp{
+    padding: 20px;
+  }
+
+  .contenedor-a {
+    flex-wrap: nowrap;
+  }
+  
+  .wrap {
+    flex-wrap: wrap;
+  }

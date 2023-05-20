@@ -10,6 +10,7 @@ import { TallaService } from '@app/_service/modelos/talla.service';
 import { EncryptionService } from '@app/_service/util/encryption.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { DialogComponent } from '@app/_page/producto/store/dialog/dialog.component';
+import { AuthService } from '@app/_service/rutas/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -28,6 +29,7 @@ export class HomeComponent implements OnInit {
     private route: ActivatedRoute,
     private viewportScroller: ViewportScroller,
     public dialogService: DialogService,
+    private auth: AuthService
   ) {}
 
   responsiveOptions: any[] = [];
@@ -58,7 +60,7 @@ export class HomeComponent implements OnInit {
   productosCaballeros!: ProductoFilter[];
   listarProductosCaballeros(): void {
     this.productoService
-      .listarRandom('CAB', 20,'token')
+      .listarRandom('CAB', 20,this.auth.getToken())
       .subscribe((data) => {
         this.productosCaballeros = data;
         console.log("🔥 > HomeComponent > .subscribe > this.productosCaballeros:", this.productosCaballeros)
@@ -68,7 +70,7 @@ export class HomeComponent implements OnInit {
   productosDamas!: ProductoFilter[];
   listarProductosDamas(): void {
     this.productoService
-      .listarRandom('DAM', 20,'token')
+      .listarRandom('DAM', 20,this.auth.getToken())
       .subscribe((data) => {
         this.productosDamas = data;
         console.log("🔥 > HomeComponent > .subscribe > data:", data)

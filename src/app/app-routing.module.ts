@@ -12,12 +12,22 @@ import { EntregaComponent } from './_page/paqueteria/trazaProduct/entrega/entreg
 import { PagoComponent } from './_page/paqueteria/trazaProduct/pago/pago.component';
 import { DeseosComponent } from './_page/cliente/deseos/deseos.component';
 import { PaqueteriaComponent } from './_page/paqueteria/paqueteria.component';
+import { LoginComponent } from './_page/cliente/login/login.component';
+import { SessionComponent } from './_page/cliente/login/session/session.component';
+import { Error } from './_page/error/error';
+import { RegistroComponent } from './_page/cliente/login/registro/registro.component';
 
 
 
 const routes: Routes = [
   { path : '' , component : HomeComponent},
+  { path : 'login' , component : LoginComponent, children: [
+    { path: '', component: SessionComponent},
+    { path: 'registro', component: RegistroComponent}
+  ]
+  },
   { path : 'deseos' , component : DeseosComponent},
+  { path: 'error/:type', component: Error },
   { path : 'store' , component : StoreComponent, children: [
       { path: 'open', component: DialogComponent}
     ]

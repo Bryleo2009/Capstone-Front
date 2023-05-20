@@ -13,6 +13,7 @@ import { PaqueteriaComponent } from '../../paqueteria.component';
 import { CarritoService } from '@app/_service/modelos/carrito.service';
 import { ProductoStorage } from '@app/_model/filter/productoStorage';
 import { ProductoStorageService } from '@app/_service/modelos/productoStorage.service';
+import { AuthService } from '@app/_service/rutas/auth.service';
 
 @Component({
   selector: 'app-pago',
@@ -36,6 +37,7 @@ export class PagoComponent implements OnInit {
     private carritoService: CarritoService,
     private carritoFilter: ProductoStorageService,
     private viewportScroller: ViewportScroller,
+    private auth: AuthService
   ) {}
 
   carritoLocalStorage: ProductoStorage[] = [];
@@ -188,7 +190,7 @@ export class PagoComponent implements OnInit {
                       this.pagoRealizado = true;
                       this.actualizarResumenEnPadre();
                       console.log("🔥 > PagoComponent > form?.addEventListener > this.carritoService.obtenerProductosCarrito():", this.carritoService.obtenerProductosCarrito())
-                      this.carritoFilter.carritoStock(this.carritoService.obtenerProductosCarrito(),'token').subscribe(
+                      this.carritoFilter.carritoStock(this.carritoService.obtenerProductosCarrito(),this.auth.getToken()).subscribe(
                         (data) => {
                           console.log("stok desminuido");
                         },(error) => {

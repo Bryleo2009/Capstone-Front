@@ -1,18 +1,18 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Departamento } from '@app/_model/ubigeo/departamento';
 import { Distrito } from '@app/_model/ubigeo/distrito';
 import { Provincia } from '@app/_model/ubigeo/privincia';
 import { environment } from '@env/environment.development';
 
+
 @Component({
-  selector: 'app-entrega',
-  templateUrl: './entrega.component.html',
-  styleUrls: ['./entrega.component.css']
+  selector: 'app-registro',
+  templateUrl: './registro.component.html',
+  styleUrls: ['./registro.component.css']
 })
-export class EntregaComponent implements OnInit {
-  checked!: boolean;
+export class RegistroComponent {
   constructor(
     private http: HttpClient,
   ) { }
@@ -88,5 +88,5 @@ export class EntregaComponent implements OnInit {
     }
   }
 
-  isWrap = true;
+  @Input() flexWrap: boolean = false;
 }

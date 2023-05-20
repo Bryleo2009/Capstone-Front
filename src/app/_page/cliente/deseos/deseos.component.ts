@@ -9,6 +9,7 @@ import { ProductoFilter } from '@app/_model/filter/productoFilter';
 import { Card } from 'primeng/card';
 import { Producto } from '@app/_model/producto';
 import { TallaService } from '@app/_service/modelos/talla.service';
+import { AuthService } from '@app/_service/rutas/auth.service';
 
 @Component({
   selector: 'app-deseos',
@@ -26,6 +27,7 @@ export class DeseosComponent {
     private viewportScroller: ViewportScroller,
     public dialogService: DialogService,
     private tallaSerive: TallaService,
+    private auth: AuthService
 
     ) {}
  responsiveOptions: any[] = [];
@@ -44,7 +46,7 @@ export class DeseosComponent {
 
   if (this.id !== null && this.id !== undefined && this.id !== '') {
     this.producSerive
-      .listarPorId(this.encryp.decrypt(this.id), 'token')
+      .listarPorId(this.encryp.decrypt(this.id), this.auth.getToken())
       .subscribe((unproducto: Producto) => {
         this.producto = unproducto;
         console.log(
@@ -53,7 +55,7 @@ export class DeseosComponent {
         );
         //listar tallas
         this.tallaSerive
-          .listarPorIdTalla(unproducto.idProduct, 'token')
+          .listarPorIdTalla(unproducto.idProduct, this.auth.getToken())
           .subscribe((data) => {
             console.log(data);
           });
@@ -86,7 +88,7 @@ cars: Card[] = [];
 productos!: ProductoFilter[];
 listarProductos(): void {
   this.producSerive
-    .listar('', [], [], [], [], [], 0, 999, 20, 0, 'token')
+    .listar('', [], [], [], [], [], 0, 999, 20, 0, this.auth.getToken())
     .subscribe((data) => {
       this.productos = data.content;
     });

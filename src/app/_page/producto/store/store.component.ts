@@ -14,6 +14,7 @@ import { TipoProductoService } from '@app/_service/modelos/tipo-producto.service
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { DialogComponent } from './dialog/dialog.component';
 import { ViewportScroller } from '@angular/common';
+import { AuthService } from '@app/_service/rutas/auth.service';
 
 @Component({
   selector: 'app-store',
@@ -33,7 +34,8 @@ export class StoreComponent implements OnInit {
     private encryp: EncryptionService,
     private route: ActivatedRoute,
     public dialogService: DialogService,
-    private viewportScroller: ViewportScroller
+    private viewportScroller: ViewportScroller,
+    private auth: AuthService
   ) {
     this.seleccion = '';
     this.categoriaActual = 'Todas las categorias';
@@ -70,32 +72,32 @@ export class StoreComponent implements OnInit {
     this.updateValuestalla();
     this.updateValuesmarca();
     //listar tallas
-    this.tallaService.listar('token').subscribe((data) => {
+    this.tallaService.listar(this.auth.getToken()).subscribe((data) => {
       this.talla = data.filter((color) => color.vistaItem !== 'Talla unica');
     });
 
     //listar tipod eporducto
-    this.tipoProductoService.listar('token').subscribe((data) => {
+    this.tipoProductoService.listar(this.auth.getToken()).subscribe((data) => {
       this.tipoproducto = data;
     });
 
     //listar marcas
-    this.marcaService.listar('token').subscribe((data) => {
+    this.marcaService.listar(this.auth.getToken()).subscribe((data) => {
       this.marca = data;
     });
 
     //listar etiquetas
-    this.etiquetaService.listar('token').subscribe((data) => {
+    this.etiquetaService.listar(this.auth.getToken()).subscribe((data) => {
       this.etiquetas = data;
     });
 
     //listar colores
-    this.colorService.getColor('token').subscribe((data) => {
+    this.colorService.getColor(this.auth.getToken()).subscribe((data) => {
       this.colores = data.filter((color) => color.vista_item !== '');
     });
 
     //listar categorias
-    this.categoriaService.listar('token').subscribe((data) => {
+    this.categoriaService.listar(this.auth.getToken()).subscribe((data) => {
       this.categorias = data;
       this.items = this.categorias.map((categoria) => {
         return {
@@ -168,7 +170,7 @@ export class StoreComponent implements OnInit {
         this.precioMax,
         this.pageSize,
         this.first / this.pageSize,
-        'token'
+        this.auth.getToken()
       )
       .subscribe(
         (response) => {
