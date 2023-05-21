@@ -14,12 +14,12 @@ export class MarcaService {
 
   listar(token: string): Observable<Enum[]> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<Enum[]>(this.url, { headers });
+    return this.http.get<Enum[]>(this.url);
   }
 
   listarPorId(id: string, token: string): Observable<Enum> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<Enum>(`${this.url}/${id}`, { headers });
+    return this.http.get<Enum>(`${this.url}/${id}`);
   }
 
   registrar(objeto: Enum, token: string): Observable<any> {

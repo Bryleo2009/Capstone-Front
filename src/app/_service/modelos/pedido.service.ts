@@ -16,12 +16,12 @@ export class PedidoService {
 
   listar(token: string): Observable<[Pedido]> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<[Pedido]>(this.url, { headers });
+    return this.http.get<[Pedido]>(this.url);
   }
 
   listarPorId(id: string, token: string): Observable<Pedido> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<Pedido>(`${this.url}/${id}`, { headers });
+    return this.http.get<Pedido>(`${this.url}/${id}`);
   }
 
   registrar(Rol: Pedido, token: string): Observable<any> {
