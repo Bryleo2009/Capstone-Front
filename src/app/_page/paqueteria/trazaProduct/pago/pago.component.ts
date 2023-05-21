@@ -14,6 +14,8 @@ import { CarritoService } from '@app/_service/modelos/carrito.service';
 import { ProductoStorage } from '@app/_model/filter/productoStorage';
 import { ProductoStorageService } from '@app/_service/modelos/productoStorage.service';
 import { AuthService } from '@app/_service/rutas/auth.service';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+
 
 @Component({
   selector: 'app-pago',
@@ -21,6 +23,7 @@ import { AuthService } from '@app/_service/rutas/auth.service';
   styleUrls: ['./pago.component.css'],
 })
 export class PagoComponent implements OnInit {
+  visible: boolean = true;
   paymentForm!: FormGroup;
   clientToken!: string;
   amount: number = 0;
@@ -37,10 +40,15 @@ export class PagoComponent implements OnInit {
     private carritoService: CarritoService,
     private carritoFilter: ProductoStorageService,
     private viewportScroller: ViewportScroller,
+    public dialogService: DialogService,
     private auth: AuthService
   ) {}
 
+  ref!: DynamicDialogRef;
   carritoLocalStorage: ProductoStorage[] = [];
+  showDialog() {
+    this.visible = true;
+  }
   ngOnInit() {
     const objetoAlmacenadoStr = localStorage.getItem('resumenCarrito');
     if (objetoAlmacenadoStr !== null) {
