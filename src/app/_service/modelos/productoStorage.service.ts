@@ -14,12 +14,12 @@ export class ProductoStorageService {
 
   listar(token: string): Observable<ProductoStorage[]> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<ProductoStorage[]>(this.url, { headers });
+    return this.http.get<ProductoStorage[]>(this.url);
   }
 
   listarPorId(id: string, token: string): Observable<ProductoStorage> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<ProductoStorage>(`${this.url}/${id}`, { headers });
+    return this.http.get<ProductoStorage>(`${this.url}/${id}`);
   }
 
   registrar(objeto: ProductoStorage, token: string): Observable<any> {

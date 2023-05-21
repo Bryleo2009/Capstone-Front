@@ -15,12 +15,12 @@ export class UsuarioService {
 
   listar(token: string): Observable<Usuario[]> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<Usuario[]>(this.url, { headers });
+    return this.http.get<Usuario[]>(this.url);
   }
 
   listarPorId(id: string, token: string): Observable<Usuario> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<Usuario>(`${this.url}/${id}`, { headers });
+    return this.http.get<Usuario>(`${this.url}/${id}`);
   }
 
   registrar(Usuario: Usuario, token: string): Observable<any> {
@@ -41,6 +41,6 @@ export class UsuarioService {
 
   byUsername(id: string, token: string): Observable<Usuario> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<Usuario>(`${this.url}/byUsername/${id}`, { headers });
+    return this.http.get<Usuario>(`${this.url}/byUsername/${id}`);
   }
 }

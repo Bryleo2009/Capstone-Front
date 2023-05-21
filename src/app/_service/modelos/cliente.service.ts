@@ -16,12 +16,12 @@ export class ClienteService {
 
   listar(token: string): Observable<Cliente[]> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<Cliente[]>(this.url, { headers });
+    return this.http.get<Cliente[]>(this.url);
   }
 
   listarPorId(id: string, token: string): Observable<Cliente> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<Cliente>(`${this.url}/${id}`, { headers });
+    return this.http.get<Cliente>(`${this.url}/${id}`);
   }
 
   registrar(Rol: Cliente, token: string): Observable<any> {
@@ -41,6 +41,6 @@ export class ClienteService {
 
   byNum(id: string, token: string): Observable<Cliente> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<Cliente>(`${this.url}/byNum/${id}`, { headers });
+    return this.http.get<Cliente>(`${this.url}/byNum/${id}`);
   }
 }
