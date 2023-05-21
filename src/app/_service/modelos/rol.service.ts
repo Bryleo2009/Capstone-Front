@@ -16,12 +16,12 @@ export class RolService {
 
   listar(token: string): Observable<Rol[]> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<Rol[]>(this.url, { headers });
+    return this.http.get<Rol[]>(this.url);
   }
 
   listarPorId(id: string, token: string): Observable<Rol> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<Rol>(`${this.url}/${id}`, { headers });
+    return this.http.get<Rol>(`${this.url}/${id}`);
   }
 
   registrar(Rol: Rol, token: string): Observable<any> {

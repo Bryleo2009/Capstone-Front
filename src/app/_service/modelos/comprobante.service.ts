@@ -16,12 +16,12 @@ export class ComprobanteService {
 
   listar(token: string): Observable<[Comprobante]> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<[Comprobante]>(this.url, { headers });
+    return this.http.get<[Comprobante]>(this.url);
   }
 
   listarPorId(id: string, token: string): Observable<Comprobante> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<Comprobante>(`${this.url}/${id}`, { headers });
+    return this.http.get<Comprobante>(`${this.url}/${id}`);
   }
 
   registrar(Rol: Comprobante, token: string): Observable<any> {
