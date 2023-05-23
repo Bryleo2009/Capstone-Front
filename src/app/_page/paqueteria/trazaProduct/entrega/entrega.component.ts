@@ -92,6 +92,8 @@ export class EntregaComponent implements OnInit {
     }
     if (this.selectedDistrict) {
       this.selectedDistrictCode = this.selectedDistrict.cod;
+      this.dataService.enviar_ubigeo(this.selectedDepartmentCode + '' + this.selectedProvinceCode + '' + this.selectedDistrictCode);
+      
       console.log(
         'ubigeo seleccionado: >',
         this.selectedDepartmentCode,

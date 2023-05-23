@@ -10,5 +10,5 @@ export class ComprobanteFilter{
     ammount !: number;
     direccionComp !: string;
     ubigeoComp !: string;
-	idTc: Enum[] = [];
+	idTc!: boolean;
 }

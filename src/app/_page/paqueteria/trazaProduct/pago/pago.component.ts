@@ -19,6 +19,7 @@ import { ComprobanteFilter } from '@app/_model/filter/comprobanteFilter';
 import { ComprobanteService } from '@app/_service/modelos/comprobante.service';
 import { ClienteService } from '@app/_service/modelos/cliente.service';
 import { Usuario } from '@app/_model/usuario';
+import { DataService } from '@app/_service/modelos/data.service';
 
 
 @Component({
@@ -48,7 +49,8 @@ export class PagoComponent implements OnInit {
     public dialogService: DialogService,
     private auth: AuthService,
     private comprobanteService : ComprobanteService,
-    private clienteService : ClienteService
+    private clienteService : ClienteService,
+    private dataService : DataService
   ) {}
 
   ref!: DynamicDialogRef;
@@ -227,6 +229,23 @@ export class PagoComponent implements OnInit {
                           this.comprobante.direccionComp = un_cliente.direccion;
                          /*this.comprobante.idTc
                           this.comprobante.ubigeoComp = un_cliente.ubigueo;*/
+                          this.dataService.obtener_ubigeo().subscribe(
+                            (response)=> {
+                              this.comprobante.ubigeoComp = response;
+                            },
+                            (error)=>{
+                              console.error("Error al obtener ubigeo", error);
+                            }
+
+                          );
+                          this.dataService.obtener_tipocomprobante().subscribe(
+                            (response)=> {
+                              this.comprobante.idTc = response;
+                            },
+                            (error)=>{
+                              console.error("Error al obtener ubigeo", error);
+                            }
+                          );
 
                           this.comprobanteService.sendDatoComprobantes(this.comprobante, this.auth.getToken()).subscribe(
                             (response)=> {
