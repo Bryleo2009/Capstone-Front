@@ -15,6 +15,10 @@ import { ProductoStorage } from '@app/_model/filter/productoStorage';
 import { ProductoStorageService } from '@app/_service/modelos/productoStorage.service';
 import { AuthService } from '@app/_service/rutas/auth.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { ComprobanteFilter } from '@app/_model/filter/comprobanteFilter';
+import { ComprobanteService } from '@app/_service/modelos/comprobante.service';
+import { ClienteService } from '@app/_service/modelos/cliente.service';
+import { Usuario } from '@app/_model/usuario';
 
 
 @Component({
@@ -23,6 +27,7 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
   styleUrls: ['./pago.component.css'],
 })
 export class PagoComponent implements OnInit {
+  comprobante : ComprobanteFilter = new ComprobanteFilter();
   visible: boolean = true;
   paymentForm!: FormGroup;
   clientToken!: string;
@@ -41,7 +46,9 @@ export class PagoComponent implements OnInit {
     private carritoFilter: ProductoStorageService,
     private viewportScroller: ViewportScroller,
     public dialogService: DialogService,
-    private auth: AuthService
+    private auth: AuthService,
+    private comprobanteService : ComprobanteService,
+    private clienteService : ClienteService
   ) {}
 
   ref!: DynamicDialogRef;
@@ -146,7 +153,6 @@ export class PagoComponent implements OnInit {
               }
             });
             
-            
 
             const checkFormLoaded = setInterval(() => {
               const cardNumberInput = document.querySelector('#card-number');
@@ -205,7 +211,37 @@ export class PagoComponent implements OnInit {
                           console.log(error);
                         }
                       );
-                      // Eliminar todos los productos del localStorage
+                      this.clienteService.devolverCliente(this.auth.getUser(), this.auth.getToken()).subscribe(
+                        (un_cliente)=> {
+                          
+                          const objetoAlmacenadoStr = localStorage.getItem('resumenCarrito');
+                          if (objetoAlmacenadoStr !== null) {
+                            const objetoAlmacenado = JSON.parse(objetoAlmacenadoStr);
+                            this.comprobante.montoProducto = objetoAlmacenado.montoProducto;
+                            this.comprobante.ammount = objetoAlmacenado.ammount;
+                            this.comprobante.igv = objetoAlmacenado.comprobante;
+                          }
+
+                          this.comprobante.cliente = un_cliente;
+                          this.comprobante.productos = this.carritoService.obtenerProductosCarrito();
+                          this.comprobante.direccionComp = un_cliente.direccion;
+                         /*this.comprobante.idTc
+                          this.comprobante.ubigeoComp = un_cliente.ubigueo;*/
+
+                          this.comprobanteService.sendDatoComprobantes(this.comprobante, this.auth.getToken()).subscribe(
+                            (response)=> {
+                              console.log("Datos enviados correctamente al backend", response);
+                            },
+                            (error)=>{
+                              console.error("Error al enviar datos al backend", error);
+                            }
+                          );
+                        },
+                        (error)=>{
+                          console.error(error);
+                        }
+                      );
+                       // Eliminar todos los productos del localStorage
                       localStorage.removeItem('carrito');
                       localStorage.removeItem('cantCarrito');
                       localStorage.removeItem('resumenCarrito');
