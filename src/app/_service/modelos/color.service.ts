@@ -24,7 +24,7 @@ export class ColorService {
 
   listarPorIdColor(id: number, token: string): Observable<EnumInter[]> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<EnumInter[]>(`${this.url}/activas/${id}`, { headers });
+    return this.http.get<EnumInter[]>(`${this.url}/activas/${id}`);
   }
 
   registrar(objeto: Enum, token: string): Observable<any> {
