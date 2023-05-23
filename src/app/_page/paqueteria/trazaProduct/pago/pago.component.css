@@ -13,7 +13,13 @@
     text-decoration: underline;
 
 }
-
+.toggle{
+  display: inline-block;
+  position: absolute;
+  left: 700px;
+  cursor: pointer;
+  z-index: 0;
+}
 .form {
     background-color: var(--color-white);
     padding: 50px;

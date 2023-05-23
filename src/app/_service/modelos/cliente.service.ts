@@ -3,6 +3,8 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment.development';
 import { Cliente } from '@app/_model/cliente';
+import { Usuario } from '@app/_model/usuario';
+import { Token } from '@angular/compiler';
 
 
 @Injectable({
@@ -37,6 +39,11 @@ export class ClienteService {
   eliminar(id: string, token: string): Observable<any> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.delete(`${this.url}/${id}`, { headers });
+  }
+
+  devolverCliente(idUserCliente: Usuario, token: string): Observable<Cliente>{
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<Cliente>(`${this.url}/devolverCliente/${idUserCliente.username}`);
   }
 
   byNum(id: string, token: string): Observable<Cliente> {

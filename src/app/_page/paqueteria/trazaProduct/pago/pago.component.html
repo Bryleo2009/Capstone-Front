@@ -62,6 +62,42 @@
           </div>
         </div>
       </div>
+           <!--factura-->
+  <!-- <div class="card flex justify-content-center gap-3">
+    <div class="flex align-items-center gap-1">
+        <p-checkbox name="group1" value="Boleta" [(ngModel)]="selectedMPago" inputId="ny"></p-checkbox>
+        <label for="ny">Boleta</label>
+    </div>
+    <div class="flex align-items-center gap-1">
+        <p-checkbox name="group1" value="Factura" [(ngModel)]="mostrarFormulario" inputId="sf" (onChange)="toggleFormulario()"></p-checkbox>
+        <label for="sf">Factura</label>
+    </div>
+    
+  <div *ngIf="mostrarFormulario" class="col-8 form flex flex-column">
+     <input type="number" id="myNumberInput" maxlength="11" pInputText [(ngModel)]="selectedfct" /><label>RUC</label>
+     <input type="text" pInputText [(ngModel)]="selectedfct" /><label>Razon Social</label>
+  </div>
+  </div> -->
+  <p-divider></p-divider>
+  <div class="heading">
+      <h6>Boleta</h6>
+        <a  (click)="showDialog()"  class="toggle">¿Necesitas factura?</a>
+  </div>
+  <div class="texxt">
+    <p>La boleta se enviará al siguiente correo ...</p>
+  </div>
+  <!--aaaaaa -->
+  <div class="card flex justify-content-center">
+  <p-dialog header="Datos Cliente" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+    <p class="m-0">
+          <label for="RUC">RUC</label>
+          <input type="text" id="RUC" placeholder="Ingrese RUC" /><br><br>
+          <label for="razon-social">Razon Social</label>
+          <input type="text" id="razon-social" placeholder="Ingrese Razon Social" />
+    </p>
+  </p-dialog>
+  </div>
+
       <div class="grid flex justify-content-center mt-5">
         <p-button label="Pagar" class="col-8" type="submit"
           [style]="{backgroundColor:'var(--color-prin)', color: '#000000', padding : '15px 10px', width: '100%'}"></p-button>
