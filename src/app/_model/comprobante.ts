@@ -13,4 +13,5 @@ export class Comprobante {
 	idEstCompro: Enum[] = [];
 	idTp: Enum[] = [];
 	idTc: Enum[] = [];
+
 }
