@@ -9,5 +9,6 @@ export class Cliente {
 	direccion!: string;
 	ubigueo!: string;
 	numDocumento!: string;
+	correo!: string;
 	idUserCliente: Usuario = new Usuario();
 }

@@ -17,6 +17,7 @@ import { SessionComponent } from './_page/cliente/login/session/session.componen
 import { Error } from './_page/error/error';
 import { RegistroComponent } from './_page/cliente/login/registro/registro.component';
 import { MenuComponent } from './_page/cliente/menu/menu.component';
+import { AuthGuard } from './_service/rutas/auth-guard.service';
 
 
 
@@ -35,7 +36,10 @@ const routes: Routes = [
   },
   { path: 'pedido', component: PaqueteriaComponent, children: [
     { path : '', component: CarritoComponent},
-    { path : 'trazabilidad', component : TrazaProductComponent, children: [
+    { path : 'trazabilidad', component : TrazaProductComponent,
+    canActivate: [AuthGuard],
+    data: { expectedRoles: ['ADMIN', 'SOPORTE','EMPLEADO','CLIENTE'] },
+    children: [
       { path: 'entrega', component: EntregaComponent},
       { path: 'payment', component: PagoComponent},
       { path: 'ok', component: SeguimientoComponent},

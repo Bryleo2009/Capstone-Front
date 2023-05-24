@@ -33,6 +33,9 @@ import { TimelineModule } from 'primeng/timeline';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { TieredMenuModule } from 'primeng/tieredmenu';
 import { DialogModule } from 'primeng/dialog';
+import { InputTextModule } from 'primeng/inputtext';
+import { PasswordModule } from 'primeng/password';
+
 
 @NgModule({
   declarations: [],
@@ -69,7 +72,9 @@ import { DialogModule } from 'primeng/dialog';
     TimelineModule,
     RadioButtonModule,
     TieredMenuModule,
-    DialogModule
+    DialogModule,
+    InputTextModule,
+    PasswordModule
 
     
   ],exports: [
@@ -104,7 +109,9 @@ import { DialogModule } from 'primeng/dialog';
     TimelineModule,
     RadioButtonModule,
     TieredMenuModule,
-    DialogModule    
+    DialogModule,
+    InputTextModule,
+    PasswordModule  
     
   ],
   providers: [

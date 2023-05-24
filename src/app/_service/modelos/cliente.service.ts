@@ -41,11 +41,6 @@ export class ClienteService {
     return this.http.delete(`${this.url}/${id}`, { headers });
   }
 
-  devolverCliente(idUserCliente: Usuario, token: string): Observable<Cliente>{
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<Cliente>(`${this.url}/devolverCliente/${idUserCliente.username}`);
-  }
-
   byNum(id: string, token: string): Observable<Cliente> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get<Cliente>(`${this.url}/byNum/${id}`);

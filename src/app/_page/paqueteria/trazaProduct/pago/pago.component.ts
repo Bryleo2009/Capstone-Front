@@ -1,6 +1,11 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import * as braintree from 'braintree-web';
 import * as creditCardType from 'credit-card-type';
@@ -12,7 +17,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PaqueteriaComponent } from '../../paqueteria.component';
 import { CarritoService } from '@app/_service/modelos/carrito.service';
 import { ProductoStorage } from '@app/_model/filter/productoStorage';
-import { ProductoStorageService } from '@app/_service/modelos/productoStorage.service';
 import { AuthService } from '@app/_service/rutas/auth.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { ComprobanteFilter } from '@app/_model/filter/comprobanteFilter';
@@ -20,7 +24,14 @@ import { ComprobanteService } from '@app/_service/modelos/comprobante.service';
 import { ClienteService } from '@app/_service/modelos/cliente.service';
 import { Usuario } from '@app/_model/usuario';
 import { DataService } from '@app/_service/modelos/data.service';
-
+import { ProductoService } from '@app/_service/modelos/producto.service';
+import { PaqueteProductoService } from '@app/_service/modelos/paquete-producto.service';
+import { PaqueteFilter } from '@app/_model/filter/paqueteFilter';
+import { PedidoService } from '@app/_service/modelos/pedido.service';
+import { Pedido } from '@app/_model/pedido';
+import { PedidoFilter } from '@app/_model/filter/pedidoFilter';
+import { HttpErrorResponse } from '@angular/common/http';
+import { catchError, of } from 'rxjs';
 
 @Component({
   selector: 'app-pago',
@@ -28,8 +39,10 @@ import { DataService } from '@app/_service/modelos/data.service';
   styleUrls: ['./pago.component.css'],
 })
 export class PagoComponent implements OnInit {
-  comprobante : ComprobanteFilter = new ComprobanteFilter();
-  visible: boolean = true;
+  comprobante: ComprobanteFilter = new ComprobanteFilter();
+  pedido: PedidoFilter = new PedidoFilter();
+  paquete: PaqueteFilter = new PaqueteFilter();
+  visible: boolean = false;
   paymentForm!: FormGroup;
   clientToken!: string;
   amount: number = 0;
@@ -44,13 +57,15 @@ export class PagoComponent implements OnInit {
     private route: ActivatedRoute,
     private pedidoComponent: PaqueteriaComponent,
     private carritoService: CarritoService,
-    private carritoFilter: ProductoStorageService,
+    private productoService: ProductoService,
     private viewportScroller: ViewportScroller,
     public dialogService: DialogService,
     private auth: AuthService,
-    private comprobanteService : ComprobanteService,
-    private clienteService : ClienteService,
-    private dataService : DataService
+    private comprobanteService: ComprobanteService,
+    private clienteService: ClienteService,
+    private dataService: DataService,
+    private paqueteriaService: PaqueteProductoService,
+    private pedidoService: PedidoService
   ) {}
 
   ref!: DynamicDialogRef;
@@ -70,6 +85,8 @@ export class PagoComponent implements OnInit {
       cardholderName: ['', Validators.required],
       expirationDate: ['', Validators.required],
       cvv: ['', Validators.required],
+      ruc: '',
+      razonSocial: '',
     });
 
     this.paymentService.getTokenPayment().subscribe(
@@ -89,6 +106,7 @@ export class PagoComponent implements OnInit {
   }
 
   tarjetaActual: string = '';
+  unPaquete: PaqueteFilter = new PaqueteFilter();
   initializeBraintree() {
     braintree.client.create(
       {
@@ -149,12 +167,14 @@ export class PagoComponent implements OnInit {
               if (event.cards && event.cards.length > 0) {
                 const cardType = event.cards[0].type;
                 this.tarjetaActual = cardType;
-                console.log("🔥 > PagoComponent > hostedFieldsInstance.on > cardType:", cardType);
+                console.log(
+                  '🔥 > PagoComponent > hostedFieldsInstance.on > cardType:',
+                  cardType
+                );
               } else {
                 this.tarjetaActual = ''; // Valor por defecto si no se detecta ningún tipo de tarjeta
               }
             });
-            
 
             const checkFormLoaded = setInterval(() => {
               const cardNumberInput = document.querySelector('#card-number');
@@ -205,66 +225,124 @@ export class PagoComponent implements OnInit {
                       this.carga = false;
                       this.pagoRealizado = true;
                       this.actualizarResumenEnPadre();
-                      console.log("🔥 > PagoComponent > form?.addEventListener > this.carritoService.obtenerProductosCarrito():", this.carritoService.obtenerProductosCarrito())
-                      this.carritoFilter.carritoStock(this.carritoService.obtenerProductosCarrito(),this.auth.getToken()).subscribe(
-                        (data) => {
-                          console.log("stok desminuido");
-                        },(error) => {
-                          console.log(error);
-                        }
-                      );
-                      this.clienteService.devolverCliente(this.auth.getUser(), this.auth.getToken()).subscribe(
-                        (un_cliente)=> {
-                          
-                          const objetoAlmacenadoStr = localStorage.getItem('resumenCarrito');
-                          if (objetoAlmacenadoStr !== null) {
-                            const objetoAlmacenado = JSON.parse(objetoAlmacenadoStr);
-                            this.comprobante.montoProducto = objetoAlmacenado.montoProducto;
-                            this.comprobante.ammount = objetoAlmacenado.ammount;
-                            this.comprobante.igv = objetoAlmacenado.comprobante;
+                      this.productoService
+                        .carritoStock(
+                          this.carritoService.obtenerProductosCarrito(),
+                          this.auth.getToken()
+                        )
+                        .subscribe(
+                          (data) => {
+                            console.log('stok desminuido');
+                          },
+                          (error) => {
+                            console.log(error);
                           }
+                        );
 
-                          this.comprobante.cliente = un_cliente;
-                          this.comprobante.productos = this.carritoService.obtenerProductosCarrito();
-                          this.comprobante.direccionComp = un_cliente.direccion;
-                         /*this.comprobante.idTc
-                          this.comprobante.ubigeoComp = un_cliente.ubigueo;*/
-                          this.dataService.obtener_ubigeo().subscribe(
-                            (response)=> {
-                              this.comprobante.ubigeoComp = response;
-                            },
-                            (error)=>{
-                              console.error("Error al obtener ubigeo", error);
-                            }
+                      //agregar a paqueteria
+                      this.unPaquete.paqueteProductos =
+                        this.carritoService.obtenerProductosCarrito();
+                      this.unPaquete.cliente = this.auth.getCliente();
+                      this.paqueteriaService
+                        .registrar(this.unPaquete, this.auth.getToken())
+                        .subscribe(
+                          () => {
+                            //que pasa con la respuesta buena que da al crear un paquete
+                          },
+                          (error) => {
+                            console.error(error);
+                          }
+                        );
 
-                          );
-                          this.dataService.obtener_tipocomprobante().subscribe(
-                            (response)=> {
-                              this.comprobante.idTc = response;
-                            },
-                            (error)=>{
-                              console.error("Error al obtener ubigeo", error);
-                            }
-                          );
-
-                          this.comprobanteService.sendDatoComprobantes(this.comprobante, this.auth.getToken()).subscribe(
-                            (response)=> {
-                              console.log("Datos enviados correctamente al backend", response);
-                            },
-                            (error)=>{
-                              console.error("Error al enviar datos al backend", error);
-                            }
-                          );
-                        },
-                        (error)=>{
-                          console.error(error);
-                        }
+                      //agregar a comprobante, detalle y trazabililidad
+                      //capturo valores del resumen carrito
+                      const objetoAlmacenadoStr =
+                        localStorage.getItem('resumenCarrito');
+                      if (objetoAlmacenadoStr !== null) {
+                        const objetoAlmacenado =
+                          JSON.parse(objetoAlmacenadoStr);
+                        this.comprobante.montoProducto =
+                          objetoAlmacenado.montoProducto;
+                        this.comprobante.ammount = objetoAlmacenado.ammout;
+                        this.comprobante.igv = objetoAlmacenado.IGV;
+                      }
+                      this.comprobante.cliente = this.auth.getCliente();
+                      this.comprobante.carritoFilterList =
+                        this.carritoService.obtenerProductosCarrito();
+                      this.comprobante.ubigeoComp =
+                        this.dataService.obtener_ubigeo();
+                      this.comprobante.razonSocial =
+                        this.paymentForm.value['razonSocial'];
+                      this.comprobante.ruc = this.paymentForm.value['ruc'];
+                      if (
+                        this.comprobante.razonSocial !== '' &&
+                        this.comprobante.ruc !== ''
+                      ) {
+                        this.comprobante.idTc = true;
+                      }
+                      this.comprobante.apellidoRecojo =
+                        this.dataService.obtener_apellidoRecojo();
+                      this.comprobante.nombreRecojo =
+                        this.dataService.obtener_nombreRecojo();
+                      this.comprobante.celularRecojo =
+                        this.dataService.obtener_celularRecojo();
+                      this.comprobante.correoRecojo =
+                        this.dataService.obtener_correoRecojo();
+                      this.comprobante.direccionComp =
+                        this.dataService.obtener_direccionRecojo();
+                      console.log(
+                        '🔥 > PagoComponent > form?.addEventListener > comprobante:',
+                        this.comprobante
                       );
-                       // Eliminar todos los productos del localStorage
-                      localStorage.removeItem('carrito');
-                      localStorage.removeItem('cantCarrito');
-                      localStorage.removeItem('resumenCarrito');
-                      this.carritoService.limpiarCarrito();
+                      this.comprobanteService
+                        .registrar(this.comprobante, this.auth.getToken())
+                        .subscribe(
+                          (response: any) => {
+                            if (response instanceof HttpErrorResponse) {
+                              console.error(response.message);
+                              console.log(response.error.text); // Aquí tienes la cadena de texto de la respuesta
+                            } else {
+                              console.log('response', response); // Aquí tienes la cadena de texto de la respuesta
+                            }
+                          },
+                          (error) => {
+                            //agregar a pedido, tazabilidad
+                            this.paquete.paqueteProductos =
+                              this.carritoService.obtenerProductosCarrito();
+                            this.paquete.cliente = this.auth.getCliente();
+                            this.pedido.idProduct = this.paquete;
+                            this.pedido.apellidoRecojo =
+                              this.dataService.obtener_apellidoRecojo();
+                            this.pedido.nombreRecojo =
+                              this.dataService.obtener_nombreRecojo();
+                            this.pedido.celularRecojo =
+                              this.dataService.obtener_celularRecojo();
+                            this.pedido.correoRecojo =
+                              this.dataService.obtener_correoRecojo();
+                            this.pedido.direccionRecojo =
+                              this.dataService.obtener_direccionRecojo();
+                            console.log(
+                              '🔥 > PagoComponent > form?.addEventListener > this.pedido:',
+                              this.pedido
+                            );
+                            this.pedidoService
+                              .registrar(this.pedido, error.error.text, this.auth.getToken())
+                              .subscribe(
+                                () => {
+                                  //lo que pasa con la respuesta de un pedido guardado
+                                },
+                                (error) => {
+                                  console.error(error);
+                                }
+                              );
+                          }
+                        );
+
+                      // Eliminar todos los productos del localStorage
+                      // localStorage.removeItem('carrito');
+                      // localStorage.removeItem('cantCarrito');
+                      // localStorage.removeItem('resumenCarrito');
+                      //this.carritoService.limpiarCarrito();
                       // Agrega lógica adicional según tus necesidades
                     },
                     (error) => {
@@ -273,7 +351,7 @@ export class PagoComponent implements OnInit {
                       this.messageService.add({
                         severity: 'error',
                         summary: 'Error',
-                        detail: error,
+                        detail: error.error.message,
                       });
                       this.carga = false;
                     }
@@ -299,7 +377,6 @@ export class PagoComponent implements OnInit {
 
   actualizarResumenEnPadre() {
     const nuevoResumen = false;
-    console.log("acrtualizando resumen")
     this.pedidoComponent.actualizarResumenDesdeHijo(nuevoResumen);
   }
 
@@ -308,7 +385,7 @@ export class PagoComponent implements OnInit {
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router
         .navigate(['/'], {
-          relativeTo: this.route
+          relativeTo: this.route,
         })
         .then(() => {
           this.viewportScroller.scrollToPosition([0, 0]); // Scroll hacia arriba

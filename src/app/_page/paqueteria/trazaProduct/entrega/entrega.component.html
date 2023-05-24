@@ -17,11 +17,15 @@
                 </div>
               </ng-template>
               <span class="p-float-label">
-                <input pInputText id="username" />
+                <input pInputText  formControlName="nombre" required ngbFormControl
+                [class.is-invalid]="form.get('nombre')?.invalid && form.get('nombre')?.touched"
+                [class.ngb-invalid]="form.get('nombre')?.invalid && form.get('nombre')?.touched">
                 <label htmlFor="username">Nombres</label>
               </span>
               <span class="p-float-label">
-                <input pInputText id="username" />
+                <input pInputText  formControlName="apellidos" required ngbFormControl
+                [class.is-invalid]="form.get('apellidos')?.invalid && form.get('apellidos')?.touched"
+                [class.ngb-invalid]="form.get('apellidos')?.invalid && form.get('apellidos')?.touched">
                 <label htmlFor="username">Apellidos</label>
               </span>
             </p-fieldset>
@@ -35,11 +39,19 @@
                 </div>
               </ng-template>
               <span class="p-float-label">
-                <input pInputText id="username" />
+                <input pInputText formControlName="celular" required ngbFormControl
+                [class.is-invalid]="form.get('celular')?.invalid && form.get('celular')?.touched"
+                [class.ngb-invalid]="form.get('celular')?.invalid && form.get('celular')?.touched">
                 <label htmlFor="username">Número de celular</label>
               </span>
               <span class="p-float-label">
-                <input pInputText id="username" />
+                <input pInputText  formControlName="correo" required ngbFormControl
+                [class.is-invalid]="form.get('correo')?.invalid && form.get('correo')?.touched"
+                [class.ngb-invalid]="form.get('correo')?.invalid && form.get('correo')?.touched">
+            <div class="invalid-feedback">
+              <div *ngIf="form.get('correo')?.hasError('required')">Campo requerido.</div>  
+              <div *ngIf="form.get('correo')?.hasError('email')">El correo ingresado no es correcto.</div>
+            </div>
                 <label htmlFor="username">Correo electrónico</label>
               </span>
             </p-fieldset>
@@ -70,8 +82,10 @@
                   [options]="districts" optionLabel="nombre_distrito"></p-dropdown>
               </div>
               <span class="p-float-label">
-                <input pInputText id="username" />
-                <label htmlFor="username">Correo electrónico</label>
+                <input pInputText  formControlName="direccion" required ngbFormControl
+                [class.is-invalid]="form.get('direccion')?.invalid && form.get('direccion')?.touched"
+                [class.ngb-invalid]="form.get('direccion')?.invalid && form.get('direccion')?.touched">
+                <label htmlFor="username">Direccion de entrega</label>
               </span>
             </div>
           </p-fieldset>
@@ -81,6 +95,8 @@
   </div>
 
   <div class="flex justify-content-center botfin">
+    <p-button label="Guardar Datos" icon="pi pi-tag" iconPos="right" (onClick)="evaluar()"
+      [style]="{backgroundColor:'#000000', color: '#E5E5E5', padding : '15px 30px', margin: '0px 100px'}"></p-button>
     <p-button label="Agregar más Productos" icon="pi pi-tag" iconPos="right" routerLink="/store"
       [style]="{backgroundColor:'#000000', color: '#E5E5E5', padding : '15px 30px', margin: '0px 100px'}"></p-button>
   </div>
