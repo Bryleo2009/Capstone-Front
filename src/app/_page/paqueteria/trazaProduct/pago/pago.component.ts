@@ -239,21 +239,6 @@ export class PagoComponent implements OnInit {
                           }
                         );
 
-                      //agregar a paqueteria
-                      this.unPaquete.paqueteProductos =
-                        this.carritoService.obtenerProductosCarrito();
-                      this.unPaquete.cliente = this.auth.getCliente();
-                      this.paqueteriaService
-                        .registrar(this.unPaquete, this.auth.getToken())
-                        .subscribe(
-                          () => {
-                            //que pasa con la respuesta buena que da al crear un paquete
-                          },
-                          (error) => {
-                            console.error(error);
-                          }
-                        );
-
                       //agregar a comprobante, detalle y trazabililidad
                       //capturo valores del resumen carrito
                       const objetoAlmacenadoStr =
@@ -267,7 +252,7 @@ export class PagoComponent implements OnInit {
                         this.comprobante.igv = objetoAlmacenado.IGV;
                       }
                       this.comprobante.cliente = this.auth.getCliente();
-                      this.comprobante.carritoFilterList =
+                      this.comprobante.productoStorageList =
                         this.carritoService.obtenerProductosCarrito();
                       this.comprobante.ubigeoComp =
                         this.dataService.obtener_ubigeo();
@@ -339,10 +324,10 @@ export class PagoComponent implements OnInit {
                         );
 
                       // Eliminar todos los productos del localStorage
-                      // localStorage.removeItem('carrito');
-                      // localStorage.removeItem('cantCarrito');
-                      // localStorage.removeItem('resumenCarrito');
-                      //this.carritoService.limpiarCarrito();
+                      localStorage.removeItem('carrito');
+                      localStorage.removeItem('cantCarrito');
+                      localStorage.removeItem('resumenCarrito');
+                      this.carritoService.limpiarCarrito();
                       // Agrega lógica adicional según tus necesidades
                     },
                     (error) => {

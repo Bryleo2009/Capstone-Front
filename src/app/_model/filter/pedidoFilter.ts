@@ -2,7 +2,6 @@ import { Trabajador } from "../trabajador";
 import { PaqueteFilter } from "./paqueteFilter";
 
 export class PedidoFilter {
-    idPedido!: number;
 	idProduct: PaqueteFilter = new PaqueteFilter();
 	fechaCompra: Date = new Date();
 	nombreRecojo!: string;

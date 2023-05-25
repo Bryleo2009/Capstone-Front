@@ -5,7 +5,7 @@ import { ProductoStorage } from "./productoStorage";
 
 export class ComprobanteFilter{
     cliente : Cliente = new Cliente();
-    carritoFilterList : ProductoStorage[]=[];
+    productoStorageList : ProductoStorage[]=[];
     montoProducto !: number;
     igv !: number;
     ammount !: number;

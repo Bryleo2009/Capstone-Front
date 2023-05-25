@@ -38,7 +38,7 @@ const routes: Routes = [
     { path : '', component: CarritoComponent},
     { path : 'trazabilidad', component : TrazaProductComponent,
     canActivate: [AuthGuard],
-    data: { expectedRoles: ['ADMIN', 'SOPORTE','EMPLEADO','CLIENTE'] },
+    data: { expectedRoles: ['ADMIN', 'SOPORTE','CLIENTE'] },
     children: [
       { path: 'entrega', component: EntregaComponent},
       { path: 'payment', component: PagoComponent},
@@ -47,7 +47,8 @@ const routes: Routes = [
   ]},
   { path: 'details' , component : Details01Component},
   { path: 'seguimiento', component: SeguimientoComponent},
-  { path: 'menu', component: MenuComponent}
+  { path: 'menu', component: MenuComponent, canActivate: [AuthGuard],
+  data: { expectedRoles: ['ADMIN', 'SOPORTE','CLIENTE'] },}
 ];
 
 @NgModule({

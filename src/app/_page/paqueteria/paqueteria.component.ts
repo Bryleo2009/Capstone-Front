@@ -2,6 +2,10 @@ import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PagoComponent } from './trazaProduct/pago/pago.component';
 import { CarritoComponent } from './carrito/carrito.component';
+import { environment } from '@env/environment.development';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AuthService } from '@app/_service/rutas/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-paqueteria',
@@ -12,7 +16,9 @@ export class PaqueteriaComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private http: HttpClient,
+    private almacen:AuthService
   ) {}
 
   btnNext: string = 'Siguiente';
@@ -27,10 +33,10 @@ export class PaqueteriaComponent implements OnInit {
 
   IGV: number = 0;
   ammout: number = 0;
-  actualizarMontoDesdeHijo(nuevoMonto: number,igv:number, amount:number) {
+  actualizarMontoDesdeHijo(nuevoMonto: number, igv: number, amount: number) {
     const objetoTemporal = {
       montoProducto: nuevoMonto,
-      IGV:igv,
+      IGV: igv,
       ammout: amount,
     };
     console.log(objetoTemporal.ammout);
@@ -54,6 +60,10 @@ export class PaqueteriaComponent implements OnInit {
     const objetoAlmacenadoStr = localStorage.getItem('resumenCarrito');
     const cantLocalStorage = localStorage.getItem('cantCarrito');
 
+    this.intervalId = setInterval(() => {
+      this.verificarConexion(this.almacen.getToken());
+    }, 5000);
+
     if (cantLocalStorage !== null) {
       this.cantidad = parseInt(cantLocalStorage);
     } else {
@@ -62,7 +72,11 @@ export class PaqueteriaComponent implements OnInit {
 
     if (objetoAlmacenadoStr !== null) {
       const objetoAlmacenado = JSON.parse(objetoAlmacenadoStr);
-      this.actualizarMontoDesdeHijo(objetoAlmacenado.montoProducto,objetoAlmacenado.IGV,objetoAlmacenado.ammout);
+      this.actualizarMontoDesdeHijo(
+        objetoAlmacenado.montoProducto,
+        objetoAlmacenado.IGV,
+        objetoAlmacenado.ammout
+      );
     } else {
       this.montoProducto = 0;
       this.IGV = 0;
@@ -92,5 +106,53 @@ export class PaqueteriaComponent implements OnInit {
       default:
         break;
     }
+  }
+
+  private intervalId: any;
+  ngOnDestroy(): void {
+    clearInterval(this.intervalId);
+  }
+
+  url: string = `${environment.HOST_URL}/check-token`;
+  verificarConexion(token: string) {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    this.http.get(this.url, { headers }).subscribe(
+      (data) => {},
+      (error) => {
+        switch (error.status) {
+          case 200:
+            this.cerrarModal();
+            break;
+          case 403:
+            this.mostrarModalConexionPerdida();
+            break;
+          default:
+            break;
+        }
+      }
+    );
+  }
+
+  mostrarModalConexionPerdida() {
+    if (environment.modalTokenAbierto == false) {
+      environment.modalTokenAbierto = true;
+      this.recarga = false;
+      Swal.fire({
+        title: 'Ups!',
+        text: 'Creo que es hora de volver a iniciar sesion',
+        icon: 'info',
+        confirmButtonText: 'Confirmar',
+        showCloseButton: true,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.router.navigate(['login']);
+        }
+      });
+    }
+  }
+
+  recarga!: boolean;
+  cerrarModal() {
+    environment.modalTokenAbierto = false;
   }
 }
