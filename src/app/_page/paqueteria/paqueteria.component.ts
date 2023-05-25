@@ -6,6 +6,7 @@ import { environment } from '@env/environment.development';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from '@app/_service/rutas/auth.service';
 import Swal from 'sweetalert2';
+import { DataService } from '@app/_service/modelos/data.service';
 
 @Component({
   selector: 'app-paqueteria',
@@ -18,7 +19,8 @@ export class PaqueteriaComponent implements OnInit {
     private route: ActivatedRoute,
     private cdr: ChangeDetectorRef,
     private http: HttpClient,
-    private almacen:AuthService
+    private almacen:AuthService,
+    private dataservice: DataService
   ) {}
 
   btnNext: string = 'Siguiente';
@@ -59,10 +61,6 @@ export class PaqueteriaComponent implements OnInit {
     const rutaActual = this.router.url;
     const objetoAlmacenadoStr = localStorage.getItem('resumenCarrito');
     const cantLocalStorage = localStorage.getItem('cantCarrito');
-
-    this.intervalId = setInterval(() => {
-      this.verificarConexion(this.almacen.getToken());
-    }, 5000);
 
     if (cantLocalStorage !== null) {
       this.cantidad = parseInt(cantLocalStorage);
@@ -106,53 +104,5 @@ export class PaqueteriaComponent implements OnInit {
       default:
         break;
     }
-  }
-
-  private intervalId: any;
-  ngOnDestroy(): void {
-    clearInterval(this.intervalId);
-  }
-
-  url: string = `${environment.HOST_URL}/check-token`;
-  verificarConexion(token: string) {
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    this.http.get(this.url, { headers }).subscribe(
-      (data) => {},
-      (error) => {
-        switch (error.status) {
-          case 200:
-            this.cerrarModal();
-            break;
-          case 403:
-            this.mostrarModalConexionPerdida();
-            break;
-          default:
-            break;
-        }
-      }
-    );
-  }
-
-  mostrarModalConexionPerdida() {
-    if (environment.modalTokenAbierto == false) {
-      environment.modalTokenAbierto = true;
-      this.recarga = false;
-      Swal.fire({
-        title: 'Ups!',
-        text: 'Creo que es hora de volver a iniciar sesion',
-        icon: 'info',
-        confirmButtonText: 'Confirmar',
-        showCloseButton: true,
-      }).then((result) => {
-        if (result.isConfirmed) {
-          this.router.navigate(['login']);
-        }
-      });
-    }
-  }
-
-  recarga!: boolean;
-  cerrarModal() {
-    environment.modalTokenAbierto = false;
   }
 }

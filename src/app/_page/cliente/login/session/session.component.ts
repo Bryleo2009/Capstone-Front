@@ -38,6 +38,7 @@ export class SessionComponent implements OnInit{
   checked!: boolean;
   formLogin!: FormGroup;
   ngOnInit(): void {
+    this.dataService.updateVariable(false);
     this.formLogin = new FormGroup({
       password: new FormControl({
         value: '',

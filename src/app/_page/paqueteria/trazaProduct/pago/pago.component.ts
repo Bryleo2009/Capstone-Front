@@ -99,7 +99,7 @@ export class PagoComponent implements OnInit {
         this.messageService.add({
           severity: 'error',
           summary: 'Error',
-          detail: 'Error en procesado de pago :(',
+          detail: error.error.mensaje,
         });
       }
     );
@@ -118,7 +118,7 @@ export class PagoComponent implements OnInit {
           this.messageService.add({
             severity: 'error',
             summary: 'Error',
-            detail: 'Error en procesado de pago :(',
+            detail: clientErr,
           });
           this.carga = false;
           return;
