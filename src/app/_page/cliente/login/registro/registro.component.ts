@@ -7,12 +7,15 @@ import { Provincia } from '@app/_model/ubigeo/privincia';
 import { environment } from '@env/environment.development';
 
 
+
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.css']
 })
 export class RegistroComponent {
+  date: Date = new Date();
+  checked!: boolean;
   constructor(
     private http: HttpClient,
   ) { }
@@ -89,4 +92,5 @@ export class RegistroComponent {
   }
 
   @Input() flexWrap: boolean = false;
+  
 }

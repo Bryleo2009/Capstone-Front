@@ -35,6 +35,7 @@ import { TieredMenuModule } from 'primeng/tieredmenu';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
+import { InputSwitchModule } from 'primeng/inputswitch';
 
 
 @NgModule({
@@ -74,8 +75,8 @@ import { PasswordModule } from 'primeng/password';
     TieredMenuModule,
     DialogModule,
     InputTextModule,
-    PasswordModule
-
+    PasswordModule,
+    InputSwitchModule
     
   ],exports: [
     ButtonModule,
@@ -111,7 +112,8 @@ import { PasswordModule } from 'primeng/password';
     TieredMenuModule,
     DialogModule,
     InputTextModule,
-    PasswordModule  
+    PasswordModule,
+    InputSwitchModule
     
   ],
   providers: [

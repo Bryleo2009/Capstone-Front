@@ -18,6 +18,10 @@
                                         <span class="font-bold text-lg">Datos de usuario</span>
                                     </div>
                                 </ng-template>
+                                <div class="card flex justify-content-center">
+                                    <label class="mr-2" for="">DNI </label> <p-inputSwitch [(ngModel)]="checked" ></p-inputSwitch><label class="ml-2" for="">C. E.
+                                    </label>
+                                </div>
                                 <span class="p-float-label">
                                     <input pInputText id="username" />
                                     <label htmlFor="username">Nombres</label>
@@ -25,6 +29,15 @@
                                 <span class="p-float-label">
                                     <input pInputText id="username" />
                                     <label htmlFor="username">Apellidos</label>
+                                </span>
+                                <span class="p-float-label">
+                                    <p-calendar [style]="{width: '100%'}" [(ngModel)]="date"></p-calendar>
+                                    <label htmlFor="username">Fecha de Nacimiento</label>
+                                </span>
+
+                                <span class="p-float-label">
+                                    <input pInputText id="username" />
+                                    <label htmlFor="username">Numero de documento</label>
                                 </span>
                             </p-fieldset>
                         </div>
@@ -47,8 +60,8 @@
                             </p-fieldset>
                         </div>
                     </div>
-                    <div class="col-6">
-                        <p-fieldset>
+                    <div class="col-6 ">
+                        <p-fieldset [style]="{height: '100%'}">
                             <ng-template pTemplate="header">
                                 <div class="flex align-items-center text-primary">
                                     <span class="pi pi-map-marker mr-2"></span>
@@ -57,10 +70,11 @@
                             </ng-template>
                             <div class="col-12">
                                 <div class="form-group selectores col flex flex-column">
-                                    <p-dropdown formControlName="departamentoPaciente" [(ngModel)]="selectedDepartment"
-                                        name="selectedDepartment" placeholder="Departamento"
-                                        (ngModelChange)="updateDistrictsAndProvinces()" id="departmentSelect"
-                                        [options]="departments" optionLabel="nombre_departamento"></p-dropdown>
+                                    <p-dropdown [style]="{width: '100%'}" formControlName="departamentoPaciente"
+                                        [(ngModel)]="selectedDepartment" name="selectedDepartment"
+                                        placeholder="Departamento" (ngModelChange)="updateDistrictsAndProvinces()"
+                                        id="departmentSelect" [options]="departments"
+                                        optionLabel="nombre_departamento"></p-dropdown>
                                 </div>
                                 <div class="form-group selectores col flex flex-column">
                                     <p-dropdown formControlName="provinciaPaciente" [(ngModel)]="selectedProvince"
@@ -77,10 +91,6 @@
                                 <span class="p-float-label">
                                     <input pInputText id="username" />
                                     <label htmlFor="username">Direccion</label>
-                                </span>
-                                <span class="p-float-label">
-                                    <input pInputText id="username" />
-                                    <label htmlFor="username">Correo electrónico</label>
                                 </span>
                             </div>
                         </p-fieldset>
