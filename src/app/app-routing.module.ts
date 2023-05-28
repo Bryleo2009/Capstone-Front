@@ -18,10 +18,21 @@ import { Error } from './_page/error/error';
 import { RegistroComponent } from './_page/cliente/login/registro/registro.component';
 import { MenuComponent } from './_page/cliente/menu/menu.component';
 import { AuthGuard } from './_service/rutas/auth-guard.service';
+import { CuentaComponent } from './_page/cliente/cuenta/cuenta.component';
+import { DatosPersonalesComponent } from './_page/cliente/cuenta/datos-personales/datos-personales.component';
+import { ConfiguracionComponent } from './_page/cliente/cuenta/configuracion/configuracion.component';
+import { ComprasComponent } from './_page/cliente/cuenta/compras/compras.component';
+
 
 
 
 const routes: Routes = [
+  { path: 'cuenta', component: CuentaComponent, children: [
+  { path: '', component: DatosPersonalesComponent},
+  { path: 'configuracion', component: ConfiguracionComponent},
+  { path: 'compras', component: ComprasComponent}
+]
+},
   { path : '' , component : HomeComponent},
   { path : 'login' , component : LoginComponent, children: [
     { path: '', component: SessionComponent},

@@ -1,7 +1,7 @@
 .center02 {
     display: flex;
     justify-content: center;
-    padding: 15px;
+    padding: 25px;
     font-weight: bold;
     font-size: 40px !important;
   }
@@ -24,8 +24,6 @@
     grid-row: 50px ;
 }
 
-/* :host ::ng-deep .p-timeline-event-content {
-    text-align: center;
-    font-size: 10px;
-    width: 100px;
-} */
+.colorTitulo {
+    color: var(--color-prin);
+}
