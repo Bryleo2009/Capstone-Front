@@ -8,4 +8,5 @@ export class SeguimientoPedidoFilter{
     nombre_recojo_pedido!: string;
     id_comp!: string;
     trazabilidad : TrazabilidadPedidoFilter [] = [];
+    
 }
