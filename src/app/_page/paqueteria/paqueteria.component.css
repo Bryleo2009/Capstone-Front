@@ -84,12 +84,6 @@
     margin: 10px;
 }
 
-.spacio1, .p-button-success{
-    margin: 15px;
-    width: 300px;
-    height: 40px;
-    background-color: var(--color-prin);
-}
 
 .tamañot{
     font-size: 30px !important;

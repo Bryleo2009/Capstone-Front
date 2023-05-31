@@ -10,3 +10,6 @@
 # Crear Servicio
     ng g s _service/modelos/<nombre servicio> --skip-tests
 
+# Pag pagos
+    https://sandbox.braintreegateway.com/login
+
