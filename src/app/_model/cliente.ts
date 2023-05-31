@@ -1,3 +1,4 @@
+import { Enum } from "./enum";
 import { Usuario } from "./usuario";
 
 export class Cliente {
@@ -11,4 +12,5 @@ export class Cliente {
 	numDocumento!: string;
 	correo!: string;
 	idUserCliente: Usuario = new Usuario();
+	idTipoDoc: Enum = new Enum();
 }
