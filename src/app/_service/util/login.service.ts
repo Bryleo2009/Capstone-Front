@@ -15,6 +15,10 @@ export class LoginService {
   ingresar(Usuario: Login){
     return this.http.post(`${this.url}`,Usuario);
   }
+
+  ingresarGoogle(Usuario: Login){
+    return this.http.post(`${this.url}/google`,Usuario);
+  }
 }
 
 

@@ -28,7 +28,7 @@ export class ClienteService {
 
   registrar(Rol: Cliente, token: string): Observable<any> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.post(`${this.url}`,Rol, { headers });
+    return this.http.post(`${this.url}`,Rol);
   }
 
   modificar(Rol: Cliente, token: string): Observable<any> {
@@ -51,5 +51,10 @@ export class ClienteService {
     const params = new HttpParams()
       .set("correo", correo);
     return this.http.get(`${this.url}/existencia`, { params });
+  }
+
+  byCorreo(correo: string, token: string): Observable<Cliente> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<Cliente>(`${this.url}/byCorreo/${correo}`);
   }
 }
