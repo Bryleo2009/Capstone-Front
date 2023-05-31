@@ -36,6 +36,7 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { MenuComponent } from './_page/cliente/menu/menu.component';
+import { ListadeseoComponent } from './_page/paqueteria/listadeseo/listadeseo.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { MenuComponent } from './_page/cliente/menu/menu.component';
     LoginComponent,
     SessionComponent,
     RegistroComponent,
-    MenuComponent
+    MenuComponent,
+    ListadeseoComponent
   ],
   imports: [
     RouterModule,

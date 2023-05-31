@@ -17,6 +17,7 @@ import { SessionComponent } from './_page/cliente/login/session/session.componen
 import { Error } from './_page/error/error';
 import { RegistroComponent } from './_page/cliente/login/registro/registro.component';
 import { MenuComponent } from './_page/cliente/menu/menu.component';
+import { ListadeseoComponent } from './_page/paqueteria/listadeseo/listadeseo.component';
 
 
 
@@ -43,7 +44,8 @@ const routes: Routes = [
   ]},
   { path: 'details' , component : Details01Component},
   { path: 'seguimiento', component: SeguimientoComponent},
-  { path: 'menu', component: MenuComponent}
+  { path: 'menu', component: MenuComponent},
+  { path: 'Listadeseo', component: ListadeseoComponent},
 ];
 
 @NgModule({
