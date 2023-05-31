@@ -138,10 +138,5 @@ export class Details01Component {
       },
     });
   }
-
-  // agregarAlCarrito(idProducto: number, cantidadProducto: number){
-  //   // Lógica para agregar los productos al carrito
-  //   this.carritoService.agregarAlCarrito(idProducto, cantidadProducto);
-  // }
-  
 }
+
