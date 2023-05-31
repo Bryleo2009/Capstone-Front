@@ -94,3 +94,7 @@
   .wrap {
     flex-wrap: wrap;
   }
+
+  /* :host ::ng-deep .ng-tns-c76-2.p-inputtext.p-component.ng-star-inserted{
+      width: 300px%;
+  } */

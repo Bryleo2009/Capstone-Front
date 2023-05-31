@@ -1,22 +1,39 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Route, Router } from '@angular/router';
+import { Cliente } from '@app/_model/cliente';
+import { Enum } from '@app/_model/enum';
+import { Rol } from '@app/_model/rol';
 import { Departamento } from '@app/_model/ubigeo/departamento';
 import { Distrito } from '@app/_model/ubigeo/distrito';
 import { Provincia } from '@app/_model/ubigeo/privincia';
+import { Usuario } from '@app/_model/usuario';
+import { ClienteService } from '@app/_service/modelos/cliente.service';
+import { AuthService } from '@app/_service/rutas/auth.service';
+import { AppComponent } from '@app/app.component';
 import { environment } from '@env/environment.development';
-
-
+import { GoogleAuthProvider } from 'firebase/auth';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
-  styleUrls: ['./registro.component.css']
+  styleUrls: ['./registro.component.css'],
 })
 export class RegistroComponent {
+  date: Date = new Date();
+  checked!: boolean;
   constructor(
     private http: HttpClient,
-  ) { }
+    private afAuth: AngularFireAuth,
+    private principal: AppComponent,
+    private serviceCliente: ClienteService,
+    private auth: AuthService,
+    private router: Router
+  ) {}
   form!: FormGroup;
+  porCorreo: boolean = false;
   ngOnInit() {
     //cargar JSOn de ubigeo
     this.http.get<Departamento[]>('./assets/ubigeo.json').subscribe(
@@ -41,6 +58,52 @@ export class RegistroComponent {
         value: '',
         disabled: false,
       }),
+      checked: new FormControl({
+        value: false,
+        disabled: false,
+      }),
+      numDoc: new FormControl({
+        value: '',
+        disabled: false,
+      }),
+      nombre: new FormControl({
+        value: '',
+        disabled: false,
+      }),
+      apellidos: new FormControl({
+        value: '',
+        disabled: false,
+      }),
+      fechaNac: new FormControl({
+        value: '',
+        disabled: false,
+      }),
+      numCel: new FormControl({
+        value: '',
+        disabled: false,
+      }),
+      direccion: new FormControl({
+        value: '',
+        disabled: false,
+      }),
+      correo: new FormControl(
+        {
+          value: '',
+          disabled: false,
+        },
+        [Validators.email]
+      ),username: new FormControl(
+        {
+          value: '',
+          disabled: false,
+        }
+      ),
+      password: new FormControl(
+        {
+          value: '',
+          disabled: false,
+        }
+      ),
     });
   }
 
@@ -89,4 +152,172 @@ export class RegistroComponent {
   }
 
   @Input() flexWrap: boolean = false;
+
+  signInWithGoogle(): void {
+    this.afAuth
+      .signInWithPopup(new GoogleAuthProvider())
+      .then((result) => {
+        // Autenticación exitosa
+        // Puedes obtener el token de acceso del usuario desde 'result.credential.accessToken'
+        const credential = result.credential;
+        if (credential) {
+          const credential = result.credential;
+          if (credential && 'accessToken' in credential) {
+            const accessToken = credential['accessToken'];
+            // Realizar una solicitud a la API de Google para obtener la información adicional del usuario
+            const url = `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${accessToken}`;
+            this.http.get(url).subscribe((userInfo: any) => {
+              // Obtener el nombre y el apellido del objeto userInfo
+              const firstName = userInfo.given_name;
+              const lastName = userInfo.family_name;
+              const email = userInfo.email;
+              const profilePicture = userInfo.picture;
+              
+              this.verificarEmail(email,firstName,lastName);
+            });
+          } else {
+            console.log(
+              '🔥 > Por google > signInWithGoogle: No se pudo obtener el token de acceso.'
+            );
+          }
+        } else {
+          console.log(
+            '🔥 > Por google > signInWithGoogle: No se pudo obtener las credenciales de autenticación.'
+          );
+        }
+      })
+      .catch((error) => {
+        // Manejo de errores
+        this.principal.mensaje('error', 'Error de inicio de sesion', error);
+      });
+  }
+
+
+  verificarEmail(correo: string, firstName?: string,lastName?: string) {
+    if (correo != '') {
+      //verificar existrencia del correo
+      this.serviceCliente.exitenciaXCorreo(correo,this.auth.getToken()).subscribe(
+        (response) => {
+          console.log("🔥 > RegistroComponent > verificarEmail > response:", response)
+
+          if(response == true){
+            this.principal.mensaje('warn','Ups!','Correo ya registrado en la base de datos');
+          } else {
+            this.porCorreo = true;
+              this.form = new FormGroup({
+                departamentoPaciente: new FormControl({
+                  value: '',
+                  disabled: false,
+                }),
+                provinciaPaciente: new FormControl({
+                  value: '',
+                  disabled: false,
+                }),
+                distritoPaciente: new FormControl({
+                  value: '',
+                  disabled: false,
+                }),
+                checked: new FormControl({
+                  value: false,
+                  disabled: false,
+                }),
+                numDoc: new FormControl({
+                  value: '',
+                  disabled: false,
+                }),
+                nombre: new FormControl({
+                  value: firstName,
+                  disabled: false,
+                }),
+                apellidos: new FormControl({
+                  value: lastName,
+                  disabled: false,
+                }),
+                fechaNac: new FormControl({
+                  value: '',
+                  disabled: false,
+                }),
+                numCel: new FormControl({
+                  value: '',
+                  disabled: false,
+                }),
+                direccion: new FormControl({
+                  value: '',
+                  disabled: false,
+                }),
+                correo: new FormControl(
+                  {
+                    value: correo,
+                    disabled: false,
+                  }
+                ),
+                username: new FormControl(
+                  {
+                    value: '',
+                    disabled: false,
+                  }
+                ),
+                password: new FormControl(
+                  {
+                    value: '',
+                    disabled: false,
+                  }
+                ),
+              });
+          }
+        }, (error) => {
+          this.principal.mensaje('error','Error :(','Tenemos un error al procesar los datos');
+        }
+      );
+      
+    }
+  }
+
+  unCliente: Cliente = new Cliente ();
+  unUsuario: Usuario = new Usuario();
+  unRol: Enum = new Enum();
+  unTC: Enum = new Enum();
+  registrar(){
+    this.unRol.idRol = 3;
+    if(!this.form.value['checked']){
+      this.unTC.idTipoDoc = 1
+    } else {
+      this.unTC.idTipoDoc = 2
+    }    
+    this.unUsuario.Status = true;
+    this.unUsuario.password = this.form.value['password'];
+    this.unUsuario.username = this.form.value['username'];
+    this.unUsuario.idRol = this.unRol;
+    this.unCliente.apellido = this.form.value['apellidos'];
+    this.unCliente.correo= this.form.value['correo'];
+    this.unCliente.direccion= this.form.value['direccion'];
+    this.unCliente.fechaNac= this.form.value['fechaNac'];
+    this.unCliente.nombre= this.form.value['nombre'];
+    this.unCliente.numDocumento= this.form.value['numDoc'];
+    this.unCliente.telefono= this.form.value['numCel'];
+    this.unCliente.idTipoDoc=this.unTC;
+    this.unCliente.idUserCliente = this.unUsuario;
+    if(this.selectedDepartmentCode != undefined){
+      this.unCliente.ubigueo= this.selectedDepartmentCode+this.selectedProvinceCode+this.selectedDistrictCode;
+    }    
+    console.log("🔥 > RegistroComponent > unCliente:", this.unCliente)
+    this.serviceCliente.registrar(this.unCliente, this.auth.getToken()).subscribe(
+      (data) => {
+        console.log("🔥 > RegistroComponent > registrar > data:", data)
+        Swal.fire({
+          title: 'Usuario creado',
+          text: 'Bienvenid@ a nuestra familia :)',
+          icon: 'success',
+          confirmButtonText: 'Ok',
+          showCloseButton: true,
+        }).then((result) => {
+          if (result.isConfirmed) {            
+            this.router.navigate(['login']);
+          }
+        });
+      }, (error) => {
+        this.principal.mensaje('error', 'Error en creacion de usuario', error.mensaje);
+      }
+    );
+  }
 }
