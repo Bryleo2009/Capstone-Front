@@ -24,19 +24,18 @@
                                     <div class="col"> <strong class="colorTitulo">Contado de entrega:</strong> <br> 
                                         {{unSeguimiento.celular_recojo_pedido}} </div>
                                     <div class="col"> <strong class="colorTitulo">Nombre del comprador:</strong> <br> 
-                                        {{unSeguimiento.nombre_recojo_pedido}} </div>
-                                        
+                                        {{unSeguimiento.nombre_recojo_pedido}} </div>                                        
                                     <div class="col"> <strong class="colorTitulo">Correo de entrega:</strong> <br> 
                                         {{unSeguimiento.correo_recojo_pedido}} </div>
                                 </div>
                             </div>
                             <div>
-                                <p-timeline [value]="events1">
+                                <p-timeline *ngFor="let unEstado of unSeguimiento.trazabilidad">
                                     <ng-template pTemplate="content" let-event>
-                                        <small class="p-text-secondary">{{ event.date }}</small>
+                                        <small class="p-text-secondary">{{ unEstado.fecha_ini_proc }}</small>
                                     </ng-template>
                                     <ng-template pTemplate="opposite" let-event>
-                                        {{ event.status }}
+                                        {{ unEstado.vista_item }}
                                     </ng-template>
                                 </p-timeline>
                             </div>

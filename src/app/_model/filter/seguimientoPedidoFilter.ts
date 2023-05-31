@@ -1,3 +1,5 @@
+import { TrazabilidadPedidoFilter } from "./TrazabilidadPedidoFilter";
+
 export class SeguimientoPedidoFilter{
     id_pedido!: number;
     celular_recojo_pedido!: string;
@@ -5,4 +7,5 @@ export class SeguimientoPedidoFilter{
     direccion_recojo_pedido!: string;
     nombre_recojo_pedido!: string;
     id_comp!: string;
+    trazabilidad : TrazabilidadPedidoFilter [] = [];
 }
