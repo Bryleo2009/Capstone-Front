@@ -36,7 +36,13 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { MenuComponent } from './_page/cliente/menu/menu.component';
+
+import { CuentaComponent } from './_page/cliente/cuenta/cuenta.component';
+import { DatosPersonalesComponent } from './_page/cliente/cuenta/datos-personales/datos-personales.component';
+import { ConfiguracionComponent } from './_page/cliente/cuenta/configuracion/configuracion.component';
+import { ComprasComponent } from './_page/cliente/cuenta/compras/compras.component';
 import { ListadeseoComponent } from './_page/paqueteria/listadeseo/listadeseo.component';
+
 
 @NgModule({
   declarations: [
@@ -59,6 +65,10 @@ import { ListadeseoComponent } from './_page/paqueteria/listadeseo/listadeseo.co
     SessionComponent,
     RegistroComponent,
     MenuComponent,
+    CuentaComponent,
+    DatosPersonalesComponent,
+    ConfiguracionComponent,
+    ComprasComponent,
     ListadeseoComponent
   ],
   imports: [

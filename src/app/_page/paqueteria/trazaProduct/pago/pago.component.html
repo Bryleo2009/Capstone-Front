@@ -14,12 +14,16 @@
             class="flex flex-column justify-items-center font-bold block mb-2 content">
             <div class="flex">
               <div id="card-number"></div>
-              <i  *ngIf="tarjetaActual !== 'visa' && tarjetaActual !== 'master-card' && tarjetaActual !== 'a' && tarjetaActual !== 'c' && tarjetaActual == '' "class="fa-regular fa-credit-card"></i>
+              <i *ngIf="tarjetaActual !== 'visa' && tarjetaActual !== 'master-card' && tarjetaActual !== 'a' && tarjetaActual !== 'c' && tarjetaActual == '' "
+                class="fa-regular fa-credit-card"></i>
               <img *ngIf="tarjetaActual === 'visa'" src=".\assets\pago\visa-logo.svg" alt="Visa" width="50px">
-              <img *ngIf="tarjetaActual === 'master-card'" src=".\assets\pago\mastercard-logo.svg" alt="Mastercard" width="50px">
-              <img *ngIf="tarjetaActual === 'american-express'" src=".\assets\pago\amex-logo.svg" alt="Amex" width="50px">
-              <img *ngIf="tarjetaActual === 'diners-club'" src=".\assets\pago\diners-club-logo.svg" alt="DinersClub" width="50px">
-            </div>            
+              <img *ngIf="tarjetaActual === 'master-card'" src=".\assets\pago\mastercard-logo.svg" alt="Mastercard"
+                width="50px">
+              <img *ngIf="tarjetaActual === 'american-express'" src=".\assets\pago\amex-logo.svg" alt="Amex"
+                width="50px">
+              <img *ngIf="tarjetaActual === 'diners-club'" src=".\assets\pago\diners-club-logo.svg" alt="DinersClub"
+                width="50px">
+            </div>
           </p-fieldset>
           <p-fieldset legend="Nombre del titular"
             class="flex flex-column justify-items-center font-bold block mb-2 content">
@@ -35,7 +39,7 @@
           </p-fieldset>
         </div>
       </div>
-      
+
 
       <div class="payment-notice p-grid p-nogutter p-align-center mt-3">
         <div class="p-col-12 p-md-6 p-lg-4">
@@ -43,7 +47,7 @@
             <div>
               <h2 class="payment-notice-title"><i class="fa-solid fa-lock"></i> Pago seguro</h2>
               <p class="payment-notice-description">Aceptamos las siguientes tarjetas:</p>
-            </div>            
+            </div>
             <div class="payment-notice-icons grid p-nogutter p-justify-center flex align-items-center">
               <div class="col-2">
                 <img src=".\assets\pago\amex-logo.svg" alt="" width="50px">
@@ -55,49 +59,38 @@
                 <img src=".\assets\pago\mastercard-logo.svg" alt="" width="50px">
               </div>
               <div class="col-2">
-                <img src=".\assets\pago\visa-logo.svg" alt=""  width="50px">
+                <img src=".\assets\pago\visa-logo.svg" alt="" width="50px">
               </div>
               <!-- Agrega más imágenes de tarjetas aquí -->
             </div>
           </div>
         </div>
       </div>
-           <!--factura-->
-  <!-- <div class="card flex justify-content-center gap-3">
-    <div class="flex align-items-center gap-1">
-        <p-checkbox name="group1" value="Boleta" [(ngModel)]="selectedMPago" inputId="ny"></p-checkbox>
-        <label for="ny">Boleta</label>
+      <p-divider></p-divider>
+      <div class="flex">
+      <div class="p-3">
+        <h6>Boleta</h6>
+        <p>La boleta se enviará al siguiente correo: </p>
+      </div>
+      <div class="flex justify-content-center p-3">
+        <a (click)="showDialog()" >¿Necesitas factura?</a>
+      </div>
     </div>
-    <div class="flex align-items-center gap-1">
-        <p-checkbox name="group1" value="Factura" [(ngModel)]="mostrarFormulario" inputId="sf" (onChange)="toggleFormulario()"></p-checkbox>
-        <label for="sf">Factura</label>
-    </div>
-    
-  <div *ngIf="mostrarFormulario" class="col-8 form flex flex-column">
-     <input type="number" id="myNumberInput" maxlength="11" pInputText [(ngModel)]="selectedfct" /><label>RUC</label>
-     <input type="text" pInputText [(ngModel)]="selectedfct" /><label>Razon Social</label>
-  </div>
-  </div> -->
-  <p-divider></p-divider>
-  <div class="heading">
-      <h6>Boleta</h6>
-        <a  (click)="showDialog()"  class="toggle">¿Necesitas factura?</a>
-  </div>
-  <div class="texxt">
-    <p>La boleta se enviará al siguiente correo ...</p>
-  </div>
-  <!--aaaaaa -->
-  <div class="card flex justify-content-center">
-  <p-dialog header="Datos Cliente" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
-    <p class="m-0">
-          <label for="RUC">RUC</label>
-          <input type="text" id="RUC" placeholder="Ingrese RUC" /><br><br>
-          <label for="razon-social">Razon Social</label>
-          <input type="text" id="razon-social" placeholder="Ingrese Razon Social" />
-    </p>
-  </p-dialog>
-  </div>
-
+      <div class="card flex justify-content-center">
+        <p-dialog header="Datos Cliente" [(visible)]="visible" [modal]="true"
+          [draggable]="false" [resizable]="false">
+          <div class="  m-4">
+            <span class="p-float-label mb-3">
+              <input pInputText id="username" formControlName="ruc"/>
+              <label htmlFor="username" >Ingrese RUC</label>
+            </span>
+            <span class="p-float-label mb-3">
+              <input pInputText id="username" formControlName="razonSocial"/>
+              <label htmlFor="username">Razon Social</label>
+            </span>
+          </div>
+        </p-dialog>
+      </div>
       <div class="grid flex justify-content-center mt-5">
         <p-button label="Pagar" class="col-8" type="submit"
           [style]="{backgroundColor:'var(--color-prin)', color: '#000000', padding : '15px 10px', width: '100%'}"></p-button>

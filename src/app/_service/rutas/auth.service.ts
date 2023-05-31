@@ -3,6 +3,7 @@ import { SessionStorageService } from 'ngx-webstorage';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { Usuario } from '@app/_model/usuario';
+import { Cliente } from '@app/_model/cliente';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class AuthService {
   //eliminar todo
   public removeAll () {
     this.removeToken();
-    this.removeNick();
+    this.removeCliente();
     this.removeRol();
     this.removeUser()
   }
@@ -42,22 +43,22 @@ export class AuthService {
     this.sessionStorage.clear('token');
   }
 
-  //almacenar el nick en la sesion
-  public setNick(nick: string): void {
-    this.sessionStorage.store('nick', nick);
+  //almacenar el cliente en la sesion
+  public setCliente(cliente: Cliente): void {
+    this.sessionStorage.store('cliente', cliente);
   }
 
-  public getNick(): string {
-    return this.sessionStorage.retrieve('nick');
+  public getCliente(): Cliente {
+    return this.sessionStorage.retrieve('cliente');
   }
 
-  public removeNick(): void {
-    this.sessionStorage.clear('nick');
+  public removeCliente(): void {
+    this.sessionStorage.clear('cliente');
   }
 
   //almacenar rol
-  public setRol(nick: string): void {
-    this.sessionStorage.store('rol', nick);
+  public setRol(cliente: string): void {
+    this.sessionStorage.store('rol', cliente);
   }
 
   public getRol(): string {

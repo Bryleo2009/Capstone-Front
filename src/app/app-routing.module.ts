@@ -17,11 +17,24 @@ import { SessionComponent } from './_page/cliente/login/session/session.componen
 import { Error } from './_page/error/error';
 import { RegistroComponent } from './_page/cliente/login/registro/registro.component';
 import { MenuComponent } from './_page/cliente/menu/menu.component';
+
+import { AuthGuard } from './_service/rutas/auth-guard.service';
+import { CuentaComponent } from './_page/cliente/cuenta/cuenta.component';
+import { DatosPersonalesComponent } from './_page/cliente/cuenta/datos-personales/datos-personales.component';
+import { ConfiguracionComponent } from './_page/cliente/cuenta/configuracion/configuracion.component';
+import { ComprasComponent } from './_page/cliente/cuenta/compras/compras.component';
 import { ListadeseoComponent } from './_page/paqueteria/listadeseo/listadeseo.component';
 
 
 
+
 const routes: Routes = [
+  { path: 'cuenta', component: CuentaComponent, children: [
+  { path: '', component: DatosPersonalesComponent},
+  { path: 'configuracion', component: ConfiguracionComponent},
+  { path: 'compras', component: ComprasComponent}
+]
+},
   { path : '' , component : HomeComponent},
   { path : 'login' , component : LoginComponent, children: [
     { path: '', component: SessionComponent},
@@ -36,7 +49,10 @@ const routes: Routes = [
   },
   { path: 'pedido', component: PaqueteriaComponent, children: [
     { path : '', component: CarritoComponent},
-    { path : 'trazabilidad', component : TrazaProductComponent, children: [
+    { path : 'trazabilidad', component : TrazaProductComponent,
+    canActivate: [AuthGuard],
+    data: { expectedRoles: ['ADMIN', 'SOPORTE','CLIENTE'] },
+    children: [
       { path: 'entrega', component: EntregaComponent},
       { path: 'payment', component: PagoComponent},
       { path: 'ok', component: SeguimientoComponent},
@@ -44,7 +60,9 @@ const routes: Routes = [
   ]},
   { path: 'details' , component : Details01Component},
   { path: 'seguimiento', component: SeguimientoComponent},
-  { path: 'menu', component: MenuComponent},
+
+  { path: 'menu', component: MenuComponent, canActivate: [AuthGuard],
+  data: { expectedRoles: ['ADMIN', 'SOPORTE','CLIENTE'] },}
   { path: 'Listadeseo', component: ListadeseoComponent},
 ];
 
