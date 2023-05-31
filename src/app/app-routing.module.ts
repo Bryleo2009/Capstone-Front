@@ -63,7 +63,7 @@ const routes: Routes = [
 
   { path: 'menu', component: MenuComponent, canActivate: [AuthGuard],
   data: { expectedRoles: ['ADMIN', 'SOPORTE','CLIENTE'] },},
-  { path: 'Listadeseo', component: ListadeseoComponent},
+  { path: 'listadeseo', component: ListadeseoComponent},
 ];
 
 @NgModule({
