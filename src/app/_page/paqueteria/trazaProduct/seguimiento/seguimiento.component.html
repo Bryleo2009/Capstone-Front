@@ -3,33 +3,31 @@
         <article class="card">
             <div class=" mb-3 mt-3 ">
                 <div class="center02"> Mis Pedidos / Seguimiento </div>
-                <div class="flex justify-content-center">
+                <div *ngFor="let unSeguimiento of seguimientos" class="flex justify-content-center mb-3">
                     <div class=" card-body shadow-2 surface-card border-round p-5 card "
                         style="background-color: #F9F9F9;">
-                        <h4 class="colorTitulo">Compras N°: OD45345345435</h4>
+                        <h4 class="colorTitulo">Compras N°: {{unSeguimiento.id_comp}}</h4>
                         <div class=" flex justify-content-between w-full">
                             <img src="./assets/seguimiento/laptop.png" alt="Image" height="250" class="m-3">
                             <div class="flex">
                                 <div class="card-body flex flex-column row">
-                                    <div class="col"> <strong class="colorTitulo">Tiempo estimado de la orden:</strong>
+                                    <!-- <div class="col"> <strong class="colorTitulo">Tiempo estimado de la orden:</strong>
                                         <br>29 nov
                                         2023
                                     </div>
                                     <div class="col"> <strong class="colorTitulo">Horario de entrega:</strong> <br>
                                         Entre 08:00 a
                                         18:00
-                                        horas</div>
-                                    <div class="col"> <strong class="colorTitulo">Dirección de entrega:</strong> <br> Alfonso
-                                        Ugarte 1526,
-                                        Sullana.
-                                        Piura </div>
+                                        horas</div> -->
+                                    <div class="col"> <strong class="colorTitulo">Dirección de entrega:</strong> <br> 
+                                        {{unSeguimiento.direccion_recojo_pedido}} </div>
                                     <div class="col"> <strong class="colorTitulo">Contado de entrega:</strong> <br> 
-                                        +51 5674899 </div>
-                                    <div class="col"> <strong class="colorTitulo">Telefono de entrega:</strong> <br> 
-                                        987654321 </div>
+                                        {{unSeguimiento.celular_recojo_pedido}} </div>
+                                    <div class="col"> <strong class="colorTitulo">Nombre del comprador:</strong> <br> 
+                                        {{unSeguimiento.nombre_recojo_pedido}} </div>
                                         
                                     <div class="col"> <strong class="colorTitulo">Correo de entrega:</strong> <br> 
-                                        bryleo2009@gmail.com </div>
+                                        {{unSeguimiento.correo_recojo_pedido}} </div>
                                 </div>
                             </div>
                             <div>
@@ -45,6 +43,7 @@
                         </div>
                     </div>
                 </div>
+                  
                 <button pButton pRipple label="Volver" icon="pi pi-angle-left"
                     [style]="{backgroundColor:'var(--color-prin)', color: '#E5E5E5'}"></button>
             </div>

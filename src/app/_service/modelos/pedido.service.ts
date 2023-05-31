@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from '../../../environments/environment.development';
 import { Pedido } from '@app/_model/pedido';
 import { PedidoFilter } from '@app/_model/filter/pedidoFilter';
+import { SeguimientoPedidoFilter } from '@app/_model/filter/seguimientoPedidoFilter';
 
 
 @Injectable({
@@ -41,4 +42,10 @@ export class PedidoService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.delete(`${this.url}/${id}`, { headers });
   }
+
+  listarPedido(id: number, token:string): Observable<SeguimientoPedidoFilter[]> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<SeguimientoPedidoFilter[]>(`${this.url}/seguimiento/${id}`);
+  }
+
 }
