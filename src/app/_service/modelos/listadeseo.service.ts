@@ -1,31 +1,31 @@
 import { Injectable } from '@angular/core';
 import { EnumInter } from '@app/_model/enum';
-import { ListadeseoStorage } from '@app/_model/filter/listapedidoStorage';
+import { ProductoStorage } from '@app/_model/filter/productoStorage';
 import { BehaviorSubject, Observable, ReplaySubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ListadeseoService {
+export class ListaDeseoService {
 
-  private listadeseo: ListadeseoStorage[] = [];
-  private listadeseoSubject: BehaviorSubject<ListadeseoStorage[]> = new BehaviorSubject<ListadeseoStorage[]>(this.listadeseo);
-  listadeseo$: Observable<ListadeseoStorage[]> = this.listadeseoSubject.asObservable();
+  private listadeseo: ProductoStorage[] = [];
+  private listadeseoSubject: BehaviorSubject<ProductoStorage[]> = new BehaviorSubject<ProductoStorage[]>(this.listadeseo);
+  carrito$: Observable<ProductoStorage[]> = this.listadeseoSubject.asObservable();
 
   constructor() {
     this.obtenerListadeseoLocalStorage();
   }
 
   private obtenerListadeseoLocalStorage() {
-    const listadeseoString = localStorage.getItem('listadeseo');
-    if (listadeseoString) {
-      this.listadeseo = JSON.parse(listadeseoString);
+    const carritoString = localStorage.getItem('carrito');
+    if (carritoString) {
+      this.listadeseo = JSON.parse(carritoString);
       this.listadeseoSubject.next(this.listadeseo);
     }
   }
 
   private guardarListadeseoLocalStorage() {
-    localStorage.setItem('listadeseo', JSON.stringify(this.listadeseo));
+    localStorage.setItem('carrito', JSON.stringify(this.listadeseo));
   }
 
   agregarAlListadeseo(id: number, cantidad: number,colorid:EnumInter, tallaid:EnumInter) {
@@ -34,7 +34,7 @@ export class ListadeseoService {
     if (index !== -1) {
       this.listadeseo[index].cantProduct = cantidad;
     } else {
-      const producto: ListadeseoStorage = { idProduct: id, cantProduct: cantidad, colorid: colorid.id_color, tallaid: tallaid.id_talla };
+      const producto: ProductoStorage = { idProduct: id, cantProduct: cantidad, colorid: colorid.id_color, tallaid: tallaid.id_talla };
       this.listadeseo.push(producto);
     }
 
@@ -42,15 +42,15 @@ export class ListadeseoService {
     this.listadeseoSubject.next(this.listadeseo);
   }
 
-  obtenerCantidadTotaListadeseo(): number {
+  obtenerCantidadTotalListaDeseo(): number {
     return this.listadeseo.reduce((total, producto) => total + producto.cantProduct, 0);
   }
 
-  obtenerProductosListadeseo(): ListadeseoStorage[] {
+  obtenerProductosListadeseo(): ProductoStorage[] {
     return this.listadeseo;
   }
 
-  limpiarListadeseo() {
+  limpiarListaDeseo() {
     this.listadeseo = [];
     this.guardarListadeseoLocalStorage();
     this.listadeseoSubject.next(this.listadeseo);

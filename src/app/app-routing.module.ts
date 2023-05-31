@@ -62,7 +62,7 @@ const routes: Routes = [
   { path: 'seguimiento', component: SeguimientoComponent},
 
   { path: 'menu', component: MenuComponent, canActivate: [AuthGuard],
-  data: { expectedRoles: ['ADMIN', 'SOPORTE','CLIENTE'] },}
+  data: { expectedRoles: ['ADMIN', 'SOPORTE','CLIENTE'] },},
   { path: 'Listadeseo', component: ListadeseoComponent},
 ];
 
