@@ -34,6 +34,7 @@ export class RegistroComponent {
   ) {}
   form!: FormGroup;
   porCorreo: boolean = false;
+  porGoogle:  boolean = false;
   ngOnInit() {
     //cargar JSOn de ubigeo
     this.http.get<Departamento[]>('./assets/ubigeo.json').subscribe(
@@ -172,6 +173,7 @@ export class RegistroComponent {
               const lastName = userInfo.family_name;
               const email = userInfo.email;
               const profilePicture = userInfo.picture;
+              this.porGoogle = true;
               
               this.verificarEmail(email,firstName,lastName);
             });
@@ -285,8 +287,8 @@ export class RegistroComponent {
       this.unTC.idTipoDoc = 2
     }    
     this.unUsuario.Status = true;
-    this.unUsuario.password = this.form.value['password'];
-    this.unUsuario.username = this.form.value['username'];
+    this.unUsuario.password = this.generarUserPass(this.form.value['nombre'],this.form.value['apellidos'],this.form.value['fechaNac']);
+    this.unUsuario.username = this.generarUserPass(this.form.value['nombre'],this.form.value['apellidos'],this.form.value['fechaNac']);
     this.unUsuario.idRol = this.unRol;
     this.unCliente.apellido = this.form.value['apellidos'];
     this.unCliente.correo= this.form.value['correo'];
@@ -320,4 +322,16 @@ export class RegistroComponent {
       }
     );
   }
+
+  generarUserPass(nombre?: string, apellido?: string, fecha?: Date) {
+    let userpass = '';
+    if (nombre !== undefined) {
+      const primeraLetraNombre = nombre.charAt(0);
+      const apellidoSinAcentos = apellido?.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // Eliminar acentos en el apellido
+      const apellidoSinEspacios = apellidoSinAcentos?.replace(/\s/g, ''); // Eliminar espacios en el apellido
+      userpass = primeraLetraNombre + apellidoSinEspacios + fecha?.getDate() + fecha?.getMonth() + fecha?.getFullYear();
+    }
+    return userpass;
+  }
+  
 }

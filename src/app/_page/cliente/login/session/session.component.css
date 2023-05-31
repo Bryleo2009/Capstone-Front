@@ -143,3 +143,11 @@
     font-weight: bold;
     color: var(--color-prin);
 }
+
+:host ::ng-deep .p-inputtext.p-component.p-element.p-password-input.p-filled{
+  width: 100%;
+}
+
+:host ::ng-deep  .p-inputtext.p-component.p-element.p-password-input{
+width: 100%;
+}
