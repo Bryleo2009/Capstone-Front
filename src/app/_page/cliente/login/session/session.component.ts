@@ -11,6 +11,7 @@ import { AppComponent } from '@app/app.component';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { EntregaComponent } from '@app/_page/paqueteria/trazaProduct/entrega/entrega.component';
 import { DataService } from '@app/_service/modelos/data.service';
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -32,7 +33,8 @@ export class SessionComponent implements OnInit{
     private route: ActivatedRoute,
     private viewportScroller: ViewportScroller,
     private entregaComponente: EntregaComponent,
-    private dataService: DataService
+    private dataService: DataService,
+    private httpClient: HttpClient,
   ){}
   
   checked!: boolean;
@@ -61,8 +63,27 @@ export class SessionComponent implements OnInit{
     this.afAuth.signInWithPopup(new GoogleAuthProvider())
       .then((result) => {
         // Autenticación exitosa
-        // Puedes obtener información del usuario desde 'result.user'
-        console.log("🔥 > Por google > signInWithGoogle:", result.user?.displayName + " / " + result.user?.email)
+      // Puedes obtener el token de acceso del usuario desde 'result.credential.accessToken'
+      const credential = result.credential;
+      if (credential) {
+        const credential = result.credential;
+        if (credential && 'accessToken' in credential) {
+          const accessToken = credential['accessToken'];
+          // Realizar una solicitud a la API de Google para obtener la información adicional del usuario
+          const url = `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${accessToken}`;
+          this.httpClient.get(url)
+            .subscribe((userInfo: any) => {
+              // Obtener el nombre y el apellido del objeto userInfo
+              const firstName = userInfo.given_name;
+              const lastName = userInfo.family_name;
+              console.log("🔥 > Por google > signInWithGoogle:", firstName + " / " + lastName);
+            });
+        } else {
+          console.log("🔥 > Por google > signInWithGoogle: No se pudo obtener el token de acceso.");
+        }
+      } else {
+        console.log("🔥 > Por google > signInWithGoogle: No se pudo obtener las credenciales de autenticación.");
+      }
       })
       .catch((error) => {
         // Manejo de errores
