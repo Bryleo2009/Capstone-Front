@@ -16,8 +16,8 @@ import { PaqueteriaComponent } from '../paqueteria.component';
 import { Enum, EnumInter } from '@app/_model/enum';
 import { TipoProductoService } from '@app/_service/modelos/tipo-producto.service';
 import { AuthService } from '@app/_service/rutas/auth.service';
-import { ListadeseoService } from '@app/_service/modelos/listadeseo.service';
-import { ListadeseoStorage } from '@app/_model/filter/listapedidoStorage';
+import { ListaDeseoFilter } from '@app/_model/filter/listadeseoFilter';
+import { ListaDeseoService } from '@app/_service/modelos/listadeseo.service';
 
 @Component({
   selector: 'app-listadeseo',
@@ -36,7 +36,7 @@ export class ListadeseoComponent {
     private encryp: EncryptionService,
     private route: ActivatedRoute,
     private productoNormService: ProductoService,
-    private listadeseo: ListadeseoService,
+    private listadeseo: ListaDeseoService,
     private changeDetectorRef: ChangeDetectorRef,
     private confirmationService: ConfirmationService,
     private messageService: MessageService,
@@ -48,7 +48,7 @@ export class ListadeseoComponent {
   }
 
   cant = 1;
-  listadeseoLocalStorage: ListadeseoStorage[] = [];
+  listadeseoLocalStorage: ProductoStorage[] = [];
   products: ProductoFilter[] = [];
   monto: number;
   ngOnInit(): void {
