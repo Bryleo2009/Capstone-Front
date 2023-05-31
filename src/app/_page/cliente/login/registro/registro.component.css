@@ -95,6 +95,10 @@
     flex-wrap: wrap;
   }
 
-  /* :host ::ng-deep .ng-tns-c76-2.p-inputtext.p-component.ng-star-inserted{
-      width: 300px%;
-  } */
+  :host ::ng-deep .p-inputtext.p-component.p-element.p-password-input.p-filled{
+      width: 100%;
+  }
+
+  :host ::ng-deep  .p-inputtext.p-component.p-element.p-password-input{
+    width: 100%;
+  }

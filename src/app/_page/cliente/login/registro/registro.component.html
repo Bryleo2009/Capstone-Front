@@ -96,7 +96,7 @@
                                     </div>
                                 </p-fieldset>
                             </div>
-                            <div class="mb-2 ">
+                            <div class="mb-2" *ngIf="!porGoogle">
                                 <p-fieldset>
                                     <ng-template pTemplate="header">
                                         <div class="flex align-items-center text-primary">
@@ -109,7 +109,8 @@
                                         <label htmlFor="username">Nombre de usuario</label>
                                     </span>
                                     <span class="p-float-label">
-                                        <input pInputText formControlName="password" />
+                                        <!-- <input pInputText formControlName="password" /> -->
+                                        <p-password  formControlName="password" [toggleMask]="true" [style]="{width: '100%'}"></p-password>
                                         <label htmlFor="username">Contraseña</label>
                                     </span>
                                     <!-- <span class="p-float-label">
