@@ -287,8 +287,14 @@ export class RegistroComponent {
       this.unTC.idTipoDoc = 2
     }    
     this.unUsuario.Status = true;
-    this.unUsuario.password = this.generarUserPass(this.formRegistro.value['nombre'],this.formRegistro.value['apellidos'],this.formRegistro.value['fechaNac']);
-    this.unUsuario.username = this.generarUserPass(this.formRegistro.value['nombre'],this.formRegistro.value['apellidos'],this.formRegistro.value['fechaNac']);
+    if(!this.porCorreo){
+      this.unUsuario.password = this.generarUserPass(this.formRegistro.value['nombre'],this.formRegistro.value['apellidos'],this.formRegistro.value['fechaNac']);
+      this.unUsuario.username = this.generarUserPass(this.formRegistro.value['nombre'],this.formRegistro.value['apellidos'],this.formRegistro.value['fechaNac']);
+    } else{
+      this.unUsuario.password = this.formRegistro.value['password'];
+      this.unUsuario.username =this.formRegistro.value['username'];
+    }
+    
     this.unUsuario.idRol = this.unRol;
     this.unCliente.apellido = this.formRegistro.value['apellidos'];
     this.unCliente.correo= this.formRegistro.value['correo'];
