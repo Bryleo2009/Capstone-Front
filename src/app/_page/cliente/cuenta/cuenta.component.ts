@@ -3,6 +3,8 @@ import { MegaMenuItem, SelectItem } from 'primeng/api';
 import { MegaMenuModule } from 'primeng/megamenu';
 import { DropdownModule } from 'primeng/dropdown';
 import { Router } from '@angular/router';
+import { Auth, authInstance$ } from '@angular/fire/auth';
+import { AuthService } from '@app/_service/rutas/auth.service';
 
 
 @Component({
@@ -13,8 +15,10 @@ import { Router } from '@angular/router';
 export class CuentaComponent implements OnInit {
   items!: MegaMenuItem[];
 
-    constructor(private router: Router,){}
-
+  constructor(private router: Router,
+              private authServer: AuthService,
+    ){}
+  nombreCompleto!: string;
   ngOnInit() {
     this.items = [
         {
@@ -24,16 +28,21 @@ export class CuentaComponent implements OnInit {
                 this.router.navigateByUrl('/menu');
             }
         },
-        {
-            label: 'Configurar mi cuenta',
-            icon: 'pi pi-fw pi-lock',
-            routerLink:'configuracion',  
-        },
+        // {
+        //     label: 'Configurar mi cuenta',
+        //     icon: 'pi pi-fw pi-lock',
+        //     routerLink:'configuracion',  
+        // },
         {
             label: 'Mis compras',
             icon: 'pi pi-fw pi-gift',
             routerLink:'compras',
         }
     ];
+    this.nombreCompleto=this.authServer.getCliente().nombre+' '+this.authServer.getCliente().apellido;
+    
+    
+
+
 }
 }

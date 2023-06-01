@@ -32,7 +32,7 @@ export class RegistroComponent {
     private auth: AuthService,
     private router: Router
   ) {}
-  form!: FormGroup;
+  formRegistro!: FormGroup;
   porCorreo: boolean = false;
   porGoogle:  boolean = false;
   ngOnInit() {
@@ -46,7 +46,7 @@ export class RegistroComponent {
       }
     );
 
-    this.form = new FormGroup({
+    this.formRegistro = new FormGroup({
       departamentoPaciente: new FormControl({
         value: '',
         disabled: false,
@@ -206,7 +206,7 @@ export class RegistroComponent {
             this.principal.mensaje('warn','Ups!','Correo ya registrado en la base de datos');
           } else {
             this.porCorreo = true;
-              this.form = new FormGroup({
+              this.formRegistro = new FormGroup({
                 departamentoPaciente: new FormControl({
                   value: '',
                   disabled: false,
@@ -281,22 +281,22 @@ export class RegistroComponent {
   unTC: Enum = new Enum();
   registrar(){
     this.unRol.idRol = 3;
-    if(!this.form.value['checked']){
+    if(!this.formRegistro.value['checked']){
       this.unTC.idTipoDoc = 1
     } else {
       this.unTC.idTipoDoc = 2
     }    
     this.unUsuario.Status = true;
-    this.unUsuario.password = this.generarUserPass(this.form.value['nombre'],this.form.value['apellidos'],this.form.value['fechaNac']);
-    this.unUsuario.username = this.generarUserPass(this.form.value['nombre'],this.form.value['apellidos'],this.form.value['fechaNac']);
+    this.unUsuario.password = this.generarUserPass(this.formRegistro.value['nombre'],this.formRegistro.value['apellidos'],this.formRegistro.value['fechaNac']);
+    this.unUsuario.username = this.generarUserPass(this.formRegistro.value['nombre'],this.formRegistro.value['apellidos'],this.formRegistro.value['fechaNac']);
     this.unUsuario.idRol = this.unRol;
-    this.unCliente.apellido = this.form.value['apellidos'];
-    this.unCliente.correo= this.form.value['correo'];
-    this.unCliente.direccion= this.form.value['direccion'];
-    this.unCliente.fechaNac= this.form.value['fechaNac'];
-    this.unCliente.nombre= this.form.value['nombre'];
-    this.unCliente.numDocumento= this.form.value['numDoc'];
-    this.unCliente.telefono= this.form.value['numCel'];
+    this.unCliente.apellido = this.formRegistro.value['apellidos'];
+    this.unCliente.correo= this.formRegistro.value['correo'];
+    this.unCliente.direccion= this.formRegistro.value['direccion'];
+    this.unCliente.fechaNac= this.formRegistro.value['fechaNac'];
+    this.unCliente.nombre= this.formRegistro.value['nombre'];
+    this.unCliente.numDocumento= this.formRegistro.value['numDoc'];
+    this.unCliente.telefono= this.formRegistro.value['numCel'];
     this.unCliente.idTipoDoc=this.unTC;
     this.unCliente.idUserCliente = this.unUsuario;
     if(this.selectedDepartmentCode != undefined){

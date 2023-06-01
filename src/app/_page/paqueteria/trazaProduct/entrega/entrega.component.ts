@@ -25,7 +25,7 @@ export class EntregaComponent implements OnInit {
 
   isWrap = true;
   checked!: boolean;
-  form!: FormGroup;
+  formEntrega!: FormGroup;
   logeado!: boolean;
   ngOnInit() {
     this.logeado = this.dataService.obtenerLogueado();
@@ -42,7 +42,7 @@ export class EntregaComponent implements OnInit {
       }
     );
 
-    this.form = new FormGroup({
+    this.formEntrega = new FormGroup({
       departamentoPaciente: new FormControl({
         value: '',
         disabled: false,
@@ -142,20 +142,20 @@ export class EntregaComponent implements OnInit {
 
   evaluar(){
     if(
-      this.form.value['nombre'] !== '' &&
-      this.form.value['apellidos'] !== '' &&
-      this.form.value['celular'] !== '' &&
-      this.form.value['correo'] !== '' &&
-      this.form.value['direccion'] !== '' &&
+      this.formEntrega.value['nombre'] !== '' &&
+      this.formEntrega.value['apellidos'] !== '' &&
+      this.formEntrega.value['celular'] !== '' &&
+      this.formEntrega.value['correo'] !== '' &&
+      this.formEntrega.value['direccion'] !== '' &&
       this.selectedDepartment?.cod != undefined &&
       this.selectedProvince?.cod != undefined &&
       this.selectedDistrict?.cod != undefined
     ){
-      this.dataService.enviar_nombreRecojo(this.form.value['nombre']);
-      this.dataService.enviar_apellidoRecojo(this.form.value['apellidos']);
-      this.dataService.enviar_celularRecojo(this.form.value['celular']);
-      this.dataService.enviar_correoRecojo(this.form.value['correo']);
-      this.dataService.enviar_direccionRecojo(this.form.value['direccion']);
+      this.dataService.enviar_nombreRecojo(this.formEntrega.value['nombre']);
+      this.dataService.enviar_apellidoRecojo(this.formEntrega.value['apellidos']);
+      this.dataService.enviar_celularRecojo(this.formEntrega.value['celular']);
+      this.dataService.enviar_correoRecojo(this.formEntrega.value['correo']);
+      this.dataService.enviar_direccionRecojo(this.formEntrega.value['direccion']);
       this.messageService.add({
         severity: 'success',
         summary: 'Registrado',

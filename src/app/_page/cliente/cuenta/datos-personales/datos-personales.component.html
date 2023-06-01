@@ -1,47 +1,52 @@
 <section>
-    <div class="grid flex justify-content-center m-5">
-        <div class="col-8">
-            <p-fieldset class="">
-                <ng-template pTemplate="header">
-                    <div class="color">
-                        <span class="pi pi-user mr-2"></span>
-                        <span class="font-bold text-lg">Datos Personales</span>
+    <p-toast></p-toast>
+    <form action="" [formGroup]="formDatos" #frmDatos="ngForm">
+        <div class="grid flex justify-content-center m-5">
+            <div class="col-8 flex justify-content-center flex-column">
+                <p-fieldset class="">
+                    <ng-template pTemplate="header">
+                        <div class="color">
+                            <span class="pi pi-user mr-2"></span>
+                            <span class="font-bold text-lg">Datos Personales</span>
+                        </div>
+                    </ng-template>
+                    <div class="flex justify-content-between">
+                        <div class="flex flex-column">
+                            <span class="p-float-label mb-3">
+                                <input formControlName="nombres" pInputText  [style]="{width:'100%'}" />
+                                <label htmlFor="username">Nombres</label>
+                            </span>
+                            <span class="p-float-label mb-3">
+                                <input formControlName="apellido" pInputText  [style]="{width:'100%'}" />
+                                <label htmlFor="username">Apellidos</label>
+                            </span>
+                        </div>
+                        <div class="flex flex-column">
+                            <span class="p-float-label mb-3">
+                                <p-calendar formControlName="fecha" [style]="{width: '100%'}" ></p-calendar>
+                                <label htmlFor="username">Fecha de Nacimiento</label>
+                            </span>
+                            <span class="p-float-label mb-3">
+                                <input formControlName="celular" pInputText  [style]="{width:'100%'}" />
+                                <label htmlFor="username">Celular</label>
+                            </span>
+                        </div>
+                        <div class="flex flex-column">
+                            <span class="p-float-label mb-3">
+                                <input formControlName="email" pInputText  />
+                                <label htmlFor="username">Correo Electronico</label>
+                            </span>
+                            <span class="p-float-label mb-3">
+                                <input formControlName="numDoc" pInputText  [style]="{width:'100%'}" />
+                                <label htmlFor="username">Numero de documento</label>
+                            </span>
+                        </div>
                     </div>
-                </ng-template>
-                <div class="flex justify-content-between">
-                    <div class="flex flex-column">
-                        <span class="p-float-label mb-3">
-                            <input pInputText id="username" [style]="{width:'100%'}" />
-                            <label htmlFor="username">Nombres</label>
-                        </span>
-                        <span class="p-float-label mb-3">
-                            <input pInputText id="username" />
-                            <label htmlFor="username">Apellidos</label>
-                        </span>
-                    </div>
-                    <div class="flex flex-column">
-                        <span class="p-float-label mb-3">
-                            <p-calendar [style]="{width: '100%'}" [(ngModel)]="date"></p-calendar>
-                            <label htmlFor="username">Fecha de Nacimiento</label>
-                        </span>
-                        <span class="p-float-label mb-3">
-                            <input pInputText id="username" />
-                            <label htmlFor="username">Celular</label>
-                        </span>
-                    </div>
-                    <div class="flex flex-column">
-                        <span class="p-float-label mb-3">
-                            <input pInputText id="username" />
-                            <label htmlFor="username">Numero de documento</label>
-                        </span>
-                        <span class="p-float-label mb-3">
-                            <input pInputText id="username" />
-                            <label htmlFor="username">Correo Electronico</label>
-                        </span>
-                    </div>
-                </div>
-            </p-fieldset>
-            <!-- la fecha tiene que aparecer como "no editable", al igual que el correo electronico y DNI -->
+                </p-fieldset>
+                <!-- la fecha tiene que aparecer como "no editable", al igual que el correo electronico y DNI -->
+                <button pButton pRipple label="Guardar Cambios" icon="pi pi-check-circle" class="mt-3"
+                    (click)="guardar()" [style]="{backgroundColor:'var(--color-prin)', color: '#ffffff'}"></button>
+            </div>
         </div>
-    </div>
+    </form>
 </section>
