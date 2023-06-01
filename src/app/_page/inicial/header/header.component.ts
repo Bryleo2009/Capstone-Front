@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { AuthService } from '@app/_service/rutas/auth.service';
 import { DataService } from '@app/_service/modelos/data.service';
+import { EmailService } from '@app/_service/email.service';
 
 
 
@@ -24,7 +25,8 @@ export class HeaderComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private almacen: AuthService,
-    private dataService: DataService
+    private dataService: DataService,
+    private mailService: EmailService
   ){}
   items!: MenuItem[];
   tempEnviroment!: number;
@@ -137,6 +139,25 @@ export class HeaderComponent implements OnInit {
       x: -200,
       stagger: 0.4,
     });
+  }
+
+
+  onSubmit() {
+    // Aquí obtienes los datos del formulario y los envías al servicio de correo
+    const emailData = {
+      to: 'bryleo2009@hotmail.com',
+      subject: 'Asunto del correo',
+      body: 'Cuerpo del correo'
+    };
+
+    this.mailService.sendEmail(emailData).subscribe(
+      () => {
+        console.log('Correo enviado correctamente');
+      },
+      error => {
+        console.error('Error al enviar el correo', error);
+      }
+    );
   }
 
 }

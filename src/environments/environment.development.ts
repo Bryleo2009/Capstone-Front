@@ -14,4 +14,5 @@ export const environment = {
         messagingSenderId: '393912616941',
         appId: '1:393912616941:web:1234567890abcdef'
     },
+    sendGridApiKey: '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'
 };
