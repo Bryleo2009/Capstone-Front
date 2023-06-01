@@ -173,7 +173,6 @@ export class RegistroComponent {
               const lastName = userInfo.family_name;
               const email = userInfo.email;
               const profilePicture = userInfo.picture;
-              this.porGoogle = true;
               
               this.verificarEmail(email,firstName,lastName);
             });
@@ -197,13 +196,19 @@ export class RegistroComponent {
 
   verificarEmail(correo: string, firstName?: string,lastName?: string) {
     if (correo != '') {
+      
       //verificar existrencia del correo
       this.serviceCliente.exitenciaXCorreo(correo,this.auth.getToken()).subscribe(
         (response) => {
           console.log("🔥 > RegistroComponent > verificarEmail > response:", response)
-
+          if(firstName!=undefined){
+            this.porGoogle=true;
+          }
           if(response == true){
             this.principal.mensaje('warn','Ups!','Correo ya registrado en la base de datos');
+            if(firstName!=undefined){
+              this.porGoogle=false;
+            }
           } else {
             this.porCorreo = true;
               this.formRegistro = new FormGroup({
