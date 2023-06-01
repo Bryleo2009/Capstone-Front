@@ -25,7 +25,7 @@ export class ListaDeseoService {
   }
 
   private guardarListadeseoLocalStorage() {
-    localStorage.setItem('carrito', JSON.stringify(this.listadeseo));
+    localStorage.setItem('listadeseo', JSON.stringify(this.listadeseo));
   }
 
   agregarAlListadeseo(id: number, cantidad: number,colorid:EnumInter, tallaid:EnumInter) {
