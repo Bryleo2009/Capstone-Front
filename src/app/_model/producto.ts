@@ -10,6 +10,7 @@ export class Producto {
 	precioUni!: number;
 	stockProduct!: number;
 	tallaProduct!: string;
+	colorProduct!: string;
 	etiquetas!: string;
 	isPrecioDescProduct!: boolean;
 	precioDescuProduct!: number;
