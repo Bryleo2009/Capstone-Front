@@ -18,129 +18,67 @@
                                             <span class="font-bold text-lg">Datos Generales Producto</span>
                                         </div>
                                     </ng-template>
-                                    <!--<div class="card flex justify-content-center mb-5">
-                                        <label class="mr-2" for="">DNI </label> <p-inputSwitch
-                                            formControlName="checked"></p-inputSwitch><label class="ml-2" for="">C. E.
-                                        </label>
-                                    </div>-->
-                                    <!--<span class="p-float-label">
-                                        <input pInputText formControlName="numDoc" />
-                                        <label htmlFor="username">Numero de documento</label>
-                                    </span>-->
                                     <span class="p-float-label">
-                                        <input pInputText formControlName="descripcion" />
+                                        <input pInputText formControlName="descripcionProduct" />
                                         <label htmlFor="username">Descripcion</label>
                                     </span>
                                     <span class="p-float-label">
-                                        <input pInputText formControlName="nombre" />
+                                        <input pInputText formControlName="nombreProduct" />
                                         <label htmlFor="username">Nombre del Producto</label>
                                     </span>
                                     <span class="p-float-label">
-                                        <input pInputText formControlName="precioU" />
+                                        <input pInputText formControlName="precioUni" />
                                         <label htmlFor="username">Precio Unitario</label>
                                     </span>
                                     <span class="p-float-label">
-                                        <input pInputText formControlName="precioD" />
+                                        <input pInputText formControlName="precioDescuProduct" />
                                         <label htmlFor="username">Precio Descuento</label>
-                                    </span>
-                                    <span class="p-float-label">
-                                        <input pInputText formControlName="existe" />
-                                        <label htmlFor="username">existe</label>
                                     </span>
                                     <span class="p-float-label">
                                         <input pInputText formControlName="imagen" />
                                         <label htmlFor="username">Imagen</label>
                                     </span>
-                                    <!--<span class="p-float-label m-2">
-                                        <p-calendar [style]="{width: '100%'}" formControlName="fechaNac"></p-calendar>
-                                        <label htmlFor="username">Fecha de Nacimiento</label>
-                                    </span>-->
                                 </p-fieldset>
                             </div>
-                            <div class="mb-2">
-                                <p-fieldset>
-                                    <ng-template pTemplate="header">
-                                        <div class="flex align-items-center text-primary">
-                                            <span class="pi pi-phone mr-2"></span>
-                                            <span class="font-bold text-lg">Datos Especificos</span>
-                                        </div>
-                                    </ng-template>
-                                    <span class="p-float-label">
-                                        <input pInputText formControlName="idcategoria" />
-                                        <label htmlFor="username">ID Categoria</label>
-                                    </span>
-                                    <span class="p-float-label">
-                                        <input pInputText formControlName="idmarca" />
-                                        <label htmlFor="username">ID Marca</label>
-                                    </span>
-                                    <span class="p-float-label">
-                                        <input pInputText formControlName="idtipoproducto" />
-                                        <label htmlFor="username">ID Tipo Producto</label>
-                                    </span>
-                                </p-fieldset>
-                            </div>
-                        </div>
-                        <div class="col-6 ">
+                            <div class="col-6 ">
                             <div class="mb-2">
                                 <p-fieldset [style]="{height: '100%'}">
                                     <ng-template pTemplate="header">
                                         <div class="flex align-items-center text-primary">
                                             <span class="pi pi-map-marker mr-2"></span>
-                                            <span class="font-bold text-lg">Datos Personalizables</span>
+                                            <span class="font-bold text-lg">Datos Especificos</span>
                                         </div>
                                     </ng-template>
-                                    <div class="col-12">
-                                        <!--<div class="formRegistro-group selectores col flex flex-column">
-                                            <p-dropdown [style]="{width: '100%'}" formControlName="departamentoPaciente"
-                                                [(ngModel)]="selectedDepartment" name="selectedDepartment"
-                                                placeholder="Departamento"
-                                                (ngModelChange)="updateDistrictsAndProvinces()" id="departmentSelect"
-                                                [options]="departments" optionLabel="nombre_departamento"></p-dropdown>
-                                        </div>
-                                        <div class="formRegistro-group selectores col flex flex-column">
-                                            <p-dropdown formControlName="provinciaPaciente"
-                                                [(ngModel)]="selectedProvince" name="selectedProvince"
-                                                placeholder="Provincia" (ngModelChange)="updateDistrictsAndProvinces()"
-                                                id="provinceSelect" [options]="provinces"
-                                                optionLabel="nombre_provincia"></p-dropdown>
-                                        </div>
-                                        <div class="formRegistro-group selectores col flex flex-column">
-                                            <p-dropdown formControlName="distritoPaciente"
-                                                [(ngModel)]="selectedDistrict" name="selectedDistrict"
-                                                placeholder="Distrito" (ngModelChange)="updateDistrictsAndProvinces()"
-                                                id="districtSelect" [options]="districts"
-                                                optionLabel="nombre_distrito"></p-dropdown>
-                                        </div>-->
-                                        <span class="p-float-label">
-                                            <input pInputText formControlName="idetiqueta" />
-                                            <label htmlFor="username">ID Etiqueta</label>
-                                        </span>
-                                        <span class="p-float-label">
-                                            <input pInputText formControlName="cantidad" />
-                                            <label htmlFor="username">Cantidad</label>
-                                        </span>
-                                        <span class="p-float-label">
-                                            <input pInputText formControlName="talla" />
-                                            <label htmlFor="username">Talla</label>
-                                        </span>
-                                        <span class="p-float-label">
-                                            <input pInputText formControlName="color" />
-                                            <label htmlFor="username">Color</label>
-                                        </span>
-                                    </div>
+                                    <span class="p-float-label">
+                                        <input pInputText formControlName="idCateg" />
+                                        <label htmlFor="username">ID Categoria</label>
+                                    </span>
+                                    <span class="p-float-label">
+                                        <input pInputText formControlName="idTipoProduc" />
+                                        <label htmlFor="username">ID Ripo Producto</label>
+                                    </span>
+                                    <span class="p-float-label">
+                                        <input pInputText formControlName="idEtiqueta" />
+                                        <label htmlFor="username">ID Etiqueta</label>
+                                    </span>
+                                    <span class="p-float-label">
+                                        <input pInputText formControlName="idMarca" />
+                                        <label htmlFor="username">ID Marca</label>
+                                    </span>
                                 </p-fieldset>
                             </div>
-
                         </div>
+                        </div>
+                    
                     </div>
-                    <button pButton pRipple label="Registrar Producto" icon="pi pi-check-circle" class="w-full"
+           <button pButton pRipple label="Registrar Producto" icon="pi pi-check-circle" class="w-full"
                         (click)="registrar()"
                         [style]="{backgroundColor:'var(--color-prin)', color: '#ffffff'}"></button>
                     <div class="w-full flex justify-content-center mt-3">
                         <a routerLink="/">Inicio</a>
                     </div>
                 
-                <!--
+         <!--  
                 <div *ngIf="!porCorreo" class="flex align-items-center justify-content-center">
                     <div class=" flex-column w-7">
                         <div class="w-full">
@@ -158,7 +96,7 @@
                                     <label htmlFor="username">Correo electrónico</label>
                                 </span>
                             </div>
-                        </div>-->
+                        </div>-->     
                         <!--<button pButton pRipple label="Siguiente" icon="pi pi-check-circle" class="w-full mb-5"
                             [style]="{backgroundColor:'var(--color-prin)', color: '#ffffff'}"
                             (click)="verificarEmail(this.formRegistro.value['correo'])"></button>

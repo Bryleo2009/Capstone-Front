@@ -68,7 +68,7 @@ export class ListadeseoComponent {
       requests.push(request);
     }
 
-    forkJoin(requests).subscribe((data: Producto[]) => {
+    /*forkJoin(requests).subscribe((data: Producto[]) => {
       this.products = data.map((producto, index) => {
         const listadeseoItem = this.listadeseoLocalStorage[index];
         const productoFilter: ProductoFilter = {
@@ -109,7 +109,7 @@ export class ListadeseoComponent {
       });
       this.calcMonto(this.products);
     });
-    
+    */
 
     
   }

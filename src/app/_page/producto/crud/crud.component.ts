@@ -4,7 +4,6 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import { Cliente } from '@app/_model/cliente';
-import { Producto } from '@app/_model/producto';
 import { Enum } from '@app/_model/enum';
 import { Rol } from '@app/_model/rol';
 import { Departamento } from '@app/_model/ubigeo/departamento';
@@ -18,6 +17,9 @@ import { environment } from '@env/environment.development';
 import { GoogleAuthProvider } from 'firebase/auth';
 import Swal from 'sweetalert2';
 import { ProductoService } from '@app/_service/modelos/producto.service';
+import { ProductoFilter } from '@app/_model/filter/productoFilter';
+import { RegistroProductFilter } from '@app/_model/filter/registroProductFilter';
+import { Producto } from '@app/_model/producto';
 
 @Component({
   selector: 'app-crud',
@@ -41,30 +43,22 @@ export class CRUDComponent {
   formRegistro!: FormGroup;
 
   ngOnInit() {
-    //cargar JSOn de ubigeo
-    /*this.http.get<Departamento[]>('./assets/ubigeo.json').subscribe(
-      (data) => {
-        this.departments = data;
-      },
-      (error) => {
-        console.log('Error al cargar el archivo JSON:', error);
-      }
-    );*/
+
     this.formRegistro = new FormGroup({
-      descripcion: new FormControl({
+      descripcionProduct: new FormControl({
         value: '',
         disabled: false,
       }),
-      nombre: new FormControl({
+      nombre_product: new FormControl({
         value: '',
         disabled: false,
       }),
-      precioU: new FormControl({
+      precio_uni: new FormControl({
         value: '',
         disabled: false,
       }),
-      precioD: new FormControl({
-        value: false,
+      precio_descu_product: new FormControl({
+        value: '',
         disabled: false,
       }),
       existe: new FormControl({
@@ -75,19 +69,19 @@ export class CRUDComponent {
         value: '',
         disabled: false,
       }),
-      idcategoria: new FormControl({
+      categoria: new FormControl({
         value: '',
         disabled: false,
       }),
-      idmarca: new FormControl({
+      marca: new FormControl({
         value: '',
         disabled: false,
       }),
-      idtipoproducto: new FormControl({
+      tipoProduct: new FormControl({
         value: '',
         disabled: false,
       }),
-      idetiqueta: new FormControl({
+      etiquetas: new FormControl({
         value: '',
         disabled: false,
       }),
@@ -95,7 +89,7 @@ export class CRUDComponent {
         value: '',
         disabled: false,
       }),
-      talla: new FormControl({
+      tallas: new FormControl({
         value: '',
         disabled: false,
       }),
@@ -105,88 +99,28 @@ export class CRUDComponent {
      }),
     });
   }
-  //cargar combos ubigeo
-  /*selectedDepartment: Departamento | undefined;
-  selectedDistrict: Distrito | undefined;
-  selectedProvince: Provincia | undefined;
-  selectedDepartmentCode: string | undefined;
-  selectedProvinceCode: string | undefined;
-  selectedDistrictCode: string | undefined;
-  districts: any[] = [];
-  provinces: any[] = [];
-  anti_depart: string | undefined;
-  dataJson = environment.dataJSON;
-  departments: Departamento[] = [];*/
-  /*updateDistrictsAndProvinces() {
-    this.districts = [];
-    this.provinces = [];
-    this.selectedDepartment = this.departments.find(
-      (department) =>
-        department.nombre_departamento ===
-        this.selectedDepartment?.nombre_departamento
-    ) as Departamento;
-    if (this.anti_depart != this.selectedDepartment?.nombre_departamento) {
-      this.selectedDistrict = this.districts[-1];
-      this.selectedProvince = this.provinces[-1];
-      this.anti_depart = this.selectedDepartment?.nombre_departamento;
-    }
-    if (this.selectedDepartment && this.selectedDepartment.provincias) {
-      this.provinces = this.selectedDepartment.provincias.filter((p) => p);
-      this.selectedDepartmentCode = this.selectedDepartment.cod;
-    }
-    if (this.selectedProvince && this.selectedProvince.distritos) {
-      this.districts = this.selectedProvince.distritos.filter((d) => d);
-      this.selectedProvinceCode = this.selectedProvince.cod;
-    }
-    if (this.selectedDistrict) {
-      this.selectedDistrictCode = this.selectedDistrict.cod;
-      console.log(
-        'ubigeo seleccionado: >',
-        this.selectedDepartmentCode,
-        this.selectedProvinceCode,
-        this.selectedDistrictCode
-      );
-    }
-  }*/
 
   @Input() flexWrap: boolean = false;
 
-
-  unCliente: Cliente = new Cliente ();
-  unProducto: Producto = new Producto ();
-  unUsuario: Usuario = new Usuario();
-  unRol: Enum = new Enum();
-  unTC: Enum = new Enum();
+  unProducto: Producto = new Producto();
+  unRegistro: RegistroProductFilter = new RegistroProductFilter ();
 
   registrar(){
-
-    /*this.unRol.idRol = 3;
-    if(!this.formRegistro.value['checked']){
-      this.unTC.idTipoDoc = 1
-    } else {
-      this.unTC.idTipoDoc = 2
-    }    
-    this.unUsuario.Status = true;
-    this.unUsuario.idRol = this.unRol;*/
-    this.unProducto.descripcionProduct = this.formRegistro.value['descripcion'];
-    this.unProducto.nombreProduct= this.formRegistro.value['nombre'];
-    this.unProducto.precioUni= this.formRegistro.value['precioU'];
-    this.unProducto.precioDescuProduct= this.formRegistro.value['precioD'];
+    
+    this.unProducto.descripcionProduct = this.formRegistro.value['descripcionProduct'];
+    this.unProducto.nombreProduct= this.formRegistro.value['nombreProduct'];
+    this.unProducto.precioUni= this.formRegistro.value['precioUni'];
+    this.unProducto.precioDescuProduct= this.formRegistro.value['precioDescuProduct'];
     this.unProducto.imagen= this.formRegistro.value['imagen'];
-    this.unProducto.idCateg= this.formRegistro.value['idcategoria'];
-    this.unProducto.idMarca= this.formRegistro.value['idmarca'];
-    this.unProducto.idTipoProduc= this.formRegistro.value['idtipoproducto'];
-    this.unProducto.idEtiqueta= this.formRegistro.value['idetiqueta'];
-    this.unProducto.stockProduct= this.formRegistro.value['cantidad'];
-    this.unProducto.tallaProduct= this.formRegistro.value['talla'];
-    this.unProducto.colorProduct= this.formRegistro.value['color'];
-   /* this.unCliente.idTipoDoc=this.unTC;
-    this.unCliente.idUserCliente = this.unUsuario;*/
-    /*if(this.selectedDepartmentCode != undefined){
-      this.unCliente.ubigueo= this.selectedDepartmentCode+this.selectedProvinceCode+this.selectedDistrictCode;
-    }    */
+    this.unProducto.idCateg= this.formRegistro.value['idCateg'];
+    this.unProducto.idTipoProduc= this.formRegistro.value['idTipoProduc'];
+    this.unProducto.idEtiqueta= this.formRegistro.value['idEtiqueta'];
+    this.unProducto.idMarca= this.formRegistro.value['idMarca'];
+    //seteando unProducto a unRegistro
+    this.unRegistro.producto	 =  this.unProducto;
+
     console.log("🔥 > CRUDComponent > unProducto:", this.unProducto)
-    this.serviceProducto.registrar(this.unProducto, this.auth.getToken()).subscribe(
+    this.serviceProducto.registrar(this.unRegistro, this.auth.getToken()).subscribe(
       (data) => {
         console.log("🔥 > CRUDComponent > registrar > data:", data)
         Swal.fire({
