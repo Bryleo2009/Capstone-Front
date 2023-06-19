@@ -5,6 +5,6 @@ import { tallaColorFilter } from "./tallaColorFilter";
 export class RegistroProductFilter {
 
     producto: Producto = new Producto();
-    tallaColorFilters: tallaColorFilter[] = [];
+    tallaColorFilters: tallaColorFilter = new tallaColorFilter();
  
 }
