@@ -207,6 +207,7 @@ export class StoreComponent implements OnInit {
       if (!this.valuesEtiqueta.includes(newItem)) {
         this.valuesEtiqueta.push(newItem);
         this.abreviaturasEtiqueta.push(this.selectedEtiqueta.abreviItem);
+        console.log(this.valuesEtiqueta);
         this.filtrar(this.seleccion);
       }
     }

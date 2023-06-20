@@ -73,13 +73,15 @@ export class CRUDComponent {
   tipoprods: TipoProducto[] = [];
   etiquetas: Etiqueta[] = [];
   marcas: Marca[] = [];
+  selectedEtiqueta!: Enum;
   tallas: Talla[] = [];
   colores: Color[] = [];
+  TCFser: tallaColorFilter[] = [];
   /*TCF: tallaColorFilter[] = [];*/
 
 
   ngOnInit() {
-
+    this.updateValuesEtiquetas();
     // llama a la función para asegurarte de que los valores iniciales se muestren en el chip
   /*  this.updateValuestalla();
     this.updateValuescolor();*/
@@ -115,13 +117,9 @@ export class CRUDComponent {
     }
   );
 
-  this.etiquetaService.listar(this.almacen.getToken()).subscribe(
-
-    (data) => {
-      this.etiquetas = data;
-      this.formRegistro.get('etiquetas')?.patchValue(this.tipoprods[0].idTipoProduc);
-    }
-  );
+  this.etiquetaService.listar(this.auth.getToken()).subscribe((data) => {
+    this.etiquetas = data;
+  });
 
   this.marcaService.listar(this.almacen.getToken()).subscribe(
 
@@ -147,34 +145,7 @@ export class CRUDComponent {
     }
   );
 
- //listar categorias
- /*this.categoriaService.listar(this.auth.getToken()).subscribe((data) => {
-  this.categorias = data;
-  this.items = this.categorias.map((categoria) => {
-    return {
-      label: categoria.nombreItem,
-      icon: categoria.abreviItem,
-      command: () => {
-        this.seleccion = categoria.abreviItem;
-        this.categoriaActual = categoria.vistaItem;
-       // this.filtrar(this.seleccion);
-      },
-    };
-  });
-});*/
 
-
-
-//listar tallas
- /* this.tallaService.listar(this.auth.getToken()).subscribe((data) => {
-   this.talla = data.filter((talla) => talla.vistaItem !== 'Talla unica');
-  });
-
-   //listar colores
-  this.colorService.listar(this.auth.getToken()).subscribe((data) => {
-    this.color = data.filter((color) => color.vistaItem !== 'Color unico');
-   });
-*/
     this.formRegistro = new FormGroup({
       descripcionProduct: new FormControl({
         value: '',
@@ -228,88 +199,41 @@ export class CRUDComponent {
   }
 
 
-
-
-
-  /*valuestalla: any[] = [];
-  abreviaturastalla: any[] = [];
-  updateValuestalla() {
-    if (this.selectedtalla) {
-      const newItem = this.selectedtalla.vistaItem;
-      if (!this.valuestalla.includes(newItem)) {
-        this.valuestalla.push(newItem);
-        this.abreviaturastalla.push(this.selectedtalla.abreviItem);
-        //this.filtrar(this.seleccion);
-      }
-    }
-  }*/
-
-  //etiqwuetas de filtrado
-  /*removetalla(talla: string) {
-    const index = this.valuestalla.indexOf(talla);
-    if (index !== -1) {
-      this.valuestalla.splice(index, 1);
-      this.abreviaturastalla.splice(index, 1);
-      //this.filtrar(this.seleccion);
-    }
-  }
-
-  valuescolor: any[] = [];
-  abreviaturascolor: any[] = [];
-  updateValuescolor() {
-    if (this.selectedcolor) {
-      const newItem = this.selectedcolor.vistaItem;
-      if (!this.valuescolor.includes(newItem)) {
-        this.valuescolor.push(newItem);
-        this.abreviaturascolor.push(this.selectedcolor.abreviItem);
-        //this.filtrar(this.seleccion);
-      }
-    }
-  }*/
-
-  //etiqwuetas de filtrado
-  /*removecolor(color: string) {
-    const index = this.valuestalla.indexOf(color);
-    if (index !== -1) {
-      this.valuescolor.splice(index, 1);
-      this.abreviaturascolor.splice(index, 1);
-      //this.filtrar(this.seleccion);
-    }
-  }/*
-
-
-  valuescategoria: any[] = [];
-  abreviaturascategoria: any[] = [];
-  updateValuescategoria() {
-    
-    if (this.selectedCategories) {
-      const newItem = this.selectedCategories;
-      if (!this.valuescategoria.includes(newItem)) {
-        this.valuescategoria.push(newItem);
-        this.abreviaturascategoria.push(this.selectedCategories);
+  valuesEtiqueta: any[] = [];
+  abreviaturasEtiqueta: any[] = [];
+  updateValuesEtiquetas() {
+    if (this.selectedEtiqueta) {
+      const newItem = this.selectedEtiqueta.vistaItem;
+      if (!this.valuesEtiqueta.includes(newItem)) {
+        this.valuesEtiqueta.push(newItem);
+        this.abreviaturasEtiqueta.push(this.selectedEtiqueta.abreviItem);
+        console.log(this.valuesEtiqueta);
+      //  this.filtrar(this.seleccion);
       }
     }
   }
 
   //etiqwuetas de filtrado
-  /*removecategoria(categoria: string) {
-    const index = this.valuestalla.indexOf(categoria);
+  removeEtiqueta(etiqueta: string) {
+    const index = this.valuesEtiqueta.indexOf(etiqueta);
     if (index !== -1) {
-      this.valuescategoria.splice(index, 1);
-      this.abreviaturascategoria.splice(index, 1);
-      //this.filtrar(this.seleccion);
+      this.valuesEtiqueta.splice(index, 1);
+      this.abreviaturasEtiqueta.splice(index, 1);
+     // this.filtrar(this.seleccion);
     }
-  }*/
+  }
 
 
   @Input() flexWrap: boolean = false;
 
   unProducto: Producto = new Producto();
-  unTallaColor: tallaColorFilter = new tallaColorFilter();
   unRegistro: RegistroProductFilter = new RegistroProductFilter ();
+  unTallaColor: tallaColorFilter = new tallaColorFilter();
 
   registrar(){
-    
+
+    console.log(this.formRegistro);
+
     this.unProducto.descripcionProduct = this.formRegistro.value['descripcionProduct'];
     this.unProducto.nombreProduct= this.formRegistro.value['nombreProduct'];
     this.unProducto.precioUni= this.formRegistro.value['precioUni'];
@@ -319,16 +243,24 @@ export class CRUDComponent {
     this.unProducto.idTipoProduc= this.formRegistro.value['idTipoProduc'];
     this.unProducto.idEtiqueta= this.formRegistro.value['idEtiqueta'];
     this.unProducto.idMarca= this.formRegistro.value['idMarca'];
-    this.unTallaColor.talla = this.formRegistro.value['idTalla'];
-    this.unTallaColor.color = this.formRegistro.value['idColor'];
-    this.unTallaColor.cantidad = this.formRegistro.value['idCantidad'];
+    this.TCFser.push({
+      talla: this.formRegistro.value['idTalla'],
+      color: this.formRegistro.value['idColor'],
+      cantidad: this.formRegistro.value['idCantidad']
+    });
+
     //seteando unProducto a unRegistro
     
     /*this.unRegistro.producto	 =  this.unProducto;
     this.unRegistro.tallaColorFilters	 =  this.unTallaColor;*/
-    this.unRegistro = { producto: this.unProducto, tallaColorFilters: this.unTallaColor };
 
-    console.log(this.unProducto,this.unTallaColor)
+
+
+    this.unRegistro.producto	 =  this.unProducto;
+    this.unRegistro.tallaColorFilters	 =  this.TCFser;
+
+
+    console.log(this.TCFser)
 
     this.serviceProducto.registrar(this.unRegistro, this.auth.getToken()).subscribe(
       (data) => {

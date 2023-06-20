@@ -1,5 +1,6 @@
 import { Categoria } from "./categoria";
 import { Enum } from "./enum";
+import { Etiqueta } from "./etiqueta";
 import { TipoProducto } from "./tipoProducto";
 
 export class Producto {
@@ -15,6 +16,6 @@ export class Producto {
 	imagen!: string;//si
 	idCateg: Categoria = new Categoria();//si
 	idTipoProduc: Enum = new Enum();//si
-	idEtiqueta: Enum[] = [];//si
+	idEtiqueta: Etiqueta[] = [];//si
 	idMarca: Enum = new Enum();//si
 }

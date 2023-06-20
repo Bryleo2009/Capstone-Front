@@ -99,13 +99,28 @@
                                 <label for="p-float-label">Tipo Producto</label>
 
                             </span>
-                            <span class="p-float-label">
-
-                                <p-dropdown [options]="etiquetas" formControlName="idEtiqueta" optionLabel="idEtiqueta"
-                                    inputId="p-float-label" [style]="{'width':'100%'}"></p-dropdown>
-                                <label for="p-float-label">Etiqueta</label>
-
-                            </span>
+                            <!-- Etiquetas -->
+            <div class="card">
+                <h3> Etiquetas </h3>
+                <div class="flex flex-column gap-2 marca">
+                    <p-chip class="flex align-items-start" *ngFor="let etiqueta of valuesEtiqueta" [label]="etiqueta"
+                        [removable]="true" (onRemove)="removeEtiqueta(etiqueta)"></p-chip>
+                    <p-dropdown [options]="etiquetas" formControlName="idEtiqueta" optionLabel="idEtiqueta"
+                        [filter]="true" filterBy="vistaItem" [showClear]="true" placeholder="Selecciona una etiqueta"
+                        (ngModelChange)="updateValuesEtiquetas()" [style]="{ width: '280px' }">
+                        <ng-template pTemplate="selectedItem">
+                            <div class="flex align-items-center gap-2" *ngIf="selectedEtiqueta">
+                                <div>{{ selectedEtiqueta.vistaItem }}</div>
+                            </div>
+                        </ng-template>
+                        <ng-template let-etiqueta pTemplate="item">
+                            <div class="flex align-items-center gap-2">
+                                <div>{{ etiqueta.vistaItem }}</div>
+                            </div>
+                        </ng-template>
+                    </p-dropdown>
+                </div>
+            </div>
                             <span class="p-float-label">
 
                                 <p-dropdown [options]="marcas" formControlName="idMarca" optionLabel="idMarca"
