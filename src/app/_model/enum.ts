@@ -11,6 +11,7 @@ export class Enum {
     idEtiqueta!: number;
     idEstProduct!: number;
     idTipoProduc!: number;
+    idColor!: number;
 }
 
 export interface EnumInter {

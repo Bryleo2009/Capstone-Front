@@ -26,6 +26,15 @@ import { TallaService } from '@app/_service/modelos/talla.service';
 import { ColorService } from '@app/_service/modelos/color.service';
 import { CategoriasService } from '@app/_service/modelos/categorias.service';
 import { MenuItem } from 'primeng/api';
+import { Categoria } from '@app/_model/categoria';
+import { TipoProductoService } from '@app/_service/modelos/tipo-producto.service';
+import { TipoProducto } from '@app/_model/tipoProducto';
+import { EtiquetaService } from '@app/_service/modelos/etiqueta.service';
+import { Etiqueta } from '@app/_model/etiqueta';
+import { MarcaService } from '@app/_service/modelos/marca.service';
+import { Marca } from '@app/_model/marca';
+import { Talla } from '@app/_model/talla';
+import { Color } from '@app/_model/color';
 
 @Component({
   selector: 'app-crud',
@@ -43,35 +52,37 @@ export class CRUDComponent {
     private principal: AppComponent,
     private serviceCliente: ClienteService,
     private serviceProducto: ProductoService,//para la tabla de talla color solo es ejemplo
-    private serviceTCF: TallaColorService,//para la tabla de talla color solo es ejemplo
     private auth: AuthService,
     private router: Router,
+    private almacen: AuthService,
     private tallaService: TallaService,
-    private colorService: ColorService,
-    private categoriaService: CategoriasService
+    private categoriaService: CategoriasService,
+    private tipoprodService: TipoProductoService,
+    private etiquetaService: EtiquetaService,
+    private marcaService: MarcaService,
+    private colorService: ColorService
 
   ) {}
 
   formRegistro!: FormGroup;
-
-  talla!: Enum[];
   products!: Producto[];//para la tabla de talla color
-  color!: Enum[];
-  selectedtalla!: Enum;
-  selectedcolor!: Enum;
   seleccion!: string;
-  categorias!: Enum[];
-  categoriaActual!: string;
+  categorias: Categoria[] = [];
   items!: MenuItem[];
   selectedCategories!: Enum;
+  tipoprods: TipoProducto[] = [];
+  etiquetas: Etiqueta[] = [];
+  marcas: Marca[] = [];
+  tallas: Talla[] = [];
+  colores: Color[] = [];
   /*TCF: tallaColorFilter[] = [];*/
 
 
   ngOnInit() {
 
     // llama a la función para asegurarte de que los valores iniciales se muestren en el chip
-    this.updateValuestalla();
-    this.updateValuescolor();
+  /*  this.updateValuestalla();
+    this.updateValuescolor();*/
 //para la tabla de talla color
   /*  this.serviceProducto.().then((data) => {
       this.products = data;
@@ -88,8 +99,56 @@ export class CRUDComponent {
 };
 */ 
 
+  this.categoriaService.listar(this.almacen.getToken()).subscribe(
+
+    (data) => {
+      this.categorias = data;
+      this.formRegistro.get('categorias')?.patchValue(this.categorias[0].idCateg);
+    }
+  );
+
+  this.tipoprodService.listar(this.almacen.getToken()).subscribe(
+
+    (data) => {
+      this.tipoprods = data;
+      this.formRegistro.get('tipoprods')?.patchValue(this.tipoprods[0].idTipoProduc);
+    }
+  );
+
+  this.etiquetaService.listar(this.almacen.getToken()).subscribe(
+
+    (data) => {
+      this.etiquetas = data;
+      this.formRegistro.get('etiquetas')?.patchValue(this.tipoprods[0].idTipoProduc);
+    }
+  );
+
+  this.marcaService.listar(this.almacen.getToken()).subscribe(
+
+    (data) => {
+      this.marcas = data;
+      this.formRegistro.get('marcas')?.patchValue(this.marcas[0].idMarca);
+    }
+  );
+
+  this.tallaService.listar(this.almacen.getToken()).subscribe(
+
+    (data) => {
+      this.tallas = data;
+      this.formRegistro.get('tallas')?.patchValue(this.tallas[0].nombreItem);
+    }
+  );
+
+  this.colorService.listar(this.almacen.getToken()).subscribe(
+
+    (data) => {
+      this.colores = data;
+      this.formRegistro.get('colores')?.patchValue(this.colores[0].idColor);
+    }
+  );
+
  //listar categorias
- this.categoriaService.listar(this.auth.getToken()).subscribe((data) => {
+ /*this.categoriaService.listar(this.auth.getToken()).subscribe((data) => {
   this.categorias = data;
   this.items = this.categorias.map((categoria) => {
     return {
@@ -102,12 +161,12 @@ export class CRUDComponent {
       },
     };
   });
-});
+});*/
 
 
 
 //listar tallas
-  this.tallaService.listar(this.auth.getToken()).subscribe((data) => {
+ /* this.tallaService.listar(this.auth.getToken()).subscribe((data) => {
    this.talla = data.filter((talla) => talla.vistaItem !== 'Talla unica');
   });
 
@@ -115,7 +174,7 @@ export class CRUDComponent {
   this.colorService.listar(this.auth.getToken()).subscribe((data) => {
     this.color = data.filter((color) => color.vistaItem !== 'Color unico');
    });
-
+*/
     this.formRegistro = new FormGroup({
       descripcionProduct: new FormControl({
         value: '',
@@ -172,7 +231,7 @@ export class CRUDComponent {
 
 
 
-  valuestalla: any[] = [];
+  /*valuestalla: any[] = [];
   abreviaturastalla: any[] = [];
   updateValuestalla() {
     if (this.selectedtalla) {
@@ -183,10 +242,10 @@ export class CRUDComponent {
         //this.filtrar(this.seleccion);
       }
     }
-  }
+  }*/
 
   //etiqwuetas de filtrado
-  removetalla(talla: string) {
+  /*removetalla(talla: string) {
     const index = this.valuestalla.indexOf(talla);
     if (index !== -1) {
       this.valuestalla.splice(index, 1);
@@ -206,17 +265,17 @@ export class CRUDComponent {
         //this.filtrar(this.seleccion);
       }
     }
-  }
+  }*/
 
   //etiqwuetas de filtrado
-  removecolor(color: string) {
+  /*removecolor(color: string) {
     const index = this.valuestalla.indexOf(color);
     if (index !== -1) {
       this.valuescolor.splice(index, 1);
       this.abreviaturascolor.splice(index, 1);
       //this.filtrar(this.seleccion);
     }
-  }
+  }/*
 
 
   valuescategoria: any[] = [];
@@ -233,14 +292,14 @@ export class CRUDComponent {
   }
 
   //etiqwuetas de filtrado
-  removecategoria(categoria: string) {
+  /*removecategoria(categoria: string) {
     const index = this.valuestalla.indexOf(categoria);
     if (index !== -1) {
       this.valuescategoria.splice(index, 1);
       this.abreviaturascategoria.splice(index, 1);
       //this.filtrar(this.seleccion);
     }
-  }
+  }*/
 
 
   @Input() flexWrap: boolean = false;
@@ -264,11 +323,14 @@ export class CRUDComponent {
     this.unTallaColor.color = this.formRegistro.value['idColor'];
     this.unTallaColor.cantidad = this.formRegistro.value['idCantidad'];
     //seteando unProducto a unRegistro
+    
+    /*this.unRegistro.producto	 =  this.unProducto;
+    this.unRegistro.tallaColorFilters	 =  this.unTallaColor;*/
+    this.unRegistro = { producto: this.unProducto, tallaColorFilters: this.unTallaColor };
 
-    this.unRegistro.producto	 =  this.unProducto;
+    console.log(this.unProducto,this.unTallaColor)
 
-    console.log(this.unProducto,this.unProducto)
-    /*this.serviceProducto.registrar(this.unRegistro, this.auth.getToken()).subscribe(
+    this.serviceProducto.registrar(this.unRegistro, this.auth.getToken()).subscribe(
       (data) => {
         console.log("🔥 > CRUDComponent > registrar > data:", data)
         Swal.fire({
@@ -285,7 +347,7 @@ export class CRUDComponent {
       }, (error) => {
         this.principal.mensaje('error', 'Error en registro de producto', error.mensaje);
       }
-    );*/
+    );
   }
 /*
   generarUserPass(nombre?: string, apellido?: string, fecha?: Date) {

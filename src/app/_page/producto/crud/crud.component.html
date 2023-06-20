@@ -1,86 +1,131 @@
 <section style="background-color: white;" class="p-3">
     <div [ngClass]="{'contenedor-a': true, 'wrap': flexWrap}" class="flex justify-content-center ">
         <!-- Primero verifica si esta logeado o no, si no esta logeado, entonces Login -->
-    <!--    <div class="text-center flex flex-column align-items-center justify-content-center logo-esp m-5">
+        <!--    <div class="text-center flex flex-column align-items-center justify-content-center logo-esp m-5">
             <img src="./assets/imgs_inicio/L0.png" alt="Image" height="80" class="mb-3">
             <div class="text-900 text-3xl font-medium mb-3">Registrate</div>
             <div class="text-900 text-xl font-medium mb-3">"¡Únete y sé parte grandes descuentos y promociones!"</div>
         </div> -->
         <div class="grid" style="width: 100%;">
-            <formRegistro class="col-12 flex flex-column justify-content-center" [formGroup]="formRegistro" #frm="ngForm">
-                    <div class="flex">
-                        <div class="col-6z">
-                            <div class="mb-2">
-                                <p-fieldset>
-                                    <ng-template pTemplate="header">
-                                        <div class="flex align-items-center text-primary">
-                                            <span class="pi pi-user mr-2"></span>
-                                            <span class="font-bold text-lg">Datos Generales Producto</span>
-                                        </div>
-                                    </ng-template>
-                                    <span class="p-float-label">
-                                        <input pInputText formControlName="descripcionProduct" />
-                                        <label htmlFor="username">Descripcion</label>
-                                    </span>
-                                    <span class="p-float-label">
-                                        <input pInputText formControlName="nombreProduct" />
-                                        <label htmlFor="username">Nombre del Producto</label>
-                                    </span>
-                                    <span class="p-float-label">
-                                        <input pInputText formControlName="precioUni" />
-                                        <label htmlFor="username">Precio Unitario</label>
-                                    </span>
-                                    <span class="p-float-label">
-                                        <input pInputText formControlName="precioDescuProduct" />
-                                        <label htmlFor="username">Precio Descuento</label>
-                                    </span>
-                                    <span class="p-float-label">
-                                        <input pInputText formControlName="imagen" />
-                                        <label htmlFor="username">Imagen</label>
-                                    </span>
-                                </p-fieldset>
-                            </div>
-                            
+            <formRegistro class="col-12 flex flex-column justify-content-center" [formGroup]="formRegistro"
+                #frm="ngForm">
+                <div class="flex">
+                    <div class="col-6z">
+                        <div class="mb-2">
+                            <p-fieldset>
+                                <ng-template pTemplate="header">
+                                    <div class="flex align-items-center text-primary">
+                                        <span class="pi pi-user mr-2"></span>
+                                        <span class="font-bold text-lg">Datos Generales Producto</span>
+                                    </div>
+                                </ng-template>
+                                <span class="p-float-label">
+                                    <input pInputText formControlName="descripcionProduct" />
+                                    <label htmlFor="username">Descripcion</label>
+                                </span>
+                                <span class="p-float-label">
+                                    <input pInputText formControlName="nombreProduct" />
+                                    <label htmlFor="username">Nombre del Producto</label>
+                                </span>
+                                <span class="p-float-label">
+                                    <input pInputText formControlName="precioUni" />
+                                    <label htmlFor="username">Precio Unitario</label>
+                                </span>
+                                <span class="p-float-label">
+                                    <input pInputText formControlName="precioDescuProduct" />
+                                    <label htmlFor="username">Precio Descuento</label>
+                                </span>
+                                <span class="p-float-label">
+                                    <input pInputText formControlName="imagen" />
+                                    <label htmlFor="username">Imagen</label>
+                                </span>
+                            </p-fieldset>
                         </div>
-                        <div class="col-5 ">
-                            <div class="mb-2">
-                                <p-fieldset [style]="{height: '100%'}">
-                                    <ng-template pTemplate="header">
-                                        <div class="flex align-items-center text-primary">
-                                            <span class="pi pi-map-marker mr-2"></span>
-                                            <span class="font-bold text-lg">Datos Especificos</span>
-                                        </div>
-                                    </ng-template>
-                                    <span class="p-float-label">
-                                        <input pInputText formControlName="idCateg" />
-                                        <label htmlFor="username">ID Categoria</label>
-                                    </span>
-                                    <span class="p-float-label">
-                                        <input pInputText formControlName="idTipoProduc" />
-                                        <label htmlFor="username">ID Ripo Producto</label>
-                                    </span>
-                                    <span class="p-float-label">
-                                        <input pInputText formControlName="idEtiqueta" />
-                                        <label htmlFor="username">ID Etiqueta</label>
-                                    </span>
-                                    <span class="p-float-label">
-                                        <input pInputText formControlName="idMarca" />
-                                        <label htmlFor="username">ID Marca</label>
-                                    </span>
-                                </p-fieldset>
-                            </div>
-                            
+
+                    </div>
+                    <div class="col-5 ">
+                        <div class="mb-2">
+                            <p-fieldset [style]="{height: '100%'}">
+                                <ng-template pTemplate="header">
+                                    <div class="flex align-items-center text-primary">
+                                        <span class="pi pi-map-marker mr-2"></span>
+                                        <span class="font-bold text-lg">Datos Especificos</span>
+                                    </div>
+                                </ng-template>
+                                <span class="p-float-label">
+
+                                    <p-dropdown [options]="tallas" formControlName="idTalla" optionLabel="idTalla"
+                                        inputId="p-float-label" [style]="{'width':'100%'}"></p-dropdown>
+                                    <label for="p-float-label">Talla</label>
+    
+                                </span>
+                                <span class="p-float-label">
+
+                                    <p-dropdown [options]="colores" formControlName="idColor" optionLabel="idColor"
+                                        inputId="p-float-label" [style]="{'width':'100%'}"></p-dropdown>
+                                    <label for="p-float-label">Color</label>
+    
+                                </span>
+                                <span class="p-float-label">
+                                    <input pInputText formControlName="idCantidad" />
+                                    <label htmlFor="username">Cantidad</label>
+                                </span>
+                            </p-fieldset>
                         </div>
+
                     </div>
-                    
-           <button pButton pRipple label="Registrar Producto" icon="pi pi-check-circle" class="w-full"
-                        (click)="registrar()"
-                        [style]="{backgroundColor:'var(--color-prin)', color: '#ffffff'}"></button>
-                    <div class="w-full flex justify-content-center mt-3">
-                        <a routerLink="/">Inicio</a>
+                </div>
+                <div class="col-5 ">
+                    <div class="mb-2">
+                        <p-fieldset [style]="{height: '100%'}">
+                            <ng-template pTemplate="header">
+                                <div class="flex align-items-center text-primary">
+                                    <span class="pi pi-map-marker mr-2"></span>
+                                    <span class="font-bold text-lg">Datos PRO</span>
+                                </div>
+                            </ng-template>
+                            <span class="p-float-label">
+
+                                <p-dropdown [options]="categorias" formControlName="idCateg" optionLabel="idCateg"
+                                    inputId="p-float-label" [style]="{'width':'100%'}"></p-dropdown>
+                                <label for="p-float-label">Categoria</label>
+
+                            </span>
+
+                            <span class="p-float-label">
+
+                                <p-dropdown [options]="tipoprods" formControlName="idTipoProduc" optionLabel="idTipoProduc"
+                                    inputId="p-float-label" [style]="{'width':'100%'}"></p-dropdown>
+                                <label for="p-float-label">Tipo Producto</label>
+
+                            </span>
+                            <span class="p-float-label">
+
+                                <p-dropdown [options]="etiquetas" formControlName="idEtiqueta" optionLabel="idEtiqueta"
+                                    inputId="p-float-label" [style]="{'width':'100%'}"></p-dropdown>
+                                <label for="p-float-label">Etiqueta</label>
+
+                            </span>
+                            <span class="p-float-label">
+
+                                <p-dropdown [options]="marcas" formControlName="idMarca" optionLabel="idMarca"
+                                    inputId="p-float-label" [style]="{'width':'100%'}"></p-dropdown>
+                                <label for="p-float-label">Marca</label>
+
+                            </span>
+                        </p-fieldset>
                     </div>
-                
-         <!--  
+
+                </div>
+
+
+                <button pButton pRipple label="Registrar Producto" icon="pi pi-check-circle" class="w-full"
+                    (click)="registrar()" [style]="{backgroundColor:'var(--color-prin)', color: '#ffffff'}"></button>
+                <div class="w-full flex justify-content-center mt-3">
+                    <a routerLink="/">Inicio</a>
+                </div>
+
+                <!--  
                 <div *ngIf="!porCorreo" class="flex align-items-center justify-content-center">
                     <div class=" flex-column w-7">
                         <div class="w-full">
@@ -98,8 +143,8 @@
                                     <label htmlFor="username">Correo electrónico</label>
                                 </span>
                             </div>
-                        </div>-->     
-                        <!--<button pButton pRipple label="Siguiente" icon="pi pi-check-circle" class="w-full mb-5"
+                        </div>-->
+                <!--<button pButton pRipple label="Siguiente" icon="pi pi-check-circle" class="w-full mb-5"
                             [style]="{backgroundColor:'var(--color-prin)', color: '#ffffff'}"
                             (click)="verificarEmail(this.formRegistro.value['correo'])"></button>
                         <p-button styleClass="p-button-outlined w-full mb-5"
@@ -107,7 +152,7 @@
                             <img alt="google-icono" src="/assets/imgs_login/google-icon.png" style="width: 1.5rem" />
                             <span class="ml-2 font-bold">Registrate con Google</span>
                         </p-button>-->
-                        <!--<div class="w-full flex justify-content-center">
+                <!--<div class="w-full flex justify-content-center">
                             <a routerLink="/login">Inicia Sesion</a>
                         </div>
                     </div>
