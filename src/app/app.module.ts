@@ -2,7 +2,7 @@ import { Error } from './_page/error/error';
 import { RouterModule } from '@angular/router';
 import { NgImageSliderModule } from 'ng-image-slider';
 
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { PrimeNGModule } from './prime-ng.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -35,15 +35,18 @@ import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-
+import { MenuComponent } from './_page/cliente/menu/menu.component';
 import { CuentaComponent } from './_page/cliente/cuenta/cuenta.component';
 import { DatosPersonalesComponent } from './_page/cliente/cuenta/datos-personales/datos-personales.component';
 import { ConfiguracionComponent } from './_page/cliente/cuenta/configuracion/configuracion.component';
+import { ComprasComponent } from './_page/cliente/cuenta/compras/compras.component';
 import { ListadeseoComponent } from './_page/paqueteria/listadeseo/listadeseo.component';
+import { ChatbotComponent } from './_page/inicial/chatbot/chatbot.component';
 import { CRUDComponent } from './_page/producto/crud/crud.component';
 
 
 @NgModule({
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
     AppComponent,
     Details01Component,
@@ -55,6 +58,7 @@ import { CRUDComponent } from './_page/producto/crud/crud.component';
     SeguimientoComponent,
     CarritoComponent,
     DialogComponent,
+    ChatbotComponent,
     TrazaProductComponent,
     EntregaComponent,
     PagoComponent,
@@ -63,11 +67,14 @@ import { CRUDComponent } from './_page/producto/crud/crud.component';
     LoginComponent,
     SessionComponent,
     RegistroComponent,
+    MenuComponent,
     CuentaComponent,
     DatosPersonalesComponent,
     ConfiguracionComponent,
+    ComprasComponent,
     ListadeseoComponent,
     CRUDComponent
+
   ],
   imports: [
     RouterModule,

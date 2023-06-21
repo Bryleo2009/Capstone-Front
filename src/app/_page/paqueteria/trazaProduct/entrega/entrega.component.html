@@ -6,7 +6,7 @@
     </div>
     <!-- Primero verifica si esta logeado o no, si no esta logeado, entonces Login -->
     <div *ngIf="logeado" class="grid" style="width: 100%;">
-      <formEntrega action="" class="col-12 flex" [formGroup]="formEntrega" #frm="ngForm">
+      <form action="" class="col-12 flex" [formGroup]="form" #frmUser="ngForm">
         <div class="col-6">
           <div class="mb-2 mt-3">
             <p-fieldset>
@@ -18,14 +18,14 @@
               </ng-template>
               <span class="p-float-label">
                 <input pInputText  formControlName="nombre" required ngbFormControl
-                [class.is-invalid]="formEntrega.get('nombre')?.invalid && formEntrega.get('nombre')?.touched"
-                [class.ngb-invalid]="formEntrega.get('nombre')?.invalid && formEntrega.get('nombre')?.touched">
+                [class.is-invalid]="form.get('nombre')?.invalid && form.get('nombre')?.touched"
+                [class.ngb-invalid]="form.get('nombre')?.invalid && form.get('nombre')?.touched">
                 <label htmlFor="username">Nombres</label>
               </span>
               <span class="p-float-label">
                 <input pInputText  formControlName="apellidos" required ngbFormControl
-                [class.is-invalid]="formEntrega.get('apellidos')?.invalid && formEntrega.get('apellidos')?.touched"
-                [class.ngb-invalid]="formEntrega.get('apellidos')?.invalid && formEntrega.get('apellidos')?.touched">
+                [class.is-invalid]="form.get('apellidos')?.invalid && form.get('apellidos')?.touched"
+                [class.ngb-invalid]="form.get('apellidos')?.invalid && form.get('apellidos')?.touched">
                 <label htmlFor="username">Apellidos</label>
               </span>
             </p-fieldset>
@@ -40,17 +40,17 @@
               </ng-template>
               <span class="p-float-label">
                 <input pInputText formControlName="celular" required ngbFormControl
-                [class.is-invalid]="formEntrega.get('celular')?.invalid && formEntrega.get('celular')?.touched"
-                [class.ngb-invalid]="formEntrega.get('celular')?.invalid && formEntrega.get('celular')?.touched">
+                [class.is-invalid]="form.get('celular')?.invalid && form.get('celular')?.touched"
+                [class.ngb-invalid]="form.get('celular')?.invalid && form.get('celular')?.touched">
                 <label htmlFor="username">Número de celular</label>
               </span>
               <span class="p-float-label">
                 <input pInputText  formControlName="correo" required ngbFormControl
-                [class.is-invalid]="formEntrega.get('correo')?.invalid && formEntrega.get('correo')?.touched"
-                [class.ngb-invalid]="formEntrega.get('correo')?.invalid && formEntrega.get('correo')?.touched">
+                [class.is-invalid]="form.get('correo')?.invalid && form.get('correo')?.touched"
+                [class.ngb-invalid]="form.get('correo')?.invalid && form.get('correo')?.touched">
             <div class="invalid-feedback">
-              <div *ngIf="formEntrega.get('correo')?.hasError('required')">Campo requerido.</div>  
-              <div *ngIf="formEntrega.get('correo')?.hasError('email')">El correo ingresado no es correcto.</div>
+              <div *ngIf="form.get('correo')?.hasError('required')">Campo requerido.</div>  
+              <div *ngIf="form.get('correo')?.hasError('email')">El correo ingresado no es correcto.</div>
             </div>
                 <label htmlFor="username">Correo electrónico</label>
               </span>
@@ -66,31 +66,31 @@
               </div>
             </ng-template>
             <div class="col-12">
-              <div class="formEntrega-group selectores col flex flex-column">
+              <div class="form-group selectores col flex flex-column">
                 <p-dropdown formControlName="departamentoPaciente" [(ngModel)]="selectedDepartment"
                   name="selectedDepartment" placeholder="Departamento" (ngModelChange)="updateDistrictsAndProvinces()"
                   id="departmentSelect" [options]="departments" optionLabel="nombre_departamento"></p-dropdown>
               </div>
-              <div class="formEntrega-group selectores col flex flex-column">
+              <div class="form-group selectores col flex flex-column">
                 <p-dropdown formControlName="provinciaPaciente" [(ngModel)]="selectedProvince" name="selectedProvince"
                   placeholder="Provincia" (ngModelChange)="updateDistrictsAndProvinces()" id="provinceSelect"
                   [options]="provinces" optionLabel="nombre_provincia"></p-dropdown>
               </div>
-              <div class="formEntrega-group selectores col flex flex-column">
+              <div class="form-group selectores col flex flex-column">
                 <p-dropdown formControlName="distritoPaciente" [(ngModel)]="selectedDistrict" name="selectedDistrict"
                   placeholder="Distrito" (ngModelChange)="updateDistrictsAndProvinces()" id="districtSelect"
                   [options]="districts" optionLabel="nombre_distrito"></p-dropdown>
               </div>
               <span class="p-float-label">
                 <input pInputText  formControlName="direccion" required ngbFormControl
-                [class.is-invalid]="formEntrega.get('direccion')?.invalid && formEntrega.get('direccion')?.touched"
-                [class.ngb-invalid]="formEntrega.get('direccion')?.invalid && formEntrega.get('direccion')?.touched">
+                [class.is-invalid]="form.get('direccion')?.invalid && form.get('direccion')?.touched"
+                [class.ngb-invalid]="form.get('direccion')?.invalid && form.get('direccion')?.touched">
                 <label htmlFor="username">Direccion de entrega</label>
               </span>
             </div>
           </p-fieldset>
         </div>
-      </formEntrega>
+      </form>
     </div>
   </div>
 
