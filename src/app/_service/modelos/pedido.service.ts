@@ -48,5 +48,4 @@ export class PedidoService {
     return this.http.get<SeguimientoPedidoFilter[]>(`${this.url}/seguimiento/${id}`);
   }
 
-
 }

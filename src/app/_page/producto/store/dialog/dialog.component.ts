@@ -7,7 +7,6 @@ import { EncryptionService } from '@app/_service/util/encryption.service';
 import { MessageService } from 'primeng/api';
 import { environment } from '@env/environment.development';
 import { CarritoService } from '@app/_service/modelos/carrito.service';
-import { ListaDeseoService } from '@app/_service/modelos/listadeseo.service';
 
 import {
   DialogService,
@@ -38,7 +37,6 @@ export class DialogComponent implements OnInit {
     private productoService: ProductoService,
     private messageService: MessageService,
     private carritoService: CarritoService,
-    private listadeseoService: ListaDeseoService,
     private general: AppComponent,
     private colorSerive: ColorService,
     private tallaService: TallaService,
@@ -92,12 +90,6 @@ export class DialogComponent implements OnInit {
     this.messageService.add({ severity: 'success', summary: 'Regristro exitoso!', detail: 'El producto ha sido agregado al carrito' });
     // Lógica para agregar los productos al carrito
     this.carritoService.agregarAlCarrito(idProducto, cantidadProducto, colorid, tallaid);
-  }
-
-  agregarAlListadeseo(idProducto: number, cantidadProducto: number,colorid:EnumInter, tallaid:EnumInter){
-    this.messageService.add({ severity: 'success', summary: 'Regristro exitoso!', detail: 'El producto ha sido agregado a la lista de deseos' });
-    // Lógica para agregar los productos al carrito
-    this.listadeseoService.agregarAlListadeseo(idProducto, cantidadProducto, colorid, tallaid);
   }
 
   listarProductos(categoria: string): void {
