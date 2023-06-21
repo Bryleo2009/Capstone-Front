@@ -41,6 +41,7 @@ import { DatosPersonalesComponent } from './_page/cliente/cuenta/datos-personale
 import { ConfiguracionComponent } from './_page/cliente/cuenta/configuracion/configuracion.component';
 import { ListadeseoComponent } from './_page/paqueteria/listadeseo/listadeseo.component';
 import { StockPrendasComponent } from './_page/paqueteria/stock-prendas/stock-prendas.component';
+import { NosotrosComponent } from './_page/producto/nosotros/nosotros.component';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { StockPrendasComponent } from './_page/paqueteria/stock-prendas/stock-pr
     DatosPersonalesComponent,
     ConfiguracionComponent,
     ListadeseoComponent,
-    StockPrendasComponent
+    StockPrendasComponent,
+    NosotrosComponent
   ],
   imports: [
     RouterModule,
