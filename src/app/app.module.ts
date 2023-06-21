@@ -40,6 +40,8 @@ import { CuentaComponent } from './_page/cliente/cuenta/cuenta.component';
 import { DatosPersonalesComponent } from './_page/cliente/cuenta/datos-personales/datos-personales.component';
 import { ConfiguracionComponent } from './_page/cliente/cuenta/configuracion/configuracion.component';
 import { ListadeseoComponent } from './_page/paqueteria/listadeseo/listadeseo.component';
+import { StockPrendasComponent } from './_page/paqueteria/stock-prendas/stock-prendas.component';
+import { NosotrosComponent } from './_page/producto/nosotros/nosotros.component';
 
 
 @NgModule({
@@ -65,7 +67,9 @@ import { ListadeseoComponent } from './_page/paqueteria/listadeseo/listadeseo.co
     CuentaComponent,
     DatosPersonalesComponent,
     ConfiguracionComponent,
-    ListadeseoComponent
+    ListadeseoComponent,
+    StockPrendasComponent,
+    NosotrosComponent
   ],
   imports: [
     RouterModule,

@@ -1,0 +1,36 @@
+
+
+#nosotros {
+    background-color:  var(--color-prin);
+    padding: 40px 0;
+    
+  }
+  
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  h2 {
+    font-size: 50px;
+    margin-bottom: 20px;
+  }
+  
+  h3 {
+    font-size: 50px;
+    margin-bottom: 15px;
+  }
+  
+  p {
+    font-size: 20px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+  }
+  
+  .formulario {
+    background-image: url('/assets/imgs_login/fondo.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 50px 0px;
+}

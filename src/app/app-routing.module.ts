@@ -22,6 +22,7 @@ import { CuentaComponent } from './_page/cliente/cuenta/cuenta.component';
 import { DatosPersonalesComponent } from './_page/cliente/cuenta/datos-personales/datos-personales.component';
 import { ConfiguracionComponent } from './_page/cliente/cuenta/configuracion/configuracion.component';
 import { ListadeseoComponent } from './_page/paqueteria/listadeseo/listadeseo.component';
+import { NosotrosComponent } from './_page/producto/nosotros/nosotros.component';
 
 const routes: Routes = [
   {
@@ -50,6 +51,10 @@ const routes: Routes = [
     path: 'store',
     component: StoreComponent,
     children: [{ path: 'open', component: DialogComponent }],
+  },
+  {
+    path: 'nosotros',
+    component: NosotrosComponent,
   },
   {
     path: 'pedido',
