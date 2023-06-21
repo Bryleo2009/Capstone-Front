@@ -13,7 +13,6 @@ import { CarritoService } from '@app/_service/modelos/carrito.service';
 import { ColorService } from '@app/_service/modelos/color.service';
 import { Enum, EnumInter } from '@app/_model/enum';
 import { AuthService } from '@app/_service/rutas/auth.service';
-import { ConfirmationService } from 'primeng/api';
 
 
 interface Car {
@@ -29,12 +28,9 @@ interface Car {
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.css'],
 })
-
 export class Details01Component {
-  
   constructor(
     private route: ActivatedRoute,
-    private confirmationService: ConfirmationService,
     private encryp: EncryptionService,
     private router: Router,
     private producSerive: ProductoService,
@@ -170,5 +166,6 @@ export class Details01Component {
       },
     });
   }
+
 }
 

@@ -1,52 +1,29 @@
-.titulo {
-
-    padding: 20px;
-    margin: 10px;
+.center02 {
     display: flex;
     justify-content: center;
-}
-
-.letra {
-
-    font-size: 40px !important;
+    padding: 25px;
     font-weight: bold;
-    text-decoration: underline;
+    font-size: 40px !important;
+  }
 
-}
-.exs {
+.exs{
     color: var(--color-prin);
 }
 
-.volver {
+.postl{
+    /* padding: 50px; */
+}
+
+.volver{
     display: flex;
     justify-content: left;
 }
 
-.reducc {
+.reducc{
     /* font-size: 12px; */
-    grid-row: 50px;
+    grid-row: 50px ;
 }
 
 .colorTitulo {
     color: var(--color-prin);
-}
-
-.ultimo-elemento{
-    /* Estilos para el último elemento */
-    color: var(--color-prin) !important;
-    font-weight: bold;
-    /* Agrega cualquier otro estilo deseado */
-}
-
-:host ::ng-deep .p-timeline-event-marker.ng-star-inserted:last-child {
-    background-color: var(--color-prin);
-}
-
-
-:host ::ng-deep .p-timeline-event-separator>* {
-    background-color: #cfcfcf71;
-}
-
-:host ::ng-deep .p-timeline-event, :host ::ng-deep .p-timeline-event-content > *{
-    color: #5a5a5a71;
 }

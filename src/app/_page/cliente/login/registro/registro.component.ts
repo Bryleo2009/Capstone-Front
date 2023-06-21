@@ -32,7 +32,7 @@ export class RegistroComponent {
     private auth: AuthService,
     private router: Router
   ) {}
-  formRegistro!: FormGroup;
+  form!: FormGroup;
   porCorreo: boolean = false;
   porGoogle:  boolean = false;
   ngOnInit() {
@@ -46,7 +46,7 @@ export class RegistroComponent {
       }
     );
 
-    this.formRegistro = new FormGroup({
+    this.form = new FormGroup({
       departamentoPaciente: new FormControl({
         value: '',
         disabled: false,
@@ -173,6 +173,7 @@ export class RegistroComponent {
               const lastName = userInfo.family_name;
               const email = userInfo.email;
               const profilePicture = userInfo.picture;
+              this.porGoogle = true;
               
               this.verificarEmail(email,firstName,lastName);
             });
@@ -196,22 +197,16 @@ export class RegistroComponent {
 
   verificarEmail(correo: string, firstName?: string,lastName?: string) {
     if (correo != '') {
-      
       //verificar existrencia del correo
       this.serviceCliente.exitenciaXCorreo(correo,this.auth.getToken()).subscribe(
         (response) => {
           console.log("🔥 > RegistroComponent > verificarEmail > response:", response)
-          if(firstName!=undefined){
-            this.porGoogle=true;
-          }
+
           if(response == true){
             this.principal.mensaje('warn','Ups!','Correo ya registrado en la base de datos');
-            if(firstName!=undefined){
-              this.porGoogle=false;
-            }
           } else {
             this.porCorreo = true;
-              this.formRegistro = new FormGroup({
+              this.form = new FormGroup({
                 departamentoPaciente: new FormControl({
                   value: '',
                   disabled: false,
@@ -286,28 +281,22 @@ export class RegistroComponent {
   unTC: Enum = new Enum();
   registrar(){
     this.unRol.idRol = 3;
-    if(!this.formRegistro.value['checked']){
+    if(!this.form.value['checked']){
       this.unTC.idTipoDoc = 1
     } else {
       this.unTC.idTipoDoc = 2
     }    
     this.unUsuario.Status = true;
-    if(!this.porCorreo){
-      this.unUsuario.password = this.generarUserPass(this.formRegistro.value['nombre'],this.formRegistro.value['apellidos'],this.formRegistro.value['fechaNac']);
-      this.unUsuario.username = this.generarUserPass(this.formRegistro.value['nombre'],this.formRegistro.value['apellidos'],this.formRegistro.value['fechaNac']);
-    } else{
-      this.unUsuario.password = this.formRegistro.value['password'];
-      this.unUsuario.username =this.formRegistro.value['username'];
-    }
-    
+    this.unUsuario.password = this.generarUserPass(this.form.value['nombre'],this.form.value['apellidos'],this.form.value['fechaNac']);
+    this.unUsuario.username = this.generarUserPass(this.form.value['nombre'],this.form.value['apellidos'],this.form.value['fechaNac']);
     this.unUsuario.idRol = this.unRol;
-    this.unCliente.apellido = this.formRegistro.value['apellidos'];
-    this.unCliente.correo= this.formRegistro.value['correo'];
-    this.unCliente.direccion= this.formRegistro.value['direccion'];
-    this.unCliente.fechaNac= this.formRegistro.value['fechaNac'];
-    this.unCliente.nombre= this.formRegistro.value['nombre'];
-    this.unCliente.numDocumento= this.formRegistro.value['numDoc'];
-    this.unCliente.telefono= this.formRegistro.value['numCel'];
+    this.unCliente.apellido = this.form.value['apellidos'];
+    this.unCliente.correo= this.form.value['correo'];
+    this.unCliente.direccion= this.form.value['direccion'];
+    this.unCliente.fechaNac= this.form.value['fechaNac'];
+    this.unCliente.nombre= this.form.value['nombre'];
+    this.unCliente.numDocumento= this.form.value['numDoc'];
+    this.unCliente.telefono= this.form.value['numCel'];
     this.unCliente.idTipoDoc=this.unTC;
     this.unCliente.idUserCliente = this.unUsuario;
     if(this.selectedDepartmentCode != undefined){
