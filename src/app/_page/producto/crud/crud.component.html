@@ -1,16 +1,10 @@
 <section style="background-color: white;" class="p-3">
     <div [ngClass]="{'contenedor-a': true, 'wrap': flexWrap}" class="flex justify-content-center ">
-        <!-- Primero verifica si esta logeado o no, si no esta logeado, entonces Login -->
-        <!--    <div class="text-center flex flex-column align-items-center justify-content-center logo-esp m-5">
-            <img src="./assets/imgs_inicio/L0.png" alt="Image" height="80" class="mb-3">
-            <div class="text-900 text-3xl font-medium mb-3">Registrate</div>
-            <div class="text-900 text-xl font-medium mb-3">"¡Únete y sé parte grandes descuentos y promociones!"</div>
-        </div> -->
         <div class="grid" style="width: 100%;">
             <formRegistro class="col-12 flex flex-column justify-content-center" [formGroup]="formRegistro"
                 #frm="ngForm">
                 <div class="flex">
-                    <div class="col-6z">
+                    <div class="col-5 ">
                         <div class="mb-2">
                             <p-fieldset>
                                 <ng-template pTemplate="header">
@@ -41,10 +35,8 @@
                                 </span>
                             </p-fieldset>
                         </div>
-
                     </div>
-                    
-                    <div class="col-5 ">
+                    <div class="col-2 ">
                         <div class="mb-2">
                             <p-fieldset [style]="{height: '100%'}">
                                 <ng-template pTemplate="header">
@@ -55,18 +47,32 @@
                                 </ng-template>
                                 <span class="p-float-label">
 
-                                    <p-dropdown [options]="tallas" formControlName="idTalla" optionLabel="idTalla"
-                                        inputId="p-float-label" [style]="{'width':'100%'}"></p-dropdown>
+                                    <input pInputText formControlName="idTalla" />
                                     <label for="p-float-label">Talla</label>
-    
-                                </span>
+
+                                </span><br>
                                 <span class="p-float-label">
 
-                                    <p-dropdown [options]="colores" formControlName="idColor" optionLabel="idColor"
-                                        inputId="p-float-label" [style]="{'width':'100%'}"></p-dropdown>
+                                    <input pInputText formControlName="idColor" />
                                     <label for="p-float-label">Color</label>
-    
-                                </span>
+
+                                </span><br>
+                                <!--<span class="p-float-label">
+
+                                    <p-dropdown [options]="tallas" formControlName="idTalla" optionLabel="idTalla"
+                                        [showClear]="true" placeholder="Selecciona una Talla" inputId="p-float-label"
+                                        [style]="{'width':'100%'}"></p-dropdown>
+                                    <label for="p-float-label">Talla</label>
+
+                                </span><br>-->
+                               <!-- <span class="p-float-label">
+
+                                    <p-dropdown [options]="colores" formControlName="idColor" optionLabel="idColor"
+                                        [showClear]="true" placeholder="Selecciona un Color" inputId="p-float-label"
+                                        [style]="{'width':'100%'}"></p-dropdown>
+                                    <label for="p-float-label">Color</label>
+
+                                </span><br>-->
                                 <span class="p-float-label">
                                     <input pInputText formControlName="idCantidad" />
                                     <label htmlFor="username">Cantidad</label>
@@ -75,105 +81,72 @@
                         </div>
 
                     </div>
-                </div>
-                <div class="col-5 ">
-                    <div class="mb-2">
-                        <p-fieldset [style]="{height: '100%'}">
-                            <ng-template pTemplate="header">
-                                <div class="flex align-items-center text-primary">
-                                    <span class="pi pi-map-marker mr-2"></span>
-                                    <span class="font-bold text-lg">Datos PRO</span>
-                                </div>
-                            </ng-template>
-                            <span class="p-float-label">
+                    <div class="col-5 ">
+                        <div class="mb-2">
+                            <p-fieldset [style]="{height: '100%'}">
+                                <ng-template pTemplate="header">
+                                    <div class="flex align-items-center text-primary">
+                                        <span class="pi pi-map-marker mr-2"></span>
+                                        <span class="font-bold text-lg">Datos en la BD</span>
+                                    </div>
+                                </ng-template>
+                                <span class="p-float-label">
 
-                                <p-dropdown [options]="categorias" formControlName="idCateg" optionLabel="idCateg"
-                                    inputId="p-float-label" [style]="{'width':'100%'}"></p-dropdown>
-                                <label for="p-float-label">Categoria</label>
+                                    <p-dropdown [options]="categorias" formControlName="idCateg" optionLabel="idCateg"
+                                        [showClear]="true" placeholder="Selecciona una Categoria"
+                                        inputId="p-float-label" [style]="{'width':'100%'}"></p-dropdown>
+                                    <label for="p-float-label">Categoria</label>
 
-                            </span>
+                                </span><br>
 
-                            <span class="p-float-label">
-
-                                <p-dropdown [options]="tipoprods" formControlName="idTipoProduc" optionLabel="idTipoProduc"
-                                    inputId="p-float-label" [style]="{'width':'100%'}"></p-dropdown>
-                                <label for="p-float-label">Tipo Producto</label>
-
-                            </span>
-                            <!-- Etiquetas -->
-                <div class="card">
-                <h3> Etiquetas </h3>
-                <div class="flex flex-column gap-2 marca">
-                    <p-chip class="flex align-items-start" *ngFor="let etiqueta of valuesEtiqueta" [label]="etiqueta"
-                        [removable]="true" (onRemove)="removeEtiqueta(etiqueta)"></p-chip>
-                    <p-dropdown [options]="etiquetas" formControlName="idEtiqueta" optionLabel="idEtiqueta"
-                        [filter]="true" filterBy="vistaItem" [showClear]="true" placeholder="Selecciona una etiqueta"
-                        (ngModelChange)="updateValuesEtiquetas()" [style]="{ width: '280px' }">
-                        <ng-template pTemplate="selectedItem">
-                            <div class="flex align-items-center gap-2" *ngIf="selectedEtiqueta">
-                                <div>{{ selectedEtiqueta.vistaItem }}</div>
-                            </div>
-                        </ng-template>
-                        <ng-template let-etiqueta pTemplate="item">
-                            <div class="flex align-items-center gap-2">
-                                <div>{{ etiqueta.vistaItem }}</div>
-                            </div>
-                        </ng-template>
-                    </p-dropdown>
-                </div>
-            </div>
-                            <span class="p-float-label">
-
-                                <p-dropdown [options]="marcas" formControlName="idMarca" optionLabel="idMarca"
-                                    inputId="p-float-label" [style]="{'width':'100%'}"></p-dropdown>
-                                <label for="p-float-label">Marca</label>
-
-                            </span>
-                        </p-fieldset>
+                                <span class="p-float-label">
+                                    <p-dropdown [options]="tipoprods" formControlName="idTipoProduc" [showClear]="true"
+                                        placeholder="Selecciona un Tipo de Producto" optionLabel="idTipoProduc"
+                                        inputId="p-float-label" [style]="{'width':'100%'}"></p-dropdown>
+                                    <label for="p-float-label">Tipo Producto</label>
+                                </span><br>
+                                <!-- Etiquetas -->
+                                <div class="card">
+                                    <h3> Etiquetas </h3>
+                                    <div class="flex flex-column gap-2 marca">
+                                        <p-chip class="flex align-items-start" *ngFor="let etiqueta of valuesEtiqueta"
+                                            [label]="etiqueta" [removable]="true"
+                                            (onRemove)="removeEtiqueta(etiqueta)"></p-chip>
+                                        <p-dropdown [options]="etiquetas" formControlName="idEtiqueta"
+                                            optionLabel="idEtiqueta" inputId="p-float-label"
+                                            [showClear]="true" placeholder="Selecciona una etiqueta"
+                                            (ngModelChange)="updateValuesEtiquetas()" [style]="{ width: '280px' }">
+                                              <!--<ng-template pTemplate="selectedItem">
+                                                <div class="flex align-items-center gap-2" *ngIf="selectedEtiqueta">
+                                                    <div>{{ selectedEtiqueta.vistaItem }}</div>
+                                                </div>
+                                            </ng-template>
+                                            <ng-template let-etiqueta pTemplate="item">
+                                                <div class="flex align-items-center gap-2">
+                                                    <div>{{ etiqueta.vistaItem }}</div>
+                                                </div>
+                                            </ng-template>-->
+                                        </p-dropdown>
+                                        
+                                    </div>
+                                </div><br>
+                                <span class="p-float-label">
+                                    <p-dropdown [options]="marcas" formControlName="idMarca" optionLabel="idMarca"
+                                        [showClear]="true" placeholder="Selecciona una Marca" inputId="p-float-label"
+                                        [style]="{'width':'100%'}"></p-dropdown>
+                                    <label for="p-float-label">Marca</label>
+                                </span>
+                            </p-fieldset>
+                        </div>
                     </div>
-
-                </div>
-
-
-                <button pButton pRipple label="Registrar Producto" icon="pi pi-check-circle" class="w-full"
-                    (click)="registrar()" [style]="{backgroundColor:'var(--color-prin)', color: '#ffffff'}"></button>
+                </div><br><br>
+                <button pButton pRipple label="Registrar Producto" icon="pi pi-check-circle" (click)="registrar()"
+                    [style]="{backgroundColor:'var(--color-prin)', color: '#ffffff'}"></button>
                 <div class="w-full flex justify-content-center mt-3">
                     <a routerLink="/">Inicio</a>
                 </div>
-
-                <!--  
-                <div *ngIf="!porCorreo" class="flex align-items-center justify-content-center">
-                    <div class=" flex-column w-7">
-                        <div class="w-full">
-                            <div class="mb-2 mt-3">
-                                <span class="p-float-label">
-                                    <p-toast></p-toast>
-                                    <input pInputText formControlName="correo" ngbFormControl
-                                        [class.is-invalid]="formRegistro.get('correo')?.invalid && formRegistro.get('correo')?.touched"
-                                        [class.ngb-invalid]="formRegistro.get('correo')?.invalid && formRegistro.get('correo')?.touched">
-                                    <div class="invalid-feedback">
-                                        <div *ngIf="formRegistro.get('correo')?.hasError('required')">Campo requerido.</div>
-                                        <div *ngIf="formRegistro.get('correo')?.hasError('email')">El correo ingresado no es
-                                            correcto.</div>
-                                    </div>
-                                    <label htmlFor="username">Correo electrónico</label>
-                                </span>
-                            </div>
-                        </div>-->
-                <!--<button pButton pRipple label="Siguiente" icon="pi pi-check-circle" class="w-full mb-5"
-                            [style]="{backgroundColor:'var(--color-prin)', color: '#ffffff'}"
-                            (click)="verificarEmail(this.formRegistro.value['correo'])"></button>
-                        <p-button styleClass="p-button-outlined w-full mb-5"
-                            [style]="{backgroundColor:'white', color: '#000000'}" (click)="signInWithGoogle()">
-                            <img alt="google-icono" src="/assets/imgs_login/google-icon.png" style="width: 1.5rem" />
-                            <span class="ml-2 font-bold">Registrate con Google</span>
-                        </p-button>-->
-                <!--<div class="w-full flex justify-content-center">
-                            <a routerLink="/login">Inicia Sesion</a>
-                        </div>
-                    </div>
-                </div>-->
             </formRegistro>
+
         </div>
     </div>
 </section>
