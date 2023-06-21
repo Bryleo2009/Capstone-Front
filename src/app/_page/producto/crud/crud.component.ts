@@ -241,14 +241,23 @@ export class CRUDComponent {
     this.unProducto.imagen= this.formRegistro.value['imagen'];
     this.unProducto.idCateg= this.formRegistro.value['idCateg'];
     this.unProducto.idTipoProduc= this.formRegistro.value['idTipoProduc'];
-    this.unProducto.idEtiqueta= this.formRegistro.value['idEtiqueta'];
-    this.unProducto.idMarca= this.formRegistro.value['idMarca'];
-    this.TCFser.push({
-      talla: this.formRegistro.value['idTalla'],
-      color: this.formRegistro.value['idColor'],
-      cantidad: this.formRegistro.value['idCantidad']
-    });
+    this.unProducto.idEtiqueta = [];
+    const etiqueta = this.formRegistro.value['idEtiqueta'];
 
+    if (etiqueta) {
+      this.unProducto.idEtiqueta = [etiqueta];
+    } else {
+      this.unProducto.idEtiqueta = [];
+    }
+
+    this.unProducto.idMarca= this.formRegistro.value['idMarca'];
+    //setear talla , color y cantidad
+    this.TCFser.push({
+      talla: parseInt(this.formRegistro.value['idTalla']),
+      color: parseInt(this.formRegistro.value['idColor']),
+      cantidad: parseInt(this.formRegistro.value['idCantidad'])
+    });
+    
     //seteando unProducto a unRegistro
     
     /*this.unRegistro.producto	 =  this.unProducto;
