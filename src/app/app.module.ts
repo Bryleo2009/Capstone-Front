@@ -2,7 +2,7 @@ import { Error } from './_page/error/error';
 import { RouterModule } from '@angular/router';
 import { NgImageSliderModule } from 'ng-image-slider';
 
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { PrimeNGModule } from './prime-ng.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -37,7 +37,9 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { MenuComponent } from './_page/cliente/menu/menu.component';
 
+
 @NgModule({
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
     AppComponent,
     Details01Component,

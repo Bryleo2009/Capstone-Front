@@ -17,6 +17,7 @@ import { SessionComponent } from './_page/cliente/login/session/session.componen
 import { Error } from './_page/error/error';
 import { RegistroComponent } from './_page/cliente/login/registro/registro.component';
 import { MenuComponent } from './_page/cliente/menu/menu.component';
+import { ChatbotComponent } from './_page/inicial/chatbot/chatbot.component';
 
 
 
@@ -24,9 +25,12 @@ const routes: Routes = [
   { path : '' , component : HomeComponent},
   { path : 'login' , component : LoginComponent, children: [
     { path: '', component: SessionComponent},
-    { path: 'registro', component: RegistroComponent}
+    { path: 'registro', component: RegistroComponent},
   ]
+
+  
   },
+  { path: 'bot', component: ChatbotComponent},
   { path : 'deseos' , component : DeseosComponent},
   { path: 'error/:type', component: Error },
   { path : 'store' , component : StoreComponent, children: [
