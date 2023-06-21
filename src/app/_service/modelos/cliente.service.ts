@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from '../../../environments/environment.development';
 import { Cliente } from '@app/_model/cliente';
 import { Usuario } from '@app/_model/usuario';
@@ -28,7 +28,7 @@ export class ClienteService {
 
   registrar(Rol: Cliente, token: string): Observable<any> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.post(`${this.url}`,Rol, { headers });
+    return this.http.post(`${this.url}`,Rol);
   }
 
   modificar(Rol: Cliente, token: string): Observable<any> {
@@ -41,13 +41,20 @@ export class ClienteService {
     return this.http.delete(`${this.url}/${id}`, { headers });
   }
 
-  devolverCliente(idUserCliente: Usuario, token: string): Observable<Cliente>{
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<Cliente>(`${this.url}/devolverCliente/${idUserCliente.username}`);
-  }
-
   byNum(id: string, token: string): Observable<Cliente> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get<Cliente>(`${this.url}/byNum/${id}`);
+  }
+
+  exitenciaXCorreo(correo: string, token: string): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    const params = new HttpParams()
+      .set("correo", correo);
+    return this.http.get(`${this.url}/existencia`, { params });
+  }
+
+  byCorreo(correo: string, token: string): Observable<Cliente> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<Cliente>(`${this.url}/byCorreo/${correo}`);
   }
 }

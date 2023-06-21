@@ -6,7 +6,7 @@
         <div class="col-8">
             <router-outlet></router-outlet>
         </div>
-        <div *ngIf="resumen" class="marco  col-3">
+        <div *ngIf="resumen" class="marco flex flex-column col-3">
             <h1 class="tamañot">Resumen de la orden</h1>
             <div class="flex justify-content-between spacio">
                 <h2>
@@ -22,7 +22,7 @@
                 <b>Total:</b>
                 <h2>S/ {{ammout}}</h2>
             </div>
-            <button pButton pRipple [label]="btnNext" class="p-button-success w-full" [style]="{backgroundColor:'var(--color-prin)', margin: '15px', width: '300px', height: '40px'}" (click)="ruteo()"></button>
+            <button pButton pRipple [label]="btnNext" class="p-button-success" [style]="{backgroundColor:'var(--color-prin)', margin: '15px',padding: '20px', height: '100px'}" (click)="ruteo()"></button>
         </div>
     </div>
 </section>

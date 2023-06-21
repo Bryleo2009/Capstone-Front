@@ -52,8 +52,10 @@
                         style="color: var(--color-secun); margin:05px"></i></p-button>
                 <p-button icon="fa-regular fa-heart"
                     [style]="{backgroundColor:'#FFFFFF', color: '#000000', padding : '09px 15px', margin: '05px', border: '#000000 1px solid'}"
-                    label="Lista De Deseos"></p-button>
+                    label="Lista De Deseos" (click)="show(producto.idProduct)"></p-button>
             </div>
+
+            
         </div>
     </div>
     <p-divider align="center"></p-divider>

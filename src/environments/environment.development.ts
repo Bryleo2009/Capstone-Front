@@ -2,6 +2,7 @@ export const environment = {
     production: false,
     HOST_URL: 'http://localhost:9090',
     modalAbierto: false,
+    modalTokenAbierto: false,
     token: '',
     contCarrito: 0,
     dataJSON : './assets/ubigeo.json',

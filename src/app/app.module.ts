@@ -37,7 +37,6 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { MenuComponent } from './_page/cliente/menu/menu.component';
 
-
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
@@ -59,7 +58,12 @@ import { MenuComponent } from './_page/cliente/menu/menu.component';
     LoginComponent,
     SessionComponent,
     RegistroComponent,
-    MenuComponent
+    MenuComponent,
+    CuentaComponent,
+    DatosPersonalesComponent,
+    ConfiguracionComponent,
+    ComprasComponent,
+    ListadeseoComponent
   ],
   imports: [
     RouterModule,

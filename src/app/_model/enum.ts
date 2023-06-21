@@ -4,6 +4,8 @@ export class Enum {
     abreviItem!: string;
     vistaItem!: string;
     idTalla!: number;
+    idTipoDoc!: number;
+    idRol!: number;
     idCateg!: number;
     idMarca!: number;
     idEtiqueta!: number;

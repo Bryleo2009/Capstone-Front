@@ -2,6 +2,11 @@ import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PagoComponent } from './trazaProduct/pago/pago.component';
 import { CarritoComponent } from './carrito/carrito.component';
+import { environment } from '@env/environment.development';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AuthService } from '@app/_service/rutas/auth.service';
+import Swal from 'sweetalert2';
+import { DataService } from '@app/_service/modelos/data.service';
 
 @Component({
   selector: 'app-paqueteria',
@@ -12,7 +17,10 @@ export class PaqueteriaComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private http: HttpClient,
+    private almacen:AuthService,
+    private dataservice: DataService
   ) {}
 
   btnNext: string = 'Siguiente';
@@ -27,10 +35,10 @@ export class PaqueteriaComponent implements OnInit {
 
   IGV: number = 0;
   ammout: number = 0;
-  actualizarMontoDesdeHijo(nuevoMonto: number,igv:number, amount:number) {
+  actualizarMontoDesdeHijo(nuevoMonto: number, igv: number, amount: number) {
     const objetoTemporal = {
       montoProducto: nuevoMonto,
-      IGV:igv,
+      IGV: igv,
       ammout: amount,
     };
     console.log(objetoTemporal.ammout);
@@ -62,7 +70,11 @@ export class PaqueteriaComponent implements OnInit {
 
     if (objetoAlmacenadoStr !== null) {
       const objetoAlmacenado = JSON.parse(objetoAlmacenadoStr);
-      this.actualizarMontoDesdeHijo(objetoAlmacenado.montoProducto,objetoAlmacenado.IGV,objetoAlmacenado.ammout);
+      this.actualizarMontoDesdeHijo(
+        objetoAlmacenado.montoProducto,
+        objetoAlmacenado.IGV,
+        objetoAlmacenado.ammout
+      );
     } else {
       this.montoProducto = 0;
       this.IGV = 0;

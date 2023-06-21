@@ -19,4 +19,5 @@ export class EstProductService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get<Enum[]>(this.url);
   }
+  
 }

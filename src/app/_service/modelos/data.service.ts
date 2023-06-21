@@ -26,21 +26,57 @@ export class DataService {
     return this.logeadoSubject.getValue();
   }
   /*Variable de ubigeo*/
-  private ubigeo = new Subject<string>(); 
+  private ubigeo!: string; 
   enviar_ubigeo(dato:string){
-    this.ubigeo.next(dato);
+    this.ubigeo = dato;
   }
 
   obtener_ubigeo(){
-    return this.ubigeo.asObservable();
+    return this.ubigeo;
   }
 
-  /*Variable tipo comprobante*/
-  private tipo_c = new Subject<boolean>();
-  envio_tipocomprobante(dato: boolean){
-    this.tipo_c.next(dato);
+  /*Variable nombreRecojo*/
+  private nombreRecojo!:string;
+  enviar_nombreRecojo(dato: string){
+    this.nombreRecojo=dato;
   }
-  obtener_tipocomprobante(){
-    return this.tipo_c.asObservable();
+  obtener_nombreRecojo(){
+    return this.nombreRecojo;
   }
+
+    /*Variable apellidoRecojo*/
+    private apellidoRecojo!:string;
+    enviar_apellidoRecojo(dato: string){
+      this.apellidoRecojo=dato;
+    }
+    obtener_apellidoRecojo(){
+      return this.apellidoRecojo;
+    }
+
+      /*Variable celularRecojo*/
+    private celularRecojo!:string;
+    enviar_celularRecojo(dato: string){
+      this.celularRecojo=dato;
+    }
+    obtener_celularRecojo(){
+      return this.celularRecojo;
+    }
+
+    /*Variable correoRecojo*/
+    private correoRecojo!:string;
+    enviar_correoRecojo(dato: string){
+      this.correoRecojo=dato;
+    }
+    obtener_correoRecojo(){
+      return this.correoRecojo;
+    }
+
+    /*Variable direccionRecojo*/
+    private direccionRecojo!:string;
+    enviar_direccionRecojo(dato: string){
+      this.direccionRecojo=dato;
+    }
+    obtener_direccionRecojo(){
+      return this.direccionRecojo;
+    }
 }

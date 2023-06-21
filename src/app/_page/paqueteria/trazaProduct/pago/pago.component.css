@@ -13,13 +13,7 @@
     text-decoration: underline;
 
 }
-.toggle{
-  display: inline-block;
-  position: absolute;
-  left: 700px;
-  cursor: pointer;
-  z-index: 0;
-}
+
 .form {
     background-color: var(--color-white);
     padding: 50px;
@@ -29,7 +23,7 @@
 .spinner {
     background-color: rgba(174, 179, 179, 0.397);
     position: absolute;
-    height: 410px;
+    height: 35rem;
     z-index: 9;
 }
 
@@ -89,4 +83,7 @@
     0%, 80%, 100% { box-shadow: 0 2.5em 0 -1.3em }
     40% { box-shadow: 0 2.5em 0 0 }
   }
-      
+
+  .nf{
+    
+  }

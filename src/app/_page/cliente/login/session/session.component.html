@@ -7,33 +7,37 @@
             <div class="text-900 text-xl font-medium mb-3">Estar conectados nos ayuda a conocerte más :)</div>
         </div>
         <div>
-            <label for="email" class="block text-900 font-medium mb-2">Email</label>
-            <input id="email" type="text" placeholder="Email address" pInputText class="w-full mb-3" formControlName="email">
-          
-            <label for="password" class="block text-900 font-medium mb-2">Password</label>
-            <input id="password" type="password" placeholder="Password" pInputText class="w-full mb-3" formControlName="password">
-          
-            <div class=" btn-rec-olv flex align-items-center justify-content-between mb-5">
+            <label for="email" class="block text-900 font-medium mb-2">Usuario</label>
+            <input id="email" type="text" placeholder="Email address" pInputText class="w-full mb-3"
+                formControlName="email">
+
+            <label for="password" class="block text-900 font-medium mb-2">Contraseña</label>
+            <!-- <input id="password" type="password" placeholder="Password" pInputText pPassword class="w-full mb-3"
+                formControlName="password" toggleMask="true"> -->
+                <p-password  formControlName="password" [toggleMask]="true" [style]="{width: '100%'}"></p-password>
+
+            <!-- <div class=" btn-rec-olv flex align-items-center justify-content-between mt-5 mb-5">
                 <div>
                     <p-checkbox class="card" formControlName="checked" [binary]="true" inputId="binary"></p-checkbox>
                     <label class="form-check-label ml-1">Recuerdame</label>
                 </div>
                 <a class=" card-x color-olv  ml-7 text-right cursor-pointer">Olvidaste tu
                     contraseña?</a>
-            </div>
-            <button pButton pRipple label="Ingresar" icon="pi pi-user" class="w-full"
-                [style]="{backgroundColor:'var(--color-prin)', color: '#E5E5E5'}" (click)="verificar()"></button>
-        </div>          
+            </div> -->
+            <button pButton pRipple label="Ingresar" icon="pi pi-user" class="w-full mt-5"
+                [style]="{backgroundColor:'var(--color-prin)', color: '#E5E5E5'}" (click)="verificar(this.formLogin.value['email'],this.formLogin.value['password'])"></button>
+        </div>
         <div class="card-g text-center mb-2">
             <div class="esp-reg" routerLink="/login/registro">
                 <span class=" text-600 font-medium line-height-3">No posees una cuenta?</span>
                 <a class=" color-olv ml-2 cursor-pointer">Registrate!</a>
             </div>
             <div class="card-g flex justify-content-center">
-                <p-button styleClass="p-button-outlined" [style]="{backgroundColor:'white', color: '#000000'}" (click)="signInWithGoogle()">
+                <p-button styleClass="p-button-outlined" [style]="{backgroundColor:'white', color: '#000000'}"
+                    (click)="signInWithGoogle()">
                     <img alt="google-icono" src="/assets/imgs_login/google-icon.png" style="width: 1.5rem" />
                     <span class="ml-2 font-bold">Continue con Google</span>
-                </p-button>                   
+                </p-button>
             </div>
         </div>
     </div>

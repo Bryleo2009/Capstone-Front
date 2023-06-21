@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Departamento } from '@app/_model/ubigeo/departamento';
 import { Distrito } from '@app/_model/ubigeo/distrito';
 import { Provincia } from '@app/_model/ubigeo/privincia';
@@ -8,19 +8,20 @@ import { SessionComponent } from '@app/_page/cliente/login/session/session.compo
 import { DataService } from '@app/_service/modelos/data.service';
 import { AuthService } from '@app/_service/rutas/auth.service';
 import { environment } from '@env/environment.development';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-entrega',
   templateUrl: './entrega.component.html',
-  styleUrls: ['./entrega.component.css']
+  styleUrls: ['./entrega.component.css'],
 })
 export class EntregaComponent implements OnInit {
-  
   constructor(
     private http: HttpClient,
     private almacen: AuthService,
-    private dataService: DataService
-  ) { }
+    private dataService: DataService,
+    private messageService: MessageService,
+  ) {}
 
   isWrap = true;
   checked!: boolean;
@@ -45,15 +46,45 @@ export class EntregaComponent implements OnInit {
       departamentoPaciente: new FormControl({
         value: '',
         disabled: false,
-      }),
+      },
+      [Validators.required]),
       provinciaPaciente: new FormControl({
         value: '',
         disabled: false,
-      }),
+      },
+      [Validators.required]),
       distritoPaciente: new FormControl({
         value: '',
         disabled: false,
-      }),
+      },
+      [Validators.required]),
+      nombre: new FormControl({
+        value: this.almacen.getCliente().nombre,
+        disabled: false,
+      },
+      [Validators.required]),
+      apellidos: new FormControl({
+        value: this.almacen.getCliente().apellido,
+        disabled: false,
+      },
+      [Validators.required]),
+      celular: new FormControl({
+        value: this.almacen.getCliente().telefono,
+        disabled: false,
+      },
+      [Validators.required]),
+      correo: new FormControl(
+        {
+          value: this.almacen.getCliente().correo,
+          disabled: false,
+        },
+        [Validators.email, Validators.required]
+      ),
+      direccion: new FormControl({
+        value: this.almacen.getCliente().direccion,
+        disabled: false,
+      },
+      [Validators.required]),
     });
   }
 
@@ -92,14 +123,50 @@ export class EntregaComponent implements OnInit {
     }
     if (this.selectedDistrict) {
       this.selectedDistrictCode = this.selectedDistrict.cod;
-      this.dataService.enviar_ubigeo(this.selectedDepartmentCode + '' + this.selectedProvinceCode + '' + this.selectedDistrictCode);
-      
+      this.dataService.enviar_ubigeo(
+        this.selectedDepartmentCode +
+          '' +
+          this.selectedProvinceCode +
+          '' +
+          this.selectedDistrictCode
+      );
+
       console.log(
         'ubigeo seleccionado: >',
         this.selectedDepartmentCode,
         this.selectedProvinceCode,
         this.selectedDistrictCode
       );
+    }
+  }
+
+  evaluar(){
+    if(
+      this.form.value['nombre'] !== '' &&
+      this.form.value['apellidos'] !== '' &&
+      this.form.value['celular'] !== '' &&
+      this.form.value['correo'] !== '' &&
+      this.form.value['direccion'] !== '' &&
+      this.selectedDepartment?.cod != undefined &&
+      this.selectedProvince?.cod != undefined &&
+      this.selectedDistrict?.cod != undefined
+    ){
+      this.dataService.enviar_nombreRecojo(this.form.value['nombre']);
+      this.dataService.enviar_apellidoRecojo(this.form.value['apellidos']);
+      this.dataService.enviar_celularRecojo(this.form.value['celular']);
+      this.dataService.enviar_correoRecojo(this.form.value['correo']);
+      this.dataService.enviar_direccionRecojo(this.form.value['direccion']);
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Registrado',
+        detail: 'Datos registrados correctamente',
+      });
+    } else {
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'Error',
+        detail: 'Datos incompletos en formulario',
+      });
     }
   }
 }

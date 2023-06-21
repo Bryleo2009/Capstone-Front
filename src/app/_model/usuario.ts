@@ -1,3 +1,4 @@
+import { Enum } from './enum';
 import { Rol } from './rol';
 
 export class Usuario {
@@ -5,5 +6,5 @@ export class Usuario {
   username!: string;
   password!: string;
   Status!: boolean;
-  idRol!: Rol;
+  idRol!: Enum;
 }

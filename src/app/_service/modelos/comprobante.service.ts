@@ -27,12 +27,7 @@ export class ComprobanteService {
     return this.http.get<Comprobante>(`${this.url}/${id}`);
   }
 
-  registrar(Rol: Comprobante, token: string): Observable<any> {
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.post(`${this.url}`,Rol, { headers });
-  }
-
-  sendDatoComprobantes(comprobante: ComprobanteFilter, token: string): Observable<any> {
+  registrar(comprobante: ComprobanteFilter, token: string): Observable<any> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.post(`${this.url}`,comprobante, { headers });
   }
