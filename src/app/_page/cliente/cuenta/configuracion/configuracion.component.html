@@ -1,24 +1,18 @@
 <section>
-    <div class="grid flex justify-content-center m-5">
-        <p-fieldset class="">
-            <ng-template pTemplate="header">
-                <div class="color">
-                    <span class="pi pi-fw pi-lock mr-2"></span>
-                    <span class="font-bold text-lg">Configurar mi cuenta</span>
-                </div>
-            </ng-template>
-            <div class="flex justify-content-between">
-                <span class="m-3 p-float-label">
-                    <p-password [(ngModel)]="value" [toggleMask]="true" [feedback]="false"></p-password>
-                    <label for="password">Contraseña Actual</label>
-                </span>
-                <span class="m-3 p-float-label">
-                    <p-password [(ngModel)]="value" [toggleMask]="true" [feedback]="false"></p-password>
-                    <label for="password">Nueva Contraseña</label>
-                </span>
-            </div>
-            <!-- <label class=" m-3  text-500">Debes usar al menos: Mínimo 8 caracters * 1 mayúscula * 1 minúscula * 1
-                número</label> -->
-        </p-fieldset>
+    <div>
+        <label class="titulo">Configurar mi cuenta</label>
+    </div>
+    <div>
+        <div class="card">
+            <span class="m-3 p-float-label">
+                <p-password [(ngModel)]="value" [toggleMask]="true" [feedback]="false"></p-password>
+                <label for="password">Contraseña Actual</label>
+            </span>
+            <span class="m-3 p-float-label">
+                <p-password [(ngModel)]="value" [toggleMask]="true" [feedback]="false"></p-password>
+                <label for="password">Nueva Contraseña</label>
+            </span>
+        </div>
+        <label class=" ml-3  text-500" >Debes usar al menos: Mínimo 8 caracters * 1 mayúscula * 1 minúscula * 1 número</label>
     </div>
 </section>

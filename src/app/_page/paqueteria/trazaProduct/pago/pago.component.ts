@@ -369,7 +369,7 @@ export class PagoComponent implements OnInit {
     const nuevoResumen = false;
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router
-        .navigate(['/menu/compras'], {
+        .navigate(['/'], {
           relativeTo: this.route,
         })
         .then(() => {

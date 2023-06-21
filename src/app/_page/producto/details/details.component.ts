@@ -13,7 +13,6 @@ import { CarritoService } from '@app/_service/modelos/carrito.service';
 import { ColorService } from '@app/_service/modelos/color.service';
 import { Enum, EnumInter } from '@app/_model/enum';
 import { AuthService } from '@app/_service/rutas/auth.service';
-import { ConfirmationService } from 'primeng/api';
 
 interface Car {
   id?: string;
@@ -28,12 +27,9 @@ interface Car {
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.css'],
 })
-
 export class Details01Component {
-  
   constructor(
     private route: ActivatedRoute,
-    private confirmationService: ConfirmationService,
     private encryp: EncryptionService,
     private router: Router,
     private producSerive: ProductoService,
@@ -134,18 +130,6 @@ export class Details01Component {
   show(idProduct: number) {
     this.ref = this.dialogService.open(DialogComponent, {
       header: 'Seleccion de producto',
-      height: '60%',
-      width: '60%',
-      contentStyle: { overflow: 'auto' },
-      data: {
-        id: idProduct,
-      },
-    });
-  }
-
-  showListadeseo(idProduct: number) {
-    this.ref = this.dialogService.open(DialogComponent, {
-      header: 'Agregar a la lista de deseos',
       height: '60%',
       width: '60%',
       contentStyle: { overflow: 'auto' },

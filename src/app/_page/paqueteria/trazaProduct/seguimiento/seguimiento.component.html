@@ -1,18 +1,14 @@
 <div style="background-color: white;" class="p-3">
-
+    <div class="container">
         <article class="card">
-            <div class=" mb-3 mt-3 flex flex-column align-items-center">
-                <div class="titulo">
-                    <h1 class="letra">
-                        Mis Compras
-                    </h1>
-                </div>
-                <div *ngFor="let unSeguimiento of seguimientos" class="mb-3 w-9">
+            <div class=" mb-3 mt-3 ">
+                <div class="center02"> Mis Pedidos / Seguimiento </div>
+                <div *ngFor="let unSeguimiento of seguimientos" class="flex justify-content-center mb-3">
                     <div class=" card-body shadow-2 surface-card border-round p-5 card "
                         style="background-color: #F9F9F9;">
-                        <h4 >Compra N°: {{unSeguimiento.id_comp}}</h4>
+                        <h4 class="colorTitulo">Compras N°: {{unSeguimiento.id_comp}}</h4>
                         <div class=" flex justify-content-between w-full">
-                            <img src="./assets/seguimiento/compras.png" alt="Image" height="200" class="m-3">
+                            <img src="./assets/seguimiento/laptop.png" alt="Image" height="250" class="m-3">
                             <div class="flex">
                                 <div class="card-body flex flex-column row">
                                     <!-- <div class="col"> <strong class="colorTitulo">Tiempo estimado de la orden:</strong>
@@ -23,38 +19,35 @@
                                         Entre 08:00 a
                                         18:00
                                         horas</div> -->
-                                    <div class="col"> <strong class="colorTitulo">Dirección de entrega:</strong> <br>
+                                    <div class="col"> <strong class="colorTitulo">Dirección de entrega:</strong> <br> 
                                         {{unSeguimiento.direccion_recojo_pedido}} </div>
-                                    <div class="col"> <strong class="colorTitulo">Contado de entrega:</strong> <br>
+                                    <div class="col"> <strong class="colorTitulo">Contado de entrega:</strong> <br> 
                                         {{unSeguimiento.celular_recojo_pedido}} </div>
-                                    <div class="col"> <strong class="colorTitulo">Nombre del comprador:</strong> <br>
+                                    <div class="col"> <strong class="colorTitulo">Nombre del comprador:</strong> <br> 
                                         {{unSeguimiento.nombre_recojo_pedido}} </div>
-                                    <div class="col"> <strong class="colorTitulo">Correo de entrega:</strong> <br>
+                                        
+                                    <div class="col"> <strong class="colorTitulo">Correo de entrega:</strong> <br> 
                                         {{unSeguimiento.correo_recojo_pedido}} </div>
                                 </div>
                             </div>
                             <div>
-                                <p-timeline [value]="unSeguimiento.trazabilidad" >
+                                <p-timeline [value]="events1">
                                     <ng-template pTemplate="content" let-event>
-                                        <small class="p-text-secondary" [ngClass]="{'ultimo-elemento': event.esUltimo}">
-                                            {{ formatarFecha(event.fecha_ini_proc) }}
-                                        </small>
+                                        <small class="p-text-secondary">{{ event.date }}</small>
                                     </ng-template>
                                     <ng-template pTemplate="opposite" let-event>
-                                        <div [ngClass]="{'ultimo-elemento': event.esUltimo}">{{ event.vista_item }}
-                                        </div>
+                                        {{ event.status }}
                                     </ng-template>
                                 </p-timeline>
-
                             </div>
                         </div>
                     </div>
                 </div>
-
+                  
                 <button pButton pRipple label="Volver" icon="pi pi-angle-left"
-                    [style]="{backgroundColor:'var(--color-prin)', color: '#ffffff'}"></button>
+                    [style]="{backgroundColor:'var(--color-prin)', color: '#E5E5E5'}"></button>
             </div>
 
         </article>
-
+    </div>
 </div>
