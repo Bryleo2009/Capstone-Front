@@ -41,8 +41,11 @@ import { DatosPersonalesComponent } from './_page/cliente/cuenta/datos-personale
 import { ConfiguracionComponent } from './_page/cliente/cuenta/configuracion/configuracion.component';
 import { ComprasComponent } from './_page/cliente/cuenta/compras/compras.component';
 import { ListadeseoComponent } from './_page/paqueteria/listadeseo/listadeseo.component';
+import { StockPrendasComponent } from './_page/paqueteria/stock-prendas/stock-prendas.component';
+import { NosotrosComponent } from './_page/producto/nosotros/nosotros.component';
 import { ChatbotComponent } from './_page/inicial/chatbot/chatbot.component';
 import { CRUDComponent } from './_page/producto/crud/crud.component';
+
 
 
 @NgModule({
@@ -71,6 +74,9 @@ import { CRUDComponent } from './_page/producto/crud/crud.component';
     CuentaComponent,
     DatosPersonalesComponent,
     ConfiguracionComponent,
+    ListadeseoComponent,
+    StockPrendasComponent,
+    NosotrosComponent
     ComprasComponent,
     ListadeseoComponent,
     CRUDComponent

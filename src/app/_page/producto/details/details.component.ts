@@ -14,6 +14,7 @@ import { ColorService } from '@app/_service/modelos/color.service';
 import { Enum, EnumInter } from '@app/_model/enum';
 import { AuthService } from '@app/_service/rutas/auth.service';
 
+
 interface Car {
   id?: string;
   name?: string;
@@ -47,15 +48,26 @@ export class Details01Component {
   producto: Producto = new Producto();
   estrellas = 3;
   cant = 1;
+  visible!: boolean;
   ref!: DynamicDialogRef;
   tallas:EnumInter[] = [];
   colores:EnumInter[] = [];
   ngOnInit() {
+
     //si estoy visualizando
     this.route.queryParams.subscribe((params) => {
       this.id = params['id'];
       this.estado = params['estado'];
     });
+
+    this.producSerive.colorTalla(this.encryp.decrypt(this.id), this.auth.getToken())
+    .subscribe((data) => {
+      console.log(data)
+    }, (error) => {
+    });
+      
+
+
 
     if (this.id !== null && this.id !== undefined && this.id !== '') {
       this.producSerive
@@ -138,5 +150,22 @@ export class Details01Component {
       },
     });
   }
+
+  showDialog(){
+    this.visible= true;
+  }
+
+  showListadeseo(idProduct: number) {
+    this.ref = this.dialogService.open(DialogComponent, {
+      header: 'Agregar a la lista de deseos',
+      height: '60%',
+      width: '60%',
+      contentStyle: { overflow: 'auto' },
+      data: {
+        id: idProduct,
+      },
+    });
+  }
+
 }
 

@@ -25,6 +25,7 @@ import { DatosPersonalesComponent } from './_page/cliente/cuenta/datos-personale
 import { ConfiguracionComponent } from './_page/cliente/cuenta/configuracion/configuracion.component';
 import { ComprasComponent } from './_page/cliente/cuenta/compras/compras.component';
 import { ListadeseoComponent } from './_page/paqueteria/listadeseo/listadeseo.component';
+import { NosotrosComponent } from './_page/producto/nosotros/nosotros.component';
 import { CRUDComponent } from './_page/producto/crud/crud.component';
 
 
@@ -52,6 +53,13 @@ const routes: Routes = [
       { path: 'open', component: DialogComponent}
     ]
   },
+  {
+    path: 'nosotros',
+    component: NosotrosComponent,
+  },
+  {
+    path: 'pedido',
+    component: PaqueteriaComponent,
   { path: 'pedido', component: PaqueteriaComponent, children: [
     { path : '', component: CarritoComponent},
     { path : 'trazabilidad', component : TrazaProductComponent,

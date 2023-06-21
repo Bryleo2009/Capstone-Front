@@ -50,12 +50,23 @@
                 <p-button [style]="{backgroundColor:'#E5E5E5', color: '#000000', padding : '06px 10px', margin: '05px'}"
                     label="Agregar Al Carrito" (click)="show(producto.idProduct)"><i class="fa-solid fa-cart-shopping"
                         style="color: var(--color-secun); margin:05px"></i></p-button>
+
+                <p-button [style]="{backgroundColor:'#E5E5E5', color: '#000000', padding : '06px 10px', margin: '05px'}"
+                label="Stock de Prendas"  (click)="showDialog()">
+                <i class="fa-solid fa-list"style="color: var(--color-secun); margin:05px"></i></p-button>
+                <p-dialog [(visible)]="visible" [style]="{width: '50vw'}">
+                    
+                </p-dialog>
+
                 <p-button icon="fa-regular fa-heart"
                     [style]="{backgroundColor:'#FFFFFF', color: '#000000', padding : '09px 15px', margin: '05px', border: '#000000 1px solid'}"
+
+                    label="Lista De Deseos" (click)="showListadeseo(producto.idProduct)"></p-button>
+            </div>    
                     label="Lista De Deseos" (click)="show(producto.idProduct)"></p-button>
             </div>
 
-            
+
         </div>
     </div>
     <p-divider align="center"></p-divider>
