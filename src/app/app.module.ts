@@ -42,6 +42,8 @@ import { ConfiguracionComponent } from './_page/cliente/cuenta/configuracion/con
 import { ComprasComponent } from './_page/cliente/cuenta/compras/compras.component';
 import { ListadeseoComponent } from './_page/paqueteria/listadeseo/listadeseo.component';
 import { ChatbotComponent } from './_page/inicial/chatbot/chatbot.component';
+import { CRUDComponent } from './_page/producto/crud/crud.component';
+
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -70,7 +72,9 @@ import { ChatbotComponent } from './_page/inicial/chatbot/chatbot.component';
     DatosPersonalesComponent,
     ConfiguracionComponent,
     ComprasComponent,
-    ListadeseoComponent
+    ListadeseoComponent,
+    CRUDComponent
+
   ],
   imports: [
     RouterModule,

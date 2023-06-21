@@ -25,6 +25,7 @@ import { DatosPersonalesComponent } from './_page/cliente/cuenta/datos-personale
 import { ConfiguracionComponent } from './_page/cliente/cuenta/configuracion/configuracion.component';
 import { ComprasComponent } from './_page/cliente/cuenta/compras/compras.component';
 import { ListadeseoComponent } from './_page/paqueteria/listadeseo/listadeseo.component';
+import { CRUDComponent } from './_page/producto/crud/crud.component';
 
 
 
@@ -57,17 +58,29 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: { expectedRoles: ['ADMIN', 'SOPORTE','CLIENTE'] },
     children: [
-      { path: 'entrega', component: EntregaComponent},
-      { path: 'payment', component: PagoComponent},
-      { path: 'ok', component: SeguimientoComponent},
-    ] },
-  ]},
-  { path: 'details' , component : Details01Component},
-  { path: 'seguimiento', component: SeguimientoComponent},
+
 
   { path: 'menu', component: MenuComponent, canActivate: [AuthGuard],
   data: { expectedRoles: ['ADMIN', 'SOPORTE','CLIENTE'] },},
   { path: 'listadeseo', component: ListadeseoComponent},
+      { path: '', component: CarritoComponent },
+      {
+        path: 'trazabilidad',
+        component: TrazaProductComponent,
+        canActivate: [AuthGuard],
+        data: { expectedRoles: ['ADMIN', 'SOPORTE', 'CLIENTE'] },
+        children: [
+          { path: 'entrega', component: EntregaComponent },
+          { path: 'payment', component: PagoComponent },
+          { path: 'ok', component: SeguimientoComponent },
+        ],
+      },
+    ],
+  },
+  { path: 'details', component: Details01Component },
+  { path: 'listadeseo', component: ListadeseoComponent },
+  { path: 'crud', component: CRUDComponent }
+
 ];
 
 @NgModule({

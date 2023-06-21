@@ -1,0 +1,152 @@
+<section style="background-color: white;" class="p-3">
+    <div [ngClass]="{'contenedor-a': true, 'wrap': flexWrap}" class="flex justify-content-center ">
+        <div class="grid" style="width: 100%;">
+            <formRegistro class="col-12 flex flex-column justify-content-center" [formGroup]="formRegistro"
+                #frm="ngForm">
+                <div class="flex">
+                    <div class="col-5 ">
+                        <div class="mb-2">
+                            <p-fieldset>
+                                <ng-template pTemplate="header">
+                                    <div class="flex align-items-center text-primary">
+                                        <span class="pi pi-user mr-2"></span>
+                                        <span class="font-bold text-lg">Datos Generales Producto</span>
+                                    </div>
+                                </ng-template>
+                                <span class="p-float-label">
+                                    <input pInputText formControlName="descripcionProduct" />
+                                    <label htmlFor="username">Descripcion</label>
+                                </span>
+                                <span class="p-float-label">
+                                    <input pInputText formControlName="nombreProduct" />
+                                    <label htmlFor="username">Nombre del Producto</label>
+                                </span>
+                                <span class="p-float-label">
+                                    <input pInputText formControlName="precioUni" />
+                                    <label htmlFor="username">Precio Unitario</label>
+                                </span>
+                                <span class="p-float-label">
+                                    <input pInputText formControlName="precioDescuProduct" />
+                                    <label htmlFor="username">Precio Descuento</label>
+                                </span>
+                                <span class="p-float-label">
+                                    <input pInputText formControlName="imagen" />
+                                    <label htmlFor="username">Imagen</label>
+                                </span>
+                            </p-fieldset>
+                        </div>
+                    </div>
+                    <div class="col-2 ">
+                        <div class="mb-2">
+                            <p-fieldset [style]="{height: '100%'}">
+                                <ng-template pTemplate="header">
+                                    <div class="flex align-items-center text-primary">
+                                        <span class="pi pi-map-marker mr-2"></span>
+                                        <span class="font-bold text-lg">Datos Especificos</span>
+                                    </div>
+                                </ng-template>
+                                <span class="p-float-label">
+
+                                    <input pInputText formControlName="idTalla" />
+                                    <label for="p-float-label">Talla</label>
+
+                                </span><br>
+                                <span class="p-float-label">
+
+                                    <input pInputText formControlName="idColor" />
+                                    <label for="p-float-label">Color</label>
+
+                                </span><br>
+                                <!--<span class="p-float-label">
+
+                                    <p-dropdown [options]="tallas" formControlName="idTalla" optionLabel="idTalla"
+                                        [showClear]="true" placeholder="Selecciona una Talla" inputId="p-float-label"
+                                        [style]="{'width':'100%'}"></p-dropdown>
+                                    <label for="p-float-label">Talla</label>
+
+                                </span><br>-->
+                               <!-- <span class="p-float-label">
+
+                                    <p-dropdown [options]="colores" formControlName="idColor" optionLabel="idColor"
+                                        [showClear]="true" placeholder="Selecciona un Color" inputId="p-float-label"
+                                        [style]="{'width':'100%'}"></p-dropdown>
+                                    <label for="p-float-label">Color</label>
+
+                                </span><br>-->
+                                <span class="p-float-label">
+                                    <input pInputText formControlName="idCantidad" />
+                                    <label htmlFor="username">Cantidad</label>
+                                </span>
+                            </p-fieldset>
+                        </div>
+
+                    </div>
+                    <div class="col-5 ">
+                        <div class="mb-2">
+                            <p-fieldset [style]="{height: '100%'}">
+                                <ng-template pTemplate="header">
+                                    <div class="flex align-items-center text-primary">
+                                        <span class="pi pi-map-marker mr-2"></span>
+                                        <span class="font-bold text-lg">Datos en la BD</span>
+                                    </div>
+                                </ng-template>
+                                <span class="p-float-label">
+
+                                    <p-dropdown [options]="categorias" formControlName="idCateg" optionLabel="idCateg"
+                                        [showClear]="true" placeholder="Selecciona una Categoria"
+                                        inputId="p-float-label" [style]="{'width':'100%'}"></p-dropdown>
+                                    <label for="p-float-label">Categoria</label>
+
+                                </span><br>
+
+                                <span class="p-float-label">
+                                    <p-dropdown [options]="tipoprods" formControlName="idTipoProduc" optionLabel="idTipoProduc"
+                                    [showClear]="true"  placeholder="Selecciona un Tipo de Producto" 
+                                        inputId="p-float-label" [style]="{'width':'100%'}"></p-dropdown>
+                                    <label for="p-float-label">Tipo Producto</label>
+                                </span><br>
+                                <!-- Etiquetas -->
+                                <div class="card">
+                                    <h3> Etiquetas </h3>
+                                    <div class="flex flex-column gap-2 marca">
+                                        <p-chip class="flex align-items-start" *ngFor="let etiqueta of valuesEtiqueta"
+                                            [label]="etiqueta" [removable]="true"
+                                            (onRemove)="removeEtiqueta(etiqueta)"></p-chip>
+                                        <p-dropdown [options]="etiquetas" formControlName="idEtiqueta"
+                                            optionLabel="idEtiqueta" inputId="p-float-label"
+                                            [showClear]="true" placeholder="Selecciona una etiqueta"
+                                            (ngModelChange)="updateValuesEtiquetas()" [style]="{ width: '280px' }">
+                                              <!--<ng-template pTemplate="selectedItem">
+                                                <div class="flex align-items-center gap-2" *ngIf="selectedEtiqueta">
+                                                    <div>{{ selectedEtiqueta.vistaItem }}</div>
+                                                </div>
+                                            </ng-template>
+                                            <ng-template let-etiqueta pTemplate="item">
+                                                <div class="flex align-items-center gap-2">
+                                                    <div>{{ etiqueta.vistaItem }}</div>
+                                                </div>
+                                            </ng-template>-->
+                                        </p-dropdown>
+                                        
+                                    </div>
+                                </div><br>
+                                <span class="p-float-label">
+                                    <p-dropdown [options]="marcas" formControlName="idMarca" optionLabel="idMarca"
+                                        [showClear]="true" placeholder="Selecciona una Marca" inputId="p-float-label"
+                                        [style]="{'width':'100%'}"></p-dropdown>
+                                    <label for="p-float-label">Marca</label>
+                                </span>
+                            </p-fieldset>
+                        </div>
+                    </div>
+                </div><br><br>
+                <button pButton pRipple label="Registrar Producto" icon="pi pi-check-circle" (click)="registrar()"
+                    [style]="{backgroundColor:'var(--color-prin)', color: '#ffffff'}"></button>
+                <div class="w-full flex justify-content-center mt-3">
+                    <a routerLink="/">Inicio</a>
+                </div>
+            </formRegistro>
+
+        </div>
+    </div>
+</section>
