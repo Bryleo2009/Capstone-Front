@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment.development';
 import { Categoria } from '@app/_model/categoria';
 import { Producto } from '@app/_model/producto';
 import { Page } from './../../_model/page';
 import { ProductoFilter } from '@app/_model/filter/productoFilter';
 import { ProductoStorage } from '@app/_model/filter/productoStorage';
-
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { RegistroProductFilter } from '@app/_model/filter/registroProductFilter';
 
 @Injectable({
   providedIn: 'root'
@@ -55,9 +55,9 @@ export class ProductoService {
     return this.http.get<Producto[]>(`${this.url}/listar`);
   }
 
-  registrar(Rol: Producto, token: string): Observable<any> {
+  registrar(registro: RegistroProductFilter, token: string): Observable<any> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.post(`${this.url}`,Rol, { headers });
+    return this.http.post(`${this.url}`,registro, { headers });
   }
 
   modificar(Rol: Producto, token: string): Observable<any> {

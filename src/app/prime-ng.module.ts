@@ -37,7 +37,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { MegaMenuModule } from 'primeng/megamenu';
-
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [],
@@ -78,7 +78,8 @@ import { MegaMenuModule } from 'primeng/megamenu';
     InputTextModule,
     PasswordModule,
     InputSwitchModule,
-    MegaMenuModule
+    MegaMenuModule,
+    TableModule
     
   ],exports: [
     ButtonModule,
@@ -116,7 +117,8 @@ import { MegaMenuModule } from 'primeng/megamenu';
     InputTextModule,
     PasswordModule,
     InputSwitchModule,
-    MegaMenuModule
+    MegaMenuModule,
+    TableModule
     
   ],
   providers: [
