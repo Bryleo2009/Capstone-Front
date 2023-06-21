@@ -41,6 +41,7 @@ import { DatosPersonalesComponent } from './_page/cliente/cuenta/datos-personale
 import { ConfiguracionComponent } from './_page/cliente/cuenta/configuracion/configuracion.component';
 import { ComprasComponent } from './_page/cliente/cuenta/compras/compras.component';
 import { ListadeseoComponent } from './_page/paqueteria/listadeseo/listadeseo.component';
+import { ChatbotComponent } from './_page/inicial/chatbot/chatbot.component';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -55,6 +56,7 @@ import { ListadeseoComponent } from './_page/paqueteria/listadeseo/listadeseo.co
     SeguimientoComponent,
     CarritoComponent,
     DialogComponent,
+    ChatbotComponent,
     TrazaProductComponent,
     EntregaComponent,
     PagoComponent,
