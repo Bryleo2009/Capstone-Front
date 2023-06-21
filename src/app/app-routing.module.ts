@@ -28,50 +28,59 @@ import { ListadeseoComponent } from './_page/paqueteria/listadeseo/listadeseo.co
 
 
 
-
 const routes: Routes = [
-  { path: 'cuenta', component: CuentaComponent, children: [
-  { path: '', component: DatosPersonalesComponent},
-  { path: 'configuracion', component: ConfiguracionComponent},
-  { path: 'compras', component: ComprasComponent}
-]
-},
-  { path : '' , component : HomeComponent},
-  { path : 'login' , component : LoginComponent, children: [
-    { path: '', component: SessionComponent},
-    { path: 'registro', component: RegistroComponent},
-  ]
-
-  
+  {
+    path: 'menu',
+    component: CuentaComponent,
+    children: [
+      { path: '', component: DatosPersonalesComponent },
+      { path: 'configuracion', component: ConfiguracionComponent },
+      { path: 'compras', component: SeguimientoComponent },
+    ],
+    canActivate: [AuthGuard],
+    data: { expectedRoles: ['ADMIN', 'SOPORTE', 'CLIENTE'] },
+  },
+  { path: '', component: HomeComponent },
+  {
+    path: 'login',
+    component: LoginComponent,
+    children: [
+      { path: '', component: SessionComponent },
+      { path: 'registro', component: RegistroComponent },
+    ],
+  },
+  { path: 'deseos', component: DeseosComponent },
+  { path: 'error/:type', component: Error },
+  {
+    path: 'store',
+    component: StoreComponent,
+    children: [{ path: 'open', component: DialogComponent }],
+  },
+  {
+    path: 'pedido',
+    component: PaqueteriaComponent,
+    children: [
+      { path: '', component: CarritoComponent },
+      {
+        path: 'trazabilidad',
+        component: TrazaProductComponent,
+        canActivate: [AuthGuard],
+        data: { expectedRoles: ['ADMIN', 'SOPORTE', 'CLIENTE'] },
+        children: [
+          { path: 'entrega', component: EntregaComponent },
+          { path: 'payment', component: PagoComponent },
+          { path: 'ok', component: SeguimientoComponent },
+        ],
+      },
+    ],
   },
   { path: 'bot', component: ChatbotComponent},
-  { path : 'deseos' , component : DeseosComponent},
-  { path: 'error/:type', component: Error },
-  { path : 'store' , component : StoreComponent, children: [
-      { path: 'open', component: DialogComponent}
-    ]
-  },
-  { path: 'pedido', component: PaqueteriaComponent, children: [
-    { path : '', component: CarritoComponent},
-    { path : 'trazabilidad', component : TrazaProductComponent,
-    canActivate: [AuthGuard],
-    data: { expectedRoles: ['ADMIN', 'SOPORTE','CLIENTE'] },
-    children: [
-      { path: 'entrega', component: EntregaComponent},
-      { path: 'payment', component: PagoComponent},
-      { path: 'ok', component: SeguimientoComponent},
-    ] },
-  ]},
-  { path: 'details' , component : Details01Component},
-  { path: 'seguimiento', component: SeguimientoComponent},
-
-  { path: 'menu', component: MenuComponent, canActivate: [AuthGuard],
-  data: { expectedRoles: ['ADMIN', 'SOPORTE','CLIENTE'] },},
-  { path: 'listadeseo', component: ListadeseoComponent},
+  { path: 'details', component: Details01Component },
+  { path: 'listadeseo', component: ListadeseoComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
