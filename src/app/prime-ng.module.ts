@@ -39,7 +39,6 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 import { MegaMenuModule } from 'primeng/megamenu';
 import { TableModule } from 'primeng/table';
 
-
 @NgModule({
   declarations: [],
   imports: [

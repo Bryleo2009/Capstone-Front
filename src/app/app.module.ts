@@ -41,6 +41,7 @@ import { DatosPersonalesComponent } from './_page/cliente/cuenta/datos-personale
 import { ConfiguracionComponent } from './_page/cliente/cuenta/configuracion/configuracion.component';
 import { ComprasComponent } from './_page/cliente/cuenta/compras/compras.component';
 import { ListadeseoComponent } from './_page/paqueteria/listadeseo/listadeseo.component';
+import { CRUDComponent } from './_page/producto/crud/crud.component';
 import { ChatbotComponent } from './_page/inicial/chatbot/chatbot.component';
 import { StockPrendasComponent } from './_page/paqueteria/stock-prendas/stock-prendas.component';
 import { NosotrosComponent } from './_page/producto/nosotros/nosotros.component';
@@ -72,6 +73,7 @@ import { NosotrosComponent } from './_page/producto/nosotros/nosotros.component'
     CuentaComponent,
     DatosPersonalesComponent,
     ConfiguracionComponent,
+    CRUDComponent,
     ComprasComponent,
     ListadeseoComponent,
     StockPrendasComponent,
