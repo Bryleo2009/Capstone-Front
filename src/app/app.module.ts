@@ -39,7 +39,6 @@ import { MenuComponent } from './_page/cliente/menu/menu.component';
 import { CuentaComponent } from './_page/cliente/cuenta/cuenta.component';
 import { DatosPersonalesComponent } from './_page/cliente/cuenta/datos-personales/datos-personales.component';
 import { ConfiguracionComponent } from './_page/cliente/cuenta/configuracion/configuracion.component';
-import { ComprasComponent } from './_page/cliente/cuenta/compras/compras.component';
 import { ListadeseoComponent } from './_page/paqueteria/listadeseo/listadeseo.component';
 import { CRUDComponent } from './_page/producto/crud/crud.component';
 import { ChatbotComponent } from './_page/inicial/chatbot/chatbot.component';
@@ -74,7 +73,6 @@ import { NosotrosComponent } from './_page/producto/nosotros/nosotros.component'
     DatosPersonalesComponent,
     ConfiguracionComponent,
     CRUDComponent,
-    ComprasComponent,
     ListadeseoComponent,
     StockPrendasComponent,
     NosotrosComponent
