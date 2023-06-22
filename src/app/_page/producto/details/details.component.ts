@@ -155,4 +155,3 @@ export class Details01Component {
     });
   }
 }
-

@@ -8,6 +8,7 @@ import { ProductoFilter } from '@app/_model/filter/productoFilter';
 import { ProductoStorage } from '@app/_model/filter/productoStorage';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { RegistroProductFilter } from '@app/_model/filter/registroProductFilter';
+import { ColorTallaFilter } from '@app/_model/filter/collorTallaFilter';
 
 @Injectable({
   providedIn: 'root'
@@ -45,11 +46,7 @@ export class ProductoService {
     return this.http.get<Page<ProductoFilter>>(this.url, { params });
   }
   
-  listarPorId(id: string, token: string): Observable<Producto> {
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<Producto>(`${this.url}/${id}`);
-  }
-
+ 
   listarGeneral(token: string): Observable<Producto[]> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get<Producto[]>(`${this.url}/listar`);
@@ -86,5 +83,16 @@ export class ProductoService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.put(`${this.url}/carrito`,objeto, { headers });
   }
- 
+
+  colorTalla(id: string, token:string):Observable<ColorTallaFilter[]>{
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<ColorTallaFilter[]>(`${this.url}/stockPrendas/${id}`);
+
+  }
+
+  listarPorId(id: string, token: string): Observable<Producto> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<Producto>(`${this.url}/${id}`);
+  }
+
 }
