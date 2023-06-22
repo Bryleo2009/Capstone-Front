@@ -1,3 +1,5 @@
-.color{
+.titulo{
+    font-size: 25px;
+    font-weight: bold;
     color: var(--color-prin);
 }
