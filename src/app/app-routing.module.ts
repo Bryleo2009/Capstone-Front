@@ -23,6 +23,8 @@ import { DatosPersonalesComponent } from './_page/cliente/cuenta/datos-personale
 import { ConfiguracionComponent } from './_page/cliente/cuenta/configuracion/configuracion.component';
 import { ListadeseoComponent } from './_page/paqueteria/listadeseo/listadeseo.component';
 import { CRUDComponent } from './_page/producto/crud/crud.component';
+import { StockPrendasComponent } from './_page/paqueteria/stock-prendas/stock-prendas.component';
+import { NosotrosComponent } from './_page/producto/nosotros/nosotros.component';
 
 const routes: Routes = [
   {
@@ -70,7 +72,11 @@ const routes: Routes = [
       },
     ],
   },
-  { path: 'details', component: Details01Component },
+  { path: 'details', component: Details01Component , children: [
+    { path: 'stock', component: StockPrendasComponent },
+  ],},
+  
+  { path: 'nosotros', component: NosotrosComponent },
   { path: 'listadeseo', component: ListadeseoComponent },
   { path: 'crud', component: CRUDComponent }
 ];

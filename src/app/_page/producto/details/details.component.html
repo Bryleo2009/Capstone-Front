@@ -2,8 +2,7 @@
     <div class="card flex p-5 justify-content-center" id="top">
         <!-- Imagen descripcion producto -->
         <div class="eje flex m-5">
-            <p-image [src]="producto.imagen" alt="Image" width="500"
-                height="500" [preview]="true"></p-image>
+            <p-image [src]="producto.imagen" alt="Image" width="500" height="500" [preview]="true"></p-image>
         </div>
         <!-- Descripcion producto -->
         <div class="flex m-5 flex-column">
@@ -54,8 +53,33 @@
                     [style]="{backgroundColor:'#FFFFFF', color: '#000000', padding : '09px 15px', margin: '05px', border: '#000000 1px solid'}"
                     label="Lista De Deseos" (click)="showListadeseo(producto.idProduct)"></p-button>
             </div>
+            <div class="card flex justify-content-center">
+                <p-button (click)="showDialog()" icon="pi pi-table" label="Tabla de Stock"
+                [style]="{backgroundColor:'#FFFFFF', color: '#000000', padding : '09px 15px', margin: '05px', border: '#000000 1px solid'}"></p-button>
+                <p-dialog header="Tabla de Stock" [(visible)]="visible" [modal]="true" [style]="{ width: '80%' }"
+                    [draggable]="false" [resizable]="false">
+                    <div class="card">
+                        <p-table [value]="tallaColores" styleClass="p-datatable-gridlines"
+                            [tableStyle]="{ 'min-width': '50rem' }">
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th><b>Color</b></th>
+                                    <th><b>Talla</b></th>
+                                    <th><b>Cantidad</b></th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-product>
+                                <tr>
+                                    <td>{{ product.color }}</td>
+                                    <td>{{ product.talla }}</td>
+                                    <td>{{ product.cantidad }}</td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+                </p-dialog>
+            </div>
 
-            
         </div>
     </div>
     <p-divider align="center"></p-divider>
@@ -114,4 +138,7 @@
             </ng-template>
         </p-carousel>
     </div>
+
+  
+
 </section>

@@ -14,6 +14,9 @@ import { ColorService } from '@app/_service/modelos/color.service';
 import { Enum, EnumInter } from '@app/_model/enum';
 import { AuthService } from '@app/_service/rutas/auth.service';
 import { ConfirmationService } from 'primeng/api';
+import { DialogModule } from 'primeng/dialog';
+import { tallaColorFilter } from '@app/_model/filter/tallaColorFilter';
+import { ColorTallaFilter } from '@app/_model/filter/collorTallaFilter';
 
 interface Car {
   id?: string;
@@ -31,6 +34,12 @@ interface Car {
 
 export class Details01Component {
   
+  visible: boolean = false;
+
+  showDialog() {
+      this.visible = true;
+  }
+
   constructor(
     private route: ActivatedRoute,
     private confirmationService: ConfirmationService,
@@ -54,6 +63,7 @@ export class Details01Component {
   ref!: DynamicDialogRef;
   tallas:EnumInter[] = [];
   colores:EnumInter[] = [];
+  tallaColores:ColorTallaFilter[] = [];
   ngOnInit() {
     //si estoy visualizando
     this.route.queryParams.subscribe((params) => {
@@ -62,6 +72,12 @@ export class Details01Component {
     });
 
     if (this.id !== null && this.id !== undefined && this.id !== '') {
+      this.producSerive.colorTalla(this.encryp.decrypt(this.id),this.auth.getToken()).subscribe(
+        (data) => {
+          this.tallaColores = data;
+        }
+      );
+      
       this.producSerive
         .listarPorId(this.encryp.decrypt(this.id), this.auth.getToken())
         .subscribe((unproducto: Producto) => {
