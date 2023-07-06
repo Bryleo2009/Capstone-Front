@@ -1,0 +1,15 @@
+.titulo {
+
+    padding: 20px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.letra {
+
+    font-size: 40px !important;
+    font-weight: bold;
+    text-decoration: underline;
+
+}

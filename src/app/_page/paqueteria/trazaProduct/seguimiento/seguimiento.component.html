@@ -4,13 +4,12 @@
         <div class=" mb-3 mt-3 flex flex-column align-items-center">
             <div class="titulo">
                 <h1 class="letra">
-                    Mis Compras
+                    Nuestras Ventas
                 </h1>
             </div>
             <div *ngFor="let unSeguimiento of seguimientos" class="mb-3 w-9">
-                <div class=" card-body shadow-2 surface-card border-round p-5 card "
-                    style="background-color: #F9F9F9;">
-                    <h4 >Compra N°: {{unSeguimiento.id_comp}}</h4>
+                <div class=" card-body shadow-2 surface-card border-round p-5 card " style="background-color: #F9F9F9;">
+                    <h4>Compra N°: {{unSeguimiento.id_comp}}</h4>
                     <div class=" flex justify-content-between w-full">
                         <img src="./assets/seguimiento/compras.png" alt="Image" height="200" class="m-3">
                         <div class="flex">
@@ -34,7 +33,7 @@
                             </div>
                         </div>
                         <div>
-                            <p-timeline [value]="unSeguimiento.trazabilidad" >
+                            <p-timeline [value]="unSeguimiento.trazabilidad">
                                 <ng-template pTemplate="content" let-event>
                                     <small class="p-text-secondary" [ngClass]="{'ultimo-elemento': event.esUltimo}">
                                         {{ formatarFecha(event.fecha_ini_proc) }}
@@ -45,8 +44,21 @@
                                     </div>
                                 </ng-template>
                             </p-timeline>
-
                         </div>
+                    </div>
+                    <div>
+                        <p-button (click)="showDialog()" icon="pi pi-external-link" label="Show" [style]="{backgroundColor:'var(--color-prin)', color: '#ffffff'}"></p-button>
+                        <p-dialog header="Header" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }"
+                            [draggable]="false" [resizable]="false">
+                            <p class="m-0">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+                                eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                                qui officia deserunt mollit anim id est laborum.
+                            </p>
+                        </p-dialog>
                     </div>
                 </div>
             </div>

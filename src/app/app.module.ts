@@ -44,6 +44,8 @@ import { CRUDComponent } from './_page/producto/crud/crud.component';
 import { ChatbotComponent } from './_page/inicial/chatbot/chatbot.component';
 import { StockPrendasComponent } from './_page/paqueteria/stock-prendas/stock-prendas.component';
 import { NosotrosComponent } from './_page/producto/nosotros/nosotros.component';
+import { DashComponent } from './_page/empleado/dash/dash.component';
+import { CardsComponent } from './_page/empleado/cards/cards.component';
 
 
 @NgModule({
@@ -75,7 +77,9 @@ import { NosotrosComponent } from './_page/producto/nosotros/nosotros.component'
     CRUDComponent,
     ListadeseoComponent,
     StockPrendasComponent,
-    NosotrosComponent
+    NosotrosComponent,
+    DashComponent,
+    CardsComponent
 
   ],
   imports: [

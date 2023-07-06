@@ -14,6 +14,7 @@ import { DataService } from '@app/_service/modelos/data.service';
 import { HttpClient } from '@angular/common/http';
 import { ClienteService } from '@app/_service/modelos/cliente.service';
 import { Cliente } from '@app/_model/cliente';
+import { TrabajadorService } from '@app/_service/modelos/trabajador.service';
 
 @Component({
   selector: 'app-session',
@@ -33,7 +34,8 @@ export class SessionComponent implements OnInit {
     private entregaComponente: EntregaComponent,
     private dataService: DataService,
     private httpClient: HttpClient,
-    private clienteService: ClienteService
+    private clienteService: ClienteService,
+    private trabajadorService: TrabajadorService
   ) {}
 
   checked!: boolean;
@@ -130,7 +132,12 @@ export class SessionComponent implements OnInit {
             const encryptedId = this.encryp.encrypt(
               String(this.unUsuario.username)
             );
-            this.router
+              
+            console.log("🔥 > SessionComponent > this.unUsuario.username:", this.unUsuario.username)
+            try {
+              const cliente = await this.clienteService.byNum(this.unUsuario.username, this.almacen.getToken()).toPromise();
+              if (cliente != null) {
+                this.router
               .navigateByUrl('/', { skipLocationChange: true })
               .then(() => {
                 this.router
@@ -142,6 +149,25 @@ export class SessionComponent implements OnInit {
                     this.viewportScroller.scrollToPosition([0, 0]); // Scroll hacia arriba
                   });
               });
+              } 
+            } catch (error: any) {
+              if (error.status === 404) {
+                this.router
+              .navigateByUrl('/', { skipLocationChange: true })
+              .then(() => {
+                this.router
+                  .navigate(['/dash'], {
+                    relativeTo: this.route,
+                    queryParams: { id: encryptedId, estado: '_?' },
+                  })
+                  .then(() => {
+                    this.viewportScroller.scrollToPosition([0, 0]); // Scroll hacia arriba
+                  });
+              });
+              } else {
+                // Manejar otros posibles errores
+              }
+            }
           }
         },
         (error) => {

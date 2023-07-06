@@ -25,6 +25,8 @@ import { ListadeseoComponent } from './_page/paqueteria/listadeseo/listadeseo.co
 import { CRUDComponent } from './_page/producto/crud/crud.component';
 import { StockPrendasComponent } from './_page/paqueteria/stock-prendas/stock-prendas.component';
 import { NosotrosComponent } from './_page/producto/nosotros/nosotros.component';
+import { DashComponent } from './_page/empleado/dash/dash.component';
+import { CardsComponent } from './_page/empleado/cards/cards.component';
 
 const routes: Routes = [
   {
@@ -72,13 +74,23 @@ const routes: Routes = [
       },
     ],
   },
-  { path: 'details', component: Details01Component , children: [
-    { path: 'stock', component: StockPrendasComponent },
-  ],},
-  
+  {
+    path: 'details',
+    component: Details01Component,
+    children: [{ path: 'stock', component: StockPrendasComponent }],
+  },
   { path: 'nosotros', component: NosotrosComponent },
   { path: 'listadeseo', component: ListadeseoComponent },
-  { path: 'crud', component: CRUDComponent }
+  {
+    path: 'dash',
+    component: DashComponent,
+    canActivate: [AuthGuard],
+    data: { expectedRoles: ['ADMIN', 'SOPORTE', 'EMPLEADO'] },
+    children: [
+      { path: 'productos', component: CRUDComponent },
+      { path: '', component: CardsComponent },
+    ],
+  },
 ];
 
 @NgModule({

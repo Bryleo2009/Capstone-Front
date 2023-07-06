@@ -36,19 +36,38 @@ export class HeaderComponent implements OnInit {
       this.logeado = this.dataService.obtenerLogueado();
     });
 
-    this.items = [
-      {
-          label: 'Mi perfil',
-          icon: 'fa-solid fa-house',
-          routerLink: ['/menu']
-      },
-      { separator: true },
-      { label: 'Cerrar Sesion', icon: 'fa-solid fa-arrow-right-from-bracket', command: () => {
-        this.almacen.removeAll();
-        this.router.navigateByUrl('/login');
-        this.dataService.updateVariable(false);
-    } }
-  ];
+    console.log();
+
+    if(this.almacen.getRol() == 'EMPLEADO'){
+      this.items = [
+        {
+            label: 'Mi perfil',
+            icon: 'fa-solid fa-house',
+            routerLink: ['/dash']
+        },
+        { separator: true },
+        { label: 'Cerrar Sesion', icon: 'fa-solid fa-arrow-right-from-bracket', command: () => {
+          this.almacen.removeAll();
+          this.router.navigateByUrl('/login');
+          this.dataService.updateVariable(false);
+      } }
+    ];
+    } else {
+      this.items = [
+        {
+            label: 'Mi perfil',
+            icon: 'fa-solid fa-house',
+            routerLink: ['/menu']
+        },
+        { separator: true },
+        { label: 'Cerrar Sesion', icon: 'fa-solid fa-arrow-right-from-bracket', command: () => {
+          this.almacen.removeAll();
+          this.router.navigateByUrl('/login');
+          this.dataService.updateVariable(false);
+      } }
+    ];
+    }
+    
 
     this.cantCarrito = this.carritoService.obtenerCantidadTotalCarrito().toString();
     this.carritoService.carrito$.subscribe(() => {

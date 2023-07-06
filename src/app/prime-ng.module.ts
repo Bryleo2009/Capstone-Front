@@ -38,10 +38,15 @@ import { PasswordModule } from 'primeng/password';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { MegaMenuModule } from 'primeng/megamenu';
 import { TableModule } from 'primeng/table';
+import { MenuModule } from 'primeng/menu';
+import { PanelMenuModule } from 'primeng/panelmenu';
+import { ChartModule } from 'primeng/chart';
 
 @NgModule({
   declarations: [],
   imports: [
+    ChartModule,
+    MenuModule,
     CommonModule,
     ButtonModule,
     GalleriaModule,
@@ -79,9 +84,13 @@ import { TableModule } from 'primeng/table';
     PasswordModule,
     InputSwitchModule,
     MegaMenuModule,
-    TableModule
+    TableModule,
+    PanelMenuModule
     
   ],exports: [
+    ChartModule,
+    PanelMenuModule,
+    MenuModule,
     ButtonModule,
     GalleriaModule,
     CarouselModule,

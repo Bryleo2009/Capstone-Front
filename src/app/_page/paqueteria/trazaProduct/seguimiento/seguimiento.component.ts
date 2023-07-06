@@ -21,6 +21,14 @@ export class SeguimientoComponent implements OnInit {
     private authService: AuthService
   ) {}
   seguimientos: SeguimientoPedidoFilter[] = [];
+
+
+  visible: boolean = false;
+
+  showDialog() {
+      this.visible = true;
+  }
+
   ngOnInit(): void {
     this.pedidoService
       .listarPedido(
