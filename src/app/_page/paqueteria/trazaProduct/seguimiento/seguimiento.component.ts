@@ -7,6 +7,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SeguimientoPedidoFilter } from '@app/_model/filter/seguimientoPedidoFilter';
 import { PedidoService } from '@app/_service/modelos/pedido.service';
 import { AuthService } from '@app/_service/rutas/auth.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-seguimiento',
@@ -18,7 +20,8 @@ export class SeguimientoComponent implements OnInit {
 
   constructor(
     private pedidoService: PedidoService,
-    private authService: AuthService
+    private authService: AuthService,
+    private sanitizer: DomSanitizer
   ) {}
   seguimientos: SeguimientoPedidoFilter[] = [];
 
@@ -71,4 +74,10 @@ export class SeguimientoComponent implements OnInit {
 
     return fechaFormateada;
   }
+  abrirComprobante(idComp: string): void {
+    const url = `http://localhost:9090/media/Comprobantes/comprobante_${idComp}.pdf`;
+    window.open(url, '_blank');
+  }
+  
+  
 }
